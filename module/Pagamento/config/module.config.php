@@ -17,11 +17,12 @@ return array(
     		    				'admin-financeiro-action' => array(
     		    						'type'    => 'Segment',
     		    						'options' => array(
-    		    								'route'    => '[/:action]',
+    		    								'route'    => '[/detalhePedido/:idpedido]',
     		    								'constraints' => array(
-    		    										'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+    		    										
     		    								),
     		    								'defaults' => array(
+    		    								    "action" => 'detalhePedido'
     		    								),
     		    						),
     		    				),
