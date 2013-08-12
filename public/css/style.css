@@ -1,0 +1,81 @@
+body {font-family:"Myriad Pro"; margin: 0px; padding: 0px;}
+ul, li {padding: 0px; margin: 0px; list-style: none}
+a {text-decoration: none}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../images/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+/*******************HEADER***************/
+#header {width: 100%; min-width: 960px; position: relative; background: #582700}
+#mn_topo{width: 960px; margin: 0 auto}
+ul.mn_topo{padding: 10px 0; }
+li.Menu_topo{display: inline;  background: url(../images/borda_menu.png) repeat-y right;  padding-right:13px; padding-left:13px}
+li.Menu_topo a{color:#FFF;}
+li.Menu_topo a:hover{text-decoration: underline;}
+
+/******************ERRO LOGIN - CADASTRO****************************/
+#form_erro {position: absolute;  width: 100%; min-width: 960px; margin-top: 80px}
+#atencao_erro{width: 411px; margin: 0 auto; background:url(../images/fundo_trasparente.png); text-align: center; border-top:5px solid #ff7f25; border-bottom: 5px solid #ff7f25; padding-bottom: 30px}
+p.atencaoErro{background: url(../images/atencao.png) no-repeat left; font-size: 1.000em; color:#FFF; font-weight: bold; text-indent: 50px; padding:10px 0;}
+p.erro{font-weight: bold; font-size: 1.000em; color:#FFF;}
+span.tipo_erro{ line-height: 25px; color:#fff; }
+a.tentarNovamente{background: #ff7f25; border-radius: 7px; padding: 10px 17px; margin-top: 30px; text-transform: uppercase; color: #FFF; font-weight: bold;font-size: 0.875em; letter-spacing: 1px}
+
+
+/******************LOGIN - CADASTRO****************************/
+#Login_Cadastro{width: 100%; min-width: 960px; position: absolute; }
+#btn_form {width: 453px; margin: 0 auto; }
+#form_login {width: 453px; margin: 0 auto; background: #FFF }
+#form_cadastro {width: 453px; margin: 0 auto; background: #FFF }
+a.status_entrar { background: url(../images/btn_entrar.png) no-repeat top; width:150px; height: 51px; float: left; text-indent: -9999px}
+a.status_criar_conta { background: url(../images/btn_criarConta_desativado.png) no-repeat top; width:219px; height: 51px; float: left; text-indent: -9999px}
+a.status_entrar:hover{ background: url(../images/btn_entrar_desativado.png) no-repeat top; z-index: 1 }
+a.status_criar_conta:hover { background: url(../images/btn_criarConta.png) no-repeat top; }
+a.status_fechar {background: url(../images/fechar_loginCadastro.png) no-repeat top; width:84px; height: 51px; float: left; text-indent: -9999px}
+a.esqueceuSenha { color:#333; text-decoration: underline; margin-left: 12%;}
+p.criar_conta{margin-left: 12%; font-size:1.125em; }
+p.criar_conta a.criar_conta {color:#333; font-weight: bold}
+p.criar_conta a.criar_conta:hover {color:#ff7f25;}
+
+form.formActionLogin, form.formActionCadastro{border: 3px solid #ff7f25; padding-top: 80px }
+input.login, input.Password, input.email{width: 320px; padding: 10px 5px; margin-left: 12%; margin-bottom: 10px; margin-top: 10px; border: 2px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px }
+label.status_login, label.status_password, label.status_email {font-size:1.000em; color:#333; margin-left: 12%;}
+input.Eventlogin ,input.Eventcadastrar {background: #ff7f25; border: none; font-size: 0.875em; text-transform: uppercase; cursor: pointer; border-radius: 7px; padding: 10px 17px; color:#FFF; font-weight: bold; letter-spacing: 1px; float: right; margin-right:12% }
+
+
+/*******************CONTENT***************/
+#content {width: 100%; min-width: 960px; background: #fff}
+
+/*******************FOOTER***************/
+#footer {width: 100%; min-width: 960px; background: #582700}
+#mn_topo{width: 960px; margin: 0 auto}
