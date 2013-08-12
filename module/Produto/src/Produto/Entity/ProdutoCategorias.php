@@ -4,6 +4,7 @@ namespace Produto\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ProdutoCategorias
  *
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Produto\Entity\ProdutoCategoriasRepository")
  */
 class ProdutoCategorias
-{
+{    
     /**
      * @var integer
      *
@@ -68,7 +69,13 @@ class ProdutoCategorias
 	public function setNome($nome) {
 		$this->nome = $nome;
 	}
+	
+	/**
+	 * @return the $slug
+	 */
+	public function getSlug() {
+		return $this->slug;
+	}
+	
 
-
-    
 }

@@ -4,7 +4,7 @@ namespace Produto\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * ProdutoSubcategoria
  *
@@ -14,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProdutoSubcategoria
 {
+    public function __construct() {
+    	$this->produtos = new ArrayCollection();
+    }
     /**
      * @var integer
      *
@@ -45,7 +48,14 @@ class ProdutoSubcategoria
      *   @ORM\JoinColumn(name="Produto_idCategorias", referencedColumnName="idCategorias")
      * })
      */
-    private $categorias;
+    private $categorias;    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Produto\Entity\ProdutoProdutos", mappedBy="produtosubcategoria")
+     */
+    protected $produtos;
+    
+    
     
 	public function getIdsubcategoria() {
 		return $this->idsubcategoria;
@@ -69,7 +79,15 @@ class ProdutoSubcategoria
 	public function setCategorias($categorias) {
 		$this->categorias = $categorias;
 	}
+	
+	/**
+	 * @return the $produtos
+	 */
+	public function getProdutos() {
+		return $this->produtos;
+	}
 
+    
 
     
 }

@@ -4,6 +4,8 @@ namespace Produto\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Doctrine\DBAL\Schema\View;
+use Produto\Form\Produto as FrmProduto;
 
 class CategoriaController extends AbstractActionController
 {
@@ -52,6 +54,17 @@ class CategoriaController extends AbstractActionController
         }
         $viewModel->setTerminal(true); // desativa layout.phtml
         return $viewModel;
+    }
+    public function listaProdutosByCategoriaAction()
+    {
+        $busca = $this->params()->fromRoute('slug',0);
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repository = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        
+        $categoriaBySlug = $repository->findByslug($busca);
+        
+        $form = new FrmProduto;
+        return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca, "form"=>$form ));
     }
 }
 

@@ -81,10 +81,16 @@ class ProdutoSubcategoria extends \Produto\Entity\ProdutoSubcategoria implements
         return parent::setCategorias($categorias);
     }
 
+    public function getProdutos()
+    {
+        $this->__load();
+        return parent::getProdutos();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idsubcategoria', 'nome', 'slugSubcategoria', 'categorias');
+        return array('__isInitialized__', 'idsubcategoria', 'nome', 'slugSubcategoria', 'categorias', 'produtos');
     }
 
     public function __clone()

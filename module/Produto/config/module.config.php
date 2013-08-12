@@ -38,6 +38,20 @@ return array(
                             ),
                         ),
                     ),
+                    'admin-categorias-default' => array(
+                    		'type'    => 'Segment',
+                    		'options' => array(
+                    				'route'    => '[/categorias/:slug]',
+                        		    'constraints' => array(                        		    		
+                        		    		#'slug' => '[a-zA-Z][a-zA-Z-]*'
+                        		    ),
+                    				'defaults' => array(
+                    				        'controller' => "Categoria",
+                    				        'action'     => 'listaProdutosByCategoria',
+                    				),
+                    		),
+                    ),
+                    
                 ),
             ),
             'admin-produto-categoria' => array(
@@ -110,7 +124,6 @@ return array(
         'eventmanager' => array(
         		'orm_default' => array(
         				'subscribers' => array(
-        
         						// pick any listeners you need
         						'Gedmo\Tree\TreeListener',
         						'Gedmo\Timestampable\TimestampableListener',

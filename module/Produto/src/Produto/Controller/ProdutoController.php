@@ -15,17 +15,15 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Produto\Form\Produto as FrmProduto;
 
-
-
 class ProdutoController extends AbstractActionController {
-	
+
     public function indexAction() {    	
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");     
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
         $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
         $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");        
         
     	$form = new FrmProduto;
-        return new ViewModel(array('form'=>$form, "produtos"=>$repositor->findAll() ));
+        return new ViewModel(array('form'=>$form, "produtos"=>$repositor->findAll(), "categorias"=>$repositorCat->findAll()));
     }
     
     public function adicionarAction(){        
