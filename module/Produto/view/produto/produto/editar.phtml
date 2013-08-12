@@ -1,0 +1,54 @@
+<h3>Alterar Produto</h3>
+
+<hr>
+
+<form class="form-horizontal">
+
+	<div class="control-group">
+		<label class="control-label" for="inputCategoria">Categoria</label>
+		<div class="controls">
+			<select id="inputCategoria">
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+				<option value="">4</option>
+				<option value="">5</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="inputSubCategoria">Sub Categoria</label>
+		<div class="controls">
+			<select id="inputSubCategoria">
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+				<option value="">4</option>
+				<option value="">5</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="inputTitulo">Titulo</label>
+		<div class="controls">
+			<input type="text" id="inputTitulo" placeholder="Titulo" value="<?php echo $this->produto->getTitulo()?>">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="inputValor">Valor</label>
+		<div class="controls">
+			<input type="text" id="inputValor" placeholder="R$ 0,00" value="<?php echo $this->produto->getValor()?>">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<a class="btn" href="<?php echo $this->url('produto-home'); ?>">Voltar</a>
+			<button type="submit" class="btn btn-primary">Alterar</button>
+		</div>
+	</div>
+
+</form>
