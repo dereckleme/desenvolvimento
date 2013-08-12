@@ -1,5 +1,47 @@
-<!-- Button to trigger modal -->
-<a href="#addProdutos" role="button" class="btn" data-toggle="modal" title="Novo Produto"><i class="icon-plus-sign"></i> Novo Produto</a>
+<div class="alert">  
+  <strong><h4>Gerenciamento de Produtos</h4></strong> <br/> Nessa sessão você pode gerenciar seus produtos de acordo com as suas necessidades.
+</div>
+
+<div class="row">
+    <div class="span8">
+        <!-- Button to trigger modal -->
+        <a href="#addProdutos" role="button" class="btn" data-toggle="modal" title="Novo Produto" style="float: left"><i class="icon-plus-sign"></i> Novo Produto</a> 
+        <div class="btn-group" style="float: left; margin-left: 10px;">
+            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                Buscar por Categoria
+                <span class="caret"></span>
+            </a>                    
+            <ul class="dropdown-menu">
+                <li><a href="#">categoria 1</a></li>
+                <li><a href="#">categoria 2</a></li>
+                <li><a href="#">categoria 3</a></li>
+                <li><a href="#">categoria 4</a></li>
+                <li><a href="#">categoria 5</a></li>
+            </ul>
+        </div>        
+        <div class="btn-group"  style="float:left; margin-left: 10px;">
+            <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                Buscar por Sub Categoria
+                <span class="caret"></span>
+            </a>                    
+            <ul class="dropdown-menu">
+                <li><a href="#">sub categoria 1</a></li>
+                <li><a href="#">sub categoria 2</a></li>
+                <li><a href="#">sub categoria 3</a></li>
+                <li><a href="#">sub categoria 4</a></li>
+                <li><a href="#">sub categoria 5</a></li>
+            </ul>
+        </div>       
+    </div>    
+    <div class="span4">
+        <form class="form-search">
+            <div class="input-append">
+    		    <input type="text" class="input-medium search-query">
+    		    <button type="submit" class="btn">Busca</button>
+		    </div>
+		</form>
+    </div>
+</div>
 
 <!-- Modal -->
 <div id="addProdutos" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -7,12 +49,10 @@
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     	<h3 id="myModalLabel">Adicionar Produto</h3>
   	</div>
-  	<div class="modal-body">
-    	
+  	<div class="modal-body">    	
     	<div class="control-group">
 			<div class="alert" id="message"></div>				
-		</div>
-    		
+		</div>    		
 		<?php 
 		$form = $this->form;
 		$form->setAttribute('action', "#");
@@ -48,8 +88,7 @@
   			</div>
 		<?php 
 		echo $this->form()->closeTag();
-		?>
-		
+		?>		
   	</div>
   	<div class="modal-footer">
     	<button class="btn" data-dismiss="modal" aria-hidden="true" id="fecharModal">Cancelar</button>
@@ -59,10 +98,7 @@
 
 <table class="table table-striped table-bordered table-condensed">
 	<caption>
-		<form class="form-search">
-		  <input type="text" class="input-medium search-query">
-		  <button type="submit" class="btn">Search</button>
-		</form>
+		<h1>LISTA DE PRODUTOS DA LOJA SELETO</h1>
 	</caption>
 	<thead>
 		<tr>
