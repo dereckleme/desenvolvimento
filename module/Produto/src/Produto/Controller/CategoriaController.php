@@ -66,5 +66,9 @@ class CategoriaController extends AbstractActionController
         $form = new FrmProduto;
         return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca, "form"=>$form ));
     }
+    public function listaProdutosBySubcategoriaAction()
+    {
+    	
+    }
 }
 

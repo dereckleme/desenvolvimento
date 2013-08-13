@@ -86,6 +86,14 @@ class ProdutoSubcategoria
 	public function getProdutos() {
 		return $this->produtos;
 	}
+	
+	/**
+	 * @return the $slugSubcategoria
+	 */
+	public function getSlugSubcategoria() {
+		return $this->slugSubcategoria;
+	}
+
 
     
 

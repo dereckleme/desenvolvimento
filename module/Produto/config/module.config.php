@@ -39,19 +39,31 @@ return array(
                         ),
                     ),
                     'admin-categorias-default' => array(
-                    		'type'    => 'Segment',
-                    		'options' => array(
-                    				'route'    => '[/categorias/:slug]',
-                        		    'constraints' => array(                        		    		
-                        		    		#'slug' => '[a-zA-Z][a-zA-Z-]*'
-                        		    ),
-                    				'defaults' => array(
-                    				        'controller' => "Categoria",
-                    				        'action'     => 'listaProdutosByCategoria',
-                    				),
+                        'type'    => 'Segment',
+                    	'options' => array(
+                    	    'route'    => '[/categorias/:slug]',
+                        	'constraints' => array(                        		    		
+                        	    #'slug' => '[a-zA-Z][a-zA-Z-]*'
+                        	),
+                    		'defaults' => array(
+                    		    'controller' => "Categoria",
+                    			'action'     => 'listaProdutosByCategoria',
                     		),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'admin-categorias-e-subcategoria' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'     => '[/subcategoria/:slugSub]',
+                                    'defaults'  => array(
+                                        'controller' => 'Categoria',
+                                        'action'     => 'listaProdutosBySubcategoria',
+                                    ),
+                                ),                               
+                            ),
+                        ),
                     ),
-                    
                 ),
             ),
             'admin-produto-categoria' => array(

@@ -3,6 +3,8 @@
 namespace Produto\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element\Select;
+use Doctrine\DBAL\Event\SchemaEventArgs;
 
 class Produto extends Form {
 	
@@ -15,39 +17,15 @@ class Produto extends Form {
 		
 		$this->setInputFilter(new ProdutoFilter);
 		
-		$this->add(array(
-				'type' => 'Zend\Form\Element\Select',
-				'name' => 'inputCategoria',
-				'options' => array(
-					'value_options' => array(
-						'0' => '1',
-						'1' => '2',
-						'2' => '3',
-						'3' => '4',
-						'4' => '5',
-					)
-				),
-				'attributes' => array(
-					'id' => 'inputCategoria'
-				)
-		));
+		$select = new Select('inputCategoria');
+		$select->setAttribute('id', 'inputCategoria');
+		$this->add($select);		
 		
-		$this->add(array(
-				'type' => 'Zend\Form\Element\Select',
-				'name' => 'inputSubCategoria',
-				'options' => array(
-						'value_options' => array(
-								'0' => '1',
-								'1' => '2',
-								'2' => '3',
-								'3' => '4',
-								'4' => '5',
-						)
-				),
-				'attributes' => array(
-						'id' => 'inputSubCategoria'
-				)
-		));
+		$select2 = new Select('inputSubCategoria');
+		$select2->setAttribute('id', 'inputSubCategoria');
+		$select2->setValueOptions(array(''=>'--SELECIONE--'));
+		$this->add($select2);
+		
 		
 		$this->add(array(
 				'name' => 'titulo',

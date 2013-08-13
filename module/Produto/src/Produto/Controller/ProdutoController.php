@@ -17,18 +17,84 @@ use Produto\Form\Produto as FrmProduto;
 
 class ProdutoController extends AbstractActionController {
 
+     
+    
     public function indexAction() {    	
         $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
         $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
         $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");        
         
-    	$form = new FrmProduto;
+        $categoriaValues = array();
+        $categoriaValues[""] = "--SELECIONE--";
+        foreach($repositorCat->findAll() as $categoria)
+        {
+        	$categoriaValues[$categoria->getIdcategorias()] = $categoria->getNome();
+        }
+        
+    	$form = new FrmProduto;    	    
+    	$select = $form->get('inputCategoria');
+    	$select->setValueOptions($categoriaValues);
+    	
         return new ViewModel(array('form'=>$form, "produtos"=>$repositor->findAll(), "categorias"=>$repositorCat->findAll()));
     }
     
+    public function subCategoriaByCategoriaAction(){        
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repositor = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $data = $this->getRequest()->getPost('valor');
+            
+            $valueOptions = "<option value=''>--SELECIONE--</option>\n";
+            foreach($repositor->findByIdcategorias($data) as $categoria)
+            {
+            	foreach($categoria->getSubcategorias() as $subcategoria)
+            	{
+            		$valueOptions .= "<option value='{$subcategoria->getIdsubcategoria()}'>{$subcategoria->getNome()}</option>\n";
+            	}
+            }
+        }
+        else
+        {
+            $valueOptions = "Erro interno.";
+        }
+        
+        $viewModel = new ViewModel(array('mensagem' => $valueOptions)); // chama uma view
+        $viewModel->setTerminal(true); // desativa layout.phtml
+        return $viewModel;
+    }
+    
     public function adicionarAction(){        
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        $repositorSubCat = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        #$repositor = $em->getRepository("Produto\Entity\PagamentoControleestoque");
+        
+        $categoriaValues = array();
+        $subCategoriaValues = array();
+        $categoriaValues[""] = "--SELECIONE--";
+        $subCategoriaValues[""] = "--SELECIONE--";
+        foreach($repositorCat->findAll() as $categoria)
+        {
+            foreach($categoria->getSubcategorias() as $subcategoria)
+            {
+                $subCategoriaValues[$subcategoria->getIdsubcategoria()] = $subcategoria->getNome();
+            }
+        	$categoriaValues[$categoria->getIdcategorias()] = $categoria->getNome();
+        }
+        
+        
         $form = new FrmProduto;
     	
+        $comboCategoria = $form->get('inputCategoria');
+        $comboCategoria->setValueOptions($categoriaValues);
+        
+        $comboSubCategoria = $form->get('inputSubCategoria');
+        $comboSubCategoria->setValueOptions($subCategoriaValues);
+        
+        
     	$request = $this->getRequest();    	
     	if($request->isPost())
     	{

@@ -12,6 +12,7 @@ return array(
         'DoctrineDataFixtureModule',
         'EdpModuleLayouts',
         'ZFTool',
+        'ZendDeveloperTools',
         'Produto',
         'Usuario',
         'ProdutoPublic',

@@ -1,13 +1,13 @@
 $(function(){
 		$(".actionCategoriaGerenciar").on("click",function(){
 			$(".gerCategorias").slideToggle();
-		})
+		});
 		$(".actionSubcategoriaGerenciar").on("click",function(){
 			$(".gerSubCategorias").slideToggle();
-		})
+		});
 		$('#criaCategorias,#criaSubCategorias,#addProdutos').on('hidden', function () {
 			location.reload();
-		})
+		});
 		$("#actionAddCat").on("click",function(){
 			var eventCategoria = $("#criaCategorias .tituloCat").val();
 			$.ajax({
@@ -62,6 +62,27 @@ $(function(){
 			});
 			return false;
 		});
+		
+		$("select[name=inputCategoria]").on("change", function(){
+			var value = $(this).val();
+			
+			$.ajax({
+				type	:	"post",
+				url		:	basePatch+"/administrador/produto/subCategoriaByCategoria",
+				data	:	{valor:value},
+				beforeSend: function(){
+					$('select[name=inputSubCategoria]').empty();
+					$('select[name=inputSubCategoria]').append("<option>Caregando.....</option>");
+				},
+				success	:	function(data){
+					$('select[name=inputSubCategoria]').empty();
+					$('select[name=inputSubCategoria]').append(data);
+				},
+				error	:	function(){
+					
+				}
+			});
+		});		
 		
 		$("#addProduto").on("click", function(){			
 			var categoria = $('#formProduto select[name=inputCategoria]').val();

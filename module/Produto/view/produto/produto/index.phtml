@@ -12,7 +12,7 @@
                 <span class="caret"></span>
             </a>                    
             <ul class="dropdown-menu">
-                <li class="active"><a href="#">Todos</a></li>
+                <li class="active"><a href="<?php echo $this->url('admin-produto-home'); ?>">Todos</a></li>
                 <?php foreach($this->categorias as $categoria): ?>
                 <li><a href="<?php echo $this->url('admin-produto-home/admin-categorias-default', array('action'=>'categorias', 'slug'=>$categoria->getSlug())); ?>"><?php echo $categoria->getNome(); ?></a></li>
                 <?php endforeach; ?>                
@@ -24,14 +24,14 @@
                 <span class="caret"></span>
             </a>                    
             <ul class="dropdown-menu">
-                <li class="active"><a href="#">Todos</a></li>
+                <li class="active"><a href="<?php echo $this->url('admin-produto-home'); ?>">Todos</a></li>
                 <?php 
                 foreach($this->categorias as $categoria)
                 {
-                	foreach($categoria->getSubcategorias() as $subcategorias)
+                	foreach($categoria->getSubcategorias() as $subcategoria)
                 	{
                     ?>
-                    <li><a href="<?php #echo $this->url('admin-produto-home/admin-categorias-default', array('action'=>'categorias', 'slug'=>$categoria->getSlug())); ?>"><?php echo $subcategorias->getNome(); ?></a></li>
+                    <li><a href="<?php echo $this->url('admin-produto-home/admin-categorias-default/admin-categorias-e-subcategoria', array('action'=>'categorias', 'slug'=>$categoria->getSlug(), 'slugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a></li>
                     <?php
                 	}
                 }

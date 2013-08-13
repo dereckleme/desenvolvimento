@@ -14,23 +14,6 @@ class Produto extends AbstractService {
 		$this->entity = "Produto\Entity\ProdutoProdutos";
 	}
 	
-	/*public function insert(array $data) {
-		#$slug = strtolower($data['titulo']);
-		
-		$entity = new $this->entity($data);
-		
-		(new Hydrator\ClassMethods())->hydrate($data, $entity);
-		
-		$subcategoria = $this->em->getReference("Produto\Entity\ProdutoSubcategoria", $data['inputSubCategoria']);
-		$entity->setProdutosubcategoria($subcategoria);
-		#$entity->setSlugProduto(str_replace(" ", "-", $slug));
-	
-		$this->em->persist($entity);
-		$this->em->flush();
-		return $entity;
-	
-	}*/
-	
 	public function insert(array $data) {
 	    $this->setTargetEntity("Produto\Entity\ProdutoSubcategoria");
 	    $this->setCampo("setProdutosubcategoria");
