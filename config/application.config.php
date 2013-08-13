@@ -17,7 +17,9 @@ return array(
         'Usuario',
         'ProdutoPublic',
         'Base',
-        'Pagamento'
+        'Pagamento',
+        'Pagseguro',
+        'CarrinhoCompras'
         ),
     'module_listener_options' => array(
         'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php'),

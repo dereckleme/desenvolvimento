@@ -15,7 +15,9 @@ return array(
         'Produto',
         'Usuario',
         'ProdutoPublic',
-        'Base'
+        'Base',
+        'Pagamento',
+        'Pagseguro'
         ),
     'module_listener_options' => array(
         'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php'),
