@@ -19,8 +19,11 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	$sms = "Teste de git";
-        return new ViewModel(array("mensagem"=>$sms));
+    	#$service = $this->getServiceLocator()->get('Produto\Repository\Produtos');
+    	#foreach ($service->findAll() as $produto){
+    		#echo $produto->getTitulo(), "<br/>";
+    	#}
+        return new ViewModel();
     }
     
 }

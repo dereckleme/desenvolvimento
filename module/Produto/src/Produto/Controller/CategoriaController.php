@@ -55,6 +55,7 @@ class CategoriaController extends AbstractActionController
         $viewModel->setTerminal(true); // desativa layout.phtml
         return $viewModel;
     }
+    
     public function listaProdutosByCategoriaAction()
     {
         $busca = $this->params()->fromRoute('slug',0);
@@ -66,9 +67,11 @@ class CategoriaController extends AbstractActionController
         $form = new FrmProduto;
         return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca, "form"=>$form ));
     }
+    
     public function listaProdutosBySubcategoriaAction()
     {
-    	
+    	die('byCLS');
     }
+    
 }
 

@@ -17,8 +17,6 @@ use Produto\Form\Produto as FrmProduto;
 
 class ProdutoController extends AbstractActionController {
 
-     
-    
     public function indexAction() {    	
         $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
         $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
@@ -68,8 +66,7 @@ class ProdutoController extends AbstractActionController {
     
     public function adicionarAction(){        
         $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");
-        $repositorSubCat = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");        
         #$repositor = $em->getRepository("Produto\Entity\PagamentoControleestoque");
         
         $categoriaValues = array();

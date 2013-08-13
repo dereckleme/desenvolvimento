@@ -14,6 +14,8 @@ use Zend\Mvc\MvcEvent;
 use Produto\Service\Produto AS serviceProduto;
 use Produto\Service\Categoria AS serviceCategoria;
 use Produto\Service\Subcategoria AS serviceSubcategoria;
+
+
 class Module {
     
     public function onBootstrap(MvcEvent $e)
@@ -45,8 +47,7 @@ class Module {
     			'Produto\Service\Produto' => function($service){
     				$produto = new serviceProduto($service->get('Doctrine\ORM\EntityManager'));
     				return $produto;
-    			},
-    			/*
+    			},    			
     			'Produto\Repository\Categorias' => function($service){
     			    $em = $service->get('Doctrine\ORM\EntityManager');
     			    $repository = $em->getRepository("Produto\Entity\ProdutoCategorias");
@@ -56,8 +57,12 @@ class Module {
     				$em = $service->get('Doctrine\ORM\EntityManager');
     				$repository = $em->getRepository("Produto\Entity\ProdutoSubcategoria");
     				return $repository;
+    			},    			
+    			'Produto\Repository\Produtos' => function($service){
+    				$em = $service->get("Doctrine\ORM\EntityManager");
+    				$repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
+    				return $repositor;
     			},
-    			*/
     			'Produto\Service\Categoria' => function($service){
     				$categoria = new serviceCategoria($service->get('Doctrine\ORM\EntityManager'));
     				return $categoria;
