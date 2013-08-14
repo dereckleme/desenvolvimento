@@ -81,6 +81,12 @@ class ProdutoCategorias extends \Produto\Entity\ProdutoCategorias implements \Do
         return parent::setNome($nome);
     }
 
+    public function getSlug()
+    {
+        $this->__load();
+        return parent::getSlug();
+    }
+
 
     public function __sleep()
     {

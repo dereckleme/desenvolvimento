@@ -17,10 +17,9 @@ use Produto\Form\Produto as FrmProduto;
 
 class ProdutoController extends AbstractActionController {
 
-    public function indexAction() {    	
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
-        $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");        
+    public function indexAction() {        
+        $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
+        $repositorCat = $this->getServiceLocator()->get("Produto\Repository\Categorias");        
         
         $categoriaValues = array();
         $categoriaValues[""] = "--SELECIONE--";
@@ -37,8 +36,7 @@ class ProdutoController extends AbstractActionController {
     }
     
     public function subCategoriaByCategoriaAction(){        
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repositor = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        $repositor = $this->getServiceLocator()->get("Produto\Repository\Categorias");
         
         $request = $this->getRequest();
         if($request->isPost())
@@ -65,8 +63,7 @@ class ProdutoController extends AbstractActionController {
     }
     
     public function adicionarAction(){        
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repositorCat = $em->getRepository("Produto\Entity\ProdutoCategorias");        
+        $repositorCat =  $this->getServiceLocator()->get("Produto\Repository\Categorias");        
         #$repositor = $em->getRepository("Produto\Entity\PagamentoControleestoque");
         
         $categoriaValues = array();
@@ -102,7 +99,14 @@ class ProdutoController extends AbstractActionController {
     	    	$data = $this->getRequest()->getPost()->toArray();
     	    	
     	    	$service = $this->getServiceLocator()->get("Produto\Service\Produto");
-    	    	$service->insert($data);
+    	    	$produto = $service->insert($data);
+    	    	    /*	    	
+    	    	$serviceEstoque = $this->getServiceLocator()->get("Pagamento\Service\Estoque");
+    	    	$teste = $serviceEstoque->insert(array('produtoproduto'=>$produto->getIdproduto(), 'quantidade'=>'60'));
+    	    	*/
+    	    	
+    	    	die();
+    	    	
     	    	
     	    	$return['success'] = "Cadastrado com sucesso";  	    	
     	    }
@@ -125,8 +129,7 @@ class ProdutoController extends AbstractActionController {
     }
     
     public function editarAction(){
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
+        $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         
         
         //$entity = $repositor->find($this->params()->fromRoute('id',0));

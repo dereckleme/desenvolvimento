@@ -28,7 +28,18 @@ return array(
     		    				),
     		    		),
     		    ),
-    		    )
+    		    'admin-estoque' => array(
+    		    		'type'    => 'Literal',
+    		    		'options' => array(
+    		    		    'route'    => '/administrador/estoque',
+    		    		    'defaults' => array(
+    		    		        '__NAMESPACE__' => 'Pagamento\Controller',
+    		    		        'controller'    => 'Estoque',
+    		    		        'action'        => 'index',
+    		    	        ),
+    		    	    ),    		            
+    		        ),
+    		    ),
         ),
     'service_manager' => array(
     		'abstract_factories' => array(
@@ -41,7 +52,8 @@ return array(
     ),
     'controllers' => array(
     		'invokables' => array(
-    				'Pagamento\Controller\Financeiro' => 'Pagamento\Controller\FinanceiroController',
+    			'Pagamento\Controller\Financeiro' => 'Pagamento\Controller\FinanceiroController',
+    		    'Pagamento\Controller\Estoque' => 'Pagamento\Controller\EstoqueController',
     		),
     ),
     'view_manager' => array(

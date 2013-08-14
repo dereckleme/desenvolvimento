@@ -45,7 +45,7 @@ class Module {
     	return array(
     		'factories' => array(
     			'Produto\Service\Produto' => function($service){
-    				$produto = new serviceProduto($service->get('Doctrine\ORM\EntityManager'));
+    				$produto = new serviceProduto($service->get('Doctrine\ORM\EntityManager'),$service->get('Pagamento\Service\Estoque'));
     				return $produto;
     			},    			
     			'Produto\Repository\Categorias' => function($service){

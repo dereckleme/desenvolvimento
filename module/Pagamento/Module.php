@@ -1,6 +1,9 @@
 <?php
 namespace Pagamento;
 
+use Pagamento\Service\Estoque as serviceEstoque;
+
+
 class Module
 {
     public function getConfig()
@@ -18,4 +21,21 @@ class Module
             ),
         );
     }
+    
+    public function getServiceConfig(){
+    	return array(
+    	    'factories' => array(
+    	        'Pagamento\Service\Estoque' => function($service){
+    	    	    $estoque = new serviceEstoque($service->get('Doctrine\ORM\EntityManager'));
+    	    	    return $estoque;
+    	        },
+    	        /*'Pagamento\Repository\Estoque' => function($service){
+    	            $em = $service->get("Doctrine\ORM\EntityManager");
+    	            $repositor = $em->getRepository("Pagamento\Entity\PagamentoControleestoque");
+    	            return $repositor;
+    	        }*/
+    	    )
+    	);
+    }
+    
 }
