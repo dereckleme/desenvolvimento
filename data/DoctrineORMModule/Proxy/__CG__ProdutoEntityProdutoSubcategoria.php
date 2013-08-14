@@ -87,6 +87,12 @@ class ProdutoSubcategoria extends \Produto\Entity\ProdutoSubcategoria implements
         return parent::getProdutos();
     }
 
+    public function getSlugSubcategoria()
+    {
+        $this->__load();
+        return parent::getSlugSubcategoria();
+    }
+
 
     public function __sleep()
     {

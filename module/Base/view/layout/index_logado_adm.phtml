@@ -45,6 +45,7 @@
 							<a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><button type="button" class="btn btn-primary">Sair</button></a>
 						</div>
 		          	</div><!--/.nav-collapse -->
+		          	 <?php print $this->partial('layout/carrinho',array("carrinhoLista" => $this->carrinhoLista));?>
 		          <div class="alert alert-success">
       Seja bem vindo <?=ucwords($this->infoUser->getLogin())?>, ultimo acesso: 10/10/2010 as 10:50:10, dúvidas entre em contato.
 </div>
@@ -61,6 +62,6 @@
 		</div>
 
 	</div>
-        <?php echo $this->content; ?>
+        <?php echo $this->content;?>
     </body>
 </html>
