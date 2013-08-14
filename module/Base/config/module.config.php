@@ -40,6 +40,7 @@ return array(
     				'layout/site'           => __DIR__ . '/../view/layout/index.phtml',
     		        'layout/site_logado'           => __DIR__ . '/../view/layout/index_logado.phtml',
     		        'layout/site_logado_adm'           => __DIR__ . '/../view/layout/index_logado_adm.phtml',
+    		        'layout/carrinho'                   => __DIR__ . '/../view/layout/layoutCarrinho.phtml',
     				'base/index/index' => __DIR__ . '/../view/base/index/index.phtml',
     				'error/404'               => __DIR__ . '/../view/error/404.phtml',
     				'error/index'             => __DIR__ . '/../view/error/index.phtml',

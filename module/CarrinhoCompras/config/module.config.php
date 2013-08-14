@@ -8,7 +8,7 @@ return array(
                     'route'    => '/carrinho',
                     'defaults' => array(
                         'controller' => 'CarrinhoCompras\Controller\Index',
-                        'action'     => 'index',
+                        'action'     => 'list',
                     ),
                 ),
                 'may_terminate' => true,
@@ -16,13 +16,24 @@ return array(
                 		'carrinho-adiciona' => array(
                 				'type'    => 'Segment',
                 				'options' => array(
-                						'route'    => '/adiciona',
+                						'route'    => '/:action',
                 						'defaults' => array(
+                						    
                 						),
                 				),
                 		),
                 ),
             ),
+            'carrinho-test' => array(
+            		'type' => 'Zend\Mvc\Router\Http\Literal',
+            		'options' => array(
+            				'route'    => '/carrinhoteste',
+            				'defaults' => array(
+            						'controller' => 'CarrinhoCompras\Controller\Index',
+            						'action'     => 'test',
+            				),
+            		),
+            )    
         ),
     ),
     'controllers' => array(
