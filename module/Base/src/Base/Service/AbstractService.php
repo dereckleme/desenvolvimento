@@ -30,13 +30,21 @@ abstract class AbstractService
     {
         $entity = new $this->entity($data);
         $data['nivelUsuario'] = "2";
-        if(!empty($this->targetEntity))
+        if(!empty($this->targetEntity) && !is_array($this->targetEntity))
         {
             $reference = $this->em->getReference($this->targetEntity, $this->actionReference);
             $string = $this->campo;
             $entity->$string($reference);
         }
-       
+        else
+        {
+            foreach($this->targetEntity AS $entityes)
+            {
+                $reference = $this->em->getReference($entityes['setTargetEntity'], $entityes['setActionReference']);
+                $string = $entityes['setCampo'];
+                $entity->$string($reference);
+            }
+        }
         (new Hydrator\ClassMethods())->hydrate($data, $entity);
        
         $this->em->persist($entity);
@@ -47,6 +55,21 @@ abstract class AbstractService
     public function update(array $data)
     {
         $entity = $this->em->getReference($this->entity, $data['id']);
+        if(!empty($this->targetEntity) && !is_array($this->targetEntity))
+        {
+        	$reference = $this->em->getReference($this->targetEntity, $this->actionReference);
+        	$string = $this->campo;
+        	$entity->$string($reference);
+        }
+        else
+        {
+        	foreach($this->targetEntity AS $entityes)
+        	{
+        		$reference = $this->em->getReference($entityes['setTargetEntity'], $entityes['setActionReference']);
+        		$string = $entityes['setCampo'];
+        		$entity->$string($reference);
+        	}
+        }
         (new Hydrator\ClassMethods())->hydrate($data, $entity);
         
         $this->em->persist($entity);

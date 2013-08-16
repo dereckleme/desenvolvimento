@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,9 +22,9 @@ class PagamentoControlepedido
     private $idpagamentoControlepedido;
 
     /**
-     * @var \Pagseguro\Entity\PagamentoControlerecibo
+     * @var \Pagamento\Entity\PagamentoControlerecibo
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\PagamentoControlerecibo")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoControlerecibo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idControleRecibo", referencedColumnName="idControleRecibo")
      * })
@@ -32,9 +32,9 @@ class PagamentoControlepedido
     private $idcontrolerecibo;
 
     /**
-     * @var \Pagseguro\Entity\ProdutoProdutos
+     * @var \Pagamento\Entity\ProdutoProdutos
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\ProdutoProdutos")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\ProdutoProdutos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Produtos_idProduto", referencedColumnName="idProduto")
      * })

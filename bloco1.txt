@@ -1,1 +1,1 @@
-okokokok
+{"notificationCode":"FB9220-868A3B8A3BD6-8774E20FA2DA-E5FFA0","notificationType":"transaction"}

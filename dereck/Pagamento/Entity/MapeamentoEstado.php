@@ -1,25 +1,25 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ProdutoCategorias
+ * MapeamentoEstado
  *
- * @ORM\Table(name="produto_categorias")
+ * @ORM\Table(name="mapeamento_estado")
  * @ORM\Entity
  */
-class ProdutoCategorias
+class MapeamentoEstado
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="idCategorias", type="integer", nullable=false)
+     * @ORM\Column(name="idmapeamento_estado", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idcategorias;
+    private $idmapeamentoEstado;
 
     /**
      * @var string
@@ -31,9 +31,9 @@ class ProdutoCategorias
     /**
      * @var string
      *
-     * @ORM\Column(name="slug_categoria", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nomeclatura", type="string", length=255, nullable=true)
      */
-    private $slugCategoria;
+    private $nomeclatura;
 
 
 }

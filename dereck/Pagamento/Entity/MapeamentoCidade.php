@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,9 +36,9 @@ class MapeamentoCidade
     private $nomeclatura;
 
     /**
-     * @var \Pagseguro\Entity\MapeamentoEstado
+     * @var \Pagamento\Entity\MapeamentoEstado
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\MapeamentoEstado")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\MapeamentoEstado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="mapeamento_idestado", referencedColumnName="idmapeamento_estado")
      * })

@@ -31,24 +31,24 @@ class IndexController extends AbstractActionController
     public function retornoAction()
     {
         $request = $this->getRequest();
-            if(!$request->isPost())
+            if($request->isPost())
             {
                 $data = $request->getPost()->toArray();
                 $service = $this->getServiceLocator()->get("Pagseguro\Curl\Retorno");
-                $return = $service->requisicao("9131E8-2202390239FA-3664257F8AD1-FC60CF");
+                $return = $service->requisicao($data['notificationCode']);
+                #$return = $service->requisicao("FB9220-868A3B8A3BD6-8774E20FA2DA-E5FFA0");
                 $codigoUnitario = $return['code'];
-                
                 $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 $repositoryRecibo = $em->getRepository("Pagseguro\Entity\PagamentoControlerecibo");
-                
-                if(count($repositoryRecibo->findBynpedido(array($codigoUnitario))) == 0) // nao existe
+                $service = $this->getServiceLocator()->get("Pagseguro\Service\Pagseguro");
+                    $objectRelacional = $repositoryRecibo->findOneBynpedido(array($codigoUnitario));
+                if(count($objectRelacional) == 0) // nao existe
                 {
-                	$service = $this->getServiceLocator()->get("Pagseguro\Service\Pagseguro");
-                	$service->insert(array("npedido" => $return['code'],"spagamento" => $return['status'], "fPagamento" => $return['paymentMethod']['type']));
+                	$service->insert(array("npedido" => $return['code'],"Setspagamento" => $return['status'], "SetfPagamento" => $return['paymentMethod']['type'], "valor" => $return['grossAmount']));
                 }
                 else
                 {
-                	
+                    $service->update(array("id" => $objectRelacional->getIdcontrolerecibo(),"Setspagamento" => $return['status'], "SetfPagamento" => $return['paymentMethod']['type']));      	     
                 }
             }    
     	return new ViewModel();

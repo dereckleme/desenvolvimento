@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,9 +22,9 @@ class UsuarioPropaganda
     private $idpropaganda;
 
     /**
-     * @var \Pagseguro\Entity\UsuarioCadastro
+     * @var \Pagamento\Entity\UsuarioCadastro
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\UsuarioCadastro")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\UsuarioCadastro")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_idcadastro", referencedColumnName="idcadastro")
      * })

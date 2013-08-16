@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,9 +22,9 @@ class ImpostosTributario
     private $idtributario;
 
     /**
-     * @var \Pagseguro\Entity\MapeamentoEstado
+     * @var \Pagamento\Entity\MapeamentoEstado
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\MapeamentoEstado")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\MapeamentoEstado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="mapeamento_idestado", referencedColumnName="idmapeamento_estado")
      * })
@@ -32,9 +32,9 @@ class ImpostosTributario
     private $mapeamentoestado;
 
     /**
-     * @var \Pagseguro\Entity\ProdutoProdutos
+     * @var \Pagamento\Entity\ProdutoProdutos
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\ProdutoProdutos")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\ProdutoProdutos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Produto_idProduto", referencedColumnName="idProduto")
      * })

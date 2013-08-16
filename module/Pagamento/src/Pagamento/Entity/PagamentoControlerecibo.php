@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="pagamento_controlerecibo")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="Pagseguro\Entity\PagamentoControlereciboRepository")
+ * @ORM\Entity(repositoryClass="Pagamento\Entity\PagamentoControlereciboRepository")
  */
 class PagamentoControlerecibo
 {
@@ -51,9 +51,9 @@ class PagamentoControlerecibo
     private $status;
 
     /**
-     * @var \Pagseguro\Entity\PagamentoStatusSpagamento
+     * @var \Pagamento\Entity\PagamentoStatusSpagamento
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\PagamentoStatusSpagamento")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusSpagamento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="sPagamento", referencedColumnName="idStatus")
      * })
@@ -61,9 +61,9 @@ class PagamentoControlerecibo
     private $spagamento;
 
     /**
-     * @var \Pagseguro\Entity\UsuarioUsuarios
+     * @var \Pagamento\Entity\UsuarioUsuarios
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\UsuarioUsuarios")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\UsuarioUsuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Usuario_idUsuarios", referencedColumnName="idUsuario")
      * })
@@ -71,9 +71,9 @@ class PagamentoControlerecibo
     private $usuariousuarios;
 
     /**
-     * @var \Pagseguro\Entity\PagamentoStatusFpagamento
+     * @var \Pagamento\Entity\PagamentoStatusFpagamento
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\PagamentoStatusFpagamento")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusFpagamento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="fPagamento", referencedColumnName="idStatus")
      * })

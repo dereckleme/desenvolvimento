@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,9 +36,9 @@ class PagamentoAtualizastatus
     private $status;
 
     /**
-     * @var \Pagseguro\Entity\PagamentoControlerecibo
+     * @var \Pagamento\Entity\PagamentoControlerecibo
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\PagamentoControlerecibo")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoControlerecibo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Pagamento_idControleRecibo", referencedColumnName="idControleRecibo")
      * })

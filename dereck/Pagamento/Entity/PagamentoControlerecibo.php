@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,20 +29,6 @@ class PagamentoControlerecibo
     private $npedido;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="fPagamento", type="integer", nullable=false)
-     */
-    private $fpagamento;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="sPagamento", type="integer", nullable=false)
-     */
-    private $spagamento;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dt_venda", type="datetime", nullable=true)
@@ -64,14 +50,34 @@ class PagamentoControlerecibo
     private $status;
 
     /**
-     * @var \Pagseguro\Entity\UsuarioUsuarios
+     * @var \Pagamento\Entity\PagamentoStatusSpagamento
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\UsuarioUsuarios")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusSpagamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sPagamento", referencedColumnName="idStatus")
+     * })
+     */
+    private $spagamento;
+
+    /**
+     * @var \Pagamento\Entity\UsuarioUsuarios
+     *
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\UsuarioUsuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Usuario_idUsuarios", referencedColumnName="idUsuario")
      * })
      */
     private $usuariousuarios;
+
+    /**
+     * @var \Pagamento\Entity\PagamentoStatusFpagamento
+     *
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusFpagamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fPagamento", referencedColumnName="idStatus")
+     * })
+     */
+    private $fpagamento;
 
 
 }

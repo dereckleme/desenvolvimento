@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -99,9 +99,9 @@ class UsuarioCadastro
     private $dtAtualizacao;
 
     /**
-     * @var \Pagseguro\Entity\MapeamentoCidade
+     * @var \Pagamento\Entity\MapeamentoCidade
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\MapeamentoCidade")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\MapeamentoCidade")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="mapeamento_idcidade", referencedColumnName="idcidade")
      * })
@@ -109,9 +109,9 @@ class UsuarioCadastro
     private $mapeamentocidade;
 
     /**
-     * @var \Pagseguro\Entity\UsuarioUsuarios
+     * @var \Pagamento\Entity\UsuarioUsuarios
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\UsuarioUsuarios")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\UsuarioUsuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Usuarios_idUsuarios", referencedColumnName="idUsuario")
      * })

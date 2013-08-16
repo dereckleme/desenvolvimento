@@ -11,10 +11,32 @@ class Pagseguro extends AbstractService
     }
     public function insert(array $data)
     {
-    	$this->setTargetEntity("Pagseguro\Entity\UsuarioUsuarios");
-    	$this->setCampo("setUsuariousuarios");
-    	$this->setActionReference("1");
+        $this->setTargetEntity(array(
+            array("setTargetEntity" => "Pagseguro\Entity\UsuarioUsuarios",
+                  "setCampo" => "setUsuariousuarios",
+                  "setActionReference" => "1"),
+            array("setTargetEntity" => "Pagseguro\Entity\PagamentoStatusFpagamento",
+                      "setCampo" => "setFpagamento",
+                      "setActionReference" => $data['SetfPagamento']),      
+            array("setTargetEntity" => "Pagseguro\Entity\PagamentoStatusSpagamento",
+                  		"setCampo" => "setSpagamento",
+                  		"setActionReference" => $data['Setspagamento']),
+        ));
+        if($data['Setspagamento'] == 3) $data['status'] = 1;
     	parent::insert($data);
+    }
+    public function update(array $data)
+    {
+        $this->setTargetEntity(array(
+        		array("setTargetEntity" => "Pagseguro\Entity\PagamentoStatusFpagamento",
+        				"setCampo" => "setFpagamento",
+        				"setActionReference" => $data['SetfPagamento']),
+        		array("setTargetEntity" => "Pagseguro\Entity\PagamentoStatusSpagamento",
+        				"setCampo" => "setSpagamento",
+        				"setActionReference" => $data['Setspagamento']),
+        ));
+        if($data['Setspagamento'] == 3) $data['status'] = 1;
+    	parent::update($data);
     }
 }
 

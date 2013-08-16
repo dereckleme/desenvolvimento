@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,9 +36,9 @@ class ProdutoSubcategoria
     private $slugSubcategoria;
 
     /**
-     * @var \Pagseguro\Entity\ProdutoCategorias
+     * @var \Pagamento\Entity\ProdutoCategorias
      *
-     * @ORM\ManyToOne(targetEntity="Pagseguro\Entity\ProdutoCategorias")
+     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\ProdutoCategorias")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Produto_idCategorias", referencedColumnName="idCategorias")
      * })
