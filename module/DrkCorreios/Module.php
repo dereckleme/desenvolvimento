@@ -1,6 +1,9 @@
 <?php
 namespace DrkCorreios;
 
+use DrkCorreios\Service\DrkCorreios as serviceCurl;
+
+
 class Module
 {
     public function getConfig()
@@ -18,4 +21,16 @@ class Module
             ),
         );
     }
+    
+    public function getServiceConfig() {    
+    	return array(
+    			'factories' => array(
+    			    'DrkCorreios\Service\DrkCorreios' => function($service){
+    			    	$curl = new serviceCurl();
+    			    	return $curl;
+    			    },
+    			),
+    	);
+    }
+    
 }
