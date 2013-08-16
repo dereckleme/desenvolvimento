@@ -2,16 +2,6 @@
 return array(
     'router' => array(
         'routes' => array(
-            'pagseguro-gateway' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/correios',
-                    'defaults' => array(
-                        'controller' => 'DrkCorreios\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
         ),
     ),
     'controllers' => array(

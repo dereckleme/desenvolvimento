@@ -1,6 +1,8 @@
 <?php
 namespace Pagseguro;
 use Pagseguro\Curl\post AS postCurl; 
+use Pagseguro\Curl\Retorno;
+use Pagseguro\Service\Pagseguro;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session as SessionStorage;
 
@@ -45,7 +47,17 @@ class Module
     					    $Service = new postCurl(); // fechado
     					        }
     						return $Service;
-    					}
+    					},
+    					'Pagseguro\Service\Pagseguro' => function($service) {
+    					    $pagseguro = new Pagseguro($service->get('Doctrine\ORM\EntityManager'));
+    					    return $pagseguro;
+    					},
+    					'Pagseguro\Curl\Retorno' => function($service) {
+    					    $config = $service->get("config");
+    					    $Service = new Retorno($config['pagSeguroDereck']['email'],$config['pagSeguroDereck']['token']);
+    					    return $Service;
+    					},
+    					
     			),
     	);
     }

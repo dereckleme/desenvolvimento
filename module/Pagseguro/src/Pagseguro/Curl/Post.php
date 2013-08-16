@@ -17,16 +17,13 @@ class Post
     }
     public function requisicao()
     {
+        
         $this->dados[] ="itemId1=1010";
-        $this->dados[] ="itemDescription1=teste dereck";
-        $this->dados[] ="itemAmount1=24300.00";
+        $this->dados[] ="itemDescription1=221";
+        $this->dados[] ="itemAmount1=10.00";
         $this->dados[] ="itemQuantity1=1";
         
         
-        $this->dados[] ="itemId2=111";
-        $this->dados[] ="itemDescription2=dereck drk";
-        $this->dados[] ="itemAmount2=50.00";
-        $this->dados[] ="itemQuantity2=1";
         
         $dados = implode("&", $this->dados);
         

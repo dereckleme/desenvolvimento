@@ -33,7 +33,8 @@ abstract class AbstractService
         if(!empty($this->targetEntity))
         {
             $reference = $this->em->getReference($this->targetEntity, $this->actionReference);
-            call_user_method_array($this->campo, $entity, array($reference));// Chama métodos de usuário dado uma matriz de parâmetros
+            $string = $this->campo;
+            $entity->$string($reference);
         }
        
         (new Hydrator\ClassMethods())->hydrate($data, $entity);
