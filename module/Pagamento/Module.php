@@ -34,6 +34,11 @@ class Module
     	            $repositor = $em->getRepository("Pagamento\Entity\PagamentoControleestoque");
     	            return $repositor;
     	        }*/
+    	        'Pagamento\Service\Recibo' => function($service){
+    	        	$estoque = new Recibo($service->get('Doctrine\ORM\EntityManager'));
+    	        	return $estoque;
+    	        },
+    	        
     	    )
     	);
     }

@@ -19,7 +19,7 @@ return array(
             'Pagamento'  => 'Layout/admin',
     ),
     'pagSeguroDereck' => array(
-        'token' => '05552478A1954FAFAA5E7CCD4184EC93',
+        'token' => 'BC28F89A6CDE4E5C915D48CD0543F9E3',
         'email' => 'pagseguro@grupomex.com.br',
         'currency' => 'BRL', #Indica a moeda na qual o pagamento será feito. No momento, a única opção disponível é BRL (Real). ‎terça-feira, ‎13‎ de ‎agosto‎ de ‎2013,
         'autenticado' => '1', # 1 - sim para gerar um token de compra é necessário esta logado. 2 - não precisa está logado.

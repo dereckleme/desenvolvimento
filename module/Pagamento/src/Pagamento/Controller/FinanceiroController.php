@@ -10,7 +10,9 @@ class FinanceiroController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $service = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $em = $service->getRepository("Pagamento\Entity\PagamentoControleRecibo")->findAll();
+        return new ViewModel(array("listaRecibos" => $em));
     }
     public function detalhePedidoAction(){
         return new ViewModel();
