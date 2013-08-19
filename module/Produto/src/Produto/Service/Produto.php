@@ -28,6 +28,6 @@ class Produto extends AbstractService {
 		$servicoEstoque = $this->servicePagamento;
 		$servicoEstoque->setIdProduto($produto->getIdproduto());
 		$servicoEstoque->insert(array("quantidade" => 5));    
-		die();
+		return $this->entity;
 	}
 }

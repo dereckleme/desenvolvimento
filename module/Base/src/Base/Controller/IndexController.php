@@ -19,11 +19,13 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	#$service = $this->getServiceLocator()->get('Produto\Repository\Produtos');
-    	#foreach ($service->findAll() as $produto){
-    		#echo $produto->getTitulo(), "<br/>";
-    	#}
-        return new ViewModel();
+    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $categorias = $repository->findAll();
+        
+        
+        
+        
+        return new ViewModel(array("categorias"=>$categorias));
     }
     
 }

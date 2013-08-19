@@ -99,15 +99,7 @@ class ProdutoController extends AbstractActionController {
     	    	$data = $this->getRequest()->getPost()->toArray();
     	    	
     	    	$service = $this->getServiceLocator()->get("Produto\Service\Produto");
-    	    	$produto = $service->insert($data);
-    	    	    /*	    	
-    	    	$serviceEstoque = $this->getServiceLocator()->get("Pagamento\Service\Estoque");
-    	    	$teste = $serviceEstoque->insert(array('produtoproduto'=>$produto->getIdproduto(), 'quantidade'=>'60'));
-    	    	*/
-    	    	
-    	    	die();
-    	    	
-    	    	
+    	    	$service->insert($data);
     	    	$return['success'] = "Cadastrado com sucesso";  	    	
     	    }
     	    else
