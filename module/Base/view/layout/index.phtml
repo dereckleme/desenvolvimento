@@ -18,22 +18,101 @@
                                       ->prependFile($this->basePath() . '/js/usuario.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
+
+    <!--[if IE 9]>
+      <link href="<?=$this->basePath()?>/css/style-ie.css" rel="stylesheet" type="text/css">      
+    <![endif]-->
+
+
+    <!--[if !IE]><!--><script>
+    if (/*@cc_on!@*/false) {
+        document.documentElement.className+='ie10';
+    }
+    </script><!--<![endif]-->
+
     </head>
     <body>
 
           <div id="header">
               <div id="mn_topo">
                   <ul class="mn_topo">
-
-                         <li class="Menu_topo" style="text-decoration:none;"><a href="">Bem vindo à nossa loja online</a></li>
-                         <li class="Menu_topo"><a href="#" class="eventOpenPopUp">Faça login ou cadastre-se</a></li>
-                         <li class="Menu_topo" style="background:none;"><a href="" href="#" class="eventOpenPopUp">Acompanhe seus pedidos</a></li>
+                    <li class="Menu_topo" style="text-decoration:none;">
+                      <a href="">Bem vindo à nossa loja online</a>
+                      </li>
+                      <li class="Menu_topo">
+                      <a href="#" class="eventOpenPopUp">Faça login ou cadastre-se</a>
+                      </li>
+                      <li class="Menu_topo" style="background:none;">
+                      <a href="#" class="eventOpenPopUp">Acompanhe seus pedidos</a>
+                    </li>
                   </ul>
+
+              <div id="Cesta"><br/>
+                  <p class="mc">MINHA CESTA</p>
+                   <p class="valor_total">R$ 00,00</p>
+                    <img class="dt_cesta" src="../public/images/dt_cesta.png">
+
+                  <div id="box_compras" style="display:none">
+                    <ul class="header_conteudo_compra">
+                        <li class="header_tt_box_produto">
+                          <p class="header_txt_produto_compra">Produto</p>   
+                        </li>
+                        <li class="header_tt_box_preco">
+                            <p class="header_txt_preco_compra">Preços (R$)</p> 
+                        </li>
+                        <li class="header_tt_box_Qtd">
+                        <p class="header_txt_Qtd_compra">Qtde.</p> 
+                      </li>
+                    </ul>
+
+                  <ul id="DescricaoPrecoQuatidade">
+                        <li class="BoxProdutosCesta">
+                           <div id="BoxDescricaoFoto">
+                              <span class="imagem_produto_cesta">
+                                <img src="../public/images/produto_cesta_teste2.png">
+                              </span>
+                                <p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p>   
+                              </div>
+                              <div id="BoxDescricaoPreco">
+                                <p class="descricao_preco_cesta">00,00</p>
+                              </div>
+                              <div id="BoxDescricaoQuatidade">
+                                  <p class="descricao_Qtd_cesta">0</p> 
+                              </div>
+                        </li>
+                             <!--************************-->
+                          <li class="BoxProdutosCesta">
+                              <div id="BoxDescricaoFoto">
+                                <span class="imagem_produto_cesta">
+                                  <img src="../public/images/produto_cesta_teste2.png">
+                                </span>
+                                <p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p>   
+                              </div>
+                              <div id="BoxDescricaoPreco">
+                                <p class="descricao_preco_cesta">00,00</p>
+                              </div>
+                              <div id="BoxDescricaoQuatidade">
+                                  <p class="descricao_Qtd_cesta">0</p> 
+                              </div>
+                          </li>
+                             <!--************************-->
+                    </ul>
+
+                      <ul id="buttonCarrinho">
+                        <li class="ButtonCarrinhoDeCompra">
+                          <a href="">carrinho de compras</a>
+                        </li>
+                        <li class="ButtonFinalizarCompra">
+                          <a href="">finalizar compra</a>
+                        </li>
+                      </ul>
+                  </div>
                 </div>
-         </div>
+              </div>
+            </div>
         
      
-         <!--LOGIN -->
+      <!--LOGIN -->
 
          <div id="Login_Cadastro" style="display:none">
 
@@ -77,16 +156,133 @@
                    <a href="" class="tentarNovamente">Tentar novamente</a>
                 </div>
         </div>
-        <?php print $this->partial('layout/carrinho',array("carrinhoLista" => $this->carrinhoLista));?>
-        <div id="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, voluptates, commodi minima eius aut corporis nisi quis dolore sequi magnam ex distinctio libero at? Aliquam ut eius nisi officiis iste.
+          
+          <!--*****************************CONTEUDO*****************************-->
+
+<div id="geral">
+
+
+  <div id="topo_menu">
+      
+    <div id="menu_central">
+      <h1>SELETO ALIMENTOS</h1>
+       <a href=""><img class="logo_seleto" src="../public/images/logo_seleto.png"></a>
+          
+        <div id="box_menu">
+          <a href="">
+            <img class="phone"src="../public/images/phone.png">
+            <p class="txt_phone">Central de Atendimento</p>
+          </a>
+
+          <input value="buscar produto" class="search_topo">
+          <input type="submit" value="Pesquisar" class="lupa_topo"> 
+
+          <ul class="menu_central">
+            <a href="">
+              <li class="lista_menu_cafe">
+              </li>
+            </a>
+
+            <a href="">
+              <li class="lista_menu_alimentos">
+              </li>
+            </a>
+
+            <a href="">
+              <li class="lista_menu_produtos">
+              </li>
+            </a>
+          </ul>
         </div>
+    </div>
+
+  </div>
+        <?php echo $this->content; ?>
+
+</div>
 
         
+       <!--*******************FOOTER************************-->
 
+<div id="footer">
 
+    <div id="box_search_footer">
+      <div class="search_footer">
 
-        <?php echo $this->content; ?>
+              <input value="buscar produto" class="search_footer">
+               <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
+
+        </div>
+    </div>
+
+    <div id="box_newsletter_footer">
+      <div class="newsletter_footer">
+           <p class="newsletter_footer">RECEBA DESCONTOS E OFERTAS EXCLUSIVAS</p>
+           <input value="Digite seu nome" class="news_footer">
+           <input value="Digite seu e-mail" class="news_footer">
+           <input type="submit" class="ok_footer" value="OK" title="Receba descontos e ofertas exclusivas">
+        </div>
+    </div>
+
+    <div id="box_menu_footer">
+      <div class="menu_footer">
+          <ul class="mn_footer">
+             <li>INSTITUCIONAL</li>
+                 <ul class="submenu">
+                    <li><a href="" title="Quem Somos">Quem Somos</a></li>
+                    <li><a href="" title="Mapa do Site">Mapa do Site</a></li>
+                    <li><a href="" title="Fale Conosco">Fale Conosco</a></li>
+                 </ul>
+          </ul>
+
+        <ul class="mn_footer">
+          <li>DÚVIDAS FREQUENTES</li>
+            <ul class="submenu">
+               <li><a href="" title="Termos de Pesquisa">Termos de Pesquisa</a></li>
+               <li><a href="" title="Meus Pedidos">Meus Pedidos</a></li>
+               <li><a href="" title="Trocas e Devoluções">Trocas e Devoluções</a></li>
+                <li><a href="" title="Editar Cadastro">Editar Cadastro</a></li>
+                <li><a href="" title="Política de Privacidade">Política de Privacidade</a></li>
+            </ul>
+        </ul>
+
+        <ul class="mn_footer">
+          <li>ENTREGAS</li>
+          <img src="../public/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
+        </ul>
+
+        <ul class="mn_footer">
+          <li>REDES SOCIAIS</li>
+            <ul class="submenu">  
+               <p class="text_redes_sociais">Acompanhe o Café Seleto <br/> nas redes sociais:</p>      
+               <li><a href="" class="redes_sociais"><img src="../public/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="../public/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="../public/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
+            </ul>
+        </ul>
+
+      </div>
+    </div>
+
+    <div id="box_pagamento_footer">
+      <div class="pagamento_footer">
+          <p class="pagamentos">Formas de pagamento:</p>
+          <a href=""><img src="../public/images/pagseguro.png" alt="Faça seu pagamento pelo PagSeguro" title="Faça seu pagamento pelo PagSeguro" /></a>
+       </div>
+
+    </div>
+
+    <div id="box_direitosReservados_footer">
+      <div class="direitosReservados_footer">
+          <p class="direitos_reservados">© 2013 seleto. Todos os Direitos Reservados.</p>
+        </div>
+    </div>
+
+</div>
+
+<!--************************FIM DO FOOTER****************************-->
+        
 
     </body>
 </html>
+        

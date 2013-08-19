@@ -11,7 +11,7 @@ return array(
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',
         'ZFTool',
-        'ZendDeveloperTools',
+        #'ZendDeveloperTools',
         'Produto',
         'Usuario',
         'ProdutoPublic',
