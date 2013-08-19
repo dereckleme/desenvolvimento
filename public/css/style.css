@@ -146,16 +146,11 @@ span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0
 
 ul.lista_geral { width: 148px; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
 
-a.tt_Cafe { padding: 23px 0 2px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC;}
+a.tt_lista { padding: 6px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
 li.itens_menu_lateral { width: 100%; margin-top: 5px;}
 li.itens_menu_lateral a { display: block; font-size: 13px; padding: 4px 47px 2px 6px; color: #333333;}
 li.itens_menu_lateral a:hover { background: #ff7f25; color: #FFF;}
 
-
-a.tt_Capsulas { padding: 10px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
-
-
-a.tt_Alimentos { padding: 10px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
 /*******************COLUNA CENTRAL***************/
 #conteudo_central { width: 644px; float: left; margin-top: 30px; margin-right: 10px;}
 #box_destaque { width: 330px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
