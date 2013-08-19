@@ -47,14 +47,14 @@ li.Menu_topo a:hover{text-decoration: underline;}
 /******************* FIM DO HEADER - MENU***************/
 
 /******************* CESTA DO CARRINHO DE COMPRAS ***************/
-#Cesta { width: 200px; height: 71px; margin-left: 755px; background: url(../images/cesta.png) no-repeat #351903; }
+span.Cesta { width: 200px; height: 71px; margin-left: 755px; background: url(../images/cesta.png) no-repeat #351903; display: block; }
 p.mc { color: #FFF; font-weight: bold; margin-left: 72px; margin-top: 0px;}
 p.valor_total { color: #FFF; font-weight: bold; margin-left: 90px; margin-top: -15px;}
 img.dt_cesta { z-index: -9999; position: absolute; margin-top: -9px; margin-left: 92px;}
 /******************* FIM DA CESTA DO CARRINHO DE COMPRAS ***************/
 
 /********HEADER D0 CARRINHO DE COMPRAS, TITULOS DO PRODUTO, PREÇO, QTD*************/
-#box_compras { width: 345px; z-index: 200; background: #351903; margin-top: -8px; margin-left: -145px; overflow: hidden; position: absolute; }
+#box_compras { width: 345px; z-index: 200; background: #351903; margin-left: 610px; overflow: hidden; position: absolute; }
 ul.header_conteudo_compra { width: 330px; height: 40px; margin: 0 auto; background: #582700; margin-top: 10px; display: block;}
 li.header_tt_box_produto { width: 190px; height: 40px; float: left; color: #FFF;}
 li.header_tt_box_preco { width: 75px; height: 40px; float: left; color: #FFF;}
@@ -69,7 +69,7 @@ ul#DescricaoPrecoQuatidade { width: 345px; margin: 0 auto; margin-top: 10px; dis
 li.BoxProdutosCesta { width: 325px; float: left; display:block; margin-top: 10px; margin-left: 10px; border-bottom: solid 1px #582700; }
 #BoxDescricaoFoto { width: 180px; height: 66px; float: left; border-right: solid 1px #582700; color: #FFF; margin-bottom: 10px; }
 span.imagem_produto_cesta { width: 50px; height: 66px; float: left;}
-p.descricao_produto_cesta { width: 127px; float: left; font-size: 11px; margin-top: 15px;}
+p.descricao_produto_cesta { width: 127px; float: left; font-size: 11px; margin-top: 15px; color: #FFF;}
 #BoxDescricaoPreco { width: 80px; height: 66px; float: left; border-right: solid 1px #582700; }
 p.descricao_preco_cesta { font-size: 11px; text-align: center; color: #FFF; margin-top: 25px; }
 #BoxDescricaoQuatidade { width: 60px; height: 66px; float: left; text-align: center; color: #FFF; }
@@ -86,6 +86,7 @@ li.ButtonFinalizarCompra a { width: 155px; height: 22px; margin-bottom: 10px; fl
   border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; text-transform: uppercase;
    text-align: center; font-size: 14px; color: #FFF; padding-top: 8px;}
 li.ButtonFinalizarCompra a:hover { background: #e76509;}
+
 /***********FIM DOS BOTÕES DO CARRINHO DE COMPRA**********/
 
 /******************ERRO LOGIN - CADASTRO****************************/
@@ -123,18 +124,13 @@ input.Eventlogin ,input.Eventcadastrar {background: #ff7f25; border: none; font-
 #menu_central { width: 1024px; margin: 0 auto;}
 h1 { text-indent: -9999px !important; display: none !important;} 
 img.logo_seleto { float: left; padding-top: 40px; padding-left: 80px; }
-img.phone { float: left; padding-top: 15px; padding-right: 10px;} 
+span.decola { width: 300px; height: 10px; background: #DCD}
+img.phone { width: 24px; height: 15px; float: left; padding-top: 15px; padding-right: 10px;} 
 p.txt_phone { width: 240px; font-size: 18px; font-weight: bold; color: #ff7f25; margin-top: 13px;}
+
 #box_menu { width: 544px; height: 209px; float: right; margin-right: 70px; }
 input.search_topo{ width: 454px; padding: 15px; margin-bottom: 10px; margin-top: -10px; border: 5px solid #ff7f25; font-size: 1.125em; color:#666; background: #FFF; float: left; }
 input.lupa_topo { width: 50px; height: 61px !important; -webkit-height: 61.5px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none; text-indent: -9999px;}
-
-
-
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-input.lupa_topo { width: 50px; height: 61.5px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;}
-img.dt_cesta { z-index: -9999; margin-top: 12px; margin-left: 92px;}
-}
 ul.menu_central { width: 544px;}
 li.lista_menu_cafe { width: 178px; height: 87px; background: url(../images/cafe.png) no-repeat; float: left; padding: 0 5px 0 0;}
 li.lista_menu_alimentos { width: 178px; height: 87px; background: url(../images/alimento.png) no-repeat; float: left; padding: 0 5px 0 0;}
@@ -145,12 +141,21 @@ li.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/p
 
 /*******************COLUNA ESQUERDA***************/
 #lista_produtos { width: 150px; float: left; margin-right: 10px;  margin-top: 30px;}
-span.tt_top_list { width: 150px; height: 24px; margin-top: -13px; padding: 4px 0 0 0; font-size: 14px; background: #582700; color: #FFF; text-align: center; float: left; }
-ul.lista_geral { width: 148px; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
-li.tt_lista_geral { color: #582700; font-weight: 600; border-bottom: solid 1px #CCC; padding: 8px 0 6px 10px;}
-li.txt_lista { font-size: 14px; padding: 5px 0 5px 5px; color: #333333; }
-li.txt_lista:hover { padding: 5px 0 5px 5px; color: #FFF; background: #ff7f25;}
 
+span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 14px; background: #582700; color: #FFF; text-align: center; float: left; }
+
+ul.lista_geral { width: 148px; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
+
+a.tt_Cafe { padding: 23px 0 2px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC;}
+li.itens_menu_lateral { width: 100%; margin-top: 5px;}
+li.itens_menu_lateral a { display: block; font-size: 13px; padding: 4px 47px 2px 6px; color: #333333;}
+li.itens_menu_lateral a:hover { background: #ff7f25; color: #FFF;}
+
+
+a.tt_Capsulas { padding: 10px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
+
+
+a.tt_Alimentos { padding: 10px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
 /*******************COLUNA CENTRAL***************/
 #conteudo_central { width: 644px; float: left; margin-top: 30px; margin-right: 10px;}
 #box_destaque { width: 330px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
@@ -194,13 +199,8 @@ p.newsletter_footer {display: inline; color:#ff7f25; font-weight: bold; letter-s
 input.search_footer {width: 932px; padding: 14px 10px; border: 5px solid #DDD; font-size: 20px; color:#666;}
 input.lupa_footer { width: 63px; height: 62px !important; -webkit-height: 61px !important; margin-left: -4px;  background: url(../images/lupa_topo.png) no-repeat
 center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-input.lupa_footer { width: 60px; height: 62px !important; margin-right: 3px; float: right; background: url(../images/lupa_topo.png) no-repeat center #ddd; border: none;}
- }
- input.news_footer { width: 257px; padding: 8px 10px; margin-left:20px; font-size: 14px; color:#666;}
- @media screen and (-webkit-min-device-pixel-ratio:0) {input.news_footer { width: 257px; padding: 9px 10px; margin-left:20px; font-size: 14px; color:#666;}}
- input.ok_footer{background: #ff7f25; border: none; width: 85px; height: 34px; padding:6px 0; float: right; color:#FFF; font-weight: bold; font-size: 16px; cursor: pointer}
- @media screen and (-webkit-min-device-pixel-ratio:0) {input.ok_footer{background: #ff7f25; border: none; width: 75px; padding:6px 0; height: 38px; margin-top: 2px}}
+input.news_footer { width: 257px; padding: 8px 10px; margin-left:20px; font-size: 14px; color:#666;}
+input.ok_footer{background: #ff7f25; border: none; width: 85px; height: 34px; padding:6px 0; float: right; color:#FFF; font-weight: bold; font-size: 16px; cursor: pointer}
 ul.mn_footer {display: inline-table; padding: 20px 0}
 ul.mn_footer {padding-right:77px;}
 ul.mn_footer li {font-weight: bold; font-size: 0.875em; color:#FFF; margin-bottom: 10px; letter-spacing: 1px}
@@ -211,21 +211,25 @@ p.text_redes_sociais{color:#FFF; margin-top: 5px; font-size: 0.875em; letter-spa
 ul.submenu li a.redes_sociais img {float: left; margin-right: 12px;}
 p.pagamentos {font-size: 16px; color:#582700; text-transform: uppercase; font-weight: bold; float: left; padding-right: 20px}
 
-/* hack ie10 */
-.ie10 img.dt_cesta { z-index: -9999; margin-top: 13px; margin-left: 92px !important;}
+/* Hack ie10 */
+.ie10 img.dt_cesta { z-index: -9999; margin-top: -4px; margin-left: 92px !important;}
 .ie10 input.lupa_topo { width: 50px; height: 60px !important;  margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none; text-indent: -9999px;}
 .ie10 input.lupa_footer { width: 60px; height: 61px !important; margin-right: 3px; float: right; background: url(../images/lupa_topo.png) no-repeat center #ddd; border: none;} 
 
-/* Opera 
-x:-o-prefocus, img.dt_cesta {
-     z-index: -9999; margin-top: 40px; margin-left: 50px !important;
-   }
-x:-o-prefocus, span.mc { 
-   width: 5px; background: #CCC; color: #FFF; font-weight: bold; margin-left: 70px; 
-}
-x:-o-prefocus, span.valor_total {
-  color: #FFF; font-weight: bold; margin-left: 40px; background: #CCC;
-}
- x:-o-prefocus, #Cesta { 
-  width: 200px; height: 71px; margin-left: 755px; background: url(../images/cesta.png) no-repeat #351903; 
-} */
+/* Hack Opera */
+x:-o-prefocus, img.dt_cesta { 
+      z-index: -9999; margin-top: -5px; margin-left: 92px !important;
+    }
+x:-o-prefocus, input.lupa_footer { 
+  width: 60px; height: 61px !important; margin-right: 3px; float: right; background: url(../images/lupa_topo.png) no-repeat center #ddd; border: none;
+   } 
+
+/* Hack Chorme */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+ input.lupa_topo { width: 50px; height: 61.5px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;}
+ img.dt_cesta { z-index: -9999; margin-top: -5px; margin-left: 92px;}
+ input.ok_footer{background: #ff7f25; border: none; width: 75px; padding:6px 0; height: 38px; margin-top: 2px}
+ input.news_footer { width: 257px; padding: 9px 10px; margin-left:20px; font-size: 14px; color:#666;}
+ input.lupa_footer { width: 60px; height: 62px !important; margin-right: 3px; float: right; background: url(../images/lupa_topo.png) no-repeat center #ddd; border: none;}
+ input.news_footer { width: 257px; padding: 9px 10px; margin-left:20px; font-size: 14px; color:#666;}
+ }    

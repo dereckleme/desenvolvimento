@@ -15,4 +15,8 @@ $(function(){
 				});
 			return false;
 		})
+		$(".actionOpenCarrinho").on("click", function(){	
+				$("#box_compras").slideToggle("fast", function () {});
+				return false;
+		})
 });		

@@ -16,6 +16,7 @@
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
                                       ->prependFile($this->basePath() . '/js/usuario.js')
+                                      ->prependFile($this->basePath() . '/js/publico.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
 
@@ -47,12 +48,15 @@
                     </li>
                   </ul>
 
-              <div id="Cesta"><br/>
+              <a href="#" class="actionOpenCarrinho">
+                <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
                   <p class="mc">MINHA CESTA</p>
                    <p class="valor_total">R$ 00,00</p>
                     <img class="dt_cesta" src="../public/images/dt_cesta.png">
+                  </span>
+              </a>
 
-                  <div id="box_compras" style="display:none">
+                  <div id="box_compras" style="display:none;">
                     <ul class="header_conteudo_compra">
                         <li class="header_tt_box_produto">
                           <p class="header_txt_produto_compra">Produto</p>   
@@ -66,48 +70,36 @@
                     </ul>
 
                   <ul id="DescricaoPrecoQuatidade">
+
+                    <!--PRODUTOS NA CESTA-->
                         <li class="BoxProdutosCesta">
                            <div id="BoxDescricaoFoto">
                               <span class="imagem_produto_cesta">
-                                <img src="../public/images/produto_cesta_teste2.png">
+                                <a href="#"><img src="../public/images/produto_cesta_teste2.png"></a>
                               </span>
-                                <p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p>   
+                                <a href="#"><p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p></a>   
                               </div>
                               <div id="BoxDescricaoPreco">
-                                <p class="descricao_preco_cesta">00,00</p>
+                                <p class="descricao_preco_cesta" title="#">00,00</p>
                               </div>
                               <div id="BoxDescricaoQuatidade">
-                                  <p class="descricao_Qtd_cesta">0</p> 
+                                  <p class="descricao_Qtd_cesta" title="#">0</p> 
                               </div>
                         </li>
-                             <!--************************-->
-                          <li class="BoxProdutosCesta">
-                              <div id="BoxDescricaoFoto">
-                                <span class="imagem_produto_cesta">
-                                  <img src="../public/images/produto_cesta_teste2.png">
-                                </span>
-                                <p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p>   
-                              </div>
-                              <div id="BoxDescricaoPreco">
-                                <p class="descricao_preco_cesta">00,00</p>
-                              </div>
-                              <div id="BoxDescricaoQuatidade">
-                                  <p class="descricao_Qtd_cesta">0</p> 
-                              </div>
-                          </li>
-                             <!--************************-->
+                        <!--FIM DOS PRODUTOS NA CESTA-->
+                              
                     </ul>
 
                       <ul id="buttonCarrinho">
                         <li class="ButtonCarrinhoDeCompra">
-                          <a href="">carrinho de compras</a>
+                          <a href="#" title="#">carrinho de compras</a>
                         </li>
                         <li class="ButtonFinalizarCompra">
-                          <a href="">finalizar compra</a>
+                          <a href="#" title="#">finalizar compra</a>
                         </li>
                       </ul>
                   </div>
-                </div>
+                
               </div>
             </div>
         
@@ -169,10 +161,13 @@
        <a href=""><img class="logo_seleto" src="../public/images/logo_seleto.png"></a>
           
         <div id="box_menu">
-          <a href="">
-            <img class="phone"src="../public/images/phone.png">
-            <p class="txt_phone">Central de Atendimento</p>
-          </a>
+          
+             <span class="decola">
+              <img class="phone"src="../public/images/phone.png">
+              <p class="txt_phone">Tele Vendas</p>
+             </span>
+               
+          
 
           <input value="buscar produto" class="search_topo">
           <input type="submit" value="Pesquisar" class="lupa_topo"> 
