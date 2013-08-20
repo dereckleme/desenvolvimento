@@ -40,7 +40,7 @@ div.container a.brand {
 /*******************HEADER - MENU***************/
 #header {width: 100%; min-width: 1024px; position: relative; background: #582700}
 #mn_topo{ width: 1024px; margin: 0 auto; }
-ul.mn_topo { padding: 25px 0; float: left; display: block; font-size: 14px; }
+ul.mn_topo { padding: 25px 0; float: left; display: block; font-size: 12px; }
 li.Menu_topo { display: inline;  background: url(../images/borda_menu.png) repeat-y right;  padding-right:13px; padding-left:13px}
 li.Menu_topo a{ color:#FFF;}
 li.Menu_topo a:hover{text-decoration: underline;}
@@ -48,9 +48,9 @@ li.Menu_topo a:hover{text-decoration: underline;}
 
 /******************* CESTA DO CARRINHO DE COMPRAS ***************/
 span.Cesta { width: 200px; height: 71px; margin-left: 755px; background: url(../images/cesta.png) no-repeat #351903; display: block; }
-p.mc { color: #FFF; font-weight: bold; margin-left: 72px; margin-top: 0px;}
-p.valor_total { color: #FFF; font-weight: bold; margin-left: 90px; margin-top: -15px;}
-img.dt_cesta { z-index: -9999; position: absolute; margin-top: -6px; margin-left: 92px;}
+p.mc { color: #FFF; font-weight: bold; margin-left: 72px; margin-top: 0px; font-size: 14px;}
+p.valor_total { color: #FFF; font-weight: bold; margin-left: 90px; margin-top: -15px; font-size: 14px;}
+img.dt_cesta { z-index: -9999; position: absolute; margin-top: 10px; margin-left: 92px;}
 /******************* FIM DA CESTA DO CARRINHO DE COMPRAS ***************/
 
 /********HEADER D0 CARRINHO DE COMPRAS, TITULOS DO PRODUTO, PREÇO, QTD*************/
@@ -141,21 +141,10 @@ li.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/p
 #lista_produtos { width: 150px; float: left; margin-right: 10px;  margin-top: 30px;}
 span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; background: #582700; color: #FFF; text-align: center; float: left; }
 ul.lista_geral { width: 148px; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
-<<<<<<< HEAD
 a.tt_lista { padding: 6px 0 5px 10px; display: block; color: #582700; font-size: 16px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
-=======
-
-a.tt_lista { padding: 6px 0 5px 10px; display: block; color: #582700; font-size: 18px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
->>>>>>> 45fd72510652dc55eda6d92718eab9c0e49561f5
 li.itens_menu_lateral { width: 100%; margin-top: 5px;}
 li.itens_menu_lateral a { display: block; font-size: 12px; padding: 4px 40px 2px 6px; color: #333333;}
 li.itens_menu_lateral a:hover { background: #ff7f25; color: #FFF;}
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 45fd72510652dc55eda6d92718eab9c0e49561f5
 /*******************COLUNA CENTRAL***************/
 #conteudo_central { width: 644px; float: left; margin-top: 30px; margin-right: 10px;}
 #box_destaque { width: 330px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
