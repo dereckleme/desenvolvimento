@@ -22,6 +22,31 @@ return array(
             				),
             		),
             ),
+            'publico-categoria' => array(
+            	'type'    => 'Segment',
+            	'options' => array(
+            		'route'    => '[/produto/categoria/:slug]',
+            		'defaults' => array(
+            			'__NAMESPACE__' => 'ProdutoPublic\Controller',
+            			'controller'    => 'Index',
+            			'action'        => 'index',
+            		),
+            	),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'publico-categoria-e-subcategoria' => array(
+                	    'type'    => 'Segment',
+                		'options' => array(
+                		    'route'     => '[/subcategoria/:slugSub]',
+                			'defaults'  => array(
+                			    '__NAMESPACE__' => 'ProdutoPublic\Controller',
+                				'controller' => 'Index',
+                				'action'     => 'index',
+                			),
+                		),
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
