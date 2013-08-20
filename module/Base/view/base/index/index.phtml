@@ -1,0 +1,157 @@
+<div id="conteudo_home">
+                <!--MENU LATERAL-->
+                  <div id="lista_produtos">
+                    <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
+
+                    <ul class="lista_geral">
+<<<<<<< HEAD
+                        <li><br/>
+                            <a href="" class="tt_lista" style="border-top:none; margin-top: -5px;">Café em pó</a>
+                            <ul class="cafe_po">
+                                <li class="itens_menu_lateral" style="margin-top: 0px;"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="tt_lista">Cápsulas</a>
+                            <ul class="capsulas">
+                                <li class="itens_menu_lateral" style="margin-top: 0px;"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="" class="tt_lista">Alimentos</a>
+                            <ul class="alimentos">
+                                <li class="itens_menu_lateral" style="margin-top: 0px;"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Forte</a></li>
+                                <li class="itens_menu_lateral"><a href="#">Vacuo Tradicional</a></li>
+                            </ul>
+                        </li>        
+                        <?php
+                        $a = 1;
+                        foreach($this->categorias as $categoria): ?>
+                        
+                            <li>
+                                <a href="<?php echo $this->url('publico-categoria', array('slug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
+                                <ul class="cafe_po">                                
+                                    <?php
+                                    $i = 1; 
+                                    foreach($categoria->getSubcategorias() as $subcategoria): ?>
+                                        <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
+                                            <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('slug'=>$categoria->getSlug(), 'slugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
+                                        </li>
+                                    <?php $i--; endforeach; ?>                                                                   
+                                </ul>
+                            </li>
+                        
+                        <?php $a--; endforeach; ?>
+                    </ul>
+
+                  </div>
+                <!--*********************FIM DO MENU LATERAL*********************-->
+
+                <!--**********************CONTEUDO CENTRAL**********************-->
+
+                  <div id="conteudo_central">
+
+                    <div id="box_destaque">
+                      <img class="bt_box"src="../public/images/destaque.png">
+                      <p class="txt_box">Produtos em Destaque</p>
+                    </div>
+
+                  <ul id="box_produto">
+                        <li id="produto" style="border:none">
+                          <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                          <img src="../public/images/teste.png">
+                          <p class="txt_valor">R$ 7,23</p>
+                          <a href=""><span class="comprar" title="comprar" alt="comprar">comprar</span></a>
+                        </li>
+
+                        <li id="produto">
+                          <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                          <img src="../public/images/teste.png">
+                          <p class="txt_valor">R$ 7,23</p>
+                        </li>
+
+                        <li id="produto">
+                          <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                          <img src="../public/images/teste.png">
+                          <p class="txt_valor">R$ 7,23</p>
+                        </li>
+                  </ul>
+
+                  <div id="box_visitados">
+                      <img class="bt_box"src="../public/images/visitados.png">
+                      <p class="txt_box">Mais Visitados</p>
+                  </div>
+
+                  
+                  <ul id="box_produto">
+
+                      <li id="produto" style="border:none">
+                        <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                        <img src="../public/images/teste.png">
+                        <p class="txt_valor">R$ 7,23</p>
+                      </li>
+
+                      <li id="produto">
+                        <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                        <img src="../public/images/teste.png">
+                        <p class="txt_valor">R$ 7,23</p>
+                      </li>
+
+                      <li id="produto">
+                        <p class="txt_produto">Café forte torrado e moído - 500g</p>
+                        <img src="../public/images/teste.png">
+                        <p class="txt_valor">R$ 7,23</p>
+                      </li>
+
+                  </ul>
+
+                </div>
+
+                <!--*********************FIM DO CONTEUDO CENTRAL***********************-->
+
+
+                <!--*****************MENU LATERAL PUBLICIDADE**********************-->
+
+                  <div id="publicidade">
+
+                    <div id="cadastro">
+                      <p class="tt_form">Receba ofertas e descontos exclusivos</p>
+                        <form id="form" method="post" action="">
+                          <input type="text" class="statusNome" name="nome" placeholder="Digite seu nome" />
+                            <br class="clear" /> 
+                              <input type="email" class="statusEmail" name="email" placeholder="Digite seu e-mail" /> <br class="clear" /> 
+                              <button id="btnEnviar" type="submit" class="cadastrar" title="Enviar">CADASTRAR</button>
+                        </form>
+                    </div>
+
+                      <div id="face">
+                        <div id="fb-root"></div>
+                          <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                          }(document, 'script', 'facebook-jssdk'));
+                          </script>
+                          <div class="fb-like-box" data-href="https://www.facebook.com/SeletoAlimentos?ref=ts&amp;fref=ts" data-width="198" data-height="300" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false">
+                          </div>
+                      </div>
+                  </div>
+
+                <!--*********************FIM DO MENU LATERAL PUBLICIDADE********************-->
+
+          </div>
