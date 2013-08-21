@@ -25,11 +25,11 @@ return array(
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
-            		'route'    => '[/produto/categoria/:slug]',
+            		'route'    => '[/produto/:categoriaslug]',
             		'defaults' => array(
-            			'__NAMESPACE__' => 'ProdutoPublic\Controller',
+            			'__NAMESPACE__' => 'Base\Controller',
             			'controller'    => 'Index',
-            			'action'        => 'index',
+            			'action'        => 'categoria',
             		),
             	),
                 'may_terminate' => true,
@@ -37,13 +37,25 @@ return array(
                     'publico-categoria-e-subcategoria' => array(
                 	    'type'    => 'Segment',
                 		'options' => array(
-                		    'route'     => '[/subcategoria/:slugSub]',
+                		    'route'     => '[/:subcategoriaslugSub]',
                 			'defaults'  => array(
-                			    '__NAMESPACE__' => 'ProdutoPublic\Controller',
                 				'controller' => 'Index',
-                				'action'     => 'index',
+                				'action'     => 'categoriaAndSub',
                 			),
                 		),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'publico-produto' => array(
+                            		'type' => 'Segment',
+                            		'options' => array(
+                            				'route'    => '[/:produtoSlug]',
+                            				'defaults' => array(
+                            						'controller' => 'Index',
+                            						'action'     => 'produto',
+                            				),
+                            		),
+                            ),
+                        )    
                     ),
                 ),
             ),

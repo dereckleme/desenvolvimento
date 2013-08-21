@@ -24,5 +24,26 @@ class IndexController extends AbstractActionController
         
         return new ViewModel(array("categorias"=>$categorias));
     }
+    public function categoriaAction()
+    {
+    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $categorias = $repository->findAll();
+        
+        return new ViewModel(array("categorias"=>$categorias));
+    }
+    public function categoriaAndSubAction()
+    {
+    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $categorias = $repository->findAll();
+        
+        return new ViewModel(array("categorias"=>$categorias));
+    }
+    public function produtoAction()
+    {
+    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+    	$categorias = $repository->findAll();
+    
+    	return new ViewModel(array("categorias"=>$categorias));
+    }
     
 }

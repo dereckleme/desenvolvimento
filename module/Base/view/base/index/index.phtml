@@ -9,13 +9,13 @@
                         foreach($this->categorias as $categoria): ?>
                         
                             <li>
-                                <a href="<?php echo $this->url('publico-categoria', array('slug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
+                                <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
                                 <ul class="cafe_po">                                
                                     <?php
                                     $i = 1; 
                                     foreach($categoria->getSubcategorias() as $subcategoria): ?>
                                         <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
-                                            <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('slug'=>$categoria->getSlug(), 'slugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
+                                            <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
                                         </li>
                                     <?php $i--; endforeach; ?>                                                                   
                                 </ul>

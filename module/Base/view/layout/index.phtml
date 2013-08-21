@@ -50,9 +50,14 @@
 
               <a href="#" class="actionOpenCarrinho">
                 <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
+
+                  <div id="Box_Visor_Qtd">  
+                  <span class="Visor_Qtd">0</span>
+                  </div>
+
                   <p class="mc">MINHA CESTA</p>
                    <p class="valor_total">R$ 00,00</p>
-                    <img class="dt_cesta" src="../public/images/dt_cesta.png">
+                    <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
                   </span>
               </a>
 
@@ -75,7 +80,7 @@
                         <li class="BoxProdutosCesta">
                            <div id="BoxDescricaoFoto">
                               <span class="imagem_produto_cesta">
-                                <a href="#"><img src="../public/images/produto_cesta_teste2.png"></a>
+                                <a href="#"><img src="<?=$this->basePath()?>/images/produto_cesta_teste2.png"></a>
                               </span>
                                 <a href="#"><p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p></a>   
                               </div>
@@ -157,35 +162,37 @@
   <div id="topo_menu">
       
     <div id="menu_central">
-      <h1>SELETO ALIMENTOS</h1>
-       <a href=""><img class="logo_seleto" src="../public/images/logo_seleto.png"></a>
-          
-        <div id="box_menu">
-          <img class="phone"src="../public/images/phone.png">
-          <p class="txt_phone">Televendas: 55 11 8855-9966</p>
-          <input value="buscar produto" class="search_topo">
-          <input type="submit" value="Pesquisar" class="lupa_topo"> 
+        <h1>SELETO ALIMENTOS</h1>
+         <a href=""><img class="logo_seleto" src="<?=$this->basePath()?>/images/logo_seleto.png" title="Seleto Alimentos"></a>
+            
+          <div id="box_menu">
+            <img class="phone"src="../public/images/phone.png">
+            <p class="txt_phone">Televendas: 55 11 8855-9966</p>
+            <input value="buscar produto" class="search_topo">
+            <input type="submit" value="Pesquisar" class="lupa_topo"> 
 
-          <ul class="menu_central">
-            <a href="">
-              <li class="lista_menu_cafe">
-              </li>
-            </a>
+            <ul class="menu_central">
+              <a href="">
+                <li class="lista_menu_cafe">
+                </li>
+              </a>
 
-            <a href="">
-              <li class="lista_menu_alimentos">
-              </li>
-            </a>
+              <a href="">
+                <li class="lista_menu_alimentos">
+                </li>
+              </a>
 
-            <a href="">
-              <li class="lista_menu_produtos">
-              </li>
-            </a>
-          </ul>
-        </div>
+              <a href="">
+                <li class="lista_menu_produtos">
+                </li>
+              </a>
+            </ul>
+          </div>
     </div>
 
   </div>
+
+
         <?php echo $this->content; ?>
 
 </div>
@@ -256,7 +263,7 @@
     <div id="box_pagamento_footer">
       <div class="pagamento_footer">
           <p class="pagamentos">Formas de pagamento:</p>
-          <a href=""><img src="../public/images/pagseguro.png" alt="Faça seu pagamento pelo PagSeguro" title="Faça seu pagamento pelo PagSeguro" /></a>
+          <a href=""><img src="<?=$this->basePath()?>/images/pagseguro.png" alt="Faça seu pagamento pelo PagSeguro" title="Faça seu pagamento pelo PagSeguro" /></a>
        </div>
 
     </div>
