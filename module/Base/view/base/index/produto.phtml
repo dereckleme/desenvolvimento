@@ -1,0 +1,200 @@
+<div id="conteudo_detalhe">	
+    <div id="conteudo_central">
+    	<div id="box_detalhe">
+    		<h3 class="Nome_detalhe">Nome produto</h3>
+
+    		<div id="galeria_detalhe">
+            <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
+                <span>passe o mouse na imagem</span>
+				<img id="zoom_03" width="218" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/img_1.jpg" src="<?=$this->basePath()?>/images/produtos/small/img_1.png" style=" position: absolute;">
+				<!-- </div> -->
+
+				<!--<div id="gallery_01" style="width:218px;float:left; margin-top:20px;">
+					<a class="elevatezoom-gallery active" data-zoom-image="images/large/img_1.jpg" data-image="images/small/img_1.png" data-update="" href="#">
+						<img width="100" src="images/small/img_1.png">
+					</a>
+					<a class="elevatezoom-gallery" data-zoom-image="images/large/image2.jpg" data-image="images/small/image2.png" href="#">
+						<img width="100" src="images/small/image2.png">
+					</a>
+					<a class="elevatezoom-gallery" data-zoom-image="images/large/image3.jpg" data-image="images/small/image3.png" href="tester">
+						<img width="100" src="images/small/image3.png">
+					</a>
+					<a class="elevatezoom-gallery" data-zoom-image="images/large/image4.jpg" data-image="images/small/image4.png" href="tester">
+						<img width="100" src="images/small/image4.png">
+					</a>
+				</div>-->
+			</div>
+
+
+
+			<div id="comprar_detalhe">
+
+				<strike class="precoAntigo_produto">R$ 7,50</strike>
+				<p class="precoProduto_detalhe">
+					<em class="un_monetaria">R$</em> 
+					<strong>6,50</strong>
+				</p>
+				<div class="qtd_produto">
+					<p class="text_qtd">Quantidade</p>
+					<input id="box_qtd" class="box_qtd" type="text" name="quantidade" value="1">
+					<ul class="produto_quantidade">
+						<li class="qtd_mudar qtMais">
+							<a href="#" onclick="countMais('quantidade')">mais</a>
+						</li>
+						<li class="qtd_mudar qtMenos">
+							<a href="#" onclick="countMenos('quantidade')">menos</a>
+						</li>
+
+					</ul>
+				</div>
+
+				<div class="btn_detalhe">
+					<button class="btn_carrinhoCompras_detalhe">Adicionar ao <br /> carrinho de compras</button>
+					<a href="" class="btn_comprar_detalhe">Comprar</a>
+				</div>
+           
+			</div>
+           
+			
+			<div class="informacoes_produtos">
+				<h4 class="inf_produtos">Informações sobre o produto</h4>
+				<p class="ingredientes">Ingredientes:</p>
+				<p class="ingredientes_inf">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando </p>
+			</div>		
+    	</div>	
+    </div>
+
+    <!--box mais produtos-->
+
+    <div id="box_vejaTambem">
+    	<div class="box_vejaTambem">
+		    	<p class="desc_prod">Nome produto</p>
+		    	<div class="left_vejaTambem">
+		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
+		    	</div>
+
+		    	<div class="right_vejaTambem">
+		    		    <strike class="precoAntigo_produto">R$ 7,50</strike>
+						<p class="precoProduto_VejaTambem">
+							<em class="un_monetaria">R$</em> 
+							<strong>6,50</strong>
+						</p>
+
+						<div class="qtd_produto qtd_VejaTambem">
+							
+							<input id="box_qtd" class="box_qtd" type="text" name="quantidade1" value="1">
+							<ul class="produto_quantidade">
+								<li class="qtd_mudar qtMais">
+									<a href="#" onclick="countMais('quantidade1')">mais</a>
+								</li>
+								<li class="qtd_mudar qtMenos">
+									<a href="#" onclick="countMenos('quantidade1')">menos</a>
+								</li>
+
+							</ul>
+						</div>
+			   </div>
+			   <button class="btn_carrinhoCompras_vejaTambem">Adicionar ao carrinho de compras</button>
+			   <a href="#" class="btn_comprar_vejaTambem">Comprar</a>
+		</div>
+
+		<div class="box_vejaTambem">
+		    	<p class="desc_prod">Nome produto</p>
+		    	<div class="left_vejaTambem">
+		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
+		    	</div>
+
+		    	<div class="right_vejaTambem">
+		    		    <strike class="precoAntigo_produto">R$ 7,50</strike>
+						<p class="precoProduto_VejaTambem">
+							<em class="un_monetaria">R$</em> 
+							<strong>6,50</strong>
+						</p>
+
+						<div class="qtd_produto qtd_VejaTambem">
+							
+							<input id="box_qtd" class="box_qtd" type="text" name="quantidade2" value="1">
+							<ul class="produto_quantidade">
+								<li class="qtd_mudar qtMais">
+									<a href="#" onclick="countMais('quantidade2')">mais</a>
+								</li>
+								<li class="qtd_mudar qtMenos">
+									<a href="#" onclick="countMenos('quantidade2')">menos</a>
+								</li>
+
+							</ul>
+						</div>
+			   </div>
+			   <button class="btn_carrinhoCompras_vejaTambem">Adicionar ao carrinho de compras</button>
+			   <a href="#" class="btn_comprar_vejaTambem">Comprar</a>
+		</div>
+
+		<div class="box_vejaTambem">
+		    	<p class="desc_prod">Nome produto</p>
+		    	<div class="left_vejaTambem">
+		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
+		    	</div>
+
+		    	<div class="right_vejaTambem">
+		    		    <strike class="precoAntigo_produto">R$ 7,50</strike>
+						<p class="precoProduto_VejaTambem">
+							<em class="un_monetaria">R$</em> 
+							<strong>6,50</strong>
+						</p>
+
+						<div class="qtd_produto qtd_VejaTambem">
+							
+							<input id="box_qtd" class="box_qtd" type="text" name="quantidade3" value="1">
+							<ul class="produto_quantidade">
+								<li class="qtd_mudar qtMais">
+									<a href="#" onclick="countMais('quantidade3')">mais</a>
+								</li>
+								<li class="qtd_mudar qtMenos">
+									<a href="#" onclick="countMenos('quantidade3')">menos</a>
+								</li>
+
+							</ul>
+						</div>
+			   </div>
+			   <button class="btn_carrinhoCompras_vejaTambem">Adicionar ao carrinho de compras</button>
+			   <a href="#" class="btn_comprar_vejaTambem">Comprar</a>
+		</div>
+		
+
+		
+
+		
+   </div>
+</div>
+
+<script src='<?=$this->basePath()?>/js/elevatezoom/jquery.elevatezoom.js'></script>
+<script type="text/javascript">
+function countMais(inputValue){
+	var qtd = parseInt($("input[name="+inputValue+"]").val());			
+	var result = qtd + 1;
+	$("input[name="+inputValue+"]").val(result);				
+	return false;			
+}
+		
+function countMenos(inputValue){
+	var qtd = parseInt($("input[name="+inputValue+"]").val());
+	var result = qtd - 1;
+		
+	if(result > 0) {
+		$("input[name="+inputValue+"]").val(result);
+	}		
+	return false;		
+}
+
+$(document).ready(function () {
+	$("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active", imageCrossfade: true, loadingIcon: "spinner.gif"}); 
+
+	$("#zoom_03").bind("click", function(e) {  
+	  var ez =   $('#zoom_03').data('elevateZoom');
+	  ez.closeAll(); //NEW: This function force hides the lens, tint and window	
+		$.fancybox(ez.getGalleryList());
+	  return false;
+	});
+}); 
+
+</script>
