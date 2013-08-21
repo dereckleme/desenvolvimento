@@ -54,6 +54,15 @@ class ProdutoProdutos
      */
     private $produtosubcategoria;
     
+    
+    
+	/**
+	 * @return the $slugProduto
+	 */
+	public function getSlugProduto() {
+		return $this->slugProduto;
+	}
+
 	public function getIdproduto() {
 		return $this->idproduto;
 	}

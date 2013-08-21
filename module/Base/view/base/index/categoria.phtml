@@ -48,7 +48,11 @@
                         	        <li class="lista_categoria_produtos">
                               			<div id="descricao_produto_categoria">
                               				<img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria.png">
-                              				<p class="txt_descricao_produto_categoria">Café forte torrado e moído 500g</p>
+                              				<p class="txt_descricao_produto_categoria">
+                              				    <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produtoCategorias->getSlug(), 'subcategoriaslugSub'=>$produtoSubcategorias->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
+                              				        <?php echo $produto->getTitulo(); ?>
+                              				    </a>
+                              				</p>
                               				<strike class="precoAntigo_categoria">R$ 7,50</strike>
             								<p class="precoProduto_categoria">
             								    <em class="moeda_monetaria">R$</em> <strong>6,50</strong>
