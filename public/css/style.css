@@ -157,6 +157,7 @@ img.banner_pagamento {float: left; margin-top: 25px; margin-left: 60px;}
 img.banner_entrega {float: left;  margin-left: 140px; margin-top: 33px;}
 img.banner_redes {float: right; margin-top: 25px; margin-right: 45px;}
 /*************************FIM DO BANNER INFORMATIVO***********************/
+
 /*************************BREADCRUMBS DAS PAGINAS***********************/
 #breadcrumbs { width: 100%; min-width: 1024px; float: left; margin-bottom: -30px;}
 #box_breadcrumbs { width: 1024px; height: 30px; margin: 0 auto; font-size: 11px; color: #666666; }
@@ -164,55 +165,31 @@ a.txt_breadcrumbs { color: #666666;}
 span.txt_pagina { color: #ff7f1f; font-weight: 600;}
 img.img_breadcrumbs { margin-left: 10px; margin-right: 10px;}
 /*************************FIM DO BREADCRUMBS DAS PAGINAS***********************/
+
+
 /************************* PAGINA CENTRAL CATEGORIA - PRODUTOS***********************/
+
 #cont_central_produtos { width: 644px; float: left; margin-top: 30px; margin-right: 10px;}
-
-
 
 /************************* SELETC BOX***********************/
 #select_box { width: 646px; height: 50px; float: left; background: #f2f2f2; margin-bottom: 5px; }
 p.tt_select_box { float: left; color: #666666; padding-left: 15px; padding-right: 10px;}
 .styled-select select { width: 150px; margin-top: 10px; padding: 5px; font-size: 12px; line-height: 1; border: solid 1px #CCC; height: 30px; color: #666666; float: left; }
-
 ul.box_paginacao { width:155px; float: right; margin-top: 15px;}
 li.seta_paginacao { width: 20px; height: 20px; float: left; margin-right: 10px;}
 li img.st_esq { float: right; padding-top: 1px; }
 li img.st_dir { padding-top: 1px; }
-
 li a.box_numeral { color: #666666; float: left; border: solid 1px #CCC; padding: 0 5px 0 5px; margin-right: 10px;}
 li a.box_numeral:hover { color: #FFF; float: left; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-
 li a.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
 li a.box_numeral_ligado:hover { color: #666666; float: left; border: solid 1px #CCC; background: #F2F2F2; padding: 0 5px 0 5px; margin-right: 10px;}
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*************************FIM DO SELETC BOX***********************/
 
-
-
-
-
-
-
-
-
-
-
+/*************************BOX PRODUTOS***********************/
 ul#box_categoria_produtos { width: 644px; margin-bottom: 5px; float: left; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-top: solid 1px #CCC; display: block;}
 /*LISTA DA - CATEGORIA PRODUTOS*/
 /*IMAGENS*/
-li.lista_categoria_produtos {width: 644px; height: 155px; float: left; border-bottom: solid 1px #CCC;}
+li.lista_categoria_produtos { width: 644px; height: 155px; float: left; border-bottom: solid 1px #CCC;}
 #descricao_produto_categoria { width: 300px; height: 125px; margin: 15px 0; float: left; border-right: solid 1px #CCC;}
 img.img_descricao_produto_categoria { width: 70px; height: 115px; float: left; padding-left: 10px;}
 p.txt_descricao_produto_categoria { width: 200px; max-height: 67px; float: left; display: block; font-size: 14px; color: #666666; padding-left: 8px;}
@@ -235,14 +212,7 @@ button.carrinhoCompras_categoria { background: url(../images/btn_ir_cesta.png) n
 button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 6px 8px 36px; }
 button.carrinhoCompras_categoria { font-weight:bold; border-radius: 5px; float: left; margin-top: 35px; font-size: 10px; margin-left: 19px; } 
 
-
-
-
-
-
-
-
-/*******************COLUNA CENTRAL - HOME***************/
+/******************* COLUNA CENTRAL - HOME***************/
 #box_destaque { width: 330px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
 img.bt_box { padding: 5px 0 0 15px; }
 p.txt_box{ margin-left: 60px; margin-top: -27px; font-size: 16px; color: #FFF; font-weight: 600; letter-spacing: 2px;}
