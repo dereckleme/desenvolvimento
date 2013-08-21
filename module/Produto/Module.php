@@ -71,6 +71,9 @@ class Module {
     				$subcategoria = new serviceSubcategoria($service->get('Doctrine\ORM\EntityManager'));
     				return $subcategoria;
     			},
+    			'GenericService\Repository' => function($service){
+    				return $service;
+    			},
     		)
     	);
     }

@@ -35,7 +35,19 @@ class IndexController extends AbstractActionController
     }
     public function produtoAction()
     {
-    	return new ViewModel();
+        $params = $this->params();
+        $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
+            $repository->setSlugProduto($params->fromRoute("produtoSlug"));
+            $repository->setSlugSubcategoria($params->fromRoute("subcategoriaslugSub"));
+            $return = $repository->detalheProduto();
+            if(count($return) == 1)
+            {
+    	        return new ViewModel(array('data' => $return));
+            }
+            else
+            {
+                return $this->redirect()->toRoute('home');
+            }    
     }
     
 }
