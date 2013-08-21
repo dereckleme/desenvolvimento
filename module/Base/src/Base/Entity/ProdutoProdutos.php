@@ -1,7 +1,8 @@
 <?php
 
-namespace Base\Entity;
+namespace Produto\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="produto_produtos")
  * @ORM\Entity
- *  @ORM\Entity(repositoryClass="Base\Entity\ProdutoProdutosRepository")
+ * @ORM\Entity(repositoryClass="Produto\Entity\ProdutoProdutosRepository")
  */
 class ProdutoProdutos
 {
@@ -31,7 +32,7 @@ class ProdutoProdutos
 
     /**
      * @var string
-     *
+     * @Gedmo\Slug(fields={"titulo"}, unique=true)
      * @ORM\Column(name="slug_produto", type="string", length=255, nullable=true)
      */
     private $slugProduto;
@@ -46,12 +47,45 @@ class ProdutoProdutos
     /**
      * @var \Usuario\Entity\ProdutoSubcategoria
      *
-     * @ORM\ManyToOne(targetEntity="Usuario\Entity\ProdutoSubcategoria")
+     * @ORM\ManyToOne(targetEntity="Produto\Entity\ProdutoSubcategoria")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Produto_idSubcategoria", referencedColumnName="idSubcategoria")
      * })
      */
     private $produtosubcategoria;
+    
+	public function getIdproduto() {
+		return $this->idproduto;
+	}
+
+	public function getTitulo() {
+		return $this->titulo;
+	}
+
+	public function getValor() {
+		return $this->valor;
+	}
+
+	public function getProdutosubcategoria() {
+		return $this->produtosubcategoria;
+	}
+
+	public function setIdproduto($idproduto) {
+		$this->idproduto = $idproduto;
+	}
+
+	public function setTitulo($titulo) {
+		$this->titulo = $titulo;
+	}
+
+	public function setValor($valor) {
+		$this->valor = $valor;
+	}
+
+	public function setProdutosubcategoria($produtosubcategoria) {
+		$this->produtosubcategoria = $produtosubcategoria;
+	}
 
 
+    
 }
