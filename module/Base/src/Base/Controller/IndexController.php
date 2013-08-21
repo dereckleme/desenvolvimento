@@ -23,7 +23,11 @@ class IndexController extends AbstractActionController
     }
     public function categoriaAction()
     {
-        return new ViewModel();
+        $busca = $this->params()->fromRoute('categoriaslug',0);
+        $repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $categoriaBySlug = $repository->findByslug($busca);
+        
+        return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug));
     }
     public function categoriaAndSubAction()
     {
