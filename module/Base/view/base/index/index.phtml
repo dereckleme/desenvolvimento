@@ -1,31 +1,4 @@
-<div id="conteudo_home">
-                <!--MENU LATERAL-->
-                  <div id="lista_produtos">
-                    <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
 
-                    <ul class="lista_geral">                              
-                        <?php
-                        $a = 1;
-                        foreach($this->categorias as $categoria): ?>
-                        
-                            <li>
-                                <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
-                                <ul class="cafe_po">                                
-                                    <?php
-                                    $i = 1; 
-                                    foreach($categoria->getSubcategorias() as $subcategoria): ?>
-                                        <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
-                                            <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
-                                        </li>
-                                    <?php $i--; endforeach; ?>                                                                   
-                                </ul>
-                            </li>
-                        
-                        <?php $a--; endforeach; ?>
-                    </ul>
-
-                  </div>
-                <!--*********************FIM DO MENU LATERAL*********************-->
 
                 <!--**********************CONTEUDO CENTRAL**********************-->
 
@@ -118,7 +91,3 @@
                           </div>
                       </div>
                   </div>
-
-                <!--*********************FIM DO MENU LATERAL PUBLICIDADE********************-->
-
-          </div>

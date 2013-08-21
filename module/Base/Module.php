@@ -90,6 +90,14 @@ class Module
     		 */
     		$eventoCarrinho = $e->getApplication()->getServiceManager()->get('CarrinhoCompras\Model\Carrinho');
     		$controller->layout()->carrinhoLista = $eventoCarrinho->lista();
+    		
+    		/*
+    		 * Listagem de categorias
+    		 */
+    		
+    		$eventoCarrinho = $e->getApplication()->getServiceManager()->get('Produto\Repository\Categorias');
+    		$categorias = $eventoCarrinho->findAll();
+    		$controller->layout()->categorias = $categorias;
     	}, 100);
     
     }

@@ -19,31 +19,19 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-        $categorias = $repository->findAll();
-        
-        return new ViewModel(array("categorias"=>$categorias));
+        return new ViewModel();
     }
     public function categoriaAction()
     {
-    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-        $categorias = $repository->findAll();
-        
-        return new ViewModel(array("categorias"=>$categorias));
+        return new ViewModel();
     }
     public function categoriaAndSubAction()
     {
-    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-        $categorias = $repository->findAll();
-        
-        return new ViewModel(array("categorias"=>$categorias));
+        return new ViewModel();
     }
     public function produtoAction()
     {
-    	$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-    	$categorias = $repository->findAll();
-    
-    	return new ViewModel(array("categorias"=>$categorias));
+    	return new ViewModel();
     }
     
 }
