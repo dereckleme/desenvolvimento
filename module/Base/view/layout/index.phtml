@@ -233,8 +233,7 @@
                     <ul class="lista_geral">                              
                         <?php
                         $a = 1;
-                        foreach($this->categorias as $categoria): ?>
-                        
+                        foreach($this->categorias as $categoria): ?>                        
                             <li>
                                 <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
                                 <ul class="cafe_po">                                
