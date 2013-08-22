@@ -4,6 +4,7 @@ namespace Produto\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Zend\I18n\Filter;
 
 /**
  * ProdutoProdutos
@@ -72,7 +73,8 @@ class ProdutoProdutos
 	}
 
 	public function getValor() {
-		return $this->valor;
+	    $filter = new \NumberFormatter('pt_BR', \NumberFormatter::DECIMAL);
+	    return $filter->format($this->valor);	    
 	}
 
 	public function getProdutosubcategoria() {
@@ -88,6 +90,10 @@ class ProdutoProdutos
 	}
 
 	public function setValor($valor) {
+	    
+	    
+	    
+	    
 		$this->valor = $valor;
 	}
 
