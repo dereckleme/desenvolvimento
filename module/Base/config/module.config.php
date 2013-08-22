@@ -30,6 +30,7 @@ return array(
             			'__NAMESPACE__' => 'Base\Controller',
             			'controller'    => 'Index',
             			'action'        => 'categoria',
+            		    'page'          => 1
             		),
             	),
                 'may_terminate' => true,
