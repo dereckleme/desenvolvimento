@@ -9,27 +9,295 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                       # ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
-                       # ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
-
+                        ?>
+        <script>var basePatch  = '<?=$this->basePath()?>'</script>
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/usuario.js')
+                                      ->prependFile($this->basePath() . '/js/publico.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+
+
+    <!--[if IE 9]>
+      <link href="<?=$this->basePath()?>/css/style-ie.css" rel="stylesheet" type="text/css">      
+    <![endif]-->
+
+
+    <!--[if !IE]><!--><script>
+    if (/*@cc_on!@*/false) {
+        document.documentElement.className+='ie10';
+    }
+    </script><!--<![endif]-->
 
     </head>
     <body>
-    <div id="header">
-		<div id="mn_topo">
-			<ul class="mn_topo">
+
+          <div id="header">
+              <div id="mn_topo">
+                  <ul class="mn_topo">
 				<li class="Menu_topo"><a href="">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</a></li>
 				<li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
                 <li class="Menu_topo" style="background:none;"><a href="">Acompanhe seus pedidos</a></li>
 			</ul>
-		</div>
 
-	</div>
+              <a href="#" class="actionOpenCarrinho">
+                <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
+                    
+                  <div id="Box_Visor_Qtd" style="<?if(count($this->carrinhoLista['listaAtual']) != 0) print "display:block"; else print "display:none";?>">  
+                  <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
+                  </div>
+
+                  <p class="mc">MINHA CESTA</p>
+                   <p class="valor_total"><?=$this->carrinhoLista['valorTotal']?></p>
+                    <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
+                  </span>
+              </a>
+                <div id="box_compras" style="display:none;">
+                  <?
+                    print  $this->partial("layout/carrinho",array("carrinhoLista" => $this->carrinhoLista));
+                  ?>
+                
+                  </div>
+              </div>
+          </div>
+        
+     
+      <!--LOGIN -->
+
+         <div id="Login_Cadastro" style="display:none">
+
+
+            <div id="btn_form">
+               <a href="" class="status_entrar" alt="login" title="Login">entrar</a>
+               <a href="" class="status_criar_conta" alt="Criar conta" title="Criar conta">criar conta</a>
+               <a href="" class="status_fechar"alt="fechar" title="Fechar">fechar</a>
+           </div>
+           <div id="form_login">     
+              <form action="" class="formActionLogin">
+                   <label class="status_login">Login:</label><br/><input type="text" class="login" value="Digite seu Login"><br/>
+                   <label class="status_password">Senha:</label><br/><input type="password" class="Password" value="criar senha"><br/>
+                   <a href="" class="esqueceuSenha">Esqueceu sua senha?</a><br/>
+                   <input type="submit" value="Entrar" class="Eventlogin"><br/><br/><br/>
+                   <p class="criar_conta">Ainda não tem uma conta?<a href="" class="criar_conta"> criar uma conta</a></p>
+              </form>
+
+            
+           </div>
+
+          <div id="form_cadastro" style="display:none">
+             <form action="" class="formActionCadastro">
+                  <label class="status_email">*E-mail:</label><br/><input type="text" class="email" value="digite aqui o seu e-mail"><br/>
+                  <label class="status_login">*Login:</label><br/><input type="text" class="login" value="criar nome de usuário"><br/>
+                  <label class="status_password">*Senha:</label><br/><input type="password" class="Password" value="criar senha"><br/>
+                  <label class="status_password">*Confirmar senha:</label><br/><input type="password" class="Password" value="criar senha"><br/><br/>
+                 <input type="submit" value="cadastrar" class="Eventcadastrar"><br/><br/><br/>
+            </form>
+         </div>
+        </div>
+
+
+       <!--ERRO-->
+        <div id="form_erro" style="display:none">
+                <div id="atencao_erro" >
+                   <p class="atencaoErro">Atenção, foram encontrados alguns erros.</p>
+                   <p class="erro">Erros</p>
+                   <span class="tipo_erro"></span>
+                   <br/><br/><br/>
+                   <a href="" class="tentarNovamente">Tentar novamente</a>
+                </div>
+        </div>
+          
+          <!--*****************************CONTEUDO*****************************-->
+
+<div id="geral">
+
+
+  <div id="topo_menu">
+      
+    <div id="menu_central">
+        <h1>SELETO ALIMENTOS</h1>
+         <a href="<?=$this->basePath()?>"><img class="logo_seleto" src="<?=$this->basePath()?>/images/logo_seleto.png" title="Seleto Alimentos"></a>
+            
+          <div id="box_menu">
+            <img class="phone"src="../public/images/phone.png">
+            <p class="txt_phone">Televendas: 55 11 8855-9966</p>
+            <input value="buscar produto" class="search_topo">
+            <input type="submit" value="Pesquisar" class="lupa_topo"> 
+
+            <ul class="menu_central">
+              <a href="">
+                <li class="lista_menu_cafe">
+                </li>
+              </a>
+
+              <a href="">
+                <li class="lista_menu_alimentos">
+                </li>
+              </a>
+
+              <a href="">
+                <li class="lista_menu_produtos">
+                </li>
+              </a>
+            </ul>
+          </div>
+    </div>
+
+  </div>
+
+
+	<!--****************BANNER PAGAMENTO/ENTREGAS/REDES SOCIAIS****************-->
+                <div id="banner_informativo">
+
+                	<div id="box_banner_informativo">
+                    <img class="banner_pagamento" src="<?=$this->basePath()?>/images/pagamentos.png">
+                    <img class="banner_entrega" src="<?=$this->basePath()?>/images/entregas.png">
+                    <img class="banner_redes" src="<?=$this->basePath()?>/images/redes.png">
+                	</div>
+
+                </div>
+
+    <!--****************FIM DO BANNER PAGAMENTO/ENTREGAS/REDES SOCIAIS****************-->
+
+<!--*****************************CAMINHO SITE***************************-->
+                	<div id="breadcrumbs">
+
+                		<div id="box_breadcrumbs">
+                        <p>
+                        <a class="txt_breadcrumbs" href=""> Principal</a>
+                  			<img class="img_breadcrumbs" src="<?=$this->basePath()?>/images/img_breadcrumbs.png">
+                        <a class="txt_breadcrumbs" href=""> Produtos</a>
+                        <img class="img_breadcrumbs" src="<?=$this->basePath()?>/images/img_breadcrumbs.png">
+                        <span class="txt_pagina">Café Forte</span>
+                        </p>
+                		</div>
+
+                	</div>
+
+<!--***************************** FIM DO CAMINHO SITE***************************-->
+                	
+
+<div id="conteudo_principal">
+
+                <!--MENU LATERAL-->
+                  <div id="lista_produtos">
+                    <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
+
+                    <ul class="lista_geral">                              
+                        <?php
+                        $a = 1;
+                        foreach($this->categorias as $categoria): ?>                        
+                            <li>
+                                <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
+                                <ul class="cafe_po">                                
+                                    <?php
+                                    $i = 1; 
+                                    foreach($categoria->getSubcategorias() as $subcategoria): ?>
+                                        <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
+                                            <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
+                                        </li>
+                                    <?php $i--; endforeach; ?>                                                                   
+                                </ul>
+                            </li>
+                        
+                        <?php $a--; endforeach; ?>
+                    </ul>
+
+                  </div>
+                <!--*********************FIM DO MENU LATERAL*********************-->
+                
         <?php echo $this->content; ?>
+        
+                <!--*********************FIM DO MENU LATERAL PUBLICIDADE********************-->
+
+          </div>
+
+</div>
+
+        
+       <!--*******************FOOTER************************-->
+
+<div id="footer">
+
+    <div id="box_search_footer">
+      <div class="search_footer">
+
+              <input value="buscar produto" class="search_footer">
+               <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
+
+        </div>
+    </div>
+
+    <div id="box_newsletter_footer">
+      <div class="newsletter_footer">
+           <p class="newsletter_footer">RECEBA DESCONTOS E OFERTAS EXCLUSIVAS</p>
+           <input value="Digite seu nome" class="news_footer">
+           <input value="Digite seu e-mail" class="news_footer">
+           <input type="submit" class="ok_footer" value="OK" title="Receba descontos e ofertas exclusivas">
+        </div>
+    </div>
+
+    <div id="box_menu_footer">
+      <div class="menu_footer">
+          <ul class="mn_footer">
+             <li>INSTITUCIONAL</li>
+                 <ul class="submenu">
+                    <li><a href="" title="Quem Somos">Quem Somos</a></li>
+                    <li><a href="" title="Mapa do Site">Mapa do Site</a></li>
+                    <li><a href="" title="Fale Conosco">Fale Conosco</a></li>
+                 </ul>
+          </ul>
+
+        <ul class="mn_footer">
+          <li>DÚVIDAS FREQUENTES</li>
+            <ul class="submenu">
+               <li><a href="" title="Termos de Pesquisa">Termos de Pesquisa</a></li>
+               <li><a href="" title="Meus Pedidos">Meus Pedidos</a></li>
+               <li><a href="" title="Trocas e Devoluções">Trocas e Devoluções</a></li>
+                <li><a href="" title="Editar Cadastro">Editar Cadastro</a></li>
+                <li><a href="" title="Política de Privacidade">Política de Privacidade</a></li>
+            </ul>
+        </ul>
+
+        <ul class="mn_footer">
+          <li>ENTREGAS</li>
+          <img src="../public/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
+        </ul>
+
+        <ul class="mn_footer">
+          <li>REDES SOCIAIS</li>
+            <ul class="submenu">  
+               <p class="text_redes_sociais">Acompanhe o Café Seleto <br/> nas redes sociais:</p>      
+               <li><a href="" class="redes_sociais"><img src="../public/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="../public/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="../public/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
+            </ul>
+        </ul>
+
+      </div>
+    </div>
+
+    <div id="box_pagamento_footer">
+      <div class="pagamento_footer">
+          <p class="pagamentos">Formas de pagamento:</p>
+          <a href=""><img src="<?=$this->basePath()?>/images/pagseguro.png" alt="Faça seu pagamento pelo PagSeguro" title="Faça seu pagamento pelo PagSeguro" /></a>
+       </div>
+
+    </div>
+
+    <div id="box_direitosReservados_footer">
+      <div class="direitosReservados_footer">
+          <p class="direitos_reservados">© 2013 seleto. Todos os Direitos Reservados.</p>
+        </div>
+    </div>
+
+</div>
+
+<!--************************FIM DO FOOTER****************************-->
+        
+
     </body>
 </html>
+        
