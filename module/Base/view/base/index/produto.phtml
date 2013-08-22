@@ -37,7 +37,7 @@
 				</p>
 				<div class="qtd_produto">
 					<p class="text_qtd">Quantidade</p>
-					<input id="box_qtd" class="box_qtd" type="text" name="quantidade" value="1">
+					<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" class="box_qtd" type="text" name="quantidade" value="1">
 					<ul class="produto_quantidade">
 						<li class="qtd_mudar qtMais">
 							<a href="#">mais</a>
@@ -87,13 +87,13 @@
 
 						<div class="qtd_produto qtd_VejaTambem">
 							
-							<input id="box_qtd" class="box_qtd" type="text" name="quantidade1" value="1">
+							<input id="relacionadoProd_<?=$relacionados->getIdproduto()?>" class="box_qtd" type="text" name="quantidade1" value="1">
 							<ul class="produto_quantidade">
 								<li class="qtd_mudar qtMais">
-									<a href="#" onclick="countMais('quantidade1')">mais</a>
+									<a href="#">mais</a>
 								</li>
 								<li class="qtd_mudar qtMenos">
-									<a href="#" onclick="countMenos('quantidade1')">menos</a>
+									<a href="#">menos</a>
 								</li>
 
 							</ul>

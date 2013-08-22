@@ -37,7 +37,8 @@ return array(
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
-            		'route'    => '/[produto/:categoriaslug[/page/:page]]',
+            		#'route'    => '/[produto/:categoriaslug[/page/:page]]',
+            	    'route'    => '/[produto/:categoriaslug]',
             		'defaults' => array(
             			'__NAMESPACE__' => 'Base\Controller',
             			'controller'    => 'Index',

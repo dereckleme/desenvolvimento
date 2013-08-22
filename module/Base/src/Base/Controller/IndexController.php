@@ -31,8 +31,7 @@ class IndexController extends AbstractActionController
         $repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
         $categoriaBySlug = $repository->findByslug($busca);
         
-        
-        $paginator = new Paginator(new ArrayAdapter($categoriaBySlug));
+        $paginator = new Paginator(new ArrayAdapter($teste));
         $paginator->setCurrentPageNumber($page);
         $paginator->setDefaultItemCountPerPage(1);
         

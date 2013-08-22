@@ -59,7 +59,7 @@
     
                       			<div id="quantidade_produto_categoria" class="prdQtd">
                       				<p class="text_qtd_PC">Quantidade</p>
-    								<input id="produto_<?php #echo $produto->getIdproduto(); ?>" class="box_qtd_PC" type="text" name="quantidade" value="1">            
+    								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" type="text" name="quantidade" value="1">            
     								<ul class="produto_quantidade">
     								    <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
                                         <li class="qtd_mudar_PC qtMenos_PC"> <a href="#">menos</a> </li>            									     
@@ -67,7 +67,7 @@
                       			</div>
                       			            
                       			<div id="buttom_add_car_comprar">
-    						      <button class="carrinhoCompras_categoria">Adicionar ao <br/> carrinho de compras</button>            
+    						      <button class="carrinhoCompras_categoria actionAddCarrinho" rev="<?php echo $produto->getIdproduto(); ?>">Adicionar ao <br/> carrinho de compras</button>            
                       			</div>            
                       		 </li>                        	        
                 	        <?php
