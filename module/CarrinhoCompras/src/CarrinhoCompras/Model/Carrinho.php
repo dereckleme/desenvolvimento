@@ -20,7 +20,7 @@ class Carrinho
     {
         $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
         
-        $total;
+        $total = "";
         $list = $this->repositoryProduto->findByidproduto($this->container->carrinho);
         foreach($list AS $produto)
         {
