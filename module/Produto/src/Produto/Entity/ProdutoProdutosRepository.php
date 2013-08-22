@@ -21,6 +21,18 @@ class ProdutoProdutosRepository extends EntityRepository {
             $results = $query->getOneOrNullResult();
         return $results;
     }
+    public function produtosRelacionados()
+    {
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->where("s.slugSubcategoria = :slugSub");
+        $qb->andWhere("i.slugProduto != :slugProduto");
+        $qb->setParameters(array("slugSub" => $this->slugSubcategoria, "slugProduto" => $this->slugProduto));
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
 	public function setSlugProduto($slugProduto) {
 		$this->slugProduto = $slugProduto;
 	}

@@ -42,7 +42,8 @@ class IndexController extends AbstractActionController
             $return = $repository->detalheProduto();
             if(count($return) == 1)
             {
-    	        return new ViewModel(array('data' => $return));
+                $relacionados =  $repository->produtosRelacionados();
+    	        return new ViewModel(array('detalheProduto' => $return,'produtosRelacionados' => $relacionados ));
             }
             else
             {
