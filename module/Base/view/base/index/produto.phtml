@@ -39,10 +39,10 @@
 					<input id="box_qtd" class="box_qtd" type="text" name="quantidade" value="1">
 					<ul class="produto_quantidade">
 						<li class="qtd_mudar qtMais">
-							<a href="#" onclick="countMais('quantidade')">mais</a>
+							<a href="#">mais</a>
 						</li>
 						<li class="qtd_mudar qtMenos">
-							<a href="#" onclick="countMenos('quantidade')">menos</a>
+							<a href="#">menos</a>
 						</li>
 
 					</ul>
@@ -169,22 +169,6 @@
 
 <script src='<?=$this->basePath()?>/js/elevatezoom/jquery.elevatezoom.js'></script>
 <script type="text/javascript">
-function countMais(inputValue){
-	var qtd = parseInt($("input[name="+inputValue+"]").val());			
-	var result = qtd + 1;
-	$("input[name="+inputValue+"]").val(result);				
-	return false;			
-}
-		
-function countMenos(inputValue){
-	var qtd = parseInt($("input[name="+inputValue+"]").val());
-	var result = qtd - 1;
-		
-	if(result > 0) {
-		$("input[name="+inputValue+"]").val(result);
-	}		
-	return false;		
-}
 
 $(document).ready(function () {
 	$("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active", imageCrossfade: true, loadingIcon: "spinner.gif"}); 

@@ -25,11 +25,12 @@ return array(
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
-            		'route'    => '[/produto/:categoriaslug]',
+            		'route'    => '[/produto/:categoriaslug/page/[:page]]',
             		'defaults' => array(
             			'__NAMESPACE__' => 'Base\Controller',
             			'controller'    => 'Index',
             			'action'        => 'categoria',
+            		    'page'          => 1
             		),
             	),
                 'may_terminate' => true,

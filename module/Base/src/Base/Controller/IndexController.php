@@ -13,6 +13,8 @@ namespace Base\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Paginator\Paginator,
+    Zend\Paginator\Adapter\ArrayAdapter;
 
 
 class IndexController extends AbstractActionController
@@ -24,14 +26,25 @@ class IndexController extends AbstractActionController
     public function categoriaAction()
     {
         $busca = $this->params()->fromRoute('categoriaslug',0);
+        $page = $this->params()->fromRoute('page');
+        
         $repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
         $categoriaBySlug = $repository->findByslug($busca);
         
-        return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug));
+        
+        $paginator = new Paginator(new ArrayAdapter($categoriaBySlug));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setDefaultItemCountPerPage(1);
+        
+        return new ViewModel(array("produtosPorCategoria"=>$paginator, 'page'=>$page));
     }
     public function categoriaAndSubAction()
     {
-        return new ViewModel();
+        $busca = $this->params()->fromRoute('subcategoriaslugSub',0);
+        $repository = $this->getServiceLocator()->get('Produto\Repository\SubCategorias');
+        $subCatBySlug = $repository->findBySlugSubcategoria($busca);
+        
+        return new ViewModel(array('produtosPorSubCategoria'=>$subCatBySlug));
     }
     public function produtoAction()
     {
