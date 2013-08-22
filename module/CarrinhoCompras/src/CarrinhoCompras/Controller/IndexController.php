@@ -36,12 +36,15 @@ class IndexController extends AbstractActionController
     }
     public function listAction()
     {
-        return new ViewModel(array("listagem" => $this->carrinho));
+        $this->layout('layout/carrinho');
+        return new ViewModel();
     }
-    public function testAction()
+    public function detalheCarrinhoAction()
     {
-        $service = $this->getServiceLocator()->get("Produto\Repository\Produtos");
-        return new ViewModel(array("listaProdutos" => $service->findAll()));
+        $service = $this->getServiceLocator()->get("CarrinhoCompras\Model\Carrinho");
+        $view = new ViewModel(array("valorTotal" => $service->calculoTotal()));
+        $view->setTerminal(true);
+        return $view;
     }
 }
 

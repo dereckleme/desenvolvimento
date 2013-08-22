@@ -16,6 +16,18 @@ class Carrinho
     #	return $this->container->carrinho;
         return $list;
     }
+    public function calculoTotal()
+    {
+        $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+        
+        $total;
+        $list = $this->repositoryProduto->findByidproduto($this->container->carrinho);
+        foreach($list AS $produto)
+        {
+            $total = $total+$produto->getValor();
+        }
+        return $filter->format($total);
+    }
 }
 
 ?>

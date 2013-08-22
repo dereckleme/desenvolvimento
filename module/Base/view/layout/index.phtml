@@ -50,61 +50,22 @@
 
               <a href="#" class="actionOpenCarrinho">
                 <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
-
-                  <div id="Box_Visor_Qtd">  
-                  <span class="Visor_Qtd">0</span>
+                    
+                  <div id="Box_Visor_Qtd" style="<?if(count($this->carrinhoLista['listaAtual']) != 0) print "display:block"; else print "display:none";?>">  
+                  <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
                   </div>
 
                   <p class="mc">MINHA CESTA</p>
-                   <p class="valor_total">R$ 00,00</p>
+                   <p class="valor_total"><?=$this->carrinhoLista['valorTotal']?></p>
                     <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
                   </span>
               </a>
-
-                  <div id="box_compras" style="display:none;">
-                    <ul class="header_conteudo_compra">
-                        <li class="header_tt_box_produto">
-                          <p class="header_txt_produto_compra">Produto</p>   
-                        </li>
-                        <li class="header_tt_box_preco">
-                            <p class="header_txt_preco_compra">Preços (R$)</p> 
-                        </li>
-                        <li class="header_tt_box_Qtd">
-                        <p class="header_txt_Qtd_compra">Qtde.</p> 
-                      </li>
-                    </ul>
-
-                  <ul id="DescricaoPrecoQuatidade">
-
-                    <!--PRODUTOS NA CESTA-->
-                        <li class="BoxProdutosCesta">
-                           <div id="BoxDescricaoFoto">
-                              <span class="imagem_produto_cesta">
-                                <a href="#"><img src="<?=$this->basePath()?>/images/produto_cesta_teste2.png"></a>
-                              </span>
-                                <a href="#"><p class="descricao_produto_cesta">Café forte torrado e moído - 500g</p></a>   
-                              </div>
-                              <div id="BoxDescricaoPreco">
-                                <p class="descricao_preco_cesta" title="#">00,00</p>
-                              </div>
-                              <div id="BoxDescricaoQuatidade">
-                                  <p class="descricao_Qtd_cesta" title="#">0</p> 
-                              </div>
-                        </li>
-                        <!--FIM DOS PRODUTOS NA CESTA-->
-                              
-                    </ul>
-
-                      <ul id="buttonCarrinho">
-                        <li class="ButtonCarrinhoDeCompra">
-                          <a href="#" title="#">carrinho de compras</a>
-                        </li>
-                        <li class="ButtonFinalizarCompra">
-                          <a href="#" title="#">finalizar compra</a>
-                        </li>
-                      </ul>
-                  </div>
+                <div id="box_compras" style="display:none;">
+                  <?
+                    print  $this->partial("layout/carrinho",array("carrinhoLista" => $this->carrinhoLista));
+                  ?>
                 
+                  </div>
               </div>
           </div>
         
@@ -163,7 +124,7 @@
       
     <div id="menu_central">
         <h1>SELETO ALIMENTOS</h1>
-         <a href=""><img class="logo_seleto" src="<?=$this->basePath()?>/images/logo_seleto.png" title="Seleto Alimentos"></a>
+         <a href="<?=$this->basePath()?>"><img class="logo_seleto" src="<?=$this->basePath()?>/images/logo_seleto.png" title="Seleto Alimentos"></a>
             
           <div id="box_menu">
             <img class="phone"src="../public/images/phone.png">
@@ -252,6 +213,7 @@
 
                   </div>
                 <!--*********************FIM DO MENU LATERAL*********************-->
+                
         <?php echo $this->content; ?>
         
                 <!--*********************FIM DO MENU LATERAL PUBLICIDADE********************-->

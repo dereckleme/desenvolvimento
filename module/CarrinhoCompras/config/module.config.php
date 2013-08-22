@@ -23,17 +23,7 @@ return array(
                 				),
                 		),
                 ),
-            ),
-            'carrinho-test' => array(
-            		'type' => 'Zend\Mvc\Router\Http\Literal',
-            		'options' => array(
-            				'route'    => '/carrinhoteste',
-            				'defaults' => array(
-            						'controller' => 'CarrinhoCompras\Controller\Index',
-            						'action'     => 'test',
-            				),
-            		),
-            )    
+            ),  
         ),
     ),
     'controllers' => array(

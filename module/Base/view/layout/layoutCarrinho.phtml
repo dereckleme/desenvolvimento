@@ -1,10 +1,49 @@
-<h1>Carrinho teste</h1>
-<?php 
-    foreach($this->carrinhoLista AS $produto)
+
+                    <ul class="header_conteudo_compra">
+                        <li class="header_tt_box_produto">
+                          <p class="header_txt_produto_compra">Produto</p>   
+                        </li>
+                        <li class="header_tt_box_preco">
+                            <p class="header_txt_preco_compra">Preços (R$)</p> 
+                        </li>
+                        <li class="header_tt_box_Qtd">
+                        <p class="header_txt_Qtd_compra">Qtde.</p> 
+                      </li>
+                    </ul>
+
+                  <ul id="DescricaoPrecoQuatidade">
+
+                    <!--PRODUTOS NA CESTA-->
+                    <?php 
+    foreach($this->carrinhoLista['listaAtual'] AS $produto)
     {
     	?>
-    	<?=$produto->getTitulo()?>
-    	<hr/>
-    	<?php
+                        <li class="BoxProdutosCesta">
+                           <div id="BoxDescricaoFoto">
+                              <span class="imagem_produto_cesta">
+                                <a href="#"><img src="<?=$this->basePath()?>/images/produto_cesta_teste2.png"></a>
+                              </span>
+                                <a href="#"><p class="descricao_produto_cesta"><?=$produto->getTitulo()?> - 500g</p></a>   
+                              </div>
+                              <div id="BoxDescricaoPreco">
+                                <p class="descricao_preco_cesta" title="#">00,00</p>
+                              </div>
+                              <div id="BoxDescricaoQuatidade">
+                                  <p class="descricao_Qtd_cesta" title="#">0</p> 
+                              </div>
+                        </li>
+                <?php 
     }
-?>
+                ?>        
+                        <!--FIM DOS PRODUTOS NA CESTA-->
+                              
+                    </ul>
+
+                      <ul id="buttonCarrinho">
+                        <li class="ButtonCarrinhoDeCompra">
+                          <a href="#" title="#" class="actionCloseCarrinho">Voltar as Compras</a>
+                        </li>
+                        <li class="ButtonFinalizarCompra">
+                          <a href="#" title="#">Finalizar Compra</a>
+                        </li>
+                      </ul>
