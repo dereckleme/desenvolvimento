@@ -72,9 +72,16 @@ class ProdutoProdutos
 		return $this->titulo;
 	}
 
-	public function getValor() {
-	    $filter = new \NumberFormatter('pt_BR', \NumberFormatter::DECIMAL);
-	    return $filter->format($this->valor);	    
+	public function getValor($formatado = false) {
+	    if($formatado)
+	    {
+	        $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+	        return $filter->formatCurrency($this->valor, 'BRL');
+	    }
+	    else
+	    {
+	        return $this->valor;
+	    }	    	   
 	}
 
 	public function getProdutosubcategoria() {
@@ -90,10 +97,8 @@ class ProdutoProdutos
 	}
 
 	public function setValor($valor) {
-	    
-	    
-	    
-	    
+	    $valor = str_replace(".", "", $valor);
+	    $valor = str_replace(",", ".", $valor);
 		$this->valor = $valor;
 	}
 
