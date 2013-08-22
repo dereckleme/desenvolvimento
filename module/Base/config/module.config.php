@@ -17,8 +17,20 @@ return array(
             		'options' => array(
             				'route'    => '/administrador',
             				'defaults' => array(
-            						'controller' => 'Base\Controller\Index',
+            						'controller' => 'Base\Controller\Compra',
             						'action'     => 'index',
+            				),
+            		),
+            ),
+
+            'publico-finaliza-compra' => array(
+            		'type' => 'Literal',
+            		'options' => array(
+            				'route'    => '/finaliza-compra',
+            				'defaults' => array(
+            						'__NAMESPACE__' => 'Base\Controller',
+            						'controller'    => 'Compra',
+            						'action'        => 'index',
             				),
             		),
             ),
@@ -64,6 +76,7 @@ return array(
     ),
     'controllers' => array(
     		'invokables' => array(
+    		        'Base\Controller\Compra' => 'Base\Controller\CompraController',
     				'Base\Controller\Index' => 'Base\Controller\IndexController'
     		),
     ),

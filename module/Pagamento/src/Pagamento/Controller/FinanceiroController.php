@@ -17,6 +17,5 @@ class FinanceiroController extends AbstractActionController
     public function detalhePedidoAction(){
         return new ViewModel();
     }
-
 }
 

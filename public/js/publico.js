@@ -39,10 +39,21 @@ $(function(){
 					});
 			return false;
 		})
-		$(".actionOpenCarrinho,.actionCloseCarrinho").on("click", function(){	
+		$(".actionOpenCarrinho").on("click", function(){	
+				var quantidadeItens = $("#DescricaoPrecoQuatidade li").size();
+				if(quantidadeItens >= 1)
+					{
 				$("#box_compras").slideToggle("fast", function () {});
+					}
+				else
+					{
+					alert("- Não existe produtos em sua cesta.");
+					}
 				return false;
 		})
-		
+		$("#box_compras").on("click",".actionCloseCarrinho", function(){	
+				$("#box_compras").slideToggle("fast", function () {});
+			return false;
+		})
 		
 });		

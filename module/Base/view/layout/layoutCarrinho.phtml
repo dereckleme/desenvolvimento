@@ -1,4 +1,7 @@
-
+<?php 
+    if(count($this->carrinhoLista['listaAtual']) >= 1)
+    {
+?>
                     <ul class="header_conteudo_compra">
                         <li class="header_tt_box_produto">
                           <p class="header_txt_produto_compra">Produto</p>   
@@ -44,6 +47,9 @@
                           <a href="#" title="#" class="actionCloseCarrinho">Voltar as Compras</a>
                         </li>
                         <li class="ButtonFinalizarCompra">
-                          <a href="#" title="#">Finalizar Compra</a>
+                          <a href="<?=$this->url("publico-finaliza-compra")?>" title="#">Finalizar Compra</a>
                         </li>
                       </ul>
+  <?php 
+    }
+  ?>                   
