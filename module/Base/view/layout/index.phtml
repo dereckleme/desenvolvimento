@@ -188,6 +188,10 @@
 <div id="conteudo_principal">
 
                 <!--MENU LATERAL-->
+                <?php 
+                    if($this->matchedRoute != "publico-finaliza-compra")
+                    {
+                ?>
                   <div id="lista_produtos">
                     <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
 
@@ -212,6 +216,9 @@
                     </ul>
 
                   </div>
+                  <?php 
+                    }
+                  ?>
                 <!--*********************FIM DO MENU LATERAL*********************-->
                 
         <?php echo $this->content; ?>

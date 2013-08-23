@@ -16,6 +16,7 @@ class IndexController extends AbstractActionController
             $data = $request->getPost()->toArray();
             $service = $this->getServiceLocator()->get("CarrinhoCompras\Service\Carrinho");
             $service->setIdProduto($data['actionAddCart']);
+            $service->setQuantProduto($data['actionQuant']);
             $service->adiciona();
         }
         $view = new ViewModel();

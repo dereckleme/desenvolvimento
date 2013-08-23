@@ -12,19 +12,37 @@ class Carrinho
     }
     public function lista()
     {
-        $list = $this->repositoryProduto->findByidproduto($this->container->carrinho);
+        foreach($this->container->carrinho AS $iten)
+        {
+        	$selectedItens[] = $iten['idProduto'];
+        }
+        $list = $this->repositoryProduto->findByidproduto($selectedItens);
+            foreach($list AS $produto)
+            {
+                $idProduto = $produto->getIdproduto();
+            	$configSessionProdutos[] = array(
+            	    "produto" => $produto,
+            	    "quantidade" => $this->container->carrinho[$idProduto]['quantProd']
+            	);
+            }
     #	return $this->container->carrinho;
-        return $list;
+        return $configSessionProdutos;
     }
     public function calculoTotal()
     {
         $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
         
         $total = "";
-        $list = $this->repositoryProduto->findByidproduto($this->container->carrinho);
+        foreach($this->container->carrinho AS $iten)
+        {
+        	$selectedItens[] = $iten['idProduto'];
+        }
+        $list = $this->repositoryProduto->findByidproduto($selectedItens);
         foreach($list AS $produto)
         {
-            $total = $total+$produto->getValor();
+            $idProduto = $produto->getIdproduto();
+            $valorIten = $produto->getValor()*$this->container->carrinho[$idProduto]['quantProd'];
+            $total = $total+$valorIten;
         }
         return $filter->format($total);
     }

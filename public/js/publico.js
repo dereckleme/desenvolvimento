@@ -15,6 +15,7 @@ $(function(){
 						type: "post",
 						async:false,
 						success: function(data) {
+							
 								$("#box_compras").html(data);
 								var quantidadeItens = $("#DescricaoPrecoQuatidade li").size();
 									$("#Box_Visor_Qtd .Visor_Qtd").html(quantidadeItens);

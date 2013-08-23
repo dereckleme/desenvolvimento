@@ -90,12 +90,10 @@ class Module
     		 * Carrinho de compras Session
     		 */
     		$eventoCarrinho = $e->getApplication()->getServiceManager()->get('CarrinhoCompras\Model\Carrinho');
-    		
     		$controller->layout()->carrinhoLista = array(
     		   "listaAtual" =>  $eventoCarrinho->lista(),
     		   "valorTotal" => $eventoCarrinho->calculoTotal()
     		);
-    		
     		/*
     		 * Listagem de categorias
     		 */
@@ -103,6 +101,11 @@ class Module
     		$eventoCategoria = $e->getApplication()->getServiceManager()->get('Produto\Repository\Categorias');
     		$categorias = $eventoCategoria->findAll();
     		$controller->layout()->categorias = $categorias;
+    		
+    		/*
+    		 * $matchedRoute
+    		 */
+    		$controller->layout()->matchedRoute = $matchedRoute;
     	}, 100);
     
     }

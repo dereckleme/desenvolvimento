@@ -1,4 +1,5 @@
 <?php 
+    
     if(count($this->carrinhoLista['listaAtual']) >= 1)
     {
 ?>
@@ -26,13 +27,13 @@
                               <span class="imagem_produto_cesta">
                                 <a href="#"><img src="<?=$this->basePath()?>/images/produto_cesta_teste2.png"></a>
                               </span>
-                                <a href="#"><p class="descricao_produto_cesta"><?=$produto->getTitulo()?> - 500g</p></a>   
+                                <a href="#"><p class="descricao_produto_cesta"><?=$produto['produto']->getTitulo()?> - 500g</p></a>   
                               </div>
                               <div id="BoxDescricaoPreco">
-                                <p class="descricao_preco_cesta" title="#">00,00</p>
+                                <p class="descricao_preco_cesta" title="#"><?=$produto['produto']->getValor(true)?></p>
                               </div>
                               <div id="BoxDescricaoQuatidade">
-                                  <p class="descricao_Qtd_cesta" title="#">0</p> 
+                                  <p class="descricao_Qtd_cesta" title="#"><?=$produto['quantidade']?></p> 
                               </div>
                         </li>
                 <?php 

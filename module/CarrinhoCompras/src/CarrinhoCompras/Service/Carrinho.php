@@ -5,6 +5,7 @@ use Zend\Session\Container;
 class Carrinho
 {
     protected $idProduto;
+    protected $quantProduto;
     protected $container;
     public function __construct(Container $container)
     {
@@ -13,14 +14,23 @@ class Carrinho
     }
     public function adiciona()
     {
-        if(!in_array($this->idProduto, $this->container->carrinho) && !empty($this->idProduto))  $this->container->carrinho[$this->idProduto] = $this->idProduto;
+        if(!empty($this->idProduto) && !empty($this->quantProduto)) 
+        {
+            $this->container->carrinho[$this->idProduto] = array("idProduto" => $this->idProduto, "quantProd" => $this->quantProduto);
+        }  
     }
     public function exclui()
     {
-        if(in_array($this->idProduto, $this->container->carrinho) && !empty($this->idProduto))  unset($this->container->carrinho[$this->idProduto]);
+        if(!empty($this->idProduto))  
+        { 
+            unset($this->container->carrinho[$this->idProduto]);
+        }   
     }
 	public function setIdProduto($idProduto) {
 		$this->idProduto = $idProduto;
+	}
+	public function setQuantProduto($quantProduto) {
+		$this->quantProduto = $quantProduto;
 	}
 }
 
