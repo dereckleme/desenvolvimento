@@ -31,11 +31,11 @@ class IndexController extends AbstractActionController
         $repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
         $categoriaBySlug = $repository->findByslug($busca);
         
-        $paginator = new Paginator(new ArrayAdapter($teste));
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(1);
+        #$paginator = new Paginator(new ArrayAdapter($teste));
+        #$paginator->setCurrentPageNumber($page);
+        #$paginator->setDefaultItemCountPerPage(1);
         
-        return new ViewModel(array("produtosPorCategoria"=>$paginator, 'page'=>$page));
+        return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$page));
     }
     public function categoriaAndSubAction()
     {
