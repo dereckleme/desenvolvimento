@@ -23,10 +23,10 @@ return array(
             		),
             ),
 
-            'publico-finaliza-compra' => array(
+            'publico-carrinho-compra' => array(
             		'type' => 'Literal',
             		'options' => array(
-            				'route'    => '/finaliza-compra',
+            				'route'    => '/carrinho-compra',
             				'defaults' => array(
             						'__NAMESPACE__' => 'Base\Controller',
             						'controller'    => 'Compra',

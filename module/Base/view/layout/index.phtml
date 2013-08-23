@@ -34,8 +34,9 @@
     </head>
     <body>
 
-          <div id="header">
-              <div id="mn_topo">
+        <div id="header">
+          <div id="ContenTopoHeader">
+            <div id="mn_topo">
                   <ul class="mn_topo">
                     <li class="Menu_topo" style="text-decoration:none;">
                       <a href="">Bem vindo à nossa loja online</a>
@@ -47,27 +48,32 @@
                       <a href="#" class="eventOpenPopUp">Acompanhe seus pedidos</a>
                     </li>
                   </ul>
+             </div>
+
 
               <a href="#" class="actionOpenCarrinho">
-                <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
+                <span class="Cesta" title="Minha Cesta"><br/>
                     
                   <div id="Box_Visor_Qtd" style="<?if(count($this->carrinhoLista['listaAtual']) != 0) print "display:block"; else print "display:none";?>">  
-                  <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
+                    <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
                   </div>
 
                   <p class="mc">MINHA CESTA</p>
                    <p class="valor_total"><?=$this->carrinhoLista['valorTotal']?></p>
                     <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
-                  </span>
+                </span>
               </a>
+           </div>
+
+              <div id="BoxCestaForm">    
                 <div id="box_compras" style="display:none;">
                   <?
                     print  $this->partial("layout/carrinho",array("carrinhoLista" => $this->carrinhoLista));
                   ?>
                 
-                  </div>
+                </div>
               </div>
-          </div>
+      </div>
         
      
       <!--LOGIN -->
@@ -189,7 +195,7 @@
 
                 <!--MENU LATERAL-->
                 <?php 
-                    if($this->matchedRoute != "publico-finaliza-compra")
+                    if($this->matchedRoute != "publico-carrinho-compra")
                     {
                 ?>
                   <div id="lista_produtos">
