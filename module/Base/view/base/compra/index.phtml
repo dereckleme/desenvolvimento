@@ -1,3 +1,6 @@
+<?php 
+$filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+?>
 <!--Slider de Produtos-->
 	<div id="SliderProdutosGeral">
 		<img class="tt_SliderProdutos" src="<?=$this->basePath()?>/images/tt_SliderProdutos.png">
@@ -31,23 +34,6 @@
 	</div>
       <!--Fim do Slider de Produtos-->
 
-</br></br></br></br></br></br></br></br></br></br></br></br></br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
          <!--Pagina do Carrinho de Compras-->
 		<div id="CestaCompras">
@@ -64,22 +50,32 @@
 						</ul>
 
 							<ul id="BoxListaProduto">
-							<!--Produto no Carrinho-->
+							<?php 
+    print $this->MyVariable;
+    if(count($this->carrinhoLista['listaAtual']) >= 1)
+    {
+?>
+            <?php 
+    foreach($this->carrinhoLista['listaAtual'] AS $produto)
+    {
+    	?>
+    	
 								 <li class="ListaDaCesta">
+								     
 								 	<div id="ProductsFromBasket">
-								 		<img class="ImgProductsBasket" src="<?=$this->basePath()?>/images/img_pagina_carrinho_de_compra.png"/>
+								 		<img class="ImgProductsBasket" src="<?=$this->basePath()?>/images/img_pagina_carrinho_de_compra.png">
 								 	</div>
 								 	<div id="ProductsFromBasket">
-								 		<p class="DescriptionProductsBasket">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de.</p>
+								 		<p class="DescriptionProductsBasket"><?=$produto['produto']->getTitulo()?></p>
 								 	</div>
 								 	<div id="ProductsFromBasket">
-								 		<p class="ValueProductsFromBasket">00,00</p>
+								 		<p class="ValueProductsFromBasket"><?=$produto['produto']->getValor(true)?></p>
 								 	</div>
-
+                                    <input class="actionCode" type="hidden" value="<?=$produto['produto']->getIdproduto()?>"/>
 								 	<div id="ProductsFromBasket">
 									 	<span class="AmountProductsFromBasket">	
-			            				  <input class="qtd_carrinho" type="text" name="quantidade" value="1">
-			            					<ul>
+			            				  <input class="qtd_carrinho" type="text" name="quantidade" value="<?=$produto['quantidade']?>">
+			            					<ul class="Qtd_Mudar">
 			            					  <li class="change_qtd_carrinho MoreItens"> <a href="#">mais</a></li>
 			                                   <li class="change_qtd_carrinho  LessItens"> <a href="#">menos</a></li>
 			            					</ul>
@@ -87,20 +83,30 @@
 								 	</div>
 
 								 	<div id="ProductsFromBasket">
-								 		<p class="SubTotalProductsFromBasket">00,00</p>
+								 		<p class="SubTotalProductsFromBasket"><?=$filter->formatCurrency($produto['produto']->getValor()*$produto['quantidade'], 'BRL');?></p>
 								 	</div>
 
 								 	<div id="ProductsFromBasket">
 								 	  <a href="">
-								 		<img class="CloseProductsFromBasket" src="<?=$this->basePath()?>/images/fechar_carrinhodecompras.png" title="excluir do carrinho de compras"/>
+								 		<img class="CloseProductsFromBasket" src="<?=$this->basePath()?>/images/fechar_carrinhodecompras.png" title="excluir do carrinho de compras">
 								 	  </a>
 								 	</div>
 								  </li>
+<?php 
+        }
+    }
+    else {
+    	
+?>
+        <center>Seu carrinho está vazio ###########</center>
+<?php 
+    }
+?>								  
 								<!--Fim do Produto no Carrinho-->
 							</ul>
 
 						<ul id="HeaderCestaCompras">
-							  <li class="txt_prazoDentrega">Consulte o prazo de entrega do seu pedido</li>
+							  <li class="txt_prazoDentrega">Consulte o valor do seu frete</li>
 								 <li class="SeuCep">
 								 	<p class="txt_SeuCep">Digite seu CEP</p>
 
@@ -132,7 +138,7 @@
 								<p class="txt_aviso"><span class="txt_aviso_atencao">Atenção:</span> O prazo começa a contar a partir da aprovação do crédito.</p>
 		                        <p class="txt_frete">FRETE: GRÁTIS</p>
 		                        <p class="txt_TotalFrete">TOTAL COM FRETE:</p>
-		                        <p class="CalcSomaValor">R$ 00,00</p>
+		                        <p class="CalcSomaValor"><?=$this->carrinhoLista['valorTotal']?></p>
 							</li>
 
 						  <a href="#"><span class="ButtonCarCompras_Comprar">CONTINUAR COMPRANDO</span></a>

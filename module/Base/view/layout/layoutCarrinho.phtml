@@ -39,15 +39,14 @@ if(count($this->carrinhoLista['listaAtual']) > 0)
     ?>   
     <!--FIM DOS PRODUTOS NA CESTA-->
 </ul>
-
-<ul id="buttonCarrinho">
-    <li class="ButtonCarrinhoDeCompra">
-        <a href="#" title="#" class="actionCloseCarrinho">Voltar as Compras</a>
-    </li>
-    <li class="ButtonFinalizarCompra">
-        <a href="<?=$this->url("publico-finaliza-compra")?>" title="#">Finalizar Compra</a>
-    </li>
-</ul>
-<?php 
-}
-?>                   
+                      <ul id="buttonCarrinho">
+                        <li class="ButtonCarrinhoDeCompra">
+                          <a href="<?=$this->url("publico-carrinho-compra")?>" title="#">Carrinho de compras</a>
+                        </li>
+                        <li class="ButtonFinalizarCompra">
+                          <a href="" title="#">Finalizar Compra</a>
+                        </li>
+                      </ul>
+  <?php 
+    }
+  ?>                   

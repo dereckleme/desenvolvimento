@@ -67,40 +67,42 @@ $(function(){
 			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
 			if($.isNumeric(valor) && valor > 1) $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)-1);
 			return false;
-		});
-		
-		/*
-		MudarQtdBotao = function(e){
-			var reff = $(this).data('campos').campoQtd,
-				idReff = $('#'+reff),
-				values = parseInt($(idReff).val()),
-				newValue = 1,
-				soma = $(this).parent().hasClass('qtMais');
-				
-			newValue = (soma) ? values + 1 : ((values-1) > 0) ? values-1 : 1;					
-			idReff.val(newValue);
+		})
+		$(".MoreItens").on("click",function(){
+			var referenceId = $(this).parents(".ListaDaCesta").find(".actionCode").val();
+			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto, #ProductsFromBasket").find('input').val();
+			if($.isNumeric(valor)) 
+				{
+				var UpdateValor = parseInt(valor)+1;
+				$(this).parents("#quantidade_produto_categoria, .qtd_produto, #ProductsFromBasket").find('input').val(UpdateValor);
+				$.ajax({
+					url: basePatch+"/carrinho/insert",
+					type: "post",
+					async:false,
+					data: {actionAddCart:referenceId,actionQuant:UpdateValor},
+					success: function(data) {location.reload();},
+					error: function(){}
+						});
+				}
 			return false;
-		};		
-		$('li.qtd_mudar a').unbind().each(function(){
-			var idQtdInput = $(this).parents('div.qtd_produto').eq(0).find('input.box_qtd').attr('id');				
-			$(this).data('campos', {campoQtd: idQtdInput});
-		}).click(MudarQtdBotao);
-		
-		
-		MudarQtdBotaoPC = function(e){
-			var reff = $(this).data('campos').campoQtd,
-				idReff = $('#'+reff),
-				values = parseInt($(idReff).val()),
-				newValue = 1,
-				soma = $(this).parent().hasClass('qtMais_PC');
-				
-			newValue = (soma) ? values + 1 : ((values-1) > 0) ? values-1 : 1;					
-			idReff.val(newValue);
+		})
+		$(".LessItens").on("click",function(){
+			var referenceId = $(this).parents(".ListaDaCesta").find(".actionCode").val();
+			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto, #ProductsFromBasket").find('input').val();
+			if($.isNumeric(valor) && valor > 1) 
+				{
+				var UpdateValor = parseInt(valor)-1;
+				$(this).parents("#quantidade_produto_categoria, .qtd_produto, #ProductsFromBasket").find('input').val(UpdateValor);
+				$.ajax({
+					url: basePatch+"/carrinho/insert",
+					type: "post",
+					async:false,
+					data: {actionAddCart:referenceId,actionQuant:UpdateValor},
+					success: function(data) {location.reload();},
+					error: function(){}
+						});
+				}
 			return false;
-		};		
-		$('li.qtd_mudar_PC a').unbind().each(function(){
-			var idQtdInput = $(this).parents('div.prdQtd').find('input.box_qtd_PC').attr('id');				
-			$(this).data('campos', {campoQtd: idQtdInput});
-		}).click(MudarQtdBotaoPC);
-		*/
+		})
+		
 });		

@@ -2,7 +2,7 @@
 namespace Base;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session as SessionStorage;
-
+use Zend\Mvc\MvcEvent;
 class Module
 {
     public function getConfig()
@@ -22,7 +22,9 @@ class Module
     }
     public function onBootstrap($e)
     {
+        
     	$e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) {
+    	   
     		/*
     		 * Definições de sessoes
     		*/
@@ -89,11 +91,13 @@ class Module
     		/*
     		 * Carrinho de compras Session
     		 */
+    		
     		$eventoCarrinho = $e->getApplication()->getServiceManager()->get('CarrinhoCompras\Model\Carrinho');
     		$controller->layout()->carrinhoLista = array(
-    		   "listaAtual" =>  $eventoCarrinho->lista(),
-    		   "valorTotal" => $eventoCarrinho->calculoTotal()
+    				"listaAtual" =>  $eventoCarrinho->lista(),
+    				"valorTotal" => $eventoCarrinho->calculoTotal()
     		);
+    		
     		/*
     		 * Listagem de categorias
     		 */
