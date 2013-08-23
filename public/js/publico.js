@@ -45,13 +45,13 @@ $(function(){
 		$(".actionOpenCarrinho").on("click", function(){	
 				var quantidadeItens = $("#DescricaoPrecoQuatidade li").size();
 				if(quantidadeItens >= 1)
-					{
-				$("#box_compras").slideToggle("fast", function () {});
-					}
+				{
+					$("#box_compras").slideToggle("fast", function () {});
+				}
 				else
-					{
+				{
 					alert("- Não existe produtos em sua cesta.");
-					}
+				}
 				return false;
 		});
 		$("#box_compras").on("click",".actionCloseCarrinho", function(){	
@@ -62,12 +62,12 @@ $(function(){
 				var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
 				if($.isNumeric(valor)) $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)+1);
 			return false;
-		})
+		});
 		$(".qtMenos_PC, .qtMenos").on("click",function(){
 			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
 			if($.isNumeric(valor) && valor > 1) $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)-1);
 			return false;
-		})
+		});
 		
 		/*
 		MudarQtdBotao = function(e){
