@@ -1,1 +1,146 @@
-ok
+<!--Slider de Produtos-->
+	<div id="SliderProdutosGeral">
+		<img class="tt_SliderProdutos" src="<?=$this->basePath()?>/images/tt_SliderProdutos.png">
+			<div id="StructureSlider">	
+			 <a href=""><span class="seta_slider_esquerda"><img src="<?=$this->basePath()?>/images/seta_slider_esquerda.png"></span></a>
+				<div id="BoxSliderProdutos">
+					<ul id="BaseSlider">
+						<li class="ContSlider">
+							<a href=""><img class="ImgContSlider" src="<?=$this->basePath()?>/images/img_slide.png"></a>
+						</li>
+					</ul>
+				</div>
+			 <a href=""><span class="seta_slider_direita"><img src="<?=$this->basePath()?>/images/seta_slider_direita.png"></span></a>
+			
+				  <div id="ProductDescription">
+				  	
+				  	<!--Descrição dos Produtos do Slider-->
+				 	  <div id="BoxProductDescription">
+				 	  	<img class="detalhe_slider" src="<?=$this->basePath()?>/images/detalhe_slider.png">
+				 	  	<div id="ProductDescriptionContent">
+				 	  		<p class="txtProductDescription">Lorem ipsum </p>
+				 	  		<p class="ValueProductDescription">R$ 00,00</p>
+				 	  		<a href=""><span class="ButtonProductDescription">Adicionar na cesta</span></a>
+				 	  	</div> 
+				 	  </div>
+				 	  <!--Fim Descrição dos Produtos do Slider-->
+
+				  </div>
+
+			</div> 
+	</div>
+      <!--Fim do Slider de Produtos-->
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <!--Pagina do Carrinho de Compras-->
+		<div id="CestaCompras">
+				<img class="tt_CestaCompras" src="<?=$this->basePath()?>/images/tt_CestaCompras.png">
+				<div id="BoxCestaCompras">
+
+						<ul id="HeaderCestaCompras">
+							 <li class="CestaTopoProduto">Produto</li>
+							 <li class="CestaTopoDescricao">Descrição</li>
+							 <li class="CestaTopoValor">Valor R$</li>
+							 <li class="CestaTopoQtd">Quantidade</li>
+							 <li class="CestaTopoSub">Subtotal R$</li>
+							 <li class="CestaTopoExcluir">Excluir</li>
+						</ul>
+
+							<ul id="BoxListaProduto">
+							<!--Produto no Carrinho-->
+								 <li class="ListaDaCesta">
+								 	<div id="ProductsFromBasket">
+								 		<img class="ImgProductsBasket" src="<?=$this->basePath()?>/images/img_pagina_carrinho_de_compra.png"/>
+								 	</div>
+								 	<div id="ProductsFromBasket">
+								 		<p class="DescriptionProductsBasket">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de.</p>
+								 	</div>
+								 	<div id="ProductsFromBasket">
+								 		<p class="ValueProductsFromBasket">00,00</p>
+								 	</div>
+
+								 	<div id="ProductsFromBasket">
+									 	<span class="AmountProductsFromBasket">	
+			            				  <input class="qtd_carrinho" type="text" name="quantidade" value="1">
+			            					<ul>
+			            					  <li class="change_qtd_carrinho MoreItens"> <a href="#">mais</a></li>
+			                                   <li class="change_qtd_carrinho  LessItens"> <a href="#">menos</a></li>
+			            					</ul>
+			            				</span>
+								 	</div>
+
+								 	<div id="ProductsFromBasket">
+								 		<p class="SubTotalProductsFromBasket">00,00</p>
+								 	</div>
+
+								 	<div id="ProductsFromBasket">
+								 	  <a href="">
+								 		<img class="CloseProductsFromBasket" src="<?=$this->basePath()?>/images/fechar_carrinhodecompras.png" title="excluir do carrinho de compras"/>
+								 	  </a>
+								 	</div>
+								  </li>
+								<!--Fim do Produto no Carrinho-->
+							</ul>
+
+						<ul id="HeaderCestaCompras">
+							  <li class="txt_prazoDentrega">Consulte o prazo de entrega do seu pedido</li>
+								 <li class="SeuCep">
+								 	<p class="txt_SeuCep">Digite seu CEP</p>
+
+								 	    <a href="#" title="calcular frete">
+									 		<span class="CalcFret">
+									 		 Calcular frete
+									 		</span>
+									 		<input value="00000" class="DigCep1">
+									 		<input value="000" class="DigCep2">
+									 	</a>
+								 </li>
+
+								 <li>
+								 	<a class="ProcurarCep" href="#" title="encontre seu cep">
+								 		<u>Não sei meu CEP</u>
+								 	</a>
+								 </li>
+						</ul>
+
+						<ul id="BoxListaProduto">
+						 <span class="BoxEntrega">
+						 	<img class="ImgBoxEntrega" src="<?=$this->basePath()?>/images/entrega_Cesta.png">
+						 	 <p class="TxtBoxEntrega">
+						 		<span class="CaixaAltaEntrega">prazo máximo de entrega:</span>
+						 		 até 7 dias úteis</p>
+						 </span>
+							<li class="ListaDaCesta">
+								<img class="AvisoCarrinho" src="<?=$this->basePath()?>/images/aviso_carrinho.png">
+								<p class="txt_aviso"><span class="txt_aviso_atencao">Atenção:</span> O prazo começa a contar a partir da aprovação do crédito.</p>
+		                        <p class="txt_frete">FRETE: GRÁTIS</p>
+		                        <p class="txt_TotalFrete">TOTAL COM FRETE:</p>
+		                        <p class="CalcSomaValor">R$ 00,00</p>
+							</li>
+
+						  <a href="#"><span class="ButtonCarCompras_Comprar">CONTINUAR COMPRANDO</span></a>
+						  <a href="#"><span class="ButtonCarCompras_Finalizar">FINALIZAR COMPRA</span></a>
+
+						</ul>
+
+				</div>		
+				
+		</div>
+          <!--Fim da Pagina do Carrinho de Compras-->

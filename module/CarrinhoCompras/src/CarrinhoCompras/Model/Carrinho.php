@@ -12,6 +12,9 @@ class Carrinho
     }
     public function lista()
     {
+        $configSessionProdutos = null;
+      if(!empty($this->container->carrinho))  
+      {
         foreach($this->container->carrinho AS $iten)
         {
         	$selectedItens[] = $iten['idProduto'];
@@ -25,6 +28,7 @@ class Carrinho
             	    "quantidade" => $this->container->carrinho[$idProduto]['quantProd']
             	);
             }
+      }      
     #	return $this->container->carrinho;
         return $configSessionProdutos;
     }
@@ -33,17 +37,20 @@ class Carrinho
         $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
         
         $total = "";
-        foreach($this->container->carrinho AS $iten)
+        if(!empty($this->container->carrinho))
         {
-        	$selectedItens[] = $iten['idProduto'];
-        }
-        $list = $this->repositoryProduto->findByidproduto($selectedItens);
-        foreach($list AS $produto)
-        {
-            $idProduto = $produto->getIdproduto();
-            $valorIten = $produto->getValor()*$this->container->carrinho[$idProduto]['quantProd'];
-            $total = $total+$valorIten;
-        }
+            foreach($this->container->carrinho AS $iten)
+            {
+            	$selectedItens[] = $iten['idProduto'];
+            }
+            $list = $this->repositoryProduto->findByidproduto($selectedItens);
+            foreach($list AS $produto)
+            {
+                $idProduto = $produto->getIdproduto();
+                $valorIten = $produto->getValor()*$this->container->carrinho[$idProduto]['quantProd'];
+                $total = $total+$valorIten;
+            }
+        }    
         return $filter->format($total);
     }
 }
