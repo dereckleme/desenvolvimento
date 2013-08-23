@@ -22,7 +22,6 @@ return array(
             				),
             		),
             ),
-
             'publico-finaliza-compra' => array(
             		'type' => 'Literal',
             		'options' => array(
@@ -72,6 +71,17 @@ return array(
                         )    
                     ),
                 ),
+            ),
+            'publico-busca-produto' => array(
+        		'type' => 'Literal',
+        		'options' => array(
+    				'route'    => '/busca/',
+    				'defaults' => array(
+						'__NAMESPACE__' => 'Base\Controller',
+						'controller'    => 'Index',
+						'action'        => 'buscaDeProdutos',
+    				),
+        		),
             ),
         ),
     ),

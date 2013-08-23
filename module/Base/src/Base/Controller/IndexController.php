@@ -62,4 +62,9 @@ class IndexController extends AbstractActionController
                 return $this->redirect()->toRoute('home');
             }    
     }
+    public function buscaDeProdutosAction()
+    {
+        
+    }
+    
 }
