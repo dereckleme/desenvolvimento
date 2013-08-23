@@ -2,11 +2,13 @@ $(function(){
 		//Ações para inserção carrinho de compras
 		$(".actionAddCarrinho").on("click", function(){	
 			var actionIdProduto = $(this).attr("rev");	
+			var actionQuant = $(this).parents("#comprar_detalhe, .box_vejaTambem, .lista_categoria_produtos").find('input').val();
+			
 			$.ajax({
 				url: basePatch+"/carrinho/insert",
 				type: "post",
 				async:false,
-				data: {actionAddCart:actionIdProduto},
+				data: {actionAddCart:actionIdProduto,actionQuant:actionQuant},
 				success: function(data) {
 					$.ajax({
 						url: basePatch+"/carrinho/list",
@@ -36,7 +38,7 @@ $(function(){
 							});
 				},
 				error: function(){}
-					});
+					});	
 			return false;
 		});
 		$(".actionOpenCarrinho").on("click", function(){	
@@ -55,7 +57,18 @@ $(function(){
 				$("#box_compras").slideToggle("fast", function () {});
 			return false;
 		});
+		$(".qtMais_PC, .qtMais").on("click",function(){
+				var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
+				if($.isNumeric(valor)) $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)+1);
+			return false;
+		})
+		$(".qtMenos_PC, .qtMenos").on("click",function(){
+			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
+			if($.isNumeric(valor) && valor > 1) $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)-1);
+			return false;
+		})
 		
+		/*
 		MudarQtdBotao = function(e){
 			var reff = $(this).data('campos').campoQtd,
 				idReff = $('#'+reff),
@@ -88,5 +101,5 @@ $(function(){
 			var idQtdInput = $(this).parents('div.prdQtd').find('input.box_qtd_PC').attr('id');				
 			$(this).data('campos', {campoQtd: idQtdInput});
 		}).click(MudarQtdBotaoPC);
-		
+		*/
 });		
