@@ -8,6 +8,7 @@ class ProdutoProdutosRepository extends EntityRepository {
     protected $slugProduto;
     protected $slugCategoria;
     protected $slugSubcategoria;
+    protected $search; 
     
     public function detalheProduto()
     {
@@ -21,6 +22,7 @@ class ProdutoProdutosRepository extends EntityRepository {
             $results = $query->getOneOrNullResult();
         return $results;
     }
+    
     public function produtosRelacionados()
     {
         $qb =  $this->createQueryBuilder('i');
@@ -33,6 +35,21 @@ class ProdutoProdutosRepository extends EntityRepository {
         $results = $query->getResult();
         return $results;
     }
+    
+    public function buscaProdutos(){
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i.titulo');
+        #$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        #$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        $qb->where($qb->expr()->like('i.titulo', '?1'));
+        #$qb->orWhere($qb->expr()->like('c.nome', ':search'));
+        $qb->setParameter(1, "%$this->search%");
+        $query = $qb->getQuery();        
+        $results = $query->getResult();
+        echo "<pre>", print($query->getDQL()), "</pre>";
+        return $results;        
+    } 
+    
 	public function setSlugProduto($slugProduto) {
 		$this->slugProduto = $slugProduto;
 	}
@@ -44,5 +61,11 @@ class ProdutoProdutosRepository extends EntityRepository {
 	public function setSlugSubcategoria($slugSubcategoria) {
 		$this->slugSubcategoria = $slugSubcategoria;
 	}
+	
+	public function setSearch($search) {
+		$this->search = $search;
+	}
 
+    
+	
 }

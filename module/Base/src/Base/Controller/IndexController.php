@@ -23,6 +23,7 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
     public function categoriaAction()
     {
         $busca = $this->params()->fromRoute('categoriaslug',0);
@@ -37,6 +38,7 @@ class IndexController extends AbstractActionController
         
         return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$page));
     }
+    
     public function categoriaAndSubAction()
     {
         $busca = $this->params()->fromRoute('subcategoriaslugSub',0);
@@ -45,6 +47,7 @@ class IndexController extends AbstractActionController
         
         return new ViewModel(array('produtosPorSubCategoria'=>$subCatBySlug));
     }
+    
     public function produtoAction()
     {
         $params = $this->params();
@@ -62,9 +65,31 @@ class IndexController extends AbstractActionController
                 return $this->redirect()->toRoute('home');
             }    
     }
+    
+    public function autocompleteAction()
+    {
+        $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");                
+        $repository->setSearch($this->params()->fromQuery('term'));
+        $resultado = $repository->buscaProdutos();
+        
+        #echo $this->params()->fromQuery('term'), "\n";
+        echo "<pre>", print_r($resultado), "</pre>";die();
+        
+       
+        /*
+        $viewModel = new ViewModel(array('termos' => json_encode($resp))); // chama uma view
+        $viewModel->setTerminal(true); // desativa layout.phtml
+        return $viewModel;
+        */
+        
+    	return new ViewModel();
+    }
+    
     public function buscaDeProdutosAction()
     {
-        
+        die('busca');
+        echo $this->params()->fromQuery('search');
+        return new ViewModel();
     }
     
 }

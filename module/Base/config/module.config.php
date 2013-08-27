@@ -72,6 +72,17 @@ return array(
                     ),
                 ),
             ),
+            'publico-busca-autocomplete' => array(
+        		'type' => 'Literal',
+        		'options' => array(
+    				'route'    => '/autocomplete/',
+    				'defaults' => array(
+						'__NAMESPACE__' => 'Base\Controller',
+						'controller'    => 'Index',
+						'action'        => 'autocomplete',
+    				),
+        		),
+            ),
             'publico-busca-produto' => array(
         		'type' => 'Literal',
         		'options' => array(
@@ -82,7 +93,7 @@ return array(
 						'action'        => 'buscaDeProdutos',
     				),
         		),
-            ),
+            )
         ),
     ),
     'controllers' => array(
