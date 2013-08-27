@@ -15,7 +15,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				</div>
 			 <a href=""><span class="seta_slider_direita"><img src="<?=$this->basePath()?>/images/seta_slider_direita.png"></span></a>
 			
-				  <div id="ProductDescription">
+				  <div id="ProductDescription" style="display:none">
 				  	
 				  	<!--Descrição dos Produtos do Slider-->
 				 	  <div id="BoxProductDescription">
@@ -33,7 +33,10 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 			</div> 
 	</div>
       <!--Fim do Slider de Produtos-->
-
+<?php 
+    if(count($this->carrinhoLista['listaAtual']) >= 1)
+    {
+?>
 
          <!--Pagina do Carrinho de Compras-->
 		<div id="CestaCompras">
@@ -50,11 +53,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 						</ul>
 
 							<ul id="BoxListaProduto">
-							<?php 
-    print $this->MyVariable;
-    if(count($this->carrinhoLista['listaAtual']) >= 1)
-    {
-?>
+							
             <?php 
     foreach($this->carrinhoLista['listaAtual'] AS $produto)
     {
@@ -92,16 +91,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								 	  </a>
 								 	</div>
 								  </li>
-<?php 
-        }
-    }
-    else {
-    	
-?>
-        <center>Seu carrinho está vazio ###########</center>
-<?php 
-    }
-?>								  
+							  
 								<!--Fim do Produto no Carrinho-->
 							</ul>
 
@@ -149,4 +139,28 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				</div>		
 				
 		</div>
+		<?php 
+        }
+    }
+    else {
+    	
+?>			           <!--Pagina Vazia do Carrinho de Compras-->
+       <div id="CestaCompras">
+				<img class="tt_CestaCompras" src="<?=$this->basePath()?>/images/tt_CestaCompras.png">
+					<div id="BoxCestaCompras">
+
+						<img class="imgCestaVazia" src="<?=$this->basePath()?>/images/cestaVazia.png" title="cesta vazia">
+
+							<div id="CestaVazia">
+								<p class="txtCestaVazia"><span class="ttCestaVazia">Sua cesta de compras esta vazia.</span><br/><br/>
+								Você ainda não adicionou nenhum produto ao seu carrinho de compras. Navegue pelo site<br/> e selecione os produtos desejados.</p>
+								<a href="#"><span class="ButtonCestaVazia" title="continuar comprando">CONTINUAR COMPRANDO</span></a>
+							</div>	
+
+					</div>
+		</div>
+		                <!--Fim da Pagina Vazia do Carrinho de Compras-->		
+<?php 
+    }
+?>	
           <!--Fim da Pagina do Carrinho de Compras-->

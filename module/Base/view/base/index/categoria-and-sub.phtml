@@ -45,9 +45,9 @@
                         	?>                     	        
                 	        <li class="lista_categoria_produtos">
                       			<div id="descricao_produto_categoria">
-                      				<img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria.png">
+                      				<a href=""><img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria.png" title="#"></a>
                       				<p class="txt_descricao_produto_categoria">
-                      				    <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$subcategoria->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
+                      				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$subcategoria->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
                       				        <?php echo $produto->getTitulo(); ?>
                       				    </a>
                       				</p>

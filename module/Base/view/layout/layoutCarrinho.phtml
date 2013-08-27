@@ -25,7 +25,7 @@ if(count($this->carrinhoLista['listaAtual']) > 0)
               <span class="imagem_produto_cesta">
                 <a href="#"><img src="<?=$this->basePath()?>/images/produto_cesta_teste2.png"></a>
               </span>
-              <a href="#"><p class="descricao_produto_cesta"><?=$produto['produto']->getTitulo()?> - 500g</p></a>   
+              <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto['produto']->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto['produto']->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto['produto']->getSlugProduto() )); ?>"><p class="descricao_produto_cesta"><?=$produto['produto']->getTitulo()?> - 500g</p></a>   
             </div>
             <div id="BoxDescricaoPreco">
                 <p class="descricao_preco_cesta" title="#"><?=$produto['produto']->getValor(true)?></p>
