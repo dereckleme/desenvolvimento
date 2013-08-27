@@ -126,7 +126,7 @@
 
 <div id="geral">
 
-
+ <!--*****************************CONTEUDO TOPO*****************************-->
   <div id="topo_menu">
       
     <div id="menu_central">
@@ -134,7 +134,7 @@
          <a href="<?=$this->basePath()?>"><img class="logo_seleto" src="<?=$this->basePath()?>/images/logo_seleto.png" title="Seleto Alimentos"></a>
             
           <div id="box_menu">
-            <img class="phone"src="../public/images/phone.png">
+            <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
             <p class="txt_phone">Televendas: 55 11 8855-9966</p>
             <input placeholder="buscar produto" class="search_topo" id="search">
             <input type="submit" value="Pesquisar" class="lupa_topo">
@@ -151,26 +151,136 @@
             
             
 
-            <ul class="menu_central">
-              <a href="">
-                <li class="lista_menu_cafe">
-                </li>
-              </a>
+                <ul class="Menu">
+                    
+                      <li><!--Cafés-->
+                        <a class="lista_menu_cafe" href="#">Cafes</a>
+                          <ul class="dropdown" style="display:none">
+                            <li class="tt_dropdown">
+                              <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span>
+                              </a>
+                            </li>
+                                 <li>
+                                  <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
+                                 </li>
+                               <span id="BoxListaDropDown">
+                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                               </span> 
+                          </ul>
 
-              <a href="">
-                <li class="lista_menu_alimentos">
-                </li>
-              </a>
+                      </li>
+                      
+                      <li><!--Alimentos-->
+                        <a class="lista_menu_alimentos" href="">Alimentos</a>
+                          <ul class="dropdown" style="height: 298px; display:none">
+                            <li class="tt_dropdown">
+                              <a class="tt_dropdown" href="#">Seleto alimentos, seu café da manhã  <span class="ttd_dropdown"> completo</span>
+                              </a>
+                            </li>
 
-              <a href="">
-                <li class="lista_menu_produtos">
-                </li>
-              </a>
-            </ul>
+                               <li class="BoxBonecoSeleto ">
+                                <img class="BonecoSeleto" src="<?=$this->basePath()?>/images/BonecoSeleto.png">
+                               </li>
+
+                             <span id="BoxListaDropDown">
+                               <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
+
+                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
+
+                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
+
+                               <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                               
+                               <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
+
+                               
+                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
+
+                                <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                             </span>
+                          </ul>
+                      </li>
+
+                      <li><!--Todos Produtos-->
+                        <a  class="lista_menu_produtos" href="">Todos Produtos</a>
+                          <ul class="dropdown" style="display:none">
+                            <li class="tt_dropdown">
+                              <a class="tt_dropdown" href="#">Lorem ipsum dolor sit amet, <span class="ttd_dropdown"> consectetur</span>
+                              </a>
+                            </li>
+                                <!--Coluna 1-->
+                             <span id="BoxAllFood">
+                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                 
+                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+
+                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                             </span>
+                                 <!--Coluna 2-->
+                              <span id="BoxAllFood">
+                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                 
+                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+
+                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                             </span>
+                                  <!--Coluna 3-->
+                              <span id="BoxAllFood">
+                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+
+                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                 
+                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+
+                                 
+                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+
+                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                             </span>
+
+                          </ul>
+                      </li>
+                    
+                </ul>
           </div>
     </div>
 
   </div>
+
+ <!--*****************************FIM DO CONTEUDO TOPO*****************************-->
+
 
 
 	<!--****************BANNER PAGAMENTO/ENTREGAS/REDES SOCIAIS****************-->
@@ -187,19 +297,9 @@
     <!--****************FIM DO BANNER PAGAMENTO/ENTREGAS/REDES SOCIAIS****************-->
 
 <!--*****************************CAMINHO SITE***************************-->
-                	<div id="breadcrumbs">
-
-                		<div id="box_breadcrumbs">
-                        <p>
-                        <a class="txt_breadcrumbs" href=""> Principal</a>
-                  			<img class="img_breadcrumbs" src="<?=$this->basePath()?>/images/img_breadcrumbs.png">
-                        <a class="txt_breadcrumbs" href=""> Produtos</a>
-                        <img class="img_breadcrumbs" src="<?=$this->basePath()?>/images/img_breadcrumbs.png">
-                        <span class="txt_pagina">Café Forte</span>
-                        </p>
-                		</div>
-
-                	</div>
+                	 <?
+                    print  $this->partial("layout/caminho",array("caminhoDefines" => $this->caminhoDefines));
+                  ?>
 
 <!--***************************** FIM DO CAMINHO SITE***************************-->
                 	

@@ -16,6 +16,8 @@ use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator,
     Zend\Paginator\Adapter\ArrayAdapter;
 
+use Zend\View\Helper\Url;
+
 
 class IndexController extends AbstractActionController
 {
@@ -26,6 +28,7 @@ class IndexController extends AbstractActionController
     
     public function categoriaAction()
     {
+      
         $busca = $this->params()->fromRoute('categoriaslug',0);
         $page = $this->params()->fromRoute('page');
         

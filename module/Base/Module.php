@@ -3,6 +3,7 @@ namespace Base;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session as SessionStorage;
 use Zend\Mvc\MvcEvent;
+use Base\Service\Caminho;
 class Module
 {
     public function getConfig()
@@ -20,9 +21,17 @@ class Module
             ),
         );
     }
+    public function getServiceConfig() {
+    	return array(
+    			'factories' => array(
+    					'Base\Service\Caminho' => function($service){
+    						$caminho = new Caminho($service);
+    						return $caminho;
+    					},
+    			));
+    }					
     public function onBootstrap($e)
     {
-        
     	$e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) {
     	   
     		/*
@@ -34,6 +43,9 @@ class Module
     		$controllerClass = get_class($controller);
     		$moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
     		$config          = $e->getApplication()->getServiceManager()->get('config');
+    		
+    		
+    		
     		/*
     		 * Definição de Layout de todos modulos
     		*/
@@ -102,15 +114,28 @@ class Module
     		 * Listagem de categorias
     		 */
     		
+    		
     		$eventoCategoria = $e->getApplication()->getServiceManager()->get('Produto\Repository\Categorias');
     		$categorias = $eventoCategoria->findAll();
     		$controller->layout()->categorias = $categorias;
+    		
     		
     		/*
     		 * $matchedRoute
     		 */
     		$controller->layout()->matchedRoute = $matchedRoute;
+    		
+    		/*
+    		 * Caminho site
+    		 */
+    		
+    		$serviceCaminho = $e->getApplication()->getServiceManager()->get('Base\Service\Caminho');
+    		$serviceCaminho->setMatchedRoute($matchedRoute);
+    		$serviceCaminho->setController($controller);
+    		$controller->layout()->caminhoDefines = $serviceCaminho->geraCaminho();
+    		
+    		
     	}, 100);
-    
+      
     }
 }
