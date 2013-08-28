@@ -6,7 +6,7 @@
 
     		<div id="galeria_detalhe">
             <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
-                <span>passe o mouse na imagem</span>
+               
 				<img id="zoom_03" width="218" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/img_1.jpg" src="<?=$this->basePath()?>/images/produtos/small/img_1.png" style=" position: absolute;">
 				<!-- </div> -->
 
@@ -35,6 +35,7 @@
 					<em class="un_monetaria">
 					<strong><?=$this->detalheProduto->getValor(true)?></strong></em> 
 				</p>
+
 				<div class="qtd_produto">
 					<p class="text_qtd">Quantidade</p>
 					<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" class="box_qtd" type="text" name="quantidade" value="1">
@@ -58,6 +59,7 @@
            
 			
 			<div class="informacoes_produtos">
+				 <span class="mouse_imagem">passe o mouse na imagem</span>
 				<h4 class="inf_produtos">Informações sobre o produto</h4>
 				<p class="ingredientes">Ingredientes:</p>
 				<p class="ingredientes_inf">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando </p>
@@ -68,11 +70,14 @@
     <!--box mais produtos-->
 
     <div id="box_vejaTambem">
+    	 <h2><span class="tt_top_list_right">VEJA TAMBÉM</span></h2>
     <?php 
         foreach($this->produtosRelacionados AS $relacionados)
         {
     ?>
+
     	<div class="box_vejaTambem">
+
 		    	<p class="desc_prod"><?=$relacionados->getTitulo()?></p>
 		    	<div class="left_vejaTambem">
 		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />

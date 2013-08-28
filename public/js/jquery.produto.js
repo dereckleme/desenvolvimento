@@ -121,4 +121,31 @@ $(function(){
 			});
 			
 		});
+		$("#actionAddReferencia").on("click", function(){	
+			var eventReferencia = $("#criaReferencias .tituloReferencia").val();
+			$.ajax({
+				url: basePatch+"/administrador/referencia/insert",
+				type: "post",
+				async:false,
+				data: {eventReferencia:eventReferencia},
+				success: function(data) {
+					if(data == "")
+						{
+						$("#criaReferencias #message").removeClass('alert-error');
+						$("#criaReferencias #message").addClass("alert-success");
+						$("#actionAddCat").fadeOut();
+						$("#criaReferencias #message").html("- Referencia adicionada com sucesso.");
+						
+						}
+					else
+						{
+						$("#criaReferencias #message").addClass("alert-error");
+						$("#criaReferencias #message").html(data);
+						}
+					$("#criaReferencias #message").fadeIn();
+				}
+			});
+			return false;
+		})
+		
 });

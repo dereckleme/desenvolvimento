@@ -36,7 +36,7 @@ abstract class AbstractService
             $string = $this->campo;
             $entity->$string($reference);
         }
-        else
+        else if(!empty($this->targetEntity) && is_array($this->targetEntity))
         {
             foreach($this->targetEntity AS $entityes)
             {

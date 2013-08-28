@@ -20,6 +20,14 @@
                 </ul>
               </div><!-- /btn-group -->
               
+              
+              <div class="btn-group">
+                <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Gerenciar Rereferencias <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="actionSubcategoriaGerenciar">Gerenciar</a></li>
+                   <li><a href="#criaReferencias" data-toggle="modal">Adicionar</a></li>
+                </ul>
+              </div><!-- /btn-group -->
             </div> 
             
             <br/>
@@ -143,6 +151,25 @@
                     <button class="btn btn-primary" id="actionAddSubCat">Salvar</button>
                   </div>
                 </div>    
+             <!-- Modal Referencias -->
+                <div id="criaReferencias" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Adicionar Referencias</h3>
+                  </div>
+                  <div class="alert" id="message">
+              <strong>Oh snap!</strong> Change a few things up and try submitting again.
+            </div>
+                  <div class="modal-body">
+                    <p>
+                        Titulo:<br/> <input type="text" class="tituloReferencia"/>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+                    <button class="btn btn-primary" id="actionAddReferencia">Salvar</button>
+                  </div>
+                </div>
             <h5>Detalhe de cadastramento de categorias:</h5>
             <ul class="nav nav-list tree">
                            <?php 

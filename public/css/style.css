@@ -173,12 +173,12 @@ span#BoxAllFood { width: 180px; display: block; float: left; margin-bottom: 10px
 
 /*******************COLUNA ESQUERDA***************/
 #lista_produtos { width: 150px; float: left; margin-right: 10px;}
-span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; font-weight: 600; background: #582700; color: #FFF; text-align: center; float: left; }
-ul.lista_geral { width: 148px; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
-a.tt_lista { padding: 6px 0 5px 10px; display: block; color: #582700; font-size: 16px; font-weight: 600; border-bottom: solid 1px #CCC; border-top: solid 1px #CCC;}
-li.itens_menu_lateral { width: 100%; margin-top: 5px;}
-li.itens_menu_lateral a { display: block; font-size: 12px; padding: 4px 40px 2px 6px; color: #333333;}
-li.itens_menu_lateral a:hover { background: #ff7f25; color: #FFF;}
+span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; letter-spacing: 1px; padding: 6px 0 0 0; font-size: 13px; font-weight: 600; background: #582700; color: #FFF; text-align: center; float: left; }
+ul.lista_geral { width: 148px; border-left: solid 1px #ddd; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
+a.tt_lista {width: 143px; padding: 5px 0; padding-left: 5px; display: block; font-weight: 500; font-weight: bolder; color: #333; margin-top: 5px; margin-bottom: 5px; font-size: 13px;  border-bottom: solid 1px #ddd; border-top: solid 1px #ddd;}
+li.itens_menu_lateral { width: 100%; }
+li.itens_menu_lateral a { display: block; font-size: 12px; width: 143px; padding: 5px 0; padding-left: 5px;  color: #666;}
+li.itens_menu_lateral a:hover { background: #582700; color: #FFF;}
 
 
 
@@ -194,7 +194,7 @@ img.banner_redes {float: right; margin-top: 25px; margin-right: 45px;}
 #breadcrumbs { width: 100%; min-width: 1024px; float: left; }
 #box_breadcrumbs { width: 1024px; height: 30px; margin: 0 auto; font-size: 11px; color: #666666; }
 a.txt_breadcrumbs { color: #666666;}
-span.txt_pagina { color: #ff7f1f; font-weight: 600;}
+span.txt_pagina { color: #ff7f1f; font-weight: bold; }
 img.img_breadcrumbs { margin-left: 10px; margin-right: 10px;}
 /*************************FIM DO BREADCRUMBS DAS PAGINAS***********************/
 
@@ -224,15 +224,15 @@ li.lista_categoria_produtos { width: 644px; height: 155px; float: left; border-b
 
 #descricao_produto_categoria { width: 300px; height: 125px; margin: 15px 0; float: left; border-right: solid 1px #CCC;}
 
-img.img_descricao_produto_categoria { width: 70px; height: 115px; float: left; padding-left: 10px;}
 
-p.txt_descricao_produto_categoria { width: 200px; max-height: 67px; float: left; display: block; font-size: 14px; color: #666666; padding-left: 8px;}
-a.txt_descricao_produto_categoria { font-size: 14px; color: #666666; padding-left: 8px;}
-strike.precoAntigo_categoria { margin: 0 0 0 10px; color:#582700; font-size: 13px; display: block;}
+img.img_descricao_produto_categoria { width: 70px;  height: 115px;float: left; margin-left: 10px }
 
-p.precoProduto_categoria { width: 200px; font-size: 19px; color:#ff7f25; margin-top: -1px; display: block;}
+p.txt_descricao_produto_categoria a { width: 200px; height: 54px;font-size: 13px; color: #666666; float: left; margin-left: 10px; max-height: 54px}
+p.txt_descricao_produto_categoria a:hover {text-decoration: underline;}
+strike.precoAntigo_categoria { color:#582700; font-size: 12px; width: 200px;float: left; margin-left: 10px}
 
-em.moeda_monetaria { margin: 0 0 0 10px;  font-style: normal;}
+p.precoProduto_categoria { width: 200px; font-size: 19px; color:#ff7f25;  float: left; margin-left: 10px; margin-top: 5px}
+em.moeda_monetaria { margin: 0 0 0 10px;  font-style: normal; margin-left: 0px}
 /*QUANTIDADE*/
 /* PC = Produto da Categoria*/
 #quantidade_produto_categoria { width: 144px; height: 125px; margin: 15px 0; float: left; border-right: solid 1px #CCC;}
@@ -251,29 +251,32 @@ button.carrinhoCompras_categoria { font-weight:bold; border-radius: 5px; float: 
 
 /******************* COLUNA CENTRAL - HOME***************/
 #conteudo_central { width: 644px; float: left; margin-right: 10px;}
-#box_destaque { width: 330px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
-img.bt_box { padding: 5px 0 0 15px; }
+#box_destaque { float: left; margin-bottom: -5px}
+
 p.txt_box{ margin-left: 60px; margin-top: -27px; font-size: 16px; color: #FFF; font-weight: 600; letter-spacing: 2px;}
 
-#box_visitados { width: 235px; height: 40px; text-transform: uppercase; background: #582700; float: left; }
-ul#box_produto { width: 644px; float: left; margin-bottom: 10px; border-bottom: dashed 1px #CCC; padding-bottom: 20px; border: solid 1px #CCC; display: block;}
-li#produto { width: 214px; height: 340px; float: left; border-left: dashed 1px #CCC;
+#box_visitados {float: left; margin-bottom: -5px }
+ul#box_produto { width: 644px; float: left; margin-bottom: 10px; border-bottom: dashed 1px #ddd; padding-bottom: 20px; border: solid 1px #ddd; display: block;}
+li#produto { width: 214px; height: 340px; float: left; border-left: dashed 1px #ddd;
 text-align: center; margin-top: 25px; display: block;}
 a.ImgProdutoHome { width: 214px; height: 196px; float: left; text-align: center;}
-p.txt_produto { width: 170px; height: 35px; font-size: 13px; color: #666666; font-weight: 700; float: left; text-align: center; margin: 0 0 15px 25px;}
-p.txt_valor { width: 150px; height: 20px; font-size: 15px; color: #ff7f25; font-weight: 700; float: left;  text-align: center; margin: 15px 0 20px 30px;}
-span.comprar { padding: 5px 25px 5px 25px; background: #ff7f25; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
-
+a img.imgProdutos_home{width: 150px; height: 196px;}
+a:hover p.txt_produto {text-decoration: underline;}
+p.txt_produto { width: 170px; height: 35px; font-size: 12px; color: #666666; font-weight: bold; float: left; text-align: center; margin: 0 0 15px 25px;}
+p.txt_valor { width: 150px; height: 20px; font-size: 18px; color: #ff7f25; font-weight: bold; float: left;  text-align: center; margin: 15px 0 20px 30px;}
+span.comprar { padding: 5px 25px 5px 25px; background: #ff7f25; color: #FFF; font-size: 10px; letter-spacing: 1px;   text-transform: uppercase; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
+span.comprar:hover {background:#e57220 }
 /*******************COLUNA DIREITA***************/
 #publicidade { width: 200px; height: 500px; float: left;}
-#cadastro { width: 198px; height: 175px; float: left; border: solid 1px #CCC;}
-p.tt_form { color: #ff7f25; font-size: 12px; font-weight: 550; text-transform: uppercase; padding-left: 10px; margin-top: 13px;}
+#cadastro { width: 198px; height: 175px; float: left; border: solid 1px #ddd;}
+p.tt_form { color: #ff7f25; font-size: 12px; font-weight: 550; text-transform: uppercase; letter-spacing: 1px; padding-left: 10px; margin-top: 13px;}
 form { font-family: "Arial", Helvetica, sans-serif; font-size:12px; }
-input.statusNome, input.statusEmail { font-family: "Arial", Helvetica, sans-serif; font-size:12px; padding: 5px 30px; margin-bottom: 15px; margin-left: 15px; color: #666666; border: solid 1px #CCC;}
-input.statusNome { width: 130px; padding-left: 5px;}
-input.statusEmail { width: 130px; padding-left: 5px;}
-button.cadastrar { width:80px; height:25px; font-size: 10px; margin-right: 7px; float: right; cursor:pointer; text-transform: uppercase; border-radius: 5px; border:none; background: #ff7f25; color: #FFF; }
-#face { width: 198px; height: 277px; float: left; border: solid 1px #CCC; margin-top: 30px; z-index: 100;}
+input.statusNome, input.statusEmail { font-family: "Arial", Helvetica, sans-serif; font-size:12px; padding: 5px 10px; margin-bottom: 15px; margin-left: 10px; color: #666666; border: solid 1px #ddd;}
+input.statusNome { width: 150px;}
+input.statusEmail { width: 150px;}
+button.cadastrar {   padding: 5px 15px; font-size: 10px;letter-spacing: 1px; margin-right: 15px; float: right; cursor:pointer; text-transform: uppercase; border-radius: 5px; border:none; background: #ff7f25; color: #FFF; }
+button.cadastrar:hover {background: #e57220 }
+#face { width: 198px; height: 277px; float: left; border: solid 1px #ddd; margin-top: 30px; z-index: 100;}
 
 /*******************FOOTER***************/
 #footer {width: 100%; min-width: 1024px; float: left; background: #582700}
@@ -308,7 +311,8 @@ p.pagamentos {font-size: 14px; color:#582700; text-transform: uppercase; font-we
 h3.Nome_detalhe {font-size: 24px; color:#ff7f25; margin-left: 25px}
 h4.inf_produtos{font-size: 24px; color:#351903;}
 #box_detalhe {width: 644px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd;}
-#galeria_detalhe{width: 218px; float: left; border: solid 1px #ddd; padding: 10px 0px; margin-left:25px; }
+#galeria_detalhe{width: 212px; float: left; border: solid 1px #ddd; padding:15px 10px; margin-left:20px; }
+span.mouse_imagem { background:url(../images/lupa_zoom.png) no-repeat left top;font-size: 12px; color:#666; padding-left: 20px; padding-bottom: 5px; margin-left: 20px; }
 #comprar_detalhe{width: 323px; float: left; border: solid 1px #ddd;  padding: 10px; margin-left: 25px; font-size: 13px; text-align: center;}
 strike.precoAntigo_produto {font-weight: bold; color:#582700;}
 p.precoProduto_detalhe {font-size: 24px; color:#ff7f25; margin: 8px;}
@@ -321,7 +325,6 @@ ul li.qtd_mudar{ padding: 0!important;}
 ul li.qtd_mudar a {  right: 3px; display: list-item; }
 li.qtMais a{position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 0px; top:7px;}
 li.qtMenos a{position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 -20px; top:9px;}
-
 .btn_detalhe {width: 300px; margin:0 auto; }
 button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #351903;font-weight: bold; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left; margin-top: 13px;}
 a.btn_comprar_detalhe{ background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: right; padding: 19px; margin-top: 13px}
@@ -332,16 +335,18 @@ p.ingredientes_inf{color: #666; font-size: 13px; line-height: 18px }
 
 /********************veja também*******************************/
 #box_vejaTambem {width: 200px; float: left; display: block; border: 1px solid #DDD}
-.box_vejaTambem{margin-bottom: 10px; float: left; border-bottom: 1px solid #DDD; margin-left: 10px; padding-bottom: 20px}
+.box_vejaTambem{margin-bottom: 10px; float: left; border-bottom: 1px solid #DDD;  padding-bottom: 20px; width: 180px; margin-left: 10px}
+.tt_top_list_right {width: 200px; height: 22px; margin-top: -13px; letter-spacing: 2px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #ff7f25; color: #FFF; text-align: center; float: left;}
 .left_vejaTambem{float: left; width: 86px; height: 102px; }
 .right_vejaTambem{ float:left; margin-left: 10px; width: 80px}
 #box_vejaTambem p.desc_prod {}
-img.maisProd{border:1px solid #DDD;}
-strike.precoAntigo_produto {font-weight: bold; font-size: 13px; color:#582700;}
-p.precoProduto_VejaTambem{font-size: 18px; color:#ff7f25; margin-top: 5px}
+img.maisProd{}
+strike.precoAntigo_produto {font-weight: bold; font-size: 11px; color:#582700;}
+p.precoProduto_VejaTambem{font-size: 13px; color:#ff7f25; margin-top: 5px}
 .qtd_VejaTambem{width:82px; margin-bottom: 40px; clear: both; margin-left: -10px }
+.box_vejaTambem .desc_prod {color:#666; font-size: 13px; width: 180px;}
 button.btn_carrinhoCompras_vejaTambem{background: url(../images/btn_ir_cesta.png) no-repeat center #351903; text-indent: -9999px; float: left; border:none; border-radius: 5px; padding:15px 25px; cursor: pointer; width:60px}
-a.btn_comprar_vejaTambem {background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: left; font-size: 13px; padding: 16px 20px; }
+a.btn_comprar_vejaTambem {background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: left; font-size: 13px; padding: 16px 20px; margin-left: 10px }
 /*set a border on the images to prevent shifting*/
 #gallery_01 img{border:2px solid white;} 
 /*Change the colour*/
@@ -351,7 +356,7 @@ a.btn_comprar_vejaTambem {background: #ff7f25; font-weight: bold;  color:#FFF; b
 #CestaCompras { width: 1024px; float: left; margin-bottom: 30px;}
 img.tt_CestaCompras { float: left;}
 /*ESTRUTURA DO CONTEUDO*/
-#BoxCestaCompras { width: 1024px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px;}
+#BoxCestaCompras { width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px;}
 ul#HeaderCestaCompras { width: 1000px; height: 50px; float: left; background: #dddddd; margin-top: 12px; margin-left: 12px;}
 ul#BoxListaProduto { width: 1000px; float: left; margin-left: 12px;}
 li.ListaDaCesta { width: 998px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left;}
@@ -433,9 +438,55 @@ p.txtCestaVazia { font-size: 13px; color: #666666;}
 span.ttCestaVazia { font-size: 20px; font-weight: 700; letter-spacing: 1px; color: #ff7f25;}
 span.ButtonCestaVazia { float: left;  margin-bottom: 20px; margin-top: 20px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px;}
 span.ButtonCestaVazia:hover { background: #E76509;}
-
-
 /*FIM DA PAGINA COM OS ITENS DO CARRINHO DE COMPRAS*/
+
+/*PAGINA DE FINALIZAR COMPRA*/
+#FinalizarCompra { width: 1024px; float: left;}
+img.tt_FinalizarCompra { float: left;}
+#BoxFinalizarCompra { width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px; margin-bottom: 10px;}
+ul#HeaderFinalizarProduto { width: 1000px; height: 50px; float: left; background: #dddddd; margin-top: 12px; margin-left: 10px;}
+li.FinalizarProduto { padding: 18px 0 0 30px; float: left; font-weight: 100; font-size: 14px; color: #666666; text-align: center;}
+li.FinalizarQtd { padding: 18px 0 0 350px; float: left; font-size: 14px; color: #666666; text-align: center;}
+li.FinalizarValor { padding: 18px 0 0 120px; float: left; font-size: 14px; color: #666666; text-align: center;}
+li.FinalizarSub { padding: 18px 50px 0 0; float: right; font-size: 14px; color: #666666; text-align: center;}
+ul#BoxListaFinalizar { width: 1000px; float: left; margin-left: 12px; display: block;}
+li.ListaFinalizar { width: 1000px; float: left; display: block;}
+/**/
+#Checkout{ width: auto; height: 80px; float: left; font-size: 12px; color: #666666;}
+p.DescriptionCheckout { width: 385px; max-height: 80px; padding: 10px 0 0 15px; text-align: left; margin-top: 0px;}
+p.QtdCheckout { width: 120px; text-align: center; margin-top: 0px; margin-left: 5px; padding-top: 10px;}
+p.ValueCheckout { width: 140px; text-align: center; margin-top: 0px; margin-left: 75px; padding-top: 10px;}
+p.SubTotalCheckout { width: 150px; text-align: center; margin-top: 0px; margin-left: 80px; padding-top: 10px;}
+/**/
+#StepsCheckout { width: 1024px; float: left; margin-bottom: 10px; }
+#BoxLogin { width: 337px; float: left;  margin-right: 6.5px; }
+#BoxEndereco { width: 337px; float: left; margin-right: 6.5px;}
+#BoxPagamento { width: 337px; float: right;}
+/**/
+#ContBoxLogin { width: 335px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
+p.txtBoxLogin {  width: 320px; font-size: 18px; font-weight: bold; color: #666666; text-align: left; padding-left: 15px; letter-spacing: 1px;}
+span.txtBoxLoginSpan { color: #000; text-decoration: underline;}
+span.ButtonBoxLogin { float: left; font-size: 16px; margin: 20px 0 0 15px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+span.ButtonBoxLogin:hover { background: #E76509;}
+/**/
+#ContBoxEndereco { width: 335px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
+p.txtBoxEndereco { width: 320px; font-size: 13px; color: #666666; text-align: left; padding-left: 15px; letter-spacing: 1px; line-height: 25px;}
+span.txtEndeSpan { color: #000; font-weight: bold;}
+span.txtDomicilioSpan { font-size: 14px; text-transform: uppercase; color: #000; font-weight: bold;}
+p.txtBoxEntrega { width: 220px; font-size: 14px; color: #000; text-align: left; letter-spacing: 1px; font-weight: bold; float: left; padding-left: 15px;}
+span.txtBoxEntregaValor { width: 90px; font-size: 14px; float: right; color: #ff7f25; text-align: center; display: block; letter-spacing: 1px; font-weight: bold; margin-top: 14px;}
+span.ButtonBoxEndereco { float: left; font-size: 16px; margin: 20px 0 0 15px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+span.ButtonBoxEndereco:hover { background: #E76509;}
+/**/
+#ContBoxPagamento { width: 335px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
+p.txtResumo { width: 220px; font-size: 14px; color: #000; text-align: left; letter-spacing: 1px; font-weight: bold; float: left; padding-left: 15px; margin-bottom: 0px;}
+p.txtBoxResumo { width: 210px; height: 25px; font-size: 14px; color: #000; text-align: left; font-weight: bold; float: left; background: #fbc9a6; padding-left: 15px; padding-top: 5px; margin-bottom: -12px;}
+span.txtBoxResumoValor { width: 110px; height: 25px; font-size: 14px; float: right; color: #000; text-align: center; display: block; font-weight: bold; margin-top: 14px; padding-top: 5px; background: #fbc9a6; margin-bottom: -12px;}
+img.BoxResumoPagSeguro { margin-left: 13px; margin-top: 50px; float: left;}
+p.txtPagSeguro { width: 310px; padding-left: 15px; float: left; color: #666666;}
+span.BoxPagamentoButton { float: left; font-size: 16px; margin: 20px 0 0 42px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+span.BoxPagamentoButton:hover { background: #E76509;}
+/*FIM DA PAGINA DE FINALIZAR COMPRA*/
 
 
 
@@ -471,6 +522,18 @@ x:-o-prefocus, img.dt_cesta {
  z-index: -9999; margin-left: 92px; margin-top: -7px; float: left;
 }
 
+x:-o-prefocus, span.ButtonBoxLogin { 
+    float: left; font-size: 16px; margin: 20px 0 0 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
+  }
+
+x:-o-prefocus, span.ButtonBoxEndereco { 
+  float: left; font-size: 16px; margin: 20px 0 0 3.5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
+}
+
+ x:-o-prefocus, span.BoxPagamentoButton { 
+  float: left; font-size: 16px; margin: 20px 0 0 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
+}
+
 
 /* Hack Chorme */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -481,7 +544,9 @@ center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;}
   input.ok_footer{background: #ff7f25; border: none; width: 85px; height: 32px; float: right; color:#FFF; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 3px;}
   p.txt_box { margin-left: 60px; margin-top: -27px; font-size: 16px; color: #FFF; font-weight: 600; letter-spacing: 1px;}
   span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #582700; color: #FFF; text-align: center; float: left; }
-  button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 20px 8px 36px;
-  }
+  button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 20px 8px 36px;}
   img.dt_cesta { z-index: -9999; margin-left: 92px; margin-top: -8px; float: left;}
+  span.ButtonBoxLogin { float: left; font-size: 16px; margin: 20px 0 0 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+  span.ButtonBoxEndereco { float: left; font-size: 16px; margin: 20px 0 0 3.5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+  span.BoxPagamentoButton { float: left; font-size: 16px; margin: 20px 0 0 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
  }

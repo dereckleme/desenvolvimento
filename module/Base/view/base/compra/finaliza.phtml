@@ -1,0 +1,126 @@
+<?php 
+$filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+?>
+<!--Pagina Finalizar de Compra-->
+<?php 
+
+    if(count($this->carrinhoLista['listaAtual']) >= 1)
+    {
+?>
+		<div id="FinalizarCompra">
+				<img class="tt_FinalizarCompra" src="<?=$this->basePath()?>/images/tt_FinalizarCompra.png">
+				<div id="BoxFinalizarCompra">
+
+						<ul id="HeaderFinalizarProduto">
+							 <li class="FinalizarProduto">Produto</li>
+							 <li class="FinalizarQtd">Quantidade</li>
+							 <li class="FinalizarValor">Valor Unitário (R$)</li>
+							 <li class="FinalizarSub">Subtotal (R$)</li>
+							
+							 
+						</ul>
+
+							<ul id="BoxListaFinalizar">
+							
+							<!--Produto da lista Finalizar-->
+							 <?php 
+    foreach($this->carrinhoLista['listaAtual'] AS $produto)
+    {
+    	?>
+								<li class="ListaFinalizar">
+								 	<div id="Checkout">
+								 		<p class="DescriptionCheckout"><?=$produto['produto']->getTitulo()?></p>
+								 	</div>
+
+								 	<div id="Checkout">
+								 		<p class="QtdCheckout"><?=$produto['quantidade']?></p>
+								 	</div>
+
+								 	<div id="Checkout">
+								 		<p class="ValueCheckout"><?=$produto['produto']->getValor(true)?></p>
+								 	</div>
+
+								 	<div id="Checkout">
+								 		<p class="SubTotalCheckout"><?=$filter->formatCurrency($produto['produto']->getValor()*$produto['quantidade'], 'BRL');?></p>
+								 	</div>
+								 	
+								</li>
+								<?php 
+    }
+								?>
+		                        <!--Fim Produto da lista Finalizar-->
+							</ul>
+				</div>
+
+
+				<div id="StepsCheckout">
+
+					<div id="BoxLogin">
+						<img src="<?=$this->basePath()?>/images/login.png">
+							<div id="ContBoxLogin">
+								<p class="txtBoxLogin">Bem-vindo(a), dereckleme!<br/><a href=""><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
+								<a href="#"><span class="ButtonBoxLogin">voltar para meu carrinho</span></a>
+							</div>
+					</div>
+
+					<div id="BoxEndereco">
+						<img src="<?=$this->basePath()?>/images/endereco.png">
+							<div id="ContBoxEndereco">
+								<p class="txtBoxEndereco"><span class="txtEndeSpan">Endereço de entrega</span><br/>
+								<span class="txtDomicilioSpan">casa</span><br/>
+								Destinatário: Dereck Leme<br/>
+								Rua Professor Castejon, 77 / Casa<br/>
+								Jardim Monte Kemel<br/>
+								São Paulo - SP - Brasil<br/>
+								CEP: 05633-050<br/>
+								Tipo: Residencial<br/>
+								Referência: Av. Professor Francisco Morato, altura do nº 4.500</p>
+								<p class="txtBoxEntrega">Entrega via Sedex - 7 dias</p> 
+								<span class="txtBoxEntregaValor">R$ 10,00</span>
+								<a href="#"><span class="ButtonBoxEndereco">cadastrar novo endereço</span></a>
+							</div>
+					</div>
+
+					<div id="BoxPagamento">
+						<img src="<?=$this->basePath()?>/images/pagamento.png">
+							<div id="ContBoxPagamento">
+									<p class="txtResumo">Resumo da compra</p>
+									<p class="txtBoxResumo">Valor total dos produtos:</p> 
+								    <span class="txtBoxResumoValor">R$ 10,00</span>
+								    <p class="txtBoxResumo">Despesas com frete:</p> 
+								    <span class="txtBoxResumoValor">R$ 10,00</span>
+								    <p class="txtBoxResumo">Valor total a pagar:</p> 
+								    <span class="txtBoxResumoValor">R$ 10,00</span>
+									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
+									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
+								<a href="#"><span class="BoxPagamentoButton">Finalizar pagamento</span></a>
+							</div>
+					</div>
+
+				</div>		
+				
+		</div>
+          <!--Fim da Pagina Finalizar Compra-->
+          <?php 
+    }
+    else {
+    	 
+    	?>			           <!--Pagina Vazia do Carrinho de Compras-->
+           <div id="CestaCompras">
+    				<img class="tt_CestaCompras" src="<?=$this->basePath()?>/images/tt_CestaCompras.png">
+    					<div id="BoxCestaCompras">
+    
+    						<img class="imgCestaVazia" src="<?=$this->basePath()?>/images/cestaVazia.png" title="cesta vazia">
+    
+    							<div id="CestaVazia">
+    								<p class="txtCestaVazia"><span class="ttCestaVazia">Sua cesta de compras esta vazia.</span><br/><br/>
+    								Você ainda não adicionou nenhum produto ao seu carrinho de compras. Navegue pelo site<br/> e selecione os produtos desejados.</p>
+    								<a href="#"><span class="ButtonCestaVazia" title="continuar comprando">CONTINUAR COMPRANDO</span></a>
+    							</div>	
+    
+    					</div>
+    		</div>
+    		                <!--Fim da Pagina Vazia do Carrinho de Compras-->		
+    <?php 
+        }
+    ?>	

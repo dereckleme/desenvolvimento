@@ -136,8 +136,10 @@
           <div id="box_menu">
             <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
             <p class="txt_phone">Televendas: 55 11 8855-9966</p>
-            <input placeholder="buscar produto" class="search_topo" id="search">
-            <input type="submit" value="Pesquisar" class="lupa_topo">
+            
+              <input placeholder="buscar produto" class="search_topo" id="search">
+              <input type="submit" value="Pesquisar" class="lupa_topo">
+            
             
             
             <script type="text/javascript">
@@ -308,7 +310,7 @@
 
                 <!--MENU LATERAL-->
                 <?php 
-                    if($this->matchedRoute != "publico-carrinho-compra")
+                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra")
                     {
                 ?>
                   <div id="lista_produtos">
