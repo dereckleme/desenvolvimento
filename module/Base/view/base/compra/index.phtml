@@ -91,7 +91,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								 	  </a>
 								 	</div>
 								  </li>
-							  
+							  <?php }?>
 								<!--Fim do Produto no Carrinho-->
 							</ul>
 
@@ -131,8 +131,8 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 		                        <p class="CalcSomaValor"><?=$this->carrinhoLista['valorTotal']?></p>
 							</li>
 
-						  <a href="#"><span class="ButtonCarCompras_Comprar">CONTINUAR COMPRANDO</span></a>
-						  <a href="#"><span class="ButtonCarCompras_Finalizar">FINALIZAR COMPRA</span></a>
+						  <a href="<?=$this->url("home")?>"><span class="ButtonCarCompras_Comprar">CONTINUAR COMPRANDO</span></a>
+						  <a href="<?=$this->url("publico-finaliza-compra")?>"><span class="ButtonCarCompras_Finalizar">FINALIZAR COMPRA</span></a>
 
 						</ul>
 
@@ -140,7 +140,6 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				
 		</div>
 		<?php 
-        }
     }
     else {
     	

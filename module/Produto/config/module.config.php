@@ -91,7 +91,31 @@ return array(
                     		),
                     ),
                ), 
-            
+            'admin-produto-referencia' => array(
+            		'type'    => 'Literal',
+            		'options' => array(
+            				'route'    => '/administrador/referencia',
+            				'defaults' => array(
+            						'__NAMESPACE__' => 'Produto\Controller',
+            						'controller'    => 'Referencia',
+            						'action'        => 'index',
+            				),
+            		),
+            		'may_terminate' => true,
+            		'child_routes' => array(
+            				'admin-produto-categoria-action' => array(
+            						'type'    => 'Segment',
+            						'options' => array(
+            								'route'    => '[/:action]',
+            								'constraints' => array(
+            										'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+            								),
+            								'defaults' => array(
+            								),
+            						),
+            				),
+            		),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -106,7 +130,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Produto\Controller\Produto' => 'Produto\Controller\ProdutoController',
-            'Produto\Controller\Categoria' => 'Produto\Controller\CategoriaController'
+            'Produto\Controller\Categoria' => 'Produto\Controller\CategoriaController',
+            'Produto\Controller\Referencia' => 'Produto\Controller\ReferenciaController'
         ),
     ),
     'view_manager' => array(

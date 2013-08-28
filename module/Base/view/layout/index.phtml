@@ -138,7 +138,6 @@
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
             </form>
-            
                 <ul class="Menu">                    
                       <li><!--Cafés-->
                           <a class="lista_menu_cafe" href="#">Cafes</a>
@@ -294,7 +293,7 @@
 
                 <!--MENU LATERAL-->
                 <?php 
-                    if($this->matchedRoute != "publico-carrinho-compra")
+                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra")
                     {
                 ?>
                   <div id="lista_produtos">

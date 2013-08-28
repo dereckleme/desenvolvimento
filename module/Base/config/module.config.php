@@ -33,6 +33,17 @@ return array(
             				),
             		),
             ),
+            'publico-finaliza-compra' => array(
+            		'type' => 'Literal',
+            		'options' => array(
+            				'route'    => '/finaliza-compra',
+            				'defaults' => array(
+            						'__NAMESPACE__' => 'Base\Controller',
+            						'controller'    => 'Compra',
+            						'action'        => 'finaliza',
+            				),
+            		),
+            ),
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(

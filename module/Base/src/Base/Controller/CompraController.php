@@ -27,4 +27,12 @@ class CompraController extends AbstractActionController
     				"valorTotal" => $service->calculoTotal()
     		)));
     }
+    public function finalizaAction()
+    {
+        $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
+    	return new viewModel(array("carrinhoLista" => array(
+    				"listaAtual" =>  $service->lista(),
+    				"valorTotal" => $service->calculoTotal()
+    		)));
+    }
 }

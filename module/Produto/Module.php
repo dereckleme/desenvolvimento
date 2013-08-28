@@ -14,7 +14,7 @@ use Zend\Mvc\MvcEvent;
 use Produto\Service\Produto AS serviceProduto;
 use Produto\Service\Categoria AS serviceCategoria;
 use Produto\Service\Subcategoria AS serviceSubcategoria;
-
+use Produto\Service\Referencia AS serviceReferencia;
 
 class Module {
     
@@ -65,6 +65,10 @@ class Module {
     			},
     			'Produto\Service\Categoria' => function($service){
     				$categoria = new serviceCategoria($service->get('Doctrine\ORM\EntityManager'));
+    				return $categoria;
+    			},
+    			'Produto\Service\Referencia' => function($service){
+    				$categoria = new serviceReferencia($service->get('Doctrine\ORM\EntityManager'));
     				return $categoria;
     			},
     			'Produto\Service\Subcategoria' => function($service){
