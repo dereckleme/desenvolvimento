@@ -95,8 +95,6 @@
                    <input type="submit" value="Entrar" class="Eventlogin"><br/><br/><br/>
                    <p class="criar_conta">Ainda não tem uma conta?<a href="" class="criar_conta"> criar uma conta</a></p>
               </form>
-
-            
            </div>
 
           <div id="form_cadastro" style="display:none">
@@ -136,46 +134,34 @@
           <div id="box_menu">
             <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
             <p class="txt_phone">Televendas: 55 11 8855-9966</p>
-            <input placeholder="buscar produto" class="search_topo" id="search">
-            <input type="submit" value="Pesquisar" class="lupa_topo">
+            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">            
+                <input placeholder="buscar produto" class="search_topo" id="search" name="p">
+                <input type="submit" value="Pesquisar" class="lupa_topo">
+            </form>
             
-            
-            <script type="text/javascript">
-            $(function(){
-            	 $( "#search" ).autocomplete({
-         		    source: basePatch+"/autocomplete/"
-            	 });
-                
-            });
-            </script>
-            
-            
-
-                <ul class="Menu">
-                    
+                <ul class="Menu">                    
                       <li><!--Cafés-->
-                        <a class="lista_menu_cafe" href="#">Cafes</a>
-                          <ul class="dropdown" style="display:none">
-                            <li class="tt_dropdown">
-                              <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span>
-                              </a>
-                            </li>
-                                 <li>
-                                  <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
-                                 </li>
-                               <span id="BoxListaDropDown">
-                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                               </span> 
+                          <a class="lista_menu_cafe" href="#">Cafes</a>
+                              <ul class="dropdown" style="display:none">
+                                  <li class="tt_dropdown">
+                                      <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
+                                  </li>
+                                  <li>
+                                      <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
+                                  </li>
+                                  <span id="BoxListaDropDown">
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                  </span> 
                           </ul>
 
                       </li>
@@ -354,11 +340,11 @@
 <div id="footer">
 
     <div id="box_search_footer">
-      <div class="search_footer">
-
-              <input value="buscar produto" class="search_footer">
-               <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
-
+        <div class="search_footer">
+            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
+              <input placeholder="buscar produto" class="search_footer" id="search_footer" name="p">
+              <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
+            </form>
         </div>
     </div>
 

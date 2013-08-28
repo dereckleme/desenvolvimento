@@ -145,7 +145,7 @@ input.lupa_topo { width: 50px; height: 61px !important; -webkit-height: 61.5px !
 /*Menu Topo*/
 ul.Menu { width: 544px;}
 li a.lista_menu_cafe  { width: 178px; height: 87px; background: url(../images/cafe.png) no-repeat; float: left; padding: 0 5px 0 0; text-indent: -9999px;}
-li a.lista_menu_cafe:hover { background: url(../images/cafeHover.png) no-repeat;}
+li a.lista_menu_cafe:hover{ background: url(../images/cafeHover.png) no-repeat;}
 li a.lista_menu_alimentos { width: 178px; height: 87px; background: url(../images/alimento.png) no-repeat; float: left; padding: 0 5px 0 0; text-indent: -9999px;}
 li a.lista_menu_alimentos:hover { background: url(../images/alimentoHover.png) no-repeat;}
 li a.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/produtos.png) no-repeat; float: left; text-indent: -9999px;}

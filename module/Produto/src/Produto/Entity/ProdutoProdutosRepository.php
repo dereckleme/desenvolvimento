@@ -36,19 +36,38 @@ class ProdutoProdutosRepository extends EntityRepository {
         return $results;
     }
     
-    public function buscaProdutos(){
+    public function buscaProdutosAutoComplete(){
         $qb =  $this->createQueryBuilder('i');
-        $qb->select('i.titulo');
-        #$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
-        #$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
-        $qb->where($qb->expr()->like('i.titulo', '?1'));
-        #$qb->orWhere($qb->expr()->like('c.nome', ':search'));
+        $qb->select('i.titulo, s.nome, c.nome as categoriNome');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        $qb->where($qb->expr()->like('s.nome', '?1'));
+        $qb->orWhere($qb->expr()->like('c.nome', '?2'));
+        $qb->orWhere($qb->expr()->like('i.titulo', '?3'));        
         $qb->setParameter(1, "%$this->search%");
+        $qb->setParameter(2, "%$this->search%");
+        $qb->setParameter(3, "%$this->search%");
         $query = $qb->getQuery();        
         $results = $query->getResult();
-        echo "<pre>", print($query->getDQL()), "</pre>";
+        #echo "<pre>", print($query->getDQL()), "</pre>";
         return $results;        
     } 
+    
+    public function resultadoBusca(){
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        $qb->where($qb->expr()->like('s.nome', '?1'));
+        $qb->orWhere($qb->expr()->like('c.nome', '?2'));
+        $qb->orWhere($qb->expr()->like('i.titulo', '?3'));
+        $qb->setParameter(1, "%$this->search%");
+        $qb->setParameter(2, "%$this->search%");
+        $qb->setParameter(3, "%$this->search%");
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
     
 	public function setSlugProduto($slugProduto) {
 		$this->slugProduto = $slugProduto;

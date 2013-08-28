@@ -73,7 +73,11 @@
         {
     ?>
     	<div class="box_vejaTambem">
-		    	<p class="desc_prod"><?=$relacionados->getTitulo()?></p>
+		    	<p class="desc_prod">
+		    	    <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() ));?>" title="<?=$relacionados->getTitulo();?>">
+		    	        <?=$relacionados->getTitulo();?>
+		    	    </a>
+		    	</p>
 		    	<div class="left_vejaTambem">
 		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
 		    	</div>

@@ -71,28 +71,70 @@ class IndexController extends AbstractActionController
     
     public function autocompleteAction()
     {
-        $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");                
-        $repository->setSearch($this->params()->fromQuery('term'));
-        $resultado = $repository->buscaProdutos();
+        if($this->params()->fromQuery('term') != "")
+        {
+            $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");                
+            $repository->setSearch($this->params()->fromQuery('term'));
+            $resultado = $repository->buscaProdutosAutoComplete();
+            
+            if(count($resultado))
+            {
+                $i = 1;
+                foreach($resultado as $values)
+                {
+                    foreach($values as $key => $value)
+                    {
+                        if($i == 1)
+                        {
+                            $termos["label"] = $value;
+                        }
+                        else
+                        {   
+                            $termos["label$i"] = $value;                        
+                        }                    
+                        $i++;
+                    }            	
+                }            
+                $termos = json_encode($termos);
+            }
+            else
+            {
+                $termos = json_encode(array("label"=>"não há sugestões"));
+            }
+            
+            $viewModel = new ViewModel(array('termos' => $termos)); // chama uma view
+            $viewModel->setTerminal(true); // desativa layout.phtml
+            return $viewModel;
+            
+            
+        	#return new ViewModel();
+        }
+        else
+        {
+            return $this->redirect()->toRoute('home');
+        }
         
-        #echo $this->params()->fromQuery('term'), "\n";
-        echo "<pre>", print_r($resultado), "</pre>";die();
-        
-       
-        /*
-        $viewModel = new ViewModel(array('termos' => json_encode($resp))); // chama uma view
-        $viewModel->setTerminal(true); // desativa layout.phtml
-        return $viewModel;
-        */
-        
-    	return new ViewModel();
     }
     
     public function buscaDeProdutosAction()
     {
-        die('busca');
-        echo $this->params()->fromQuery('search');
-        return new ViewModel();
+        $busca =  $this->params()->fromQuery('p');
+        
+        #$repository = $this->getServiceLocator()->get("Produto\Repository\SubCategorias");
+        $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
+        $repository->setSearch($busca);
+        $resultado = $repository->resultadoBusca();
+        
+        if(count($resultado) > 0)
+        {
+            return new ViewModel(array("resultado"=>$resultado));
+        }
+        else
+        {
+            #return $this->redirect()->toRoute('home');
+            return new ViewModel(array("semresultado"=>"não resultados"));
+        }
+        
     }
     
 }

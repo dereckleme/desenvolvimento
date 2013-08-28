@@ -7,5 +7,9 @@ use Doctrine\ORM\EntityRepository;
 class ProdutoCategoriasRepository extends EntityRepository {
     
     
+
+    
+    
+    
     
 }
