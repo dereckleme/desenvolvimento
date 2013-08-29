@@ -98,6 +98,9 @@ class ProdutoController extends AbstractActionController {
     	    {
     	    	$data = $this->getRequest()->getPost()->toArray();
     	    	
+    	    	#echo "<pre>", print_r($data), "</pre>";
+    	    	#die();
+    	    	
     	    	$service = $this->getServiceLocator()->get("Produto\Service\Produto");
     	    	$service->insert($data);
     	    	$return['success'] = "Cadastrado com sucesso";  	    	

@@ -89,12 +89,14 @@ $(function(){
 			var subcategoria = $('#formProduto select[name=inputSubCategoria]').val();
 			var titulo = $('#formProduto input[name=titulo]').val();
 			var valor = $('#formProduto input[name=valor]').val();
+			var des = $('#formProduto input[name=des]').val();
+			var active = $('#formProduto input[name=active]').val();
 			
 			$.ajax({
 				type	 :	"post",
 				url		 :	basePatch+"/administrador/produto/adicionar",
 				dataType :  "json",
-				data	 :	{inputCategoria:categoria, inputSubCategoria:subcategoria, titulo:titulo, valor:valor},
+				data	 :	{inputCategoria:categoria, inputSubCategoria:subcategoria, titulo:titulo, valor:valor, Destaque:des, ativo:active},
 				success	 :	function(data){					
 					$("#message").removeClass("alert-error");
 					$("#message").removeClass("alert-success");

@@ -44,6 +44,20 @@ class ProdutoProdutos
      * @ORM\Column(name="valor", type="decimal", nullable=true)
      */
     private $valor;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Destaque", type="integer", nullable=false)
+     */
+    private $destaque;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo;
 
     /**
      * @var \Usuario\Entity\ProdutoSubcategoria
@@ -105,6 +119,35 @@ class ProdutoProdutos
 	public function setProdutosubcategoria($produtosubcategoria) {
 		$this->produtosubcategoria = $produtosubcategoria;
 	}
+	
+	/**
+	 * @return the $destaque
+	 */
+	public function getDestaque() {
+		return $this->destaque;
+	}
+
+	/**
+	 * @param number $destaque
+	 */
+	public function setDestaque($destaque) {
+		$this->destaque = $destaque;
+	}
+
+	/**
+	 * @return the $ativo
+	 */
+	public function getAtivo() {
+		return $this->ativo;
+	}
+
+	/**
+	 * @param boolean $ativo
+	 */
+	public function setAtivo($ativo) {
+		$this->ativo = $ativo;
+	}
+
 
 
     
