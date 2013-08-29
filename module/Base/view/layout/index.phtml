@@ -141,14 +141,17 @@
                 <ul class="Menu">                    
                       <li><!--Cafés-->
                           <a class="lista_menu_cafe" href="#">Cafes</a>
-                              <ul class="dropdown" style="display:none">
+                              <ul class="dropdown" style="display:block">
                                   <li class="tt_dropdown">
                                       <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
                                   </li>
+                                  
                                   <li>
                                       <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
                                   </li>
-                                  <span id="BoxListaDropDown">
+
+                                  <li>
+                                    <ul>
                                      <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
@@ -160,13 +163,14 @@
                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                  </span> 
-                          </ul>
+                                 </ul>
+                                </li> 
+                              </ul>
 
                       </li>
                       
-                      <li><!--Alimentos-->
-                        <a class="lista_menu_alimentos" href="">Alimentos</a>
+                      <li class="lista_menu_alimentos"><!--Alimentos-->
+                        <a href="#">Alimentos</a>
                           <ul class="dropdown" style="height: 298px; display:none">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Seleto alimentos, seu café da manhã  <span class="ttd_dropdown"> completo</span>
