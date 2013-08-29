@@ -17,6 +17,9 @@ use Zend\Paginator\Paginator,
     Zend\Paginator\Adapter\ArrayAdapter;
 
 
+use Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session as SessionStorage;
+
 class CompraController extends AbstractActionController
 {    
     public function indexAction()
@@ -30,9 +33,13 @@ class CompraController extends AbstractActionController
     public function finalizaAction()
     {
         $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        
     	return new viewModel(array("carrinhoLista" => array(
     				"listaAtual" =>  $service->lista(),
-    				"valorTotal" => $service->calculoTotal()
+    				"valorTotal" => $service->calculoTotal(),
+    	            "auth" => $auth
     		)));
     }
 }

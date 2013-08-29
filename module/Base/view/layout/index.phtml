@@ -138,20 +138,25 @@
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
             </form>
-                <ul class="Menu">                    
+                <ul class="Menu" <?php 
+                if($this->matchedRoute != "home")
+                {
+                    print 'style="display:none"';
+                }
+                ?>>                    
                       <li class="lista_menu_cafe"><!--Cafés-->
-                          <a href="#">Cafes</a>
-                              <ul class="dropdown" style="display:block">
+                            <h3 class="lista_menu_cafe"><a href="#">Cafes</a></h3>
+                              <ul class="dropdownCafe" style="display:none">
                                   <li class="tt_dropdown">
                                       <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
                                   </li>
 
-                                  <li>
+                                  <li class="imgDropdown">
                                       <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
                                   </li>
 
-                                  <li>
-                                    <ul>
+                                <li class="BoxAllFood">
+                                  <ul>
                                      <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
@@ -163,102 +168,108 @@
                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 </ul>
+                                  </ul>
                                 </li> 
-                              </ul>
-
+                            </ul>
                       </li>
                       
                       <li class="lista_menu_alimentos"><!--Alimentos-->
-                        <a href="#">Alimentos</a>
-                          <ul class="dropdown" style="height: 298px; display:none">
+                        <h3 class="lista_menu_alimentos"><a href="#">Alimentos</a></h3>
+                          <ul class="dropdownAlimento" style="min-height:300px; display:none">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Seleto alimentos, seu café da manhã  <span class="ttd_dropdown"> completo</span>
                               </a>
                             </li>
 
-                               <li class="BoxBonecoSeleto ">
+                               <li class="imgDropdown">
                                 <img class="BonecoSeleto" src="<?=$this->basePath()?>/images/BonecoSeleto.png">
                                </li>
 
-                             <span id="BoxListaDropDown">
-                               <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
+                               <li class="BoxAllFood">
+                                  <ul>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
 
-                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
 
-                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
 
-                               <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                               
-                               <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
 
-                               
-                               <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
+                                     
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
 
-                                <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                             </span>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                  </ul> 
+                              </li>
                           </ul>
                       </li>
 
                       <li class="lista_menu_produtos"><!--Todos Produtos-->
-                        <a href="">Todos Produtos</a>
-                          <ul class="dropdown" style="display:none">
+                        <h3 class="lista_menu_produtos"><a href="#">Todos Produtos</a></h3>
+                          <ul class="dropdownProduto" style="display:none">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Lorem ipsum dolor sit amet, <span class="ttd_dropdown"> consectetur</span>
                               </a>
                             </li>
                                 <!--Coluna 1-->
-                             <span id="BoxAllFood">
-                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                             <li class="BoxAllFood">
+                                  <ul>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
 
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 
-                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
 
-                                 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+                                     
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
 
-                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                             </span>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                  </ul> 
+                              </li>
                                  <!--Coluna 2-->
-                              <span id="BoxAllFood">
-                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                               <li class="BoxAllFood">
+                                  <ul>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
 
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 
-                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
 
-                                 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+                                     
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
 
-                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                             </span>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                  </ul> 
+                              </li>
                                   <!--Coluna 3-->
-                              <span id="BoxAllFood">
-                                 <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                               <li class="BoxAllFood">
+                                  <ul>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet </a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
 
-                                 <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                 
-                                 <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Lorem ipsum dolor</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
 
-                                 
-                                 <li class="txt_dropdown"><a class="txt_dropdown" href="">facilisis aliquet</a></li>
+                                     
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
 
-                                  <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                             </span>
-
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                  </ul> 
+                              </li>
                           </ul>
                       </li>
                     

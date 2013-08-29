@@ -56,15 +56,61 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				<div id="StepsCheckout">
 
 					<div id="BoxLogin">
-						<img src="<?=$this->basePath()?>/images/login.png">
+					<?php 
+					    if($this->auth)
+					    {
+					?>
+					<h5 class="ImgLogin">Login</h5>
 							<div id="ContBoxLogin">
 								<p class="txtBoxLogin">Bem-vindo(a), dereckleme!<br/><a href=""><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
 								<a href="#"><span class="ButtonBoxLogin">voltar para meu carrinho</span></a>
 							</div>
+							<?php 
+					    }
+					    else {
+					    	
+                    ?>
+                    <!--Conteudo Finalizar Login Vazio-->
+                    <div id="BoxLogin">
+                    	   <h5 class="ImgLoginOff">Login</h5>
+							<div id="ContBoxLogin">
+								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+
+									<form action="" class="formAction">
+
+					                  <label class="FormEmail">E-mail*:</label><br/><input type="text" class="BoxEmail" value=""><br/><br/>
+
+					                  <label class="FormLogin">Login*:</label><br/><input type="text" class="BoxLogin" value=""><br/><p class="xxx">(Criar nome de usuário)</p><br/>
+
+					                  <label class="FormPasswordSenha">Senha*:</label>
+
+                                      <label class="FormPasswordConfirmar">Confirmar senha*:</label><br/>
+
+					                  <input type="password" class="BoxPasswordSenha" value="criar senha">
+
+					                 <input type="password" class="BoxPasswordConfirmar" value="criar senha"><br/><br/>
+
+					                 <input type="submit" value="criar conta" class="EventcadastrarLogin">
+
+					                </form>
+								
+							</div>
+					</div>		
+					<!--Fim do Conteudo Finalizar Login Vazio-->
+
+
+                    <?php 
+					    }
+							?>
 					</div>
 
 					<div id="BoxEndereco">
-						<img src="<?=$this->basePath()?>/images/endereco.png">
+						<?php 
+					    if($this->auth)
+					    {
+					?>
+
+						<h5 class="ImgEndereco">Endereço</h5>
 							<div id="ContBoxEndereco">
 								<p class="txtBoxEndereco"><span class="txtEndeSpan">Endereço de entrega</span><br/>
 								<span class="txtDomicilioSpan">casa</span><br/>
@@ -79,10 +125,60 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								<span class="txtBoxEntregaValor">R$ 10,00</span>
 								<a href="#"><span class="ButtonBoxEndereco">cadastrar novo endereço</span></a>
 							</div>
+
+							<?php 
+					    }
+					    else {
+					    	
+                    ?>
+
+                    		<!--Conteudo Finalizar Endereço Vazio-->
+						<div id="BoxEndereco">
+								<h5 class="ImgEndereco">Endereço</h5>
+							<div id="ContBoxEndereco">
+								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+
+									<form action="" class="formAction">
+
+					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input type="text" class="BoxNome" value=""><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
+
+
+
+
+					                  <label class="FormCEP">CEP*:</label><br/><input type="password" class="BoxCEP" value="criar senha"><br/><br/><br/>
+					                  
+
+					                  <label class="FormEndereco">Endereço*:</label><br/><input type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
+Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
+
+					                  <label class="FormNumero">Numero*:</label><br/><input type="password" class="BoxNumero" value="criar senha"><br/>
+
+					                  <label class="FormComplemento">Complemento:</label><br/><input type="password" class="BoxComplemento" value="criar senha"><br/><br/>
+
+					                  <label class="FormBairro">Bairro*:</label><br/><input type="password" class="BoxBairro" value="criar senha"><br/>
+
+					                  <label class="FormCidade">Cidade*:</label><br/><input type="password" class="BoxCidade" value="criar senha"><br/><br/>
+
+
+
+
+					                 <input type="submit" value="Cadastrar Endereço" class="EventcadastrarLogin"><br/><br/><br/>
+
+					                </form>
+							</div>
+						</div>		
+							<!--Fim do Conteudo Finalizar Endereço Vazio-->
+							<?php 
+					    }
+							?>
 					</div>
 
 					<div id="BoxPagamento">
-						<img src="<?=$this->basePath()?>/images/pagamento.png">
+						<?php 
+					    if($this->auth)
+					    {
+					?>
+						<h5 class="ImgPagamento">Pagamento</h5>
 							<div id="ContBoxPagamento">
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
@@ -95,6 +191,32 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
 								<a href="#"><span class="BoxPagamentoButton">Finalizar pagamento</span></a>
 							</div>
+							<?php 
+					    }
+					    else {
+					    	
+                    ?>
+
+                    <!--Conteudo Finalizar Pagamento Vazio-->
+						<div id="BoxPagamento">
+						   <h5 class="ImgPagamento">Pagamento</h5>
+							<div id="ContBoxPagamento">
+									<p class="txtResumo">Resumo da compra</p>
+									<p class="txtBoxResumo">Valor total dos produtos:</p> 
+								    <span class="txtBoxResumoValor">R$ 00,00</span>
+								    <p class="txtBoxResumo">Despesas com frete:</p> 
+								    <span class="txtBoxResumoValor">R$ 00,00</span>
+								    <p class="txtBoxResumo">Valor total a pagar:</p> 
+								    <span class="txtBoxResumoValor">R$ 00,00</span>
+									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
+									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
+								<a href="#"><span class="BoxPagamentoButtonOff">Finalizar pagamento</span></a>
+							</div>
+						</div>
+					<!--Fim da Conteudo Pagamento Vazio-->		
+							<?php 
+					    }
+							?>
 					</div>
 
 				</div>		
