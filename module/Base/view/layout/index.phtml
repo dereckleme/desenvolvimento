@@ -325,11 +325,13 @@
                                 <ul class="cafe_po">                                
                                     <?php
                                     $i = 1; 
-                                    foreach($categoria->getSubcategorias() as $subcategoria): ?>
+                                    foreach($categoria->getSubcategorias() as $subcategoria): 
+                                    if( count($subcategoria->getProdutos()) > 0):
+                                    ?>
                                         <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
                                             <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
                                         </li>
-                                    <?php $i--; endforeach; ?>                                                                   
+                                    <?php $i--; endif; endforeach; ?>                                                                   
                                 </ul>
                             </li>
                         
