@@ -30,16 +30,27 @@ class IndexController extends AbstractActionController
     {
       
         $busca = $this->params()->fromRoute('categoriaslug',0);
-        $page = $this->params()->fromRoute('page');
+        #$page = $this->params()->fromRoute('page');
         
-        $repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-        $categoriaBySlug = $repository->findByslug($busca);
+        #$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        #$categoriaBySlug = $repository->findByslug($busca);
+        
+        
+        $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
+        $repository->setSlugCategoria($busca);
+        $categoriaBySlug = $repository->productForCategory();
+        
+        if(count($categoriaBySlug)){
+            return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug));
+        }else{
+        	die('nao foi');
+        }
         
         #$paginator = new Paginator(new ArrayAdapter($teste));
         #$paginator->setCurrentPageNumber($page);
         #$paginator->setDefaultItemCountPerPage(1);
         
-        return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$page));
+        #return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$page));
     }
     
     public function categoriaAndSubAction()

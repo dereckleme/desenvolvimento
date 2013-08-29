@@ -33,7 +33,7 @@ class Module
     public function onBootstrap($e)
     {
     	$e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) {
-    	   
+    	    
     		/*
     		 * Definições de sessoes
     		*/
@@ -112,11 +112,9 @@ class Module
     		
     		/*
     		 * Listagem de categorias
-    		 */
-    		
-    		
+    		 */    		    	
     		$eventoCategoria = $e->getApplication()->getServiceManager()->get('Produto\Repository\Categorias');
-    		$categorias = $eventoCategoria->findAll();
+    		$categorias = $eventoCategoria->findAll();    		
     		$controller->layout()->categorias = $categorias;
     		
     		
