@@ -34,57 +34,50 @@
                         </ul>
                      </div>
                   <!--FIM DO SELECT BOX-->
-                  
-                  	<ul id="box_categoria_produtos">
+                    <?php if(isset($this->semresultado)) :?>
+                  	    <span>PAULO</span>
+                    <?php else: ?>
+                    
+                    <ul id="box_categoria_produtos">
                   	    <!--LISTA DE PRODUTOS-->
                   	    <?php 
-                  	    if(isset($this->semresultado)){
-                  	    	#echo $this->semresultado;
+                  	    foreach($this->resultado as $produto)
+                  	    {
                   	    	?>
-                  	    	<!-- Paulo -->
+                  	    	<li class="lista_categoria_produtos">
+                      			<div id="descricao_produto_categoria">
+                      				<a href=""><img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria2.png" title="#"></a>
+                      				<p class="txt_descricao_produto_categoria">
+                      				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
+                      				        <?php echo $produto->getTitulo(); ?>
+                      				    </a>
+                      				</p>
+                      				<strike class="precoAntigo_categoria">R$ 7,50</strike>
+    								<p class="precoProduto_categoria">
+    								    <em class="moeda_monetaria"><strong><?php echo $produto->getValor(true); ?></strong></em>
+    								</p>
+                      			</div>
+    
+                      			<div id="quantidade_produto_categoria" class="prdQtd">
+                      				<p class="text_qtd_PC">Quantidade</p>
+    								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" type="text" name="quantidade" value="1">            
+    								<ul class="produto_quantidade">
+    								    <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
+                                        <li class="qtd_mudar_PC qtMenos_PC"> <a href="#">menos</a> </li>            									     
+    								</ul>
+                      			</div>
+                      			            
+                      			<div id="buttom_add_car_comprar">
+    						      <button class="carrinhoCompras_categoria actionAddCarrinho" rev="<?php echo $produto->getIdproduto();?>">Adicionar ao <br/> carrinho de compras</button>            
+                      			</div>            
+                      		 </li>
                   	    	<?php
                   	    }
-                  	    else
-                        {
-                        	
-                      	    foreach($this->resultado as $produto)
-                      	    {
-                      	    	?>
-                      	    	<li class="lista_categoria_produtos">
-                          			<div id="descricao_produto_categoria">
-                          				<a href=""><img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria2.png" title="#"></a>
-                          				<p class="txt_descricao_produto_categoria">
-                          				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
-                          				        <?php echo $produto->getTitulo(); ?>
-                          				    </a>
-                          				</p>
-                          				<strike class="precoAntigo_categoria">R$ 7,50</strike>
-        								<p class="precoProduto_categoria">
-        								    <em class="moeda_monetaria"><strong><?php echo $produto->getValor(true); ?></strong></em>
-        								</p>
-                          			</div>
-        
-                          			<div id="quantidade_produto_categoria" class="prdQtd">
-                          				<p class="text_qtd_PC">Quantidade</p>
-        								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" type="text" name="quantidade" value="1">            
-        								<ul class="produto_quantidade">
-        								    <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
-                                            <li class="qtd_mudar_PC qtMenos_PC"> <a href="#">menos</a> </li>            									     
-        								</ul>
-                          			</div>
-                          			            
-                          			<div id="buttom_add_car_comprar">
-        						      <button class="carrinhoCompras_categoria actionAddCarrinho" rev="<?php echo $produto->getIdproduto();?>">Adicionar ao <br/> carrinho de compras</button>            
-                          			</div>            
-                          		 </li>
-                      	    	<?php
-                      	    }
-                        
-                        }
                   	    ?>
                   	    <!--FIM DA LISTA DE PRODUTOS-->                  	    
                   	</ul>
-
+                    
+                    <?php endif; ?>
 
                     <!--SELECT BOX-->
                     <div id="select_box">
