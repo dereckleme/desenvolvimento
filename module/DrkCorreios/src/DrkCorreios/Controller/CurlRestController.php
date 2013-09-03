@@ -8,9 +8,10 @@ use Zend\View\Model\JsonModel;
 class CurlRestController extends AbstractRestfulController
 {
     public function getList()
-    {        
+    {       
+        $request = $this->getRequest();
         $matriz = array();        
-        $matriz['CEP'] = "05544-040";
+        $matriz['CEP'] = $request->getPost('cep');
         $matriz['Metodo'] = "listaLogradouro";
         $matriz['TipoConsulta'] = "cep";
         $matriz['StartRow'] = "1";
