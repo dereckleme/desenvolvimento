@@ -218,13 +218,19 @@ img.img_breadcrumbs { margin-left: 10px; margin-right: 10px;}
 p.tt_select_box { float: left; color: #666666; padding-left: 15px; padding-right: 10px;}
 .styled-select select { width: 150px; margin-top: 10px; padding: 5px; font-size: 12px; line-height: 1; border: solid 1px #CCC; height: 30px; color: #666666; float: left; }
 ul.box_paginacao { width:155px; float: right; margin-top: 15px;}
+
 li.seta_paginacao { width: 20px; height: 20px; float: left; margin-right: 10px;}
+
+
 li img.st_esq { float: right; padding-top: 1px; }
 li img.st_dir { padding-top: 1px; }
+
+
 li a.box_numeral { color: #666666; float: left; border: solid 1px #CCC; padding: 0 5px 0 5px; margin-right: 10px;}
 li a.box_numeral:hover { color: #FFF; float: left; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-li a.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-li a.box_numeral_ligado:hover { color: #666666; float: left; border: solid 1px #CCC; background: #F2F2F2; padding: 0 5px 0 5px; margin-right: 10px;}
+
+li > span.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
+
 /*************************FIM DO SELETC BOX***********************/
 
 /*************************BOX PRODUTOS***********************/
