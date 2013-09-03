@@ -22,16 +22,6 @@ class ProdutoReferenciasetter
     private $idpreferenciasetter;
 
     /**
-     * @var \ProdutoReferencia
-     *
-     * @ORM\ManyToOne(targetEntity="ProdutoReferencia")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idReferencia", referencedColumnName="idReferencia")
-     * })
-     */
-    private $idreferencia;
-
-    /**
      * @var \ProdutoCategorias
      *
      * @ORM\ManyToOne(targetEntity="ProdutoCategorias")
@@ -40,6 +30,16 @@ class ProdutoReferenciasetter
      * })
      */
     private $idcategorias;
+
+    /**
+     * @var \ProdutoReferencia
+     *
+     * @ORM\ManyToOne(targetEntity="ProdutoReferencia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idReferencia", referencedColumnName="idReferencia")
+     * })
+     */
+    private $idreferencia;
 
 
 }

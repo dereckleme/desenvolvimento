@@ -20,13 +20,16 @@ $(document).ready(function(){
 	/*
 	 * clear form
 	 */
-	$("#form_login input[type=text], #form_cadastro input[type=text]").on("click",function(){
+	$(".formAction input[type=text],#form_login input[type=text], #form_cadastro input[type=text]").on("click",function(){
 		$(this).val("");
 	})
-	$("#form_login input[type=password], #form_cadastro input[type=password]").on("click",function(){
+	$(".formAction input[type=password],#form_login input[type=password], #form_cadastro input[type=password]").on("click",function(){
 		$(this).val("");
 	})
+	
+	
 	/*
+	 * 
 	 * PopUp User
 	 */
 	$('.eventOpenPopUp').on("click",function(){
@@ -57,11 +60,12 @@ $(document).ready(function(){
 		var eventLogin = $(".formActionCadastro .login").val();
 		var eventEmail = $(".formActionCadastro .email").val();
 		var eventPassword = $(".formActionCadastro .Password").val();
+		var eventPasswordConfirm = $(".formActionCadastro .PasswordConfirm").val();
 		$.ajax({
 			url: basePatch+"/actionUser/Usuario/novoUser",
 			type: "post",
 			async:false,
-			data: {eventLogin:eventLogin,eventEmail:eventEmail,eventPassword:eventPassword},
+			data: {eventLogin:eventLogin,eventEmail:eventEmail,eventPassword:eventPassword,eventPasswordConfirm:eventPasswordConfirm},
 			success: function(data) {
 					if(data == "1")
 						{
@@ -109,6 +113,47 @@ $(document).ready(function(){
 		});
 			return false;
 	})
+	$('.EventcadastrarLoginFinaliza').on("click",function(){
+		var eventLogin = $("#BoxLogin .formAction .actionLogin").val();
+		var eventEmail = $("#BoxLogin .formAction .actionEmail").val();
+		var eventPassword = $("#BoxLogin .formAction .actionPassoword").val();
+		var eventPasswordConfirm = $("#BoxLogin .formAction .actionPassowordConfirm").val();
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/novoUser",
+			type: "post",
+			async:false,
+			data: {eventLogin:eventLogin,eventEmail:eventEmail,eventPassword:eventPassword,eventPasswordConfirm:eventPasswordConfirm},
+			success: function(data) {
+					if(data == "1")
+						{
+						$.ajax({
+							url: basePatch+"/actionUser/Login/index",
+							type: "post",
+							async:false,
+							data: {eventLogin:eventLogin,eventPassword:eventPassword},
+							success: function(data) {
+										if(data == "01")
+										{
+											location.reload();
+										}
+										else
+										{
+											$(".return").html(data);
+										}
+							},
+							error: function(){}
+						})
+						}
+					else
+						{
+							
+							$(".return").html(data);
+						}
+			},
+			error: function(){}
+		});
+			return false;
+	})
 	/*
 	 * Action Login
 	 */
@@ -144,4 +189,54 @@ $(document).ready(function(){
 		});
 			return false;
 	})
+	$('.EventcadastrarEndereco').on("click",function(){
+		var actionNome = $("#BoxEndereco .BoxNome").val();
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/atualiza",
+			type: "post",
+			async:false,
+			data: {actionNome:actionNome},
+			success: function(data) {
+				if(data==1)
+					{
+						$(".msgCadastrase").html("Seu cadastro foi atualizado com sucesso.");
+					}
+				else
+					{
+					$(".msgCadastrase").html("Seu cadastro não foi atualizado.");
+					}
+			},
+			error: function(){}
+		});	
+		return false;
+	})
+	$(".BoxCEP").mask("99999-999",{completed:function(){
+		$.ajax({
+			url: basePatch+"/correios/restCep",
+			type: "post",
+			beforeSend: function(){
+				$(".ajaxMsg").html("Carregando...");
+			     $(".ajaxMsg").show();
+			   },
+			   complete: function(){
+				   $(".ajaxMsg").hide();
+				   },   
+			async:false,
+			data: {cep:this.val()},
+			success: function(data) {
+				obj = JSON.parse(data);
+				if(obj.cep === undefined)
+				{
+					
+				}
+				else
+					{
+						$(".BoxEndereco").val(obj.rua);
+						$(".BoxBairro").val(obj.bairro);
+					}
+			},
+			error: function(){alert("Não conseguimos se comunicar com o gateway dos correios, preencha seus dados manualmente.");}
+		});	
+	}});
+	
 })

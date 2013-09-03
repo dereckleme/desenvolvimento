@@ -35,15 +35,30 @@ class ProdutoProdutosRepository extends EntityRepository {
         $results = $query->getResult();
         return $results;
     }
-          
-    public function productForCategory(){
+
+    public function categoriaCountRow(){
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        $qb->where('c.slug = ?1');
+        $qb->setParameter(1, $this->slugCategoria);        
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
+    
+    public function productForCategory($maxLimit, $offset){
     	$qb =  $this->createQueryBuilder('i');
     	$qb->select('i');
     	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
     	$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
     	$qb->where('c.slug = ?1');
     	$qb->setParameter(1, $this->slugCategoria);
+    	$qb->setFirstResult($offset);
+        $qb->setMaxResults($maxLimit);
     	$query = $qb->getQuery();
+    	#echo "<pre>", print($query->getDQL()), "</pre>";
     	$results = $query->getResult();
     	return $results;
     }
@@ -53,12 +68,10 @@ class ProdutoProdutosRepository extends EntityRepository {
     	$qb->select('i');
     	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
     	$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
-    	$qb->where($qb->expr()->like('s.nome', '?1'));
-    	$qb->orWhere($qb->expr()->like('c.nome', '?2'));
-    	$qb->orWhere($qb->expr()->like('i.titulo', '?3'));
-    	$qb->setParameter(1, "%$this->search%");
-    	$qb->setParameter(2, "%$this->search%");
-    	$qb->setParameter(3, "%$this->search%");
+    	$qb->where('s.slugSubcategoria = ?1');
+    	$qb->andWhere('c.slug = ?2');    	
+    	$qb->setParameter(1, $this->slugSubcategoria);
+    	$qb->setParameter(2, $this->slugCategoria);    	
     	$query = $qb->getQuery();
     	$results = $query->getResult();
     	return $results;

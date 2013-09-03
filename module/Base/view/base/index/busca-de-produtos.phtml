@@ -35,7 +35,14 @@
                      </div>
                   <!--FIM DO SELECT BOX-->
                     <?php if(isset($this->semresultado)) :?>
-                  	    <span>PAULO</span>
+
+                           <div id="NaoEncontrado"> 
+                            <img class="ImgNaoEncontrado" src="<?=$this->basePath()?>/images/nenhumResultadoEncontrado.gif">
+                            <p class="tt_ResultadoNEncontrado">Nenhum resultado encontrado.</p>
+                            <p class="txt_ResultadoNEncontrado">Sua busca por <em>oslec</em> não retornou resultados.<br/>
+                            Tente novamente com outros termos.</p>
+                           </div> 
+
                     <?php else: ?>
                     
                     <ul id="box_categoria_produtos">

@@ -13,8 +13,9 @@ namespace Base\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Paginator\Paginator,
+use Zend\Paginator\Paginator as ZendPaginator,
     Zend\Paginator\Adapter\ArrayAdapter;
+
 
 use Zend\View\Helper\Url;
 
@@ -27,38 +28,32 @@ class IndexController extends AbstractActionController
     }
     
     public function categoriaAction()
-    {
-      
+    {      
+        $page = ( $this->params()->fromRoute('page') == "" || $this->params()->fromRoute('page') == 0) ? 1 :  ( ( $this->params()->fromRoute('page') - 1 ) * 1);        
         $busca = $this->params()->fromRoute('categoriaslug',0);
-        #$page = $this->params()->fromRoute('page');
-        
-        #$repository = $this->getServiceLocator()->get('Produto\Repository\Categorias');
-        #$categoriaBySlug = $repository->findByslug($busca);
-        
         
         $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repository->setSlugCategoria($busca);
-        $categoriaBySlug = $repository->productForCategory();
+        $countCategoria = $repository->categoriaCountRow();
+        $categoriaBySlug = $repository->productForCategory(1, $page);        
         
-        if(count($categoriaBySlug)){
-            return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug));
-        }else{
-        	die('nao foi');
-        }
+        $paginator = new ZendPaginator(new ArrayAdapter($countCategoria));
+        $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
+        $paginator->setDefaultItemCountPerPage(1);
         
-        #$paginator = new Paginator(new ArrayAdapter($teste));
-        #$paginator->setCurrentPageNumber($page);
-        #$paginator->setDefaultItemCountPerPage(1);
-        
-        #return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$page));
+        return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$paginator));
     }
     
     public function categoriaAndSubAction()
     {
-        $busca = $this->params()->fromRoute('subcategoriaslugSub',0);
-        $repository = $this->getServiceLocator()->get('Produto\Repository\SubCategorias');
-        $subCatBySlug = $repository->findBySlugSubcategoria($busca);
+        $slugCatBusca = $this->params()->fromRoute('categoriaslug',0);
+        $slugSubcatBusca = $this->params()->fromRoute('subcategoriaslugSub',0);
         
+        $repository = $this->getServiceLocator()->get('Produto\Repository\Produtos');
+        $repository->setSlugCategoria($slugCatBusca);
+        $repository->setSlugSubcategoria($slugSubcatBusca);
+        $subCatBySlug = $repository->productForCatAndSub();
+                
         return new ViewModel(array('produtosPorSubCategoria'=>$subCatBySlug));
     }
     
@@ -131,7 +126,6 @@ class IndexController extends AbstractActionController
     {
         $busca =  $this->params()->fromQuery('p');
         
-        #$repository = $this->getServiceLocator()->get("Produto\Repository\SubCategorias");
         $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repository->setSearch($busca);
         $resultado = $repository->resultadoBusca();
@@ -142,7 +136,6 @@ class IndexController extends AbstractActionController
         }
         else
         {
-            #return $this->redirect()->toRoute('home');
             return new ViewModel(array("semresultado"=>"não resultados"));
         }
         

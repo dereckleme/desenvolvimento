@@ -1,14 +1,15 @@
 <?php
 namespace DrkCorreios\Controller;
 
-use Zend\Mvc\Controller\AbstractRestfulController;
-use Zend\View\Model\JsonModel;
-
-
-class CurlRestController extends AbstractRestfulController
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
+class CurlRestController extends AbstractActionController
 {
-    public function getList()
-    {       
+    public function getListAction()
+    {     
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        
         $request = $this->getRequest();
         $matriz = array();        
         $matriz['CEP'] = $request->getPost('cep');
@@ -20,6 +21,6 @@ class CurlRestController extends AbstractRestfulController
         $curl = $this->getServiceLocator()->get('DrkCorreios\Service\DrkCorreios');        
         $data = $curl->requisicaoDom($matriz);
         
-        return new JsonModel(array('data'=>$curl->requisicaoDom($matriz)));        
+        return new ViewModel(array('data'=>$curl->requisicaoDom($matriz)));        
     }
 }

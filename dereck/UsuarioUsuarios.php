@@ -1,6 +1,6 @@
 <?php
 
-
+namespace Usuario\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="usuario_usuarios")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\Entity\UsuarioUsuariosRepository")
  */
 class UsuarioUsuarios
 {
@@ -41,20 +42,6 @@ class UsuarioUsuarios
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dt_cadastro", type="datetime", nullable=true)
-     */
-    private $dtCadastro;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dt_ativacao", type="datetime", nullable=true)
-     */
-    private $dtAtivacao;
 
     /**
      * @var integer

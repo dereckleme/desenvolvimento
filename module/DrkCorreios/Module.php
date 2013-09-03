@@ -2,7 +2,7 @@
 namespace DrkCorreios;
 
 use DrkCorreios\Service\DrkCorreios as serviceCurl;
-
+use DrkCorreios\Service\Frete as serviceFrete;
 
 class Module
 {
@@ -27,6 +27,10 @@ class Module
     			'factories' => array(
     			    'DrkCorreios\Service\DrkCorreios' => function($service){
     			    	$curl = new serviceCurl();
+    			    	return $curl;
+    			    },
+    			    'DrkCorreios\Service\Frete' => function($service){
+    			    	$curl = new serviceFrete();
     			    	return $curl;
     			    },
     			),

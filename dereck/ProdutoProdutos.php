@@ -50,6 +50,13 @@ class ProdutoProdutos
     private $destaque;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo;
+
+    /**
      * @var \ProdutoSubcategoria
      *
      * @ORM\ManyToOne(targetEntity="ProdutoSubcategoria")

@@ -221,7 +221,6 @@ ul.box_paginacao { width:155px; float: right; margin-top: 15px;}
 
 li.seta_paginacao { width: 20px; height: 20px; float: left; margin-right: 10px;}
 
-
 li img.st_esq { float: right; padding-top: 1px; }
 li img.st_dir { padding-top: 1px; }
 
@@ -230,7 +229,6 @@ li a.box_numeral { color: #666666; float: left; border: solid 1px #CCC; padding:
 li a.box_numeral:hover { color: #FFF; float: left; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
 
 li > span.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-
 /*************************FIM DO SELETC BOX***********************/
 
 /*************************BOX PRODUTOS***********************/
@@ -397,7 +395,7 @@ img.CloseProductsFromBasket { width: 30px; height: 29px; text-align: center; flo
 li.txt_prazoDentrega { float: left; font-size: 15px; color: #666666; padding: 14px 20px 15px 20px;  font-weight: 600;}
 li.SeuCep { width: 475px; height: 50px; float: left;}
 li p.txt_SeuCep { color: #666666; font-size: 15px; float: left; margin-left: 20px;}
-span.CalcFret { padding: 6px 10px 6px 10px; color: #FFF; float: right; background: #ff7f25; text-transform: uppercase; font-weight: 700; margin-top: 9px;}
+span.CalcFret { padding:8px 10px; color: #FFF;  float: right; background: #ff7f25; text-transform: uppercase; letter-spacing: 1px; margin-top: 9px; font-size: 13px}
 input.DigCep1 { width: 74px; height: 30px; color: #666666; margin-top: 10px; margin-left: 20px; border: none; background: #FFF; float: left; padding-left: 5px;}
 input.DigCep2 { width: 54px; height: 30px; color: #666666; margin-top: 10px; border: none; background: #FFF; float: left; margin-left: 10px; padding-left: 5px;}
 li a.ProcurarCep { float: right; font-size: 14px; color: #ff7f25; padding: 15px 30px 10px 10px;}
@@ -415,9 +413,9 @@ p.txt_TotalFrete { float: left; color: #ff7f25; text-transform: uppercase; font-
 p.CalcSomaValor { width: 140px; height: 63px; background: #ff7f25; float: right; text-align: center; color: #FFF; font-weight: 700; margin-top: 0px; margin-bottom: 0px; font-size: 20px; padding-top: 38px;}
 
 /*BOTÕES DA PAGINA ITENS DO CARRINHO DE COMPRAS*/
-span.ButtonCarCompras_Comprar { float: left; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; font-weight: 600; color: #666666; background: #dddddd; padding: 10px 30px 10px 30px; margin-top: 40px; }
-span.ButtonCarCompras_Comprar:hover { background: #B1B0B0;}
-span.ButtonCarCompras_Finalizar { float: right; margin-top: 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px;}
+span.ButtonCarCompras_Comprar { font-size:14px;letter-spacing: 1px; float: left; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; color: #FFF; background: #582700; padding: 10px; margin-top: 40px; }
+span.ButtonCarCompras_Comprar:hover { background: #351903;}
+span.ButtonCarCompras_Finalizar {font-size: 14px; letter-spacing: 1px; float: right; margin-top: 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color: #FFF; background: #ff7f25; padding: 10px;}
 span.ButtonCarCompras_Finalizar:hover { background: #E76509;}
 
 /*SLIDER DE PRODUTOS */
@@ -426,7 +424,6 @@ img.tt_SliderProdutos { float: left; }
 #StructureSlider { width: 1022px; float: left; border: solid 1px #d5d4d4;}
 span.seta_slider_esquerda { width: 17px; height: 25px; float: left; padding-top: 60px; padding-left: 5px;}
 span.seta_slider_direita { width: 17px; height: 25px; float: right; padding-top: 60px; padding-right: 5px;}
-
 #BoxSliderProdutos { width: 978px; float: left; overflow:hidden;}
 ul#BaseSlider { width: 2000px; position: relative;}
 li.ContSlider { width: 164px; height: 140px; float: left;}
@@ -478,11 +475,12 @@ p.SubTotalCheckout { width: 150px; text-align: center; margin-top: 0px; margin-l
 h5.ImgLogin { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/login.png) no-repeat; }
 p.txtBoxLogin {  width: 318px; font-size: 18px; font-weight: bold; color: #666666; text-align: left; padding-left: 13px; letter-spacing: 1px;}
 span.txtBoxLoginSpan { color: #000; text-decoration: underline;}
-span.ButtonBoxLogin { float: left; font-size: 16px; margin: 20px 0 0 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
-span.ButtonBoxLogin:hover { background: #E76509;}
+span.ButtonBoxLogin { float: left;  font-size: 12px;letter-spacing: 1px; margin-left: 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color:#fff; background: #582700; padding: 10px; text-transform: uppercase;}
+span.ButtonBoxLogin:hover { background: #351903;}
 /**/
 #ContBoxEndereco { width: 333px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
 h5.ImgEndereco { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/endereco.png) no-repeat; }
+h5.ImgEnderecoOff { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/enderecoOff.png) no-repeat; }
 p.txtBoxEndereco { width: 320px; font-size: 13px; color: #666666; text-align: left; padding-left: 15px; letter-spacing: 1px; line-height: 25px;}
 span.txtEndeSpan { color: #000; font-weight: bold;}
 span.txtDomicilioSpan { font-size: 14px; text-transform: uppercase; color: #000; font-weight: bold;}
@@ -493,12 +491,14 @@ span.ButtonBoxEndereco:hover { background: #E76509;}
 /**/
 #ContBoxPagamento { width: 333px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
 h5.ImgPagamento { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/pagamento.png) no-repeat; }
+h5.ImgPagamentoOff { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/pagamentoOff.png) no-repeat; }
+span.obs_pagamento{background:#351903;  letter-spacing: 1px; text-transform: uppercase; padding: 13px;  font-size: 12px; float: left;  color:#fff;}
 p.txtResumo { width: 218px; font-size: 14px; color: #000; text-align: left; letter-spacing: 1px; font-weight: bold; float: left; padding-left: 13px; margin-bottom: 0px;}
 p.txtBoxResumo { width: 208px; height: 25px; font-size: 14px; color: #000; text-align: left; font-weight: bold; float: left; background: #fbc9a6; padding-left: 13px; padding-top: 5px; margin-bottom: -12px;}
 span.txtBoxResumoValor { width: 112px; height: 25px; font-size: 14px; float: right; color: #000; text-align: center; display: block; font-weight: bold; margin-top: 14px; padding-top: 5px; background: #fbc9a6; margin-bottom: -12px;}
 img.BoxResumoPagSeguro { margin-left: 13px; margin-top: 50px; float: left;}
-p.txtPagSeguro { width: 310px; padding-left: 15px; float: left; color: #666666;}
-span.BoxPagamentoButton { float: left; font-size: 16px; margin: 20px 0 0 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+p.txtPagSeguro { width: 310px; padding-left: 15px; float: left; color: #333; font-size: 13px; line-height: 20px}
+span.BoxPagamentoButton {color:#FFF; float:right; border: none; padding: 10px; margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-size: 12px}
 span.BoxPagamentoButton:hover { background: #E76509;}
 /*FIM DA PAGINA DE FINALIZAR COMPRA*/
 
@@ -506,70 +506,40 @@ span.BoxPagamentoButton:hover { background: #E76509;}
 h5.ImgLoginOff { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/loginOff.png) no-repeat; }
 p.ttBoxLogin { font-size: 13px; color: #000; font-weight: bold; margin-left: 15px; margin-bottom: 0px;}
 p.xxx { font-size: 11px; color: #ff7f25; margin: 0 0 -5px 15px;}
+form.formAction { width: 313px; float: left; margin-left: 20px}
+a span.BoxPagamentoButtonOff {color:#666; float:right; font-size: 12px; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ddd; text-transform: uppercase;}
 
-form.formAction { width: 333px; float: left; margin-left: 20px}
-/*label.FormLogin, label.FormPasswordSenha, label.FormEmail { margin-left: 15px; font-size:12px; color:#666666;}
-input.BoxLogin, input.BoxEmail  { width: 230px; padding: 8px 5px; margin: 5px 0 5px 15px; border: 1px solid #ddd; color:#666666; font-size:0.875em; letter-spacing: 1px }
-input.BoxPasswordSenha { width: 120px; padding: 8px 5px; margin: 5px 0 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px }
-label.FormPasswordConfirmar { font-size:12px; color:#666666; float: right; margin-top: -59px; margin-right: 62px;}
-input.BoxPasswordConfirmar { width: 120px; padding: 8px 5px; margin: -55px 30px 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px; float: right; }
-input.EventcadastrarLogin { margin: -20px 30px 0 0;  background: #ff7f25; border: none; font-size: 0.875em; text-transform: uppercase; cursor: pointer; border-radius: 7px; padding: 10px 17px; color:#FFF; font-weight: bold; letter-spacing: 1px; float: right; }
-*/
 /*************FORMULARIO CADASTRO NOVO USUARIO*****************************************/
 form.formAction label {font-size: 12px; color:#333; }
 form.formAction input {border: 1px  solid #DDD; font-size: 12px; color:#666; padding: 10px 5px; margin-top: 5px }
 form.formAction input.BoxEmail, input.BoxLogin {width: 210px;}
-form.formAction input.EventcadastrarLogin {color:#FFF; float:right; padding: 10px; cursor: pointer; margin-right: 38px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
-form.formAction input.EventcadastrarLogin:hover {background: #e57220}
+form.formAction input.EventcadastrarLoginFinaliza {color:#FFF; float:right; border: none; padding: 10px; cursor: pointer; margin-right: 18px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
+form.formAction input.EventcadastrarLoginFinaliza:hover {background: #e57220}
+form.formAction input.eventOpenPopUp {color:#FFF; float:left; border: none; padding: 10px; cursor: pointer; letter-spacing: 1px; border-radius: 7px; background: #582700; text-transform: uppercase;}
+form.formAction input.eventOpenPopUp:hover {background: #351903}
 label.FormPasswordConfirmar {margin-left: 100px}
 p.xxx{margin-left: 0px}
 
 /*************FORMULARIO CADASTRAR ENDEREÇO*****************************************/
+form.formAction input.BoxNome, input.BoxEndereco{width: 210px;}
+select.BoxEstado {width: 235px; padding: 8px 5px; border: 1px solid #DDD; margin-top: 5px}
+select.BoxCidade {width: 142px; padding: 9px 5px; border: 1px solid #DDD; margin-top: 5px}
+label.FormComplemento {margin-left: 94px} 
+label.FormCidade {margin-left: 105px}
+form.formAction input.EventcadastrarEnderecoOff {color:#666; float:right; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ddd; text-transform: uppercase;}
+form.formAction input.EventcadastrarEndereco {color:#fff; float:right; cursor: pointer; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
+form.formAction input.EventcadastrarEndereco:hover {background: #e57220 ;}
 
-
-
-
-
-
-/*
-label.FormEndereco, label.FormNome, label.FormNumero, label.FormCEP { margin-left: 15px; font-size:12px; color:#666666; background: #CCC; float: left;}
-
-input.BoxCEP  { width: 120px; padding: 8px 5px; margin: 5px 0 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px; float: left;  }
-input.BoxNome, input.BoxEndereco { width: 230px; margin: 5px 0 5px 15px; padding: 8px 5px; border: 1px solid #ddd; color:#666666; font-size:0.875em; letter-spacing: 1px;}
-
-
-
-input.BoxNumero { width: 120px; padding: 8px 5px; margin: 5px 0 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px; float: left; } 
-
-
-input.BoxBairro { width: 120px; padding: 8px 5px; margin: 0 0 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px; float: left; }
-label.FormBairro { margin-left: 15px; font-size:12px; color:#666666; background: #CCC; float: left; }
-
-
-
-
-input.BoxCidade, input.BoxComplemento { width: 120px; padding: 8px 5px; margin: 0 30px 5px 15px; border: 1px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px; float: left; }
-
-label.FormCidade, label.FormComplemento { font-size:12px; color:#666666; float: left;}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*************Aviso de Produto Não Encontrado************/
+#NaoEncontrado { width: 450px; margin: 0 auto; height: 400px;}
+img.ImgNaoEncontrado { float: left; margin-left: 180px; margin-top: 60px;}
+p.tt_ResultadoNEncontrado { font-size: 25px; text-align: center; margin-left: 50px; font-weight: bold; float: left; color: #858585;}
+p.txt_ResultadoNEncontrado { font-size: 14px; text-align: center; color: #858585; float: left; margin-left: 95px; margin-top: -10px;}
+/*************Aviso de Produto Não Encontrado Na Cesta************/
+#CestaSemProduto { width: 343px; background: #FFF; float: left; border-right: solid 1px #351903; border-left: solid 1px #351903; border-bottom: solid 1px #351903;}
+img.ImgCestaSemProduto { margin-top: 25px; margin-left: 100px; float: left;}
+p.tt_CestaSemProduto { margin-left: 24px; font-size: 20px; color: #ff7f25; float: left;}
+p.txt_CestaSemProduto { width: 250px; margin: -5px 0 0 50px; font-size: 12px; color: #666666; float: left; text-align: center;}
 
 /* Hack ie10 */
 .ie10 input.lupa_topo { width: 50px; height: 55px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;
@@ -627,7 +597,7 @@ center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;}
   span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #582700; color: #FFF; text-align: center; float: left; }
   button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 20px 8px 36px;}
   img.dt_cesta { z-index: -9999; margin-left: 92px; margin-top: -8px; float: left;}
-  span.ButtonBoxLogin { float: left; font-size: 16px; margin: 20px 0 0 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
-  span.ButtonBoxEndereco { float: left; font-size: 16px; margin: 20px 0 0 3.5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
+  span.ButtonBoxLogin {float: left;  font-size: 12px;letter-spacing: 1px; margin-left: 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color:#fff; background: #582700; padding: 10px; text-transform: uppercase;}
+  span.ButtonBoxEndereco {  float: left; font-size: 16px; margin: 20px 0 0 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
   span.BoxPagamentoButton { float: left; font-size: 16px; margin: 20px 0 0 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
  }

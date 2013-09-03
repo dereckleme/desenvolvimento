@@ -44,7 +44,10 @@ class Module
     		$moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
     		$config          = $e->getApplication()->getServiceManager()->get('config');
     		
-    		
+    		/*
+    		 * Permissão de usuário
+    		*/
+    		$matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
     		
     		/*
     		 * Definição de Layout de todos modulos
@@ -75,11 +78,7 @@ class Module
     				$controller->layout($config['module_layouts'][$moduleNamespace]);
     			}
     		}
-    		/*
-    		 * Permissão de usuário
-    		*/
-    		$matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
-    		//////////////////////////
+    		
     		/*
     		 * Definições para bloqueio total de usuários no admin
     		*/

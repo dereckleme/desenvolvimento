@@ -48,11 +48,14 @@ if (count($this->carrinhoLista['listaAtual']) > 0) {
 else
 {
 ?>
-<ul class="header_conteudo_compra">
-	<li class="header_tt_box_produto">
-		<p class="header_txt_produto_compra">Carrinho vazio, triste e com fome :(</p>
-	</li>	
-</ul>
+
+    <div id="CestaSemProduto">
+        <img class="ImgCestaSemProduto" src="<?=$this->basePath()?>/images/cestaVazia.png">
+        <p class="tt_CestaSemProduto">Sua cesta de compras esta vazia.</p>
+        <p class="txt_CestaSemProduto">Você ainda não adicionou nenhum produto ao seu carrinho de compras.Navegue pelo site e selecione os produtos desejados.</p>
+        <a href="#"><span class="ButtonCestaVazia" title="continuar comprando" style="margin-left:38px">CONTINUAR COMPRANDO</span></a>
+    </div>
+                        
 <?php	
 }
 ?>
