@@ -57,40 +57,46 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 
 					<div id="BoxLogin">
 					<?php 
-					    if($this->auth)
+					    if($this->auth->hasIdentity())
 					    {
 					?>
 					<h5 class="ImgLogin">Login</h5>
 							<div id="ContBoxLogin">
-								<p class="txtBoxLogin">Bem-vindo(a), dereckleme!<br/><a href=""><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
+								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
 								<a href="#"><span class="ButtonBoxLogin">voltar para meu carrinho</span></a>
 							</div>
+							
+							
+							
 							<?php 
 					    }
 					    else {
-					    	
                     ?>
+                    
                     <!--Conteudo Finalizar Login Vazio-->
                     <div id="BoxLogin">
                     	   <h5 class="ImgLoginOff">Login</h5>
 							<div id="ContBoxLogin">
 								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
-
+								
+                                 <div class="return"></div>
 									<form action="" class="formAction">
 
-					                  <label class="FormEmail">E-mail*:</label><br/><input type="text" class="BoxEmail" value=""><br/><br/>
+					                  <label class="FormEmail">E-mail*:</label><br/><input type="text" class="BoxEmail actionEmail" value=""><br/><br/>
 
-					                  <label class="FormLogin">Login*:</label><br/><input type="text" class="BoxLogin" value=""><br/><p class="xxx">(Criar nome de usuário)</p><br/>
+					                  <label class="FormLogin">Login*:</label><br/><input type="text" class="BoxLogin actionLogin" value=""><br/><p class="xxx">(Criar nome de usuário)</p><br/>
 
 					                  <label class="FormPasswordSenha">Senha*:</label>
 
                                       <label class="FormPasswordConfirmar">Confirmar senha*:</label><br/>
 
-					                  <input type="password" class="BoxPasswordSenha" value="criar senha">
+					                  <input type="password" class="BoxPasswordSenha actionPassoword" >
 
-					                 <input type="password" class="BoxPasswordConfirmar" value="criar senha"><br/><br/>
+					                 <input type="password" class="BoxPasswordConfirmar actionPassowordConfirm" ><br/><br/>
 
-					                 <input type="submit" value="criar conta" class="EventcadastrarLogin">
+					                 <input type="submit" value="criar conta" class="EventcadastrarLoginFinaliza">
+
+					                 <input type="submit" value="login" class="eventOpenPopUp">
 
 					                </form>
 								
@@ -104,92 +110,137 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 							?>
 					</div>
 
-					<div id="BoxEndereco">
-						<?php 
-					    if($this->auth)
+					<?php 
+					if($this->auth->hasIdentity())
 					    {
 					?>
-
-						<h5 class="ImgEndereco">Endereço</h5>
-							<div id="ContBoxEndereco">
-								<p class="txtBoxEndereco"><span class="txtEndeSpan">Endereço de entrega</span><br/>
-								<span class="txtDomicilioSpan">casa</span><br/>
-								Destinatário: Dereck Leme<br/>
-								Rua Professor Castejon, 77 / Casa<br/>
-								Jardim Monte Kemel<br/>
-								São Paulo - SP - Brasil<br/>
-								CEP: 05633-050<br/>
-								Tipo: Residencial<br/>
-								Referência: Av. Professor Francisco Morato, altura do nº 4.500</p>
-								<p class="txtBoxEntrega">Entrega via Sedex - 7 dias</p> 
-								<span class="txtBoxEntregaValor">R$ 10,00</span>
-								<a href="#"><span class="ButtonBoxEndereco">cadastrar novo endereço</span></a>
-							</div>
-
-							<?php 
-					    }
-					    else {
-					    	
-                    ?>
+					<div id="BoxEndereco">
+						
 
                     		<!--Conteudo Finalizar Endereço Vazio-->
 						<div id="BoxEndereco">
 								<h5 class="ImgEndereco">Endereço</h5>
 							<div id="ContBoxEndereco">
 								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
-
+                                   <span class="msgCadastrase"></span>
 									<form action="" class="formAction">
-
 					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input type="text" class="BoxNome" value=""><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
 
 
 
 
-					                  <label class="FormCEP">CEP*:</label><br/><input type="password" class="BoxCEP" value="criar senha"><br/><br/><br/>
+					                  <label class="FormCEP">CEP*:</label><br/><input type="text" class="BoxCEP" value=""><span class="ajaxMsg" style="color:red;display:none"></span><br/><br/>
 					                  
 
 					                  <label class="FormEndereco">Endereço*:</label><br/><input type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
 Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 
-					                  <label class="FormNumero">Numero*:</label><br/><input type="password" class="BoxNumero" value="criar senha"><br/>
+					                  <label class="FormNumero">Numero*:</label>   <br/>
+					                  <input type="text" class="BoxNumero" value=""><Br/><br/>
 
-					                  <label class="FormComplemento">Complemento:</label><br/><input type="password" class="BoxComplemento" value="criar senha"><br/><br/>
+					                 
+					                  <label class="FormBairro">Bairro*:</label>
+					                  <label class="FormCidade">Cidade*:</label><br/>
 
-					                  <label class="FormBairro">Bairro*:</label><br/><input type="password" class="BoxBairro" value="criar senha"><br/>
+					                  <input type="text"  class="BoxBairro" value="">
+					                   <select class="BoxCidade" disabled="disabled"><option  >Selecione</option></select><br/><br/>
+					                  <label class="FormEstado">Estado*:</label><br/>
+					                  <select class="BoxEstado">
+					                  <option>Selecione</option>
+					                      <?php 
+					                          foreach($this->estados AS $estados)
+					                          {
+					                      ?>
+					                      <option><?=$estados->getNome()?></option>
+					                      <?php 
+					                          }?>
+					                  </select><br/><br/>
 
-					                  <label class="FormCidade">Cidade*:</label><br/><input type="password" class="BoxCidade" value="criar senha"><br/><br/>
 
 
 
-
-					                 <input type="submit" value="Cadastrar Endereço" class="EventcadastrarLogin"><br/><br/><br/>
+					                 <input type="submit" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>
 
 					                </form>
 							</div>
 						</div>		
 							<!--Fim do Conteudo Finalizar Endereço Vazio-->
-							<?php 
-					    }
-							?>
+							
 					</div>
+<?php 
+					    }
+					    else
+					    {
+					    	?>
+					    	<div id="BoxEndereco">
+						
 
+                    		<!--Conteudo Finalizar Endereço Vazio-->
+						<div id="BoxEndereco">
+								<h5 class="ImgEnderecoOff">Endereço</h5>
+							<div id="ContBoxEndereco">
+								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+                                   
+									<form action="" class="formAction">
+
+					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input disabled="disabled" type="text" class="BoxNome" value=""><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
+
+
+
+
+					                  <label class="FormCEP">CEP*:</label><br/><input disabled="disabled" type="text" class="BoxCEP"><br/><br/>
+					                  
+
+					                  <label class="FormEndereco">Endereço*:</label><br/><input  disabled="disabled" type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
+Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
+
+					                  <label class="FormNumero">Numero*:</label>                                      
+                                      <label class="FormComplemento">Complemento:</label>
+
+                                      <br/>
+					                  <input type="text"  disabled="disabled" class="BoxNumero" >
+					                  <input type="text"  disabled="disabled" class="BoxComplemento" ><br/><br/>
+
+					                  <label class="FormBairro">Bairro*:</label>
+					                  <label class="FormCidade">Cidade*:</label><br/>
+
+					                  <input type="text" disabled="disabled" class="BoxBairro" >
+					                   <select class="BoxCidade" disabled="disabled"><option>Selecione</option></select><br/><br/>
+					                  <label class="FormEstado">Estado*:</label><br/>
+					                  <select class="BoxEstado" disabled="disabled"><option>Selecione</option></select><br/><br/>
+
+
+
+
+					                 <input type="submit" value="Salvar Endereço" class="EventcadastrarEnderecoOff"><br/><br/><br/>
+
+					                </form>
+							</div>
+						</div>		
+							<!--Fim do Conteudo Finalizar Endereço Vazio-->
+							
+					</div>
+					    	<?php 
+					    }
+?>
 					<div id="BoxPagamento">
 						<?php 
-					    if($this->auth)
+					    if($this->auth->hasIdentity())
 					    {
 					?>
-						<h5 class="ImgPagamento">Pagamento</h5>
+						<h5 class="ImgPagamentoOff">Pagamento</h5>
 							<div id="ContBoxPagamento">
+							<span class="obs_pagamento">Conclua seu cadastro com cep para calcular o frente.</span>
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
-								    <span class="txtBoxResumoValor">R$ 10,00</span>
+								    <span class="txtBoxResumoValor"><?=$this->carrinhoLista['valorTotal']?></span>
 								    <p class="txtBoxResumo">Despesas com frete:</p> 
-								    <span class="txtBoxResumoValor">R$ 10,00</span>
+								    <span class="txtBoxResumoValor">Indisponível</span>
 								    <p class="txtBoxResumo">Valor total a pagar:</p> 
 								    <span class="txtBoxResumoValor">R$ 10,00</span>
 									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
 									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
-								<a href="#"><span class="BoxPagamentoButton">Finalizar pagamento</span></a>
+								<a href="#"><span class="BoxPagamentoButtonOff">Finalizar pagamento</span></a>
 							</div>
 							<?php 
 					    }
@@ -199,13 +250,14 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 
                     <!--Conteudo Finalizar Pagamento Vazio-->
 						<div id="BoxPagamento">
-						   <h5 class="ImgPagamento">Pagamento</h5>
+						   <h5 class="ImgPagamentoOff">Pagamento</h5>
 							<div id="ContBoxPagamento">
+							<span class="obs_pagamento">É necessário estar logado para calcular o frete e finalizar o pagamento.</span>
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
-								    <span class="txtBoxResumoValor">R$ 00,00</span>
+								    <span class="txtBoxResumoValor"><?=$this->carrinhoLista['valorTotal']?></span>
 								    <p class="txtBoxResumo">Despesas com frete:</p> 
-								    <span class="txtBoxResumoValor">R$ 00,00</span>
+								    <span class="txtBoxResumoValor">Indisponível</span>
 								    <p class="txtBoxResumo">Valor total a pagar:</p> 
 								    <span class="txtBoxResumoValor">R$ 00,00</span>
 									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">

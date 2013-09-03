@@ -32,14 +32,21 @@ class CompraController extends AbstractActionController
     }
     public function finalizaAction()
     {
+        $entity = null;
+        $estados = null;
         $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
-        
+        if($auth->hasIdentity())
+        {
+            $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
+        }
     	return new viewModel(array("carrinhoLista" => array(
     				"listaAtual" =>  $service->lista(),
     				"valorTotal" => $service->calculoTotal(),
-    	            "auth" => $auth
-    		)));
+    	            
+    		),"auth" => $auth,"cadastro" => $entity, "estados" => $estados));
     }
 }

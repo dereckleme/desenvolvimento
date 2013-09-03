@@ -18,6 +18,7 @@
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
                                       ->prependFile($this->basePath() . '/js/usuario.js')
                                       ->prependFile($this->basePath() . '/js/publico.js')
+                                      ->prependFile($this->basePath() . '/js/jquery.maskedinput.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
@@ -99,10 +100,10 @@
 
           <div id="form_cadastro" style="display:none">
              <form action="" class="formActionCadastro">
-                  <label class="status_email">*E-mail:</label><br/><input type="text" class="email" value="digite aqui o seu e-mail"><br/>
-                  <label class="status_login">*Login:</label><br/><input type="text" class="login" value="criar nome de usuário"><br/>
-                  <label class="status_password">*Senha:</label><br/><input type="password" class="Password" value="criar senha"><br/>
-                  <label class="status_password">*Confirmar senha:</label><br/><input type="password" class="Password" value="criar senha"><br/><br/>
+                  <label class="status_email">*Digite aqui o seu e-mail:</label><br/><input type="text" class="email" value=""><br/>
+                  <label class="status_login">*Criar nome de usuário:</label><br/><input type="text" class="login" value=""><br/>
+                  <label class="status_password">*Senha:</label><br/><input type="password" class="Password" ><br/>
+                  <label class="status_password">*Confirmar senha:</label><br/><input type="password" class="PasswordConfirm" ><br/><br/>
                  <input type="submit" value="cadastrar" class="Eventcadastrar"><br/><br/><br/>
             </form>
          </div>

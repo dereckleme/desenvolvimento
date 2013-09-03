@@ -46,7 +46,6 @@ class LoginController extends AbstractActionController
         $viewModel->setTerminal(true);
         return $viewModel;
     }
-    
     public function logoutAction()
     {
         $auth = new AuthenticationService;

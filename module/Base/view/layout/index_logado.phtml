@@ -17,6 +17,7 @@
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
                                       ->prependFile($this->basePath() . '/js/usuario.js')
                                       ->prependFile($this->basePath() . '/js/publico.js')
+                                      ->prependFile($this->basePath() . '/js/jquery.maskedinput.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
@@ -36,25 +37,31 @@
     <body>
 
           <div id="header">
+            <div id="ContenTopoHeader">
               <div id="mn_topo">
                   <ul class="mn_topo">
-				<li class="Menu_topo"><a href="">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</a></li>
-				<li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
-                <li class="Menu_topo" style="background:none;"><a href="">Acompanhe seus pedidos</a></li>
-			</ul>
-
+				            <li class="Menu_topo"><a href="">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</a></li>
+				             <li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
+                      <li class="Menu_topo" style="background:none;"><a href="">Acompanhe seus pedidos</a></li>
+			            </ul>
+               </div>      
               <a href="#" class="actionOpenCarrinho">
                 <span class="Cesta" alt="Minha Cesta" title="Minha Cesta"><br/>
-                    
+                  
                   <div id="Box_Visor_Qtd" style="<?if(count($this->carrinhoLista['listaAtual']) != 0) print "display:block"; else print "display:none";?>">  
-                  <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
+                   <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
                   </div>
 
                   <p class="mc">MINHA CESTA</p>
                    <p class="valor_total"><?=$this->carrinhoLista['valorTotal']?></p>
-                    <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
+                  <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
                   </span>
               </a>
+          </div>
+
+
+
+               <div id="BoxCestaForm">
                 <div id="box_compras" style="display:none;">
                   <?
                     print  $this->partial("layout/carrinho",array("carrinhoLista" => $this->carrinhoLista));
@@ -182,31 +189,41 @@
 
 <div id="conteudo_principal">
 
-                <!--MENU LATERAL-->
+                <?php 
+                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra")
+                    {
+                ?>
                   <div id="lista_produtos">
                     <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
 
                     <ul class="lista_geral">                              
                         <?php
                         $a = 1;
-                        foreach($this->categorias as $categoria): ?>                        
+                        foreach($this->categorias as $categoria): 
+							if( count($categoria->getSubcategorias()[0]->getProdutos()) > 0):
+						?>                        
                             <li>
                                 <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
                                 <ul class="cafe_po">                                
                                     <?php
                                     $i = 1; 
-                                    foreach($categoria->getSubcategorias() as $subcategoria): ?>
+                                    foreach($categoria->getSubcategorias() as $subcategoria): 
+                                    if( count($subcategoria->getProdutos()) > 0):
+                                    ?>
                                         <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
                                             <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
                                         </li>
-                                    <?php $i--; endforeach; ?>                                                                   
+                                    <?php $i--; endif; endforeach; ?>                                                                   
                                 </ul>
                             </li>
                         
-                        <?php $a--; endforeach; ?>
+                        <?php $a--; endif; endforeach; ?>
                     </ul>
 
                   </div>
+                  <?php 
+                    }
+                  ?>
                 <!--*********************FIM DO MENU LATERAL*********************-->
                 
         <?php echo $this->content; ?>
