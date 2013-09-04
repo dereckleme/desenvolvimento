@@ -37,8 +37,8 @@ class DrkCorreios extends AbstractCurl
     			$contents = array(
     					'rua' => $tdelement->item(0)->nodeValue,
     					'bairro' => $tdelement->item(1)->nodeValue,
-    					'uf' => $tdelement->item(2)->nodeValue,
-    					'cid' => $tdelement->item(3)->nodeValue,
+    					'cid' => $tdelement->item(2)->nodeValue,
+    					'uf' => $tdelement->item(3)->nodeValue,
     					'cep' => $tdelement->item(4)->nodeValue
     			);
     	
