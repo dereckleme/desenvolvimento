@@ -27,12 +27,19 @@ class DrkCorreios extends AbstractCurl
     		if($result->hasAttributes())
     		{
     			$tdelement = $result->getElementsByTagName("td");
-    			$contents = array(
+    			/*$contents = array(
     					'rua' => utf8_encode($tdelement->item(0)->nodeValue),
     					'bairro' => utf8_encode($tdelement->item(1)->nodeValue),
     					'uf' => utf8_encode($tdelement->item(2)->nodeValue),
     					'cid' => utf8_encode($tdelement->item(3)->nodeValue),
     					'cep' => utf8_encode($tdelement->item(4)->nodeValue)
+    			);*/
+    			$contents = array(
+    					'rua' => $tdelement->item(0)->nodeValue,
+    					'bairro' => $tdelement->item(1)->nodeValue,
+    					'uf' => $tdelement->item(2)->nodeValue,
+    					'cid' => $tdelement->item(3)->nodeValue,
+    					'cep' => $tdelement->item(4)->nodeValue
     			);
     	
     		}
