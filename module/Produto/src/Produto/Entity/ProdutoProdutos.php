@@ -44,7 +44,30 @@ class ProdutoProdutos
      * @ORM\Column(name="valor", type="decimal", nullable=true)
      */
     private $valor;
-    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="peso", type="decimal", nullable=false)
+     */
+    private $peso;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="comprimento", type="integer", nullable=false)
+     */
+    private $comprimento;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="altura", type="integer", nullable=false)
+     */
+    private $altura;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="largura", type="integer", nullable=false)
+     */
+    private $largura;
     /**
      * @var integer
      *
@@ -154,6 +177,7 @@ class ProdutoProdutos
 	public function setAtivo($ativo) {
 		$this->ativo = $ativo;
 	}
+<<<<<<< HEAD
 	/**
 	 * @return the $acessos
 	 */
@@ -168,8 +192,42 @@ class ProdutoProdutos
 		$this->acessos = $acessos;
 	}
 
+=======
+	public function getPeso() {
+		return $this->peso;
+	}
+
+	public function getComprimento() {
+		return $this->comprimento;
+	}
+
+	public function getAltura() {
+		return $this->altura;
+	}
+
+	public function getLargura() {
+		return $this->largura;
+	}
+
+	public function setPeso($peso) {
+		$this->peso = $peso;
+	}
+
+	public function setComprimento($comprimento) {
+		$this->comprimento = $comprimento;
+	}
+
+	public function setAltura($altura) {
+		$this->altura = $altura;
+	}
+
+	public function setLargura($largura) {
+		$this->largura = $largura;
+	}
+>>>>>>> bc7cf60ce6201f3667dd6948e030bc808df414eb
 
 
+    
 
     
 }

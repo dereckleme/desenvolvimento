@@ -9,8 +9,19 @@
 body { font-family: "Arial", Helvetica, sans-serif; margin: 0px; padding: 0px;}
 ul, li { padding: 0px; margin: 0px; list-style: none}
 a { text-decoration: none}
+h1 { text-indent: -9999px !important; }
 h2 { font-size: 16px; font-weight: 500;}
 img { border: none;}
+h3.SliderProdutosGeral{ background: url(../images/tt_SliderProdutos.png) no-repeat; width: 447px; height:51px ; float: left; text-indent: -9999px; margin: 0px}
+h3.CestaCompras{ background: url(../images/tt_CestaCompras.png) no-repeat; width: 352px; height:51px ; float: left; text-indent: -9999px; margin: 0px}
+h3.ProdutoDestaque { width: 338px; height: 46px; background: url(../images/tt_ProdutosDestaque.png) no-repeat; float: left; text-indent: -9999px; display: block; margin: 0px;}
+h3.ProdutoVisitados { width: 338px; height: 46px; background: url(../images/tt_MaisVisitados.png) no-repeat; float: left; text-indent: -9999px; display: block; margin: 0px;}
+h3.tt_MeusPedidos { background: url(../images/tt_FinalizarCompra.png) no-repeat; width: 180px; height:45px ; float: left; text-indent: -9999px; margin: 0px}
+
+
+
+
+
 
 .zf-green {
     color: #68b604;
@@ -104,7 +115,8 @@ li.ButtonFinalizarCompra a:hover { background: #e76509;}
 /***********FIM DOS BOTÕES DO CARRINHO DE COMPRA**********/
 
 /******************ERRO LOGIN - CADASTRO****************************/
-#form_erro {position: absolute;  width: 100%; min-width: 1024px; margin-top: 80px}
+#form_erro { width: 100%; min-width: 1024px; height:100%; position: fixed; left:0px; top:0px; z-index: 9999; background: url(../images/fundo_form.png);}
+#BoxFormErro { width: 100%; min-width: 1024px; position: fixed; top: 35%;}
 #atencao_erro{width: 411px; margin: 0 auto; background:url(../images/fundo_trasparente.png); text-align: center; border-top:5px solid #ff7f25; border-bottom: 5px solid #ff7f25; padding-bottom: 30px}
 p.atencaoErro{background: url(../images/atencao.png) no-repeat left; font-size: 1.000em; color:#FFF; font-weight: bold; text-indent: 50px; padding:10px 0;}
 p.erro{font-weight: bold; font-size: 1.000em; color:#FFF;}
@@ -112,7 +124,8 @@ span.tipo_erro{ line-height: 25px; color:#fff; }
 a.tentarNovamente{background: #ff7f25; border-radius: 7px; padding: 10px 17px; margin-top: 30px; text-transform: uppercase; color: #FFF; font-weight: bold;font-size: 0.875em; letter-spacing: 1px}
 
 /******************LOGIN - CADASTRO****************************/
-#Login_Cadastro{width: 100%; min-width: 1024px; position: absolute; }
+#Login_Cadastro { width: 100%; min-width: 1024px; height:100%; position: fixed ; left:0px; top:0px; z-index: 9999; background: url(../images/fundo_form.png);}
+#BoxLoginCadastro {  width: 100%; min-width: 1024px; position: fixed; top: 25%;}
 #btn_form {width: 453px; margin: 0 auto; }
 #form_login {width: 453px; margin: 0 auto; background: #FFF }
 #form_cadastro {width: 453px; margin: 0 auto; background: #FFF }
@@ -125,21 +138,21 @@ a.esqueceuSenha { color:#333; text-decoration: underline; margin-left: 12%;}
 p.criar_conta{margin-left: 12%; font-size:1.125em; }
 p.criar_conta a.criar_conta {color:#333; font-weight: bold}
 p.criar_conta a.criar_conta:hover {color:#ff7f25;}
-form.formActionLogin, form.formActionCadastro{border: 3px solid #ff7f25; padding-top: 80px }
-input.login, input.Password, input.email{width: 320px; padding: 10px 5px; margin-left: 12%; margin-bottom: 10px; margin-top: 10px; border: 2px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px }
+
+form.formActionLogin, form.formActionCadastro { border: 3px solid #ff7f25; padding-top: 80px }
+
+input.login, input.Password, input.email, input.PasswordConfirm {width: 320px; padding: 10px 5px; margin-left: 12%; margin-bottom: 10px; margin-top: 10px; border: 2px solid #ddd; color:#666; font-size:0.875em; letter-spacing: 1px }
+
 label.status_login, label.status_password, label.status_email {font-size:1.000em; color:#333; margin-left: 12%;}
+
 input.Eventlogin ,input.Eventcadastrar {background: #ff7f25; border: none; font-size: 0.875em; text-transform: uppercase; cursor: pointer; border-radius: 7px; padding: 10px 17px; color:#FFF; font-weight: bold; letter-spacing: 1px; float: right; margin-right:12% }
+
 /*******************CONTEUDO***************/
 #geral { width: 100%; min-width: 1024px; float: left; }
-
 /*******************MENU***************/
 #topo_menu { width: 100%; min-width: 1024px; border-bottom: solid 1px #CCC; float: left; padding-bottom: 30px; margin-bottom: 30px;}
-#menu_central { width: 1024px; margin: 0 auto;}
-h1 { text-indent: -9999px !important; display: none !important;}
-
-img.logo_seleto { float: left; padding-top: 40px; padding-left: 80px; }
-
-
+#menu_central { width: 1024px; float: left; position: relative; left: 50%; margin-left: -512px;}
+h1.logo_seleto { width: 248px; height: 147px; margin: 43px 0 0 100px; float: left; background: url(../images/logo_seleto.png) no-repeat; cursor: pointer; }
 img.phone { width: 24px; height: 15px; float: left; padding-top: 15px; padding-right: 10px;} 
 p.txt_phone { width:300px; font-size: 18px; font-weight: bold; color: #ff7f25; margin-top: 13px;}
 #box_menu { width: 544px; float:right;}
@@ -147,18 +160,15 @@ input.search_topo{ width: 454px; padding: 15px; margin-bottom: 10px; margin-top:
 input.lupa_topo { width: 50px; height: 56px !important; -webkit-height: 61.5px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none; text-indent: -9999px; cursor: pointer;}
 /*Menu Topo*/
 ul.Menu { width: 544px;}
-
 li > h3.lista_menu_cafe { text-indent: -9999px; }
 li > h3.lista_menu_alimentos { text-indent: -9999px; }
 li > h3.lista_menu_produtos { text-indent: -9999px; }
-
 li.lista_menu_cafe  { width: 178px; height: 87px; background: url(../images/cafe.png) no-repeat; float: left; padding: 0 5px 0 0; cursor: pointer;}
 li.lista_menu_cafe:hover { background: url(../images/cafeHover.png) no-repeat;}
 li.lista_menu_alimentos { width: 178px; height: 87px; background: url(../images/alimento.png) no-repeat; float: left; padding: 0 5px 0 0; cursor: pointer;}
 li.lista_menu_alimentos:hover { background: url(../images/alimentoHover.png) no-repeat;}
 li.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/produtos.png) no-repeat; float: left; cursor: pointer;}
 li.lista_menu_produtos:hover { background: url(../images/alimentoHover.png) no-repeat;}
-
 /*Dropdown Cafés*/
 ul.dropdownCafe { width: 544px; background: #FFF; margin-top: 28px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 li.tt_dropdown { width: 544px; height: 60px; border-bottom: solid 1px #DDD; display: block; float: left;}
@@ -173,34 +183,28 @@ li.VejaMaisDropdown { width: 180px; float: left; display: block;}
 li a.VejaMaisDropdown { font-size: 9px; color: #969595; padding-left: 20px; text-decoration: underline; font-style: italic;}
 li.imgDropdown { width: 300px; float: right;}
 img.dom_menu { margin-top: 30px;}
-
 /*Dropdown Alimentos*/
 ul.dropdownAlimento { width: 544px; background: #FFF; margin-top: 28px; margin-left: -183px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 img.BonecoSeleto { position: absolute; z-index: 4; display: block; right: -25px; top: 60px;}
-
 /*Dropdown Todos Alimentos*/
 ul.dropdownProduto { width: 544px; background: #FFF; margin-top: 28px; margin-left: -366px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
-
 /*******************CONTEUDO PRINCIPAL***************/
 #conteudo_principal { width: 1024px; float: left; position: relative; left: 50%; margin-left: -512px;} 
-
 /*******************COLUNA ESQUERDA***************/
-#lista_produtos { width: 150px; float: left; margin-right: 10px;}
+#lista_produtos { width: 150px; float: left; margin-right: 15px;}
 span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; letter-spacing: 1px; padding: 6px 0 0 0; font-size: 13px; font-weight: 600; background: #582700; color: #FFF; text-align: center; float: left; }
 ul.lista_geral { width: 148px; border-left: solid 1px #ddd; border-right: solid 1px #CCC; border-bottom: solid 1px #CCC;}
 a.tt_lista {width: 143px; padding: 5px 0; padding-left: 5px; display: block; font-weight: 500; font-weight: bolder; color: #333; margin-top: 5px; margin-bottom: 5px; font-size: 13px;  border-bottom: solid 1px #ddd; border-top: solid 1px #ddd;}
 li.itens_menu_lateral { width: 100%; }
 li.itens_menu_lateral a { display: block; font-size: 12px; width: 143px; padding: 5px 0; padding-left: 5px;  color: #666;}
 li.itens_menu_lateral a:hover { background: #582700; color: #FFF;}
-
 /*************************BANNER INFORMATIVO***********************/
 #banner_informativo { width: 100%; min-width: 1024px; float: left; background: #ff7f25;}
 #box_banner_informativo { width: 1024px; height: 100px; margin: 0 auto;}
-img.banner_pagamento {float: left; margin-top: 25px; margin-left: 60px;}
-img.banner_entrega {float: left;  margin-left: 140px; margin-top: 33px;}
-img.banner_redes {float: right; margin-top: 25px; margin-right: 45px;}
+h6.banner_pagamento { width: 245px; height: 61px; float: left; margin-top: 25px; margin-left: 20px; background: url(../images/pagamentos.png) no-repeat; text-indent: -9999px;}
+h6.banner_entrega { width: 202px; height: 61px; float: left;  margin-left: 60px; margin-top: 25px; background: url(../images/entregas.png) no-repeat; text-indent: -9999px;}
+h6.banner_redes { width: 416px; height: 60px; float: right; margin-top: 25px; margin-right: 30px; background: url(../images/redes.png) no-repeat; text-indent: -9999px;}
 /*************************FIM DO BANNER INFORMATIVO***********************/
-
 /*************************BREADCRUMBS DAS PAGINAS***********************/
 #breadcrumbs { width: 100%; min-width: 1024px; float: left; }
 #box_breadcrumbs { width: 1024px; height: 30px; margin: 0 auto; font-size: 11px; color: #666666; }
@@ -208,31 +212,22 @@ a.txt_breadcrumbs { color: #666666;}
 span.txt_pagina { color: #ff7f1f; font-weight: bold; }
 img.img_breadcrumbs { margin-left: 10px; margin-right: 10px;}
 /*************************FIM DO BREADCRUMBS DAS PAGINAS***********************/
-
 /************************* PAGINA CENTRAL CATEGORIA - PRODUTOS***********************/
-
-#cont_central_produtos { width: 644px; float: left; margin-right: 10px;}
-
+#cont_central_produtos { width: 644px; float: left; margin-right: 15px;}
 /************************* SELETC BOX***********************/
-#select_box { width: 646px; height: 50px; float: left; background: #f2f2f2; margin-bottom: 5px; }
+#select_box { width: 644px; height: 50px; float: left; background: #f2f2f2; margin-bottom: 5px; }
 p.tt_select_box { float: left; color: #666666; padding-left: 15px; padding-right: 10px;}
 .styled-select select { width: 150px; margin-top: 10px; padding: 5px; font-size: 12px; line-height: 1; border: solid 1px #CCC; height: 30px; color: #666666; float: left; }
 ul.box_paginacao { width:155px; float: right; margin-top: 15px;}
-
 li.seta_paginacao { width: 20px; height: 20px; float: left; margin-right: 10px;}
-
 li img.st_esq { float: right; padding-top: 1px; }
 li img.st_dir { padding-top: 1px; }
-
-
 li a.box_numeral { color: #666666; float: left; border: solid 1px #CCC; padding: 0 5px 0 5px; margin-right: 10px;}
 li a.box_numeral:hover { color: #FFF; float: left; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-
 li > span.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
 /*************************FIM DO SELETC BOX***********************/
-
 /*************************BOX PRODUTOS***********************/
-ul#box_categoria_produtos { width: 644px; margin-bottom: 5px; float: left; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-top: solid 1px #CCC; display: block;}
+ul#box_categoria_produtos { width: 642px; margin-bottom: 5px; float: left; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-top: solid 1px #CCC; display: block;}
 /*LISTA DA - CATEGORIA PRODUTOS*/
 /*IMAGENS*/
 li.lista_categoria_produtos { width: 644px; height: 155px; float: left; border-bottom: solid 1px #CCC;}
@@ -260,21 +255,18 @@ button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; c
 button.carrinhoCompras_categoria { font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px; } 
 
 /******************* COLUNA CENTRAL - HOME***************/
-#conteudo_central { width: 644px; float: left; margin-right: 10px;}
-#box_destaque { float: left; margin-bottom: -5px}
-
-p.txt_box{ margin-left: 60px; margin-top: -27px; font-size: 16px; color: #FFF; font-weight: 600; letter-spacing: 2px;}
-#box_visitados {float: left; margin-bottom: -5px }
-ul#box_produto { width: 644px; float: left; margin-bottom: 10px; border-bottom: dashed 1px #ddd; padding-bottom: 20px; border: solid 1px #ddd; display: block;}
-li#produto { width: 214px; height: 340px; float: left; border-left: dashed 1px #ddd;
+#conteudo_central { width: 644px; float: left; margin-right: 15px;}
+#container_home { float: left;}
+ul#box_produto { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd; display: block;}
+li#produto { width: 213px; height: 340px; float: left; border-left: dashed 1px #ddd;
 text-align: center; margin-top: 25px; display: block;}
 a.ImgProdutoHome { width: 214px; height: 196px; float: left; text-align: center;}
-a img.imgProdutos_home{width: 150px; height: 196px;}
-a:hover p.txt_produto {text-decoration: underline;}
+a img.imgProdutos_home{ width: 150px; height: 196px;}
+a:hover p.txt_produto { text-decoration: underline;}
 p.txt_produto { width: 170px; height: 35px; font-size: 12px; color: #666666; font-weight: bold; float: left; text-align: center; margin: 0 0 15px 25px;}
 p.txt_valor { width: 150px; height: 20px; font-size: 18px; color: #ff7f25; font-weight: bold; float: left;  text-align: center; margin: 15px 0 20px 30px;}
 span.comprar { padding: 5px 25px 5px 25px; background: #ff7f25; color: #FFF; font-size: 10px; letter-spacing: 1px;   text-transform: uppercase; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;}
-span.comprar:hover {background:#e57220 }
+span.comprar:hover { background:#e57220; }
 /*******************COLUNA DIREITA***************/
 #publicidade { width: 200px; height: 500px; float: left;}
 #cadastro { width: 198px; height: 175px; float: left; border: solid 1px #ddd;}
@@ -315,10 +307,9 @@ ul.submenu li a.redes_sociais img {float: left; margin-right: 12px;}
 p.pagamentos {font-size: 14px; color:#582700; text-transform: uppercase; font-weight: bold; float: left; padding-right: 20px}
 
 /**********************PÁGINA DETALHE DO PRODUTO ******************************/
-#conteudo_detalhe{width: 1024px; margin: 0 auto; background: #DDD}
-h3.Nome_detalhe {font-size: 24px; color:#ff7f25; margin-left: 25px}
-h4.inf_produtos{font-size: 24px; color:#351903;}
-#box_detalhe {width: 644px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd;}
+h3.Nome_detalhe { font-size: 24px; color:#ff7f25; margin-left: 25px}
+h4.inf_produtos{ font-size: 24px; color:#351903;}
+#box_detalhe { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd; }
 #galeria_detalhe{width: 212px; float: left; border: solid 1px #ddd; padding:15px 10px; margin-left:20px; }
 span.mouse_imagem { background:url(../images/lupa_zoom.png) no-repeat left top;font-size: 12px; color:#666; padding-left: 20px; padding-bottom: 5px; margin-left: 20px; }
 #comprar_detalhe{width: 323px; float: left; border: solid 1px #ddd;  padding: 10px; margin-left: 25px; font-size: 13px; text-align: center;}
@@ -337,18 +328,26 @@ li.qtMenos a{position: relative; width: 13px; height: 10px; background: url(../i
 button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #351903;font-weight: bold; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left; margin-top: 13px;}
 a.btn_comprar_detalhe{ background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: right; padding: 19px; margin-top: 13px}
 /******************informaçoes produtos*********************/
-.informacoes_produtos{float: left; margin-left: 25px; width: 523px}
+.informacoes_produtos { float: left; margin-left: 25px; width: 523px;}
 p.ingredientes{color:#666; font-size: 16px; font-weight: bold;}
 p.ingredientes_inf{color: #666; font-size: 13px; line-height: 18px }
+/******************Informações da Tabela*********************/
+table { width: 594px; display: table; font-size: 13px; margin-left: 25px; float: left; background: #f7f7f7; }
+thead { height: 30px; display: table-header-group; vertical-align: middle; background: #dddddd;}
+tr { display: table-row; vertical-align: inherit;}
+td { display: table-cell; text-align: inherit; vertical-align: inherit; }
+th { display: table-cell; vertical-align: inherit; font-weight: bold; }
+.tabelaNutricional .desc { width: 150px; text-align: center; font-weight: bold;}
+.tabelaNutricional .vd {  width: 150px; text-align: center;}
+.tabelaNutricional .qtd { width: 294px; text-align: center; }
 
 /********************veja também*******************************/
-#box_vejaTambem {width: 200px; float: left; display: block; border: 1px solid #DDD}
-.box_vejaTambem{margin-bottom: 10px; float: left; border-bottom: 1px solid #DDD;  padding-bottom: 20px; width: 180px; margin-left: 10px}
-.tt_top_list_right {width: 200px; height: 22px; margin-top: -13px; letter-spacing: 2px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #ff7f25; color: #FFF; text-align: center; float: left;}
+#VejaTambem { width: 200px; float: left;}
+#box_vejaTambem { width: 198px; float: left; border: 1px solid #DDD;}
+.tt_top_list_right { width: 200px; height: 22px; margin-top: -13px; letter-spacing: 2px; padding: 6px 0 0 0; font-size: 13px; font-weight: 600; background: #ff7f25; color: #FFF; text-align: center; float: left;}
+.box_vejaTambem{ margin-bottom: 10px; float: left; border-bottom: 1px dashed #DDD; padding-bottom: 20px; width: 180px; margin-left: 10px}
 .left_vejaTambem{float: left; width: 86px; height: 102px; }
 .right_vejaTambem{ float:left; margin-left: 10px; width: 80px}
-#box_vejaTambem p.desc_prod {}
-img.maisProd{}
 strike.precoAntigo_produto {font-weight: bold; font-size: 11px; color:#582700;}
 p.precoProduto_VejaTambem{font-size: 13px; color:#ff7f25; margin-top: 5px}
 .qtd_VejaTambem{width:82px; margin-bottom: 40px; clear: both; margin-left: -10px }
@@ -367,7 +366,8 @@ img.tt_CestaCompras { float: left;}
 #BoxCestaCompras { width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px;}
 ul#HeaderCestaCompras { width: 1000px; height: 50px; float: left; background: #dddddd; margin-top: 12px; margin-left: 12px;}
 ul#BoxListaProduto { width: 1000px; float: left; margin-left: 12px;}
-li.ListaDaCesta { width: 998px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left;}
+li.ListaDaCesta { width: 998px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left; padding-bottom: 10px;}
+li.ListaDaCesta2 { width: 998px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left;}
 /*LISTA DO MENU SUPERIOR*/
 li.CestaTopoProduto { padding: 16px 50px 0 25px; float: left; font-weight: 100; font-size: 14px; color: #666666;}
 li.CestaTopoDescricao { padding: 16px 0 0 25px; float: left; font-size: 14px; color: #666666;}
@@ -395,22 +395,23 @@ img.CloseProductsFromBasket { width: 30px; height: 29px; text-align: center; flo
 li.txt_prazoDentrega { float: left; font-size: 15px; color: #666666; padding: 14px 20px 15px 20px;  font-weight: 600;}
 li.SeuCep { width: 475px; height: 50px; float: left;}
 li p.txt_SeuCep { color: #666666; font-size: 15px; float: left; margin-left: 20px;}
-span.CalcFret { padding:8px 10px; color: #FFF;  float: right; background: #ff7f25; text-transform: uppercase; letter-spacing: 1px; margin-top: 9px; font-size: 13px}
+span.CalcFret { padding:8px 10px; color: #FFF;  float: left; margin-left:10px;background: #ff7f25; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; font-size: 13px}
+span.CalcFret:hover {background: #E76509; }
 input.DigCep1 { width: 74px; height: 30px; color: #666666; margin-top: 10px; margin-left: 20px; border: none; background: #FFF; float: left; padding-left: 5px;}
 input.DigCep2 { width: 54px; height: 30px; color: #666666; margin-top: 10px; border: none; background: #FFF; float: left; margin-left: 10px; padding-left: 5px;}
-li a.ProcurarCep { float: right; font-size: 14px; color: #ff7f25; padding: 15px 30px 10px 10px;}
+li a.ProcurarCep { float: left; font-size: 14px; color: #ff7f25; padding: 15px 30px 10px 10px;}
 
 /*CONTEUDO VALOR + AVISO*/
 span.BoxEntrega { width: 1000px; height: 40px; float: left; background: #fbc9a6;}
 img.ImgBoxEntrega { float: left; margin-top: 11px; margin-left: 20px;}
-p.TxtBoxEntrega { float: left; font-size: 16px; margin-left: 10px; margin-top: 11px;}
+p.TxtBoxEntrega {background: url(../images/entrega_Cesta.png) no-repeat left; text-indent: 40px; padding: 3px 0; float: left; font-size: 16px; margin-left: 10px; margin-top: 8px;}
 span.CaixaAltaEntrega { text-transform: uppercase; font-weight: 700;}
 img.AvisoCarrinho { float: left; margin-left: 20px; margin-top: 42px;}
-p.txt_aviso { margin-left: 10px; margin-top: 45px; float: left; font-size: 12px;}
+p.txt_aviso {background: url(../images/aviso_carrinho.png) no-repeat left;  padding: 3px 30px; margin-left: 10px; margin-top: 30px; float: left; font-size: 14px;}
 span.txt_aviso_atencao { color: #d30803;}
-p.txt_frete { float: left; color: #ff7f25; text-transform: uppercase; font-size: 16px; margin-top: 40px; margin-left: 120px; }
-p.txt_TotalFrete { float: left; color: #ff7f25; text-transform: uppercase; font-size: 16px; margin-left: 40px; margin-top: 40px;}
-p.CalcSomaValor { width: 140px; height: 63px; background: #ff7f25; float: right; text-align: center; color: #FFF; font-weight: 700; margin-top: 0px; margin-bottom: 0px; font-size: 20px; padding-top: 38px;}
+p.txt_frete { float: left; color: #000; width: 340px; text-align: center; text-transform: uppercase; font-size: 18px; padding: 39px 0;  letter-spacing: 1px; font-weight: bold; margin-top: 0px;}
+p.txt_TotalFrete { margin-top:0px;float:left; color: #ff7f25; padding: 39px 0; padding-left: 15px;text-transform: uppercase; font-size: 18px;   letter-spacing: 1px;  background: #DDD; font-weight: bold}
+p.CalcSomaValor { width: 140px; padding-bottom: 38px; background: #ff7f25; float: right; text-align: center; color: #FFF; font-weight: 700; margin-top: 0px; margin-bottom: 0px; font-size: 20px; padding-top: 38px;}
 
 /*BOTÕES DA PAGINA ITENS DO CARRINHO DE COMPRAS*/
 span.ButtonCarCompras_Comprar { font-size:14px;letter-spacing: 1px; float: left; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; color: #FFF; background: #582700; padding: 10px; margin-top: 40px; }
@@ -444,13 +445,12 @@ span.ButtonProductDescription { margin-left: 11px; padding: 5px 15px 5px 15px; b
 img.imgCestaVazia { width: 131px; height: 102px; margin: 80px 20px 0 70px;}
 p.txtCestaVazia { font-size: 13px; color: #666666;}
 span.ttCestaVazia { font-size: 20px; font-weight: 700; letter-spacing: 1px; color: #ff7f25;}
-span.ButtonCestaVazia { float: left;  margin-bottom: 20px; margin-top: 20px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px;}
+span.ButtonCestaVazia { font-size: 14px; letter-spacing: 1px; float: left; margin: 20px 0 10px 65px; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px;}
 span.ButtonCestaVazia:hover { background: #E76509;}
 /*FIM DA PAGINA COM OS ITENS DO CARRINHO DE COMPRAS*/
 
 /*PAGINA DE FINALIZAR COMPRA*/
 #FinalizarCompra { width: 1024px; float: left;}
-img.tt_FinalizarCompra { float: left;}
 #BoxFinalizarCompra { width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px; margin-bottom: 10px;}
 ul#HeaderFinalizarProduto { width: 1000px; height: 50px; float: left; background: #dddddd; margin-top: 12px; margin-left: 10px;}
 li.FinalizarProduto { padding: 18px 0 0 30px; float: left; font-weight: 100; font-size: 14px; color: #666666; text-align: center;}
@@ -517,7 +517,7 @@ form.formAction input.EventcadastrarLoginFinaliza {color:#FFF; float:right; bord
 form.formAction input.EventcadastrarLoginFinaliza:hover {background: #e57220}
 form.formAction input.eventOpenPopUp {color:#FFF; float:left; border: none; padding: 10px; cursor: pointer; letter-spacing: 1px; border-radius: 7px; background: #582700; text-transform: uppercase;}
 form.formAction input.eventOpenPopUp:hover {background: #351903}
-label.FormPasswordConfirmar {margin-left: 100px}
+label.FormPasswordConfirmar { margin-left: 100px;}
 p.xxx{margin-left: 0px}
 
 /*************FORMULARIO CADASTRAR ENDEREÇO*****************************************/

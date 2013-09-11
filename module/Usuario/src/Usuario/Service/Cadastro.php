@@ -16,12 +16,25 @@ class Cadastro extends AbstractService{
 	    $this->setTargetEntity(array(
 	    		array("setTargetEntity" => "Usuario\Entity\UsuarioUsuarios",
 	    				"setCampo" => "setUsuariosusuarios",
-	    				"setActionReference" => $idUsuario),
-	    		array("setTargetEntity" => "Usuario\Entity\MapeamentoCidade",
-	    				"setCampo" => "setMapeamentocidade",
-	    				"setActionReference" => 1),
+	    				"setActionReference" => $idUsuario)
 	    ));
 	     parent::insert(array());
+	}
+	public function update(array $data)
+	{
+	    if(!empty($data['cidade']))
+	    {
+	        $this->setTargetEntity(array(
+	        		array("setTargetEntity" => "Usuario\Entity\MapeamentoCidade",
+	        				"setCampo" => "setMapeamentocidade",
+	        				"setActionReference" => $data['cidade'])
+	        ));
+	        parent::update($data);
+	    }
+	    else
+	    {
+	        parent::update($data);
+	    }
 	}
 }
 

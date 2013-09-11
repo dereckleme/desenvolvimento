@@ -76,7 +76,14 @@ class UsuarioController extends AbstractActionController
                 $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
                     $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
                     $service = $this->getServiceLocator()->get('Usuario\Service\Cadastro');
-                    $service->update(array("id" => $entity->getIdcadastro(), "nome" => $requestArray['actionNome']));
+                    $service->update(array("id" => $entity->getIdcadastro(), 
+                        "nome" => $requestArray['actionNome'], 
+                        "cep" => $requestArray['actionCep'], 
+                        "rua" => $requestArray['actionRua'],
+                        "numero" => $requestArray['actionNumero'],
+                        "bairro" => $requestArray['actionBairro'],
+                        "cidade" => $requestArray['actionCidade'],
+                    ));
                 $viewModel = new ViewModel(array('message' => 1));
             }
             else 
