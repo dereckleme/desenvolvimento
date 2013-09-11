@@ -104,13 +104,47 @@ return array(
 						'action'        => 'buscaDeProdutos',
     				),
         		),
-            )
+            ),
+            'publico-mapeamento-cidades-estados' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                		'route'    => '/mapeamento-cidades-estados',
+                		#'route'    => '/[produto/:categoriaslug]',
+                		'defaults' => array(
+                				'__NAMESPACE__' => 'Base\Controller',
+                				'controller'    => 'Mapeamento',
+                				'action'        => 'index'
+                		),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'publico-mapeamento-cidade-id' => array(
+                    		'type' => 'Segment',
+                    		'options' => array(
+                    				'route'    => '[/cidade/id/:idCidade]',
+                    				'defaults' => array(
+                    						'action'     => 'index',
+                    				),
+                    		),
+                    ),
+                    'publico-mapeamento-cidade-estado-lista' => array(
+                    		'type' => 'Segment',
+                    		'options' => array(
+                    				'route'    => '[/cidade/nomeclatura/:nomeclatura]',
+                    				'defaults' => array(
+                    						'action'     => 'index',
+                    				),
+                    		),
+                    ),
+                )    
+            )    
         ),
     ),
     'controllers' => array(
     		'invokables' => array(
     		        'Base\Controller\Compra' => 'Base\Controller\CompraController',
-    				'Base\Controller\Index' => 'Base\Controller\IndexController'
+    				'Base\Controller\Index' => 'Base\Controller\IndexController',
+    		        'Base\Controller\Mapeamento' => 'Base\Controller\MapeamentoController'
     		),
     ),
     'view_manager' => array(

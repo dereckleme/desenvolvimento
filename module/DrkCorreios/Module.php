@@ -30,7 +30,7 @@ class Module
     			    	return $curl;
     			    },
     			    'DrkCorreios\Service\Frete' => function($service){
-    			    	$curl = new serviceFrete();
+    			    	$curl = new serviceFrete($service);
     			    	return $curl;
     			    },
     			),

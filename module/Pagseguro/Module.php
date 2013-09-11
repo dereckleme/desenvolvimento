@@ -35,7 +35,7 @@ class Module
     					            $auth->setStorage(new SessionStorage($config['pagSeguroDereck']['SessionStorage']));
     					            if($auth->hasIdentity())
     					            {
-    						            $Service = new postCurl($config['pagSeguroDereck']['email'],$config['pagSeguroDereck']['token'], $config['pagSeguroDereck']['currency']);
+    						            $Service = new postCurl($config['pagSeguroDereck']['email'],$config['pagSeguroDereck']['token'], $config['pagSeguroDereck']['currency'],$service);
     					            }
     					            else
     					            {

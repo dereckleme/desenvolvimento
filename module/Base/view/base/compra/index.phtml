@@ -3,7 +3,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 ?>
 <!--Slider de Produtos-->
 	<div id="SliderProdutosGeral">
-		<img class="tt_SliderProdutos" src="<?=$this->basePath()?>/images/tt_SliderProdutos.png">
+		<h3 class="SliderProdutosGeral">Veja mais alguns produtos Seleto</h3>
 			<div id="StructureSlider">	
 			 <a href=""><span class="seta_slider_esquerda"><img src="<?=$this->basePath()?>/images/seta_slider_esquerda.png"></span></a>
 				<div id="BoxSliderProdutos">
@@ -40,7 +40,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 
          <!--Pagina do Carrinho de Compras-->
 		<div id="CestaCompras">
-				<img class="tt_CestaCompras" src="<?=$this->basePath()?>/images/tt_CestaCompras.png">
+				<h3 class="CestaCompras">Minha cesta de compras</h3>
 				<div id="BoxCestaCompras">
 
 						<ul id="HeaderCestaCompras">
@@ -100,34 +100,33 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								 <li class="SeuCep">
 								 	<p class="txt_SeuCep">Digite seu CEP</p>
 
-								 	    <a href="#" title="calcular frete">
+								 	    <a href="#" title="Calcular frete">
+									 		
+									 		<input class="DigCep1" value="<?if(!empty($this->cep)) print $this->cep?>">
 									 		<span class="CalcFret">
 									 		 Calcular frete
 									 		</span>
-									 		<input value="00000" class="DigCep1">
-									 		<input value="000" class="DigCep2">
+
 									 	</a>
 								 </li>
 
 								 <li>
-								 	<a class="ProcurarCep" href="#" title="encontre seu cep">
+								 	<a class="ProcurarCep" href="#" title="Encontre seu CEP">
 								 		<u>Não sei meu CEP</u>
 								 	</a>
 								 </li>
 						</ul>
 
 						<ul id="BoxListaProduto">
-						 <span class="BoxEntrega">
-						 	<img class="ImgBoxEntrega" src="<?=$this->basePath()?>/images/entrega_Cesta.png">
+						 <span class="BoxEntrega">						 	
 						 	 <p class="TxtBoxEntrega">
 						 		<span class="CaixaAltaEntrega">prazo máximo de entrega:</span>
 						 		 até 7 dias úteis</p>
 						 </span>
-							<li class="ListaDaCesta">
-								<img class="AvisoCarrinho" src="<?=$this->basePath()?>/images/aviso_carrinho.png">
-								<p class="txt_aviso"><span class="txt_aviso_atencao">Atenção:</span> O prazo começa a contar a partir da aprovação do crédito.</p>
-		                        <p class="txt_frete">FRETE: GRÁTIS</p>
-		                        <p class="txt_TotalFrete">TOTAL COM FRETE:</p>
+							<li class="ListaDaCesta2">								
+								<p class="txt_aviso"><span class="txt_aviso_atencao"><strong>Atenção:</strong></span> O prazo começa a contar a<br/> partir da aprovação do crédito.</p>
+		                        <p class="txt_frete"><?if(!empty($this->valorFrete)) print "FRETE: ".$this->valorFrete;?></p>
+		                        <p class="txt_TotalFrete">Total<?if(!empty($this->valorFrete)) print " com frete";?>:</p>
 		                        <p class="CalcSomaValor"><?=$this->carrinhoLista['valorTotal']?></p>
 							</li>
 
@@ -145,7 +144,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
     	
 ?>			           <!--Pagina Vazia do Carrinho de Compras-->
        <div id="CestaCompras">
-				<img class="tt_CestaCompras" src="<?=$this->basePath()?>/images/tt_CestaCompras.png">
+				<h3 class="CestaCompras">Minha cesta de compras</h3>
 					<div id="BoxCestaCompras">
 
 						<img class="imgCestaVazia" src="<?=$this->basePath()?>/images/cestaVazia.png" title="cesta vazia">

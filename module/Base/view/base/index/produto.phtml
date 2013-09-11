@@ -1,5 +1,4 @@
-<div id="conteudo_detalhe">	
-    <div id="conteudo_central">
+<div id="conteudo_central">
     	<div id="box_detalhe">
     	
     		<h3 class="Nome_detalhe"><?=$this->detalheProduto->getTitulo()?></h3>
@@ -62,15 +61,153 @@
 				 <span class="mouse_imagem">passe o mouse na imagem</span>
 				<h4 class="inf_produtos">Informações sobre o produto</h4>
 				<p class="ingredientes">Ingredientes:</p>
-				<p class="ingredientes_inf">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando </p>
-			</div>		
+				<p class="ingredientes_inf">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI.<br/> Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI. </p>
+			</div>
+
+                  <!--tabela Nutricional-->
+				<table class="tabelaNutricional" summary="layout table">
+					<thead>
+						<tr>
+						<th class="desc">Item</th>
+						<th class="qtd">Quantidade por porção</th>
+							<th class="vd">VD*</th>
+						</tr>
+					</thead>
+					    <tbody>
+							<tr>
+							<th class="desc"></th>
+							<td class="qtd">
+							Informação Nutricional
+							<br>
+							Porção de 20g
+							</td>
+							<td class="vd"></td>
+							</tr>
+
+							<tr>
+							<th class="desc">Valor Energético</th>
+							<td class="qtd">75kcal</td>
+							<td class="vd">4</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Carboidratos</th>
+							<td class="qtd">18g</td>
+							<td class="vd">6</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Fibra alimentar</th>
+							<td class="qtd">0,6g</td>
+							<td class="vd">2</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Ferro</th>
+							<td class="qtd">1,35mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Sódio</th>
+							<td class="qtd">25mg</td>
+							<td class="vd">1</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Zinco</th>
+							<td class="qtd">0,84mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina A</th>
+							<td class="qtd">75ug RE</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina H</th>
+							<td class="qtd">3ug</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamna D</th>
+							<td class="qtd">0,75ug</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina B1</th>
+							<td class="qtd">0,14mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina B2</th>
+							<td class="qtd">0,14mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina B6</th>
+							<td class="qtd">0,15mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina PP</th>
+							<td class="qtd">1,8mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Pantotenato de cálcio</th>
+							<td class="qtd">0,6mg</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Ácido fólico</th>
+							<td class="qtd">26,55ug</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc">Vitamina B12</th>
+							<td class="qtd">0,27ug</td>
+							<td class="vd">15</td>
+							</tr>
+
+							<tr>
+							<th class="desc"></th>
+							<td class="qtd">
+							(*) Valores Diários de Referência com base em uma dieta de 2.000 calorias ou 8.400 Kj.
+							<br>
+							(**) Valor Não Estabelecido
+							<br>
+							<br>
+							</td>
+							<td class="vd"></td>
+							</tr>
+						</tbody>
+							<tfoot>
+								<tr>
+								<td colspan="3">
+								<p class="obsTxt"></p>
+								</td>
+								</tr>
+							</tfoot>
+				    </table>
+                  <!--Fim da Tabela Nutricional-->
     	</div>	
     </div>
 
     <!--box mais produtos-->
-
+<div id="VejaTambem">
+	<h2><span class="tt_top_list_right">VEJA TAMBÉM</span></h2>
     <div id="box_vejaTambem">
-    	 <h2><span class="tt_top_list_right">VEJA TAMBÉM</span></h2>
     <?php 
         foreach($this->produtosRelacionados AS $relacionados)
         {
@@ -78,7 +215,7 @@
 
     	<div class="box_vejaTambem">
 		    	<p class="desc_prod">
-		    	    <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() ));?>" title="<?=$relacionados->getTitulo();?>">
+		    	    <a class="desc_prod" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() ));?>" title="<?=$relacionados->getTitulo();?>">
 		    	        <?=$relacionados->getTitulo();?>
 		    	    </a>
 		    	</p>
@@ -118,7 +255,6 @@
 		
    </div>
 </div>
-
 <script src='<?=$this->basePath()?>/js/elevatezoom/jquery.elevatezoom.js'></script>
 <script type="text/javascript">
 

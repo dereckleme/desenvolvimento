@@ -29,6 +29,7 @@ class Module
     					   return $carrinho;
        					},
        					'CarrinhoCompras\Model\Carrinho' => function($service) {
+       					    
        					     $repository = $service->get("Produto\Repository\Produtos");
        						$carrinho = new carrinhoModel(new Container('Site'),$repository);
        						return $carrinho;

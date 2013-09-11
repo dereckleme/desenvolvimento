@@ -21,6 +21,19 @@ return array(
             				        'action' => 'index'
             				),
             		),
+                    'may_terminate' => true,
+                'child_routes' => array(
+                    'correio-frete-total' => array(
+                    		'type' => 'Zend\Mvc\Router\Http\Literal',
+                    		'options' => array(
+                    				'route'    => '/total',
+                    				'defaults' => array(
+                    						'controller' => 'DrkCorreios\Controller\Index',
+                    						'action' => 'total'
+                    				),
+                    		)
+                    ),
+                )
             ),
         ),
     ),

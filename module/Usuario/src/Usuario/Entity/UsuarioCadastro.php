@@ -44,6 +44,12 @@ class UsuarioCadastro
     /**
      * @var string
      *
+     * @ORM\Column(name="bairro", type="string", length=255, nullable=true)
+     */
+    private $bairro;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="rua", type="string", length=255, nullable=true)
      */
     private $rua;
@@ -198,6 +204,14 @@ class UsuarioCadastro
 	public function setCep($cep) {
 		$this->cep = $cep;
 	}
+	public function getBairro() {
+		return $this->bairro;
+	}
+
+	public function setBairro($bairro) {
+		$this->bairro = $bairro;
+	}
+
 
 
     
