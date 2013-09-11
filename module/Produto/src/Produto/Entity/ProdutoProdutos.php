@@ -53,6 +53,13 @@ class ProdutoProdutos
     private $destaque;
     
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="acessos", type="integer", nullable=true)
+     */
+    private $acessos;
+    
+    /**
      * @var boolean
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
@@ -110,7 +117,7 @@ class ProdutoProdutos
 		$this->titulo = $titulo;
 	}
 
-	public function setValor($valor) {
+	public function setValor($valor, $formatar=true) {
 	    $valor = str_replace(".", "", $valor);
 	    $valor = str_replace(",", ".", $valor);
 		$this->valor = $valor;
@@ -147,6 +154,20 @@ class ProdutoProdutos
 	public function setAtivo($ativo) {
 		$this->ativo = $ativo;
 	}
+	/**
+	 * @return the $acessos
+	 */
+	public function getAcessos() {
+		return $this->acessos;
+	}
+
+	/**
+	 * @param number $acessos
+	 */
+	public function setAcessos($acessos) {
+		$this->acessos = $acessos;
+	}
+
 
 
 

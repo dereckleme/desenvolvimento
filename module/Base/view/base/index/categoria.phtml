@@ -5,33 +5,17 @@
                   	<div id="select_box">
                       <p class="tt_select_box">Ordenar por:</p>
                         <div class="styled-select">
-                           <select name="ordenarPor">
-                              <option value="">selecione</option>
-                              <option value="alfabetica">alfabética</option>
-                              <option value="menor_preco">menor preço</option>
-                              <option value="maior_preco">maior preço</option>
-                           </select>
+                           <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
+                               <input type="hidden" name="p" value="<?php echo $this->termo; ?>">
+                                <select name="ordenarPor" onchange="this.form.submit()">
+                                  <option value="">selecione</option>
+                                  <option value="alfabetica">alfabética</option>
+                                  <option value="menor_preco">menor preço</option>
+                                  <option value="maior_preco">maior preço</option>
+                               </select>
+                            </form>                               
                         </div>
 
-                        <!-- <ul class="box_paginacao">
-
-                            <li class="seta_paginacao">
-                              <a href="#">
-                                <img class="st_esq" src="<?=$this->basePath()?>/images/seta_esq_paginacao.png">
-                              </a>
-                            </li>
-
-                          <li><a class="box_numeral_ligado" href="#">1</a></li>
-                          <li><a class="box_numeral" href="#">2</a></li>
-                          <li><a class="box_numeral" href="#">3</a></li>
-
-                            <li class="seta_paginacao">
-                              <a href="#">
-                                <img class="st_dir" src="<?=$this->basePath()?>/images/seta_dir_paginacao.png">
-                              </a>
-                            </li>
-
-                        </ul> -->
                         <?php echo $this->paginationControl($this->page,'Sliding','paginator'); ?>
                         
                      </div>
@@ -81,29 +65,17 @@
                     <div id="select_box">
                         <p class="tt_select_box">Ordenar por:</p>
                         <div class="styled-select">
-                            <select name="ordenarPor">
-                                <option value="">selecione</option>
-                                <option value="alfabetica">alfabética</option>
-                                <option value="menor_preco">menor preço</option>
-                                <option value="maior_preco">maior preço</option>
-                            </select>
+                            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
+                                <input type="hidden" name="p" value="<?php echo $this->termo; ?>">
+                                <select name="ordenarPor" onchange="this.form.submit()">
+                                    <option value="">selecione</option>
+                                    <option value="alfabetica">alfabética</option>
+                                    <option value="menor_preco">menor preço</option>
+                                    <option value="maior_preco">maior preço</option>
+                                </select>
+                            </form>
                         </div>
 
-                        <!-- <ul class="box_paginacao">                           
-                            <li class="seta_paginacao">
-                                <a href="#">
-                                    <img class="st_esq" src="<?=$this->basePath()?>/images/seta_esq_paginacao.png">
-                                </a>
-                            </li>
-                            <li><a class="box_numeral_ligado" href="#">1</a></li>
-                            <li><a class="box_numeral" href="#">2</a></li>
-                            <li><a class="box_numeral" href="#">3</a></li>
-                            <li class="seta_paginacao">
-                                <a href="#">
-                                <img class="st_dir" src="<?=$this->basePath()?>/images/seta_dir_paginacao.png">
-                                </a>
-                            </li>
-                        </ul> -->
                         <?php echo $this->paginationControl($this->page,'Sliding','paginator'); ?>
                         
                      </div>

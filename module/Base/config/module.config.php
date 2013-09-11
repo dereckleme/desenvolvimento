@@ -47,13 +47,13 @@ return array(
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
-            		'route'    => '/[produto/:categoriaslug[/page/:page]]',
-            	    #'route'    => '/[produto/:categoriaslug]',
+            		#'route'    => '/[produto/:categoriaslug[/page/:page]]',
+            	    'route'    => '/[produto/:categoriaslug]',
             		'defaults' => array(
             			'__NAMESPACE__' => 'Base\Controller',
             			'controller'    => 'Index',
             			'action'        => 'categoria',
-            		    'page'          => '1'
+            		    #'page'          => '1'
             		),
             	),
                 'may_terminate' => true,
@@ -94,14 +94,14 @@ return array(
     				),
         		),
             ),
-            'publico-busca-produto' => array(
-        		'type' => 'Literal',
+            'publico-busca-produto' => array(        		
+                'type'    => 'Segment',
         		'options' => array(
     				'route'    => '/busca/',
     				'defaults' => array(
 						'__NAMESPACE__' => 'Base\Controller',
 						'controller'    => 'Index',
-						'action'        => 'buscaDeProdutos',
+						'action'        => 'buscaDeProdutos'
     				),
         		),
             )

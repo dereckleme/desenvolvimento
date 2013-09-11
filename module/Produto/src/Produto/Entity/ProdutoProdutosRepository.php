@@ -36,6 +36,21 @@ class ProdutoProdutosRepository extends EntityRepository {
         return $results;
     }
 
+    public function findByGetVisitados(){
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        #$qb->where('c.slug = ?1');
+        #$qb->setParameter(1, $this->slugCategoria);
+        $qb->orderBy('i.acessos', 'DESC');
+        $qb->setMaxResults(3);
+        $query = $qb->getQuery();
+        #echo "<pre>", print($query->getDQL()), "</pre>";
+        $results = $query->getResult();
+        return $results;
+    } 
+    
     public function categoriaCountRow(){
         $qb =  $this->createQueryBuilder('i');
         $qb->select('i');
@@ -46,15 +61,14 @@ class ProdutoProdutosRepository extends EntityRepository {
         $query = $qb->getQuery();
         $results = $query->getResult();
         return $results;
-    }
-    
+    }    
     public function productForCategory($maxLimit, $offset){
     	$qb =  $this->createQueryBuilder('i');
     	$qb->select('i');
     	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
     	$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
     	$qb->where('c.slug = ?1');
-    	$qb->setParameter(1, $this->slugCategoria);
+    	$qb->setParameter(1, $this->slugCategoria);    	
     	$qb->setFirstResult($offset);
         $qb->setMaxResults($maxLimit);
     	$query = $qb->getQuery();
@@ -63,7 +77,20 @@ class ProdutoProdutosRepository extends EntityRepository {
     	return $results;
     }
     
-    public function productForCatAndSub(){
+    public function subCountRow(){
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        $qb->where('s.slugSubcategoria = ?1');
+        $qb->andWhere('c.slug = ?2');
+        $qb->setParameter(1, $this->slugSubcategoria);
+        $qb->setParameter(2, $this->slugCategoria);
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
+    public function productForCatAndSub($maxLimit, $offset){
     	$qb =  $this->createQueryBuilder('i');
     	$qb->select('i');
     	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
@@ -71,7 +98,9 @@ class ProdutoProdutosRepository extends EntityRepository {
     	$qb->where('s.slugSubcategoria = ?1');
     	$qb->andWhere('c.slug = ?2');    	
     	$qb->setParameter(1, $this->slugSubcategoria);
-    	$qb->setParameter(2, $this->slugCategoria);    	
+    	$qb->setParameter(2, $this->slugCategoria); 
+    	$qb->setFirstResult($offset);
+    	$qb->setMaxResults($maxLimit);
     	$query = $qb->getQuery();
     	$results = $query->getResult();
     	return $results;
@@ -93,19 +122,71 @@ class ProdutoProdutosRepository extends EntityRepository {
         #echo "<pre>", print($query->getDQL()), "</pre>";
         return $results;        
     } 
-        
-    public function resultadoBusca(){
+
+    public function resultadoBuscaRows($order=null){
+    	$qb =  $this->createQueryBuilder('i');
+    	$qb->select('i');
+    	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+    	$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+    
+    	if($this->search)
+    	{
+        	$qb->where($qb->expr()->like('s.nome', '?1'));
+        	$qb->orWhere($qb->expr()->like('c.nome', '?2'));
+        	$qb->orWhere($qb->expr()->like('i.titulo', '?3'));
+        	$qb->setParameter(1, "%$this->search%");
+        	$qb->setParameter(2, "%$this->search%");
+        	$qb->setParameter(3, "%$this->search%");
+    	}
+    	if($order == 'alfabetica')
+    	{
+    	    $qb->orderBy('i.titulo');
+    	}
+    	if($order == 'menor_preco')
+    	{
+    	    $qb->orderBy('i.valor');
+    	}
+    	if($order == 'maior_preco')
+    	{
+    	    $qb->orderBy('i.valor', 'DESC');
+    	}
+    	
+    	$query = $qb->getQuery();    	
+    	$results = $query->getResult();
+    	return $results;
+    }    
+    public function resultadoBusca($order=null, $maxLimit, $offset){
         $qb =  $this->createQueryBuilder('i');
         $qb->select('i');
         $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
         $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
-        $qb->where($qb->expr()->like('s.nome', '?1'));
-        $qb->orWhere($qb->expr()->like('c.nome', '?2'));
-        $qb->orWhere($qb->expr()->like('i.titulo', '?3'));
-        $qb->setParameter(1, "%$this->search%");
-        $qb->setParameter(2, "%$this->search%");
-        $qb->setParameter(3, "%$this->search%");
+        
+        if($this->search)
+        {
+            $qb->where($qb->expr()->like('s.nome', '?1'));
+            $qb->orWhere($qb->expr()->like('c.nome', '?2'));
+            $qb->orWhere($qb->expr()->like('i.titulo', '?3'));
+            $qb->setParameter(1, "%$this->search%");
+            $qb->setParameter(2, "%$this->search%");
+            $qb->setParameter(3, "%$this->search%");
+        }
+        if($order == 'alfabetica')
+        {
+        	$qb->orderBy('i.titulo');
+        }
+        if($order == 'menor_preco')
+        {
+            $qb->orderBy('i.valor');
+        }
+        if($order == 'maior_preco')
+        {
+            $qb->orderBy('i.valor', 'DESC');
+        }     
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($maxLimit);
         $query = $qb->getQuery();
+        #echo "<pre>", print($query->getDQL()), "</pre>";
         $results = $query->getResult();
         return $results;
     }
