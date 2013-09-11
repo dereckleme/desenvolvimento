@@ -79,9 +79,10 @@ class CompraController extends AbstractActionController
         $entity = null;
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
+
+        $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
         if($auth->hasIdentity())
         {
-            $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
             $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();

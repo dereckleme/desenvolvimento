@@ -12,6 +12,7 @@ class Carrinho
     }
     public function lista()
     {
+       
         $configSessionProdutos = null;
       if(!empty($this->container->carrinho))  
       {
@@ -28,7 +29,7 @@ class Carrinho
             	    "quantidade" => $this->container->carrinho[$idProduto]['quantProd']
             	);
             }
-      }      
+      }
     #	return $this->container->carrinho;
         return $configSessionProdutos;
     }
