@@ -209,8 +209,20 @@ class ProdutoProdutos
 	public function setLargura($largura) {
 		$this->largura = $largura;
 	}
->>>>>>> bc7cf60ce6201f3667dd6948e030bc808df414eb
+	
+	/**
+	 * @return the $acessos
+	 */
+	public function getAcessos() {
+		return $this->acessos;
+	}
 
+	/**
+	 * @param number $acessos
+	 */
+	public function setAcessos($acessos) {
+		$this->acessos = $acessos;
+	}
 
     
 

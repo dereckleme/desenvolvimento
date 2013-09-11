@@ -202,15 +202,13 @@ class IndexController extends AbstractActionController
         $countResultado = $repository->resultadoBuscaRows($ordem);
         $pagePart =  ($this->params()->fromQuery('pagina') == "") ? 0 : (($this->params()->fromQuery('pagina') - 1) * 1);
         $resultado = $repository->resultadoBusca($ordem, 1, $pagePart);
-        
-        
-        $paginator = new ZendPaginator(new ArrayAdapter($countResultado));
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(1);
-        
-        
+                
         if(count($resultado) > 0)
         {
+            $paginator = new ZendPaginator(new ArrayAdapter($countResultado));
+            $paginator->setCurrentPageNumber($page);
+            $paginator->setDefaultItemCountPerPage(1);
+            
             return new ViewModel(array(
                 "resultado"    =>    $resultado,
                 "termo"        =>    $busca,

@@ -20,8 +20,11 @@
                                </select>                               
                             </form>
                         </div>
-
-                        <?php echo $this->paginationControl($this->page,'Sliding','paginator-busca'); ?>
+                        
+                        <?php 
+                        if(!isset($this->semresultado))
+                            echo $this->paginationControl($this->page,'Sliding','paginator-busca'); 
+                        ?>
                      </div>
                   <!--FIM DO SELECT BOX-->
 				  
@@ -97,7 +100,10 @@
                              </form>
                         </div>
 
-                        <?php echo $this->paginationControl($this->page,'Sliding','paginator-busca');?>
+                        <?php 
+                        if(!isset($this->semresultado))
+                            echo $this->paginationControl($this->page,'Sliding','paginator-busca'); 
+                        ?>
                      </div>
                   <!--FIM DO SELECT BOX-->
 
