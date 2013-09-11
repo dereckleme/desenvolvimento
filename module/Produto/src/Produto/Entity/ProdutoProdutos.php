@@ -177,22 +177,7 @@ class ProdutoProdutos
 	public function setAtivo($ativo) {
 		$this->ativo = $ativo;
 	}
-<<<<<<< HEAD
-	/**
-	 * @return the $acessos
-	 */
-	public function getAcessos() {
-		return $this->acessos;
-	}
 
-	/**
-	 * @param number $acessos
-	 */
-	public function setAcessos($acessos) {
-		$this->acessos = $acessos;
-	}
-
-=======
 	public function getPeso() {
 		return $this->peso;
 	}
