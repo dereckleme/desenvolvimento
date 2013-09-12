@@ -141,44 +141,39 @@
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
             </form>
-                <ul class="Menu" <?php 
-                if($this->matchedRoute != "home")
-                {
-                    print 'style="display:none"';
-                }
-                ?>>                    
+                <ul class="Menu" <?php echo ($this->matchedRoute != "home") ? 'style="display:none"' : ''; ?>>                    
                       <li class="lista_menu_cafe"><!--Cafés-->
-                            <h3 class="lista_menu_cafe"><a href="#">Cafes</a></h3>
-                              <ul class="dropdownCafe" style="display:none">
-                                  <li class="tt_dropdown">
-                                      <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
-                                  </li>
-
-                                  <li class="imgDropdown">
-                                      <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
-                                  </li>
-
-                                <li class="BoxAllFood">
+                          <h3><a href="#">Cafes</a></h3>
+                          
+                          <ul class="dropdownCafe">
+                              <li class="tt_dropdown">
+                                  <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
+                              </li>
+                              <li class="imgDropdown">
+                                  <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
+                              </li>
+                              <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                      <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
                                   </ul>
-                                </li> 
-                            </ul>
+                              </li> 
+                          </ul>
                       </li>
                       
                       <li class="lista_menu_alimentos"><!--Alimentos-->
-                        <h3 class="lista_menu_alimentos"><a href="#">Alimentos</a></h3>
-                          <ul class="dropdownAlimento" style="min-height:300px; display:none">
+                        <h3><a href="#">Alimentos</a></h3>
+                          
+                          <ul class="dropdownAlimento" style="min-height:300px;">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Seleto alimentos, seu café da manhã  <span class="ttd_dropdown"> completo</span>
                               </a>
@@ -210,8 +205,8 @@
                       </li>
 
                       <li class="lista_menu_produtos"><!--Todos Produtos-->
-                        <h3 class="lista_menu_produtos"><a href="#">Todos Produtos</a></h3>
-                          <ul class="dropdownProduto" style="display:none">
+                        <h3><a href="#">Todos Produtos</a></h3>
+                          <ul class="dropdownProduto">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Lorem ipsum dolor sit amet, <span class="ttd_dropdown"> consectetur</span>
                               </a>
