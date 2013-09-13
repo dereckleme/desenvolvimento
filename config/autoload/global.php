@@ -15,7 +15,7 @@ return array(
     'module_layouts' => array(
     		'Usuario' => 'layout/layout',
             'Base' => 'layout/site',
-            'Produto' => 'Layout/admin',
+            'Produto' => 'Layout/adminProduto',
             'Pagamento'  => 'Layout/admin',
     ),
     'pagSeguroDereck' => array(
