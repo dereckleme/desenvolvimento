@@ -14,7 +14,7 @@ return array(
             /*
              * Rotas Administrativas
              */
-        		'admin-produto-home' => array(
+        	 'admin-produto-home' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/administrador/produto',
@@ -37,6 +37,19 @@ return array(
                             'defaults' => array(
                             ),
                         ),
+                    ),
+                    'admin-produto-adicionar' => array(
+                    		'type'    => 'Segment',
+                    		'options' => array(
+                    				'route'    => '/[:action]',
+                    				'constraints' => array(
+                    						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    				),
+                    				'defaults' => array(
+                    				    
+                    				),
+                    		),
                     ),
                     'admin-categorias-default' => array(
                         'type'    => 'Segment',
@@ -141,7 +154,7 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'Layout/admin_logado_adm'           => __DIR__ . '/../view/layout/layout.phtml',
+            'Layout/adminProduto_logado_adm'           => __DIR__ . '/../view/layout/layout.phtml',
             'produto/index/index' => __DIR__ . '/../view/produto/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
