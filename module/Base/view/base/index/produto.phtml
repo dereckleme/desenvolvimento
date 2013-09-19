@@ -6,7 +6,7 @@
     		<div id="galeria_detalhe">
             <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
                <div id="zoom_galeria">
-					<img id="zoom_03" width=""  class="fotos_galeria" text-align="center" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/01.jpg" src="<?=$this->basePath()?>/images/produtos/small/01.jpg" style=" position: absolute;">
+					<img id="zoom_03" class="fotos_galeria" text-align="center" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$this->detalheProduto->getFoto();?>" src="<?=$this->basePath()?>/images/produtos/small/<?=$this->detalheProduto->getFoto();?>" style="position: absolute;">
 				<!-- </div> -->
                 </div>
 				<div id="gallery_01" style="width:212px;float:left; margin-top:20px;">
@@ -220,7 +220,7 @@
 		    	    </a>
 		    	</p>
 		    	<div class="left_vejaTambem">
-		    		<img src="<?=$this->basePath()?>/images/00440.jpg" alt="" title=""  class="maisProd" />
+		    		<img src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $relacionados->getFoto();?>" alt="" title=""  class="maisProd" />
 		    	</div>
 
 		    	<div class="right_vejaTambem">
