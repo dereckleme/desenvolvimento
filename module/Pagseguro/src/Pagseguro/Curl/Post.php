@@ -20,7 +20,7 @@ class Post
         $this->dados[] = 'token='.$token;
         $this->dados[] = 'currency='.$currency;
     }
-    public function requisicao()
+    public function requisicao($reference)
     {
         $xml = new Xml();
         $auth = new AuthenticationService;
@@ -80,6 +80,8 @@ class Post
                 $this->dados[] ="itemDescription$z=Valor do Frete";
                 $this->dados[] ="itemAmount$z=".$valorFrete;
                 $this->dados[] ="itemQuantity$z=1";
+                $this->dados[] ="reference=$reference";
+                
         $dados = implode("&", $this->dados);
         
         $request = new Request;

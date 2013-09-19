@@ -3,7 +3,7 @@
 namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * PagamentoControlerecibo
  *
@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PagamentoControlerecibo
 {
+    public function __construct() {
+       $this->dtVenda = new \DateTime("now");
+       $this->produtosRecibo = new ArrayCollection();
+    }
     /**
      * @var integer
      *
@@ -28,14 +32,12 @@ class PagamentoControlerecibo
      * @ORM\Column(name="nPedido", type="string", length=255, nullable=false)
      */
     private $npedido;
-
     /**
-     * @var \DateTime
+     * @var float
      *
-     * @ORM\Column(name="dt_venda", type="datetime", nullable=true)
+     * @ORM\Column(name="valor_frete", type="decimal", nullable=true)
      */
-    private $dtVenda;
-
+    private $valorFrete;
     /**
      * @var float
      *
@@ -80,6 +82,36 @@ class PagamentoControlerecibo
      */
     private $fpagamento;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_venda", type="datetime", nullable=false)
+     */
+    private $dtVenda;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Pagamento\Entity\PagamentoControlepedido", mappedBy="idcontrolerecibo")
+     */
+    private $produtosRecibo;
+    
+   
+    
+	public function getValorFrete() {
+		return $this->valorFrete;
+	}
+
+	public function setValorFrete($valorFrete) {
+		$this->valorFrete = $valorFrete;
+	}
+
+	public function getProdutosRecibo() {
+		return $this->produtosRecibo;
+	}
+
+	public function setProdutosRecibo($produtosRecibo) {
+		$this->produtosRecibo = $produtosRecibo;
+	}
+
 	public function getIdcontrolerecibo() {
 		return $this->idcontrolerecibo;
 	}
@@ -121,7 +153,7 @@ class PagamentoControlerecibo
 	}
 
 	public function setDtVenda($dtVenda) {
-		$this->dtVenda = $dtVenda;
+	    $this->dtVenda = new \DateTime("now");
 	}
 
 	public function setValor($valor) {

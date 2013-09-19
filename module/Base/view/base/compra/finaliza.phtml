@@ -112,7 +112,7 @@ $offValue = false;
 					<?php 
 					if($this->auth->hasIdentity())
 					    {
-					        if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) && !empty($this->numero) && !empty($this->bairro) && $this->frete != null) $offValue = true;
+					        if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) && !empty($this->numero) && !empty($this->bairro) && $this->frete != null && $this->cidades) $offValue = true;
 					        
 					?>
 					<div id="BoxEndereco">
@@ -173,6 +173,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
                                             }
 					                   ?>
 					                   <br/><br/>
+					                   
 					                  <label class="FormEstado">Estado*:</label><br/>
 					                  <select class="BoxEstado" <?if($offValue) print 'disabled="disabled"'?>>
 					                  <option value="">Selecione</option>
@@ -190,7 +191,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
                                         <?if($offValue)
                                         {
                                             ?>
-                                            <a href="#"><span class="ButtonBoxLogin">Editar meu cadastro</span></a>
+                                            <span class="seletoInt"><a href="#"><span class="ButtonBoxLogin" id="bottaoAlterarCadastro">Alterar meu cadastro</span></a></span>
                                             <?
 					                    }
 					                    else
@@ -315,13 +316,13 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    if(empty($this->nomeCompleto) || empty($this->cep) || empty($this->endereco) || empty($this->numero) || empty($this->bairro) || $this->frete == null)
 								    {
 								    ?>
-								    <a href="#"><span class="BoxPagamentoButtonOff">Finalizar pagamento</span></a>
+								    <a href="#" onclick="return false"><span class="BoxPagamentoButtonOff">Concluir Pedido</span></a>
 								    <?php 
 								    }
 								    else 
 								    {
 								?>
-								<a target="_blank" href="https://pagseguro.uol.com.br/v2/checkout/payment.html?code=<?=$this->token?>"><span class="BoxPagamentoButton">Finalizar pagamento</span></a>
+								<a  href="<?=$this->url('publico-fechar-pedido');?>" target="_blank" class="actionConcluirPedido"><span class="BoxPagamentoButton">Concluir Pedido</span></a>
 								<?php 
 								    }
 								?>
@@ -343,10 +344,21 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    <p class="txtBoxResumo">Despesas com frete:</p> 
 								    <span class="txtBoxResumoValor">Indisponível</span>
 								    <p class="txtBoxResumo">Valor total a pagar:</p> 
-								    <span class="txtBoxResumoValor">R$ 00,00</span>
+								    <span class="txtBoxResumoValor"><?php 
+    								    if($this->frete != null)
+    								    {
+    								        print $this->frete['valorfreteTotal'];
+    								    }
+    								    else
+    								    {
+    								    	?>
+    								    	<?=$this->carrinhoLista['valorTotal']?>+(Frete)
+    								    	<?php
+    								    }
+								    ?></span>
 									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
 									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
-								<a href="#"><span class="BoxPagamentoButtonOff">Finalizar pagamento</span></a>
+								<a href="#"><span class="BoxPagamentoButtonOff" onclick="return false">Finalizar pagamento</span></a>
 							</div>
 						</div>
 					<!--Fim da Conteudo Pagamento Vazio-->		

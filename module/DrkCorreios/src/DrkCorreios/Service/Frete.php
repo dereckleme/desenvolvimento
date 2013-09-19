@@ -53,15 +53,18 @@ class Frete extends AbstractCurl
     {
         $serviceCarrinho = $this->service->get('CarrinhoCompras\Model\Carrinho');
         $listItens = $serviceCarrinho->lista();
-        foreach($listItens AS $produto)
+        if(!empty($listItens))
         {
-        	for($i=1;$i<=$produto['quantidade']; $i++)
-        	{
-            	$this->nVlComprimento = $this->nVlComprimento+$produto['produto']->getComprimento();
-            	$this->nVlAltura = $this->nVlAltura+$produto['produto']->getAltura();
-            	$this->nVlLargura = $this->nVlLargura+$produto['produto']->getLargura();
-            	$this->nVlPeso = $this->nVlPeso+$produto['produto']->getPeso();
-        	}
+            foreach($listItens AS $produto)
+            {
+            	for($i=1;$i<=$produto['quantidade']; $i++)
+            	{
+                	$this->nVlComprimento = $this->nVlComprimento+$produto['produto']->getComprimento();
+                	$this->nVlAltura = $this->nVlAltura+$produto['produto']->getAltura();
+                	$this->nVlLargura = $this->nVlLargura+$produto['produto']->getLargura();
+                	$this->nVlPeso = $this->nVlPeso+$produto['produto']->getPeso();
+            	}
+            }
         }
         //Formula de calculo de distribuição de massa.
         $total = ($this->nVlComprimento+$this->nVlAltura+$this->nVlLargura)/3;

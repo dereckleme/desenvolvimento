@@ -26,6 +26,10 @@ class Carrinho
             unset($this->container->carrinho[$this->idProduto]);
         }   
     }
+    public function limpa()
+    {
+        unset($this->container->carrinho);
+    }
 	public function setIdProduto($idProduto) {
 		$this->idProduto = $idProduto;
 	}

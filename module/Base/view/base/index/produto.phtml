@@ -5,24 +5,24 @@
 
     		<div id="galeria_detalhe">
             <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
-               
-				<img id="zoom_03" width="218" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/img_1.jpg" src="<?=$this->basePath()?>/images/produtos/small/img_1.png" style=" position: absolute;">
+               <div id="zoom_galeria">
+					<img id="zoom_03" width=""  class="fotos_galeria" text-align="center" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/01.jpg" src="<?=$this->basePath()?>/images/produtos/small/01.jpg" style=" position: absolute;">
 				<!-- </div> -->
-
-				<!--<div id="gallery_01" style="width:218px;float:left; margin-top:20px;">
-					<a class="elevatezoom-gallery active" data-zoom-image="images/large/img_1.jpg" data-image="images/small/img_1.png" data-update="" href="#">
-						<img width="100" src="images/small/img_1.png">
+                </div>
+				<div id="gallery_01" style="width:212px;float:left; margin-top:20px;">
+					<a class="elevatezoom-gallery active" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/image1.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/img_1.png" data-update="" href="#">
+						<img  src="<?=$this->basePath()?>/images/produtos/small/image1.png" class="thumb_produtos">
 					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="images/large/image2.jpg" data-image="images/small/image2.png" href="#">
-						<img width="100" src="images/small/image2.png">
+					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/image2.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/image2.png" href="#">
+						<img  src="<?=$this->basePath()?>/images/produtos/small/image2.png" class="thumb_produtos">
 					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="images/large/image3.jpg" data-image="images/small/image3.png" href="tester">
-						<img width="100" src="images/small/image3.png">
+					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/01.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/01.jpg" href="tester">
+						<img  src="<?=$this->basePath()?>/images/produtos/small/01.jpg" class="thumb_produtos">
 					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="images/large/image4.jpg" data-image="images/small/image4.png" href="tester">
-						<img width="100" src="images/small/image4.png">
+					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/00440.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/00440.jpg" href="tester">
+						<img src="<?=$this->basePath()?>/images/produtos/small/00440.jpg" class="thumb_produtos">
 					</a>
-				</div>-->
+				</div>
 			</div>
 
 
@@ -51,7 +51,7 @@
 
 				<div class="btn_detalhe">
 					<button class="btn_carrinhoCompras_detalhe actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>">Adicionar ao <br /> carrinho de compras</button>
-					<a href="" class="btn_comprar_detalhe">Comprar</a>
+					<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe">Comprar</a>
 				</div>
            
 			</div>
@@ -220,7 +220,7 @@
 		    	    </a>
 		    	</p>
 		    	<div class="left_vejaTambem">
-		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
+		    		<img src="<?=$this->basePath()?>/images/00440.jpg" alt="" title=""  class="maisProd" />
 		    	</div>
 
 		    	<div class="right_vejaTambem">

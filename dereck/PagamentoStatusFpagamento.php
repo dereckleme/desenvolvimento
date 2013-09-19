@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagseguro\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,23 +27,6 @@ class PagamentoStatusFpagamento
      * @ORM\Column(name="titulo", type="string", length=45, nullable=true)
      */
     private $titulo;
-    
-	public function getIdstatus() {
-		return $this->idstatus;
-	}
-
-	public function getTitulo() {
-		return $this->titulo;
-	}
-
-	public function setIdstatus($idstatus) {
-		$this->idstatus = $idstatus;
-	}
-
-	public function setTitulo($titulo) {
-		$this->titulo = $titulo;
-	}
 
 
-    
 }

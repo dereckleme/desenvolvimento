@@ -9,9 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="usuario_usuarios")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Usuario\Entity\UsuarioUsuariosRepository")
  */
 class UsuarioUsuarios
 {
+    public function __construct()
+    {
+    	$this->nivel = 2;
+    }
     /**
      * @var integer
      *
@@ -43,34 +48,11 @@ class UsuarioUsuarios
     private $email;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dt_cadastro", type="datetime", nullable=true)
-     */
-    private $dtCadastro;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dt_ativacao", type="datetime", nullable=true)
-     */
-    private $dtAtivacao;
-    
-    /**
      * @var integer
      *
      * @ORM\Column(name="nivel", type="integer", nullable=false)
      */
     private $nivelUsuario;
-    
-	public function getNivelUsuario() {
-		return $this->nivelUsuario;
-	}
-
-	public function setNivelUsuario($nivelUsuario) {
-		$this->nivelUsuario = $nivelUsuario;
-	}
-
 	public function getIdusuario() {
 		return $this->idusuario;
 	}
@@ -87,12 +69,8 @@ class UsuarioUsuarios
 		return $this->email;
 	}
 
-	public function getDtCadastro() {
-		return $this->dtCadastro;
-	}
-
-	public function getDtAtivacao() {
-		return $this->dtAtivacao;
+	public function getNivelUsuario() {
+		return $this->nivelUsuario;
 	}
 
 	public function setIdusuario($idusuario) {
@@ -111,14 +89,10 @@ class UsuarioUsuarios
 		$this->email = $email;
 	}
 
-	public function setDtCadastro($dtCadastro) {
-		$this->dtCadastro = $dtCadastro;
+	public function setNivelUsuario($nivelUsuario) {
+		$this->nivelUsuario = $nivelUsuario;
 	}
 
-	public function setDtAtivacao($dtAtivacao) {
-		$this->dtAtivacao = $dtAtivacao;
-	}
-
-
-	
+    
+    
 }

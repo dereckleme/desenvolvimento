@@ -93,7 +93,7 @@ p.header_txt_Qtd_compra { margin: 10px 12px 0 0; float: right;}
 ul#DescricaoPrecoQuatidade { width: 345px; margin: 0 auto; margin-top: 10px; display: block; }
 li.BoxProdutosCesta { width: 325px; float: left; display:block; margin-top: 10px; margin-left: 10px; border-bottom: solid 1px #582700; }
 #BoxDescricaoFoto { width: 180px; height: 66px; float: left; border-right: solid 1px #582700; color: #FFF; margin-bottom: 10px; }
-span.imagem_produto_cesta { width: 50px; height: 66px; float: left;}
+span.imagem_produto_cesta { width: 50px; height: 66px; float: left; }
 p.descricao_produto_cesta { width: 127px; float: left; font-size: 11px; margin-top: 15px; color: #FFF;}
 #BoxDescricaoPreco { width: 80px; height: 66px; float: left; border-right: solid 1px #582700; }
 p.descricao_preco_cesta { font-size: 11px; text-align: center; color: #FFF; margin-top: 25px; }
@@ -145,7 +145,17 @@ input.login, input.Password, input.email, input.PasswordConfirm {width: 320px; p
 
 label.status_login, label.status_password, label.status_email {font-size:1.000em; color:#333; margin-left: 12%;}
 
-input.Eventlogin ,input.Eventcadastrar {background: #ff7f25; border: none; font-size: 0.875em; text-transform: uppercase; cursor: pointer; border-radius: 7px; padding: 10px 17px; color:#FFF; font-weight: bold; letter-spacing: 1px; float: right; margin-right:12% }
+input.Eventlogin ,input.Eventcadastrar {background: none repeat scroll 0 0 #FF7F25;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-right:60px;
+    padding: 5px 15px;
+    text-transform: uppercase;}
 
 /*******************CONTEUDO***************/
 #geral { width: 100%; min-width: 1024px; float: left; }
@@ -160,17 +170,19 @@ input.search_topo{ width: 454px; padding: 15px; margin-bottom: 10px; margin-top:
 input.lupa_topo { width: 50px; height: 56px !important; -webkit-height: 61.5px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none; text-indent: -9999px; cursor: pointer;}
 /*Menu Topo*/
 ul.Menu { width: 544px;}
-li > h3.lista_menu_cafe { text-indent: -9999px; }
-li > h3.lista_menu_alimentos { text-indent: -9999px; }
-li > h3.lista_menu_produtos { text-indent: -9999px; }
-li.lista_menu_cafe  { width: 178px; height: 87px; background: url(../images/cafe.png) no-repeat; float: left; padding: 0 5px 0 0; cursor: pointer;}
+.Menu li.lista_menu_cafe h3, .Menu li.lista_menu_alimentos h3, .Menu li.lista_menu_produtos h3{ text-indent: -9999px; }
+li.lista_menu_cafe  { width: 178px; height: 87px; background: url(../images/cafe.png) no-repeat; float: left; margin: 0 5px 0 0;}
 li.lista_menu_cafe:hover { background: url(../images/cafeHover.png) no-repeat;}
-li.lista_menu_alimentos { width: 178px; height: 87px; background: url(../images/alimento.png) no-repeat; float: left; padding: 0 5px 0 0; cursor: pointer;}
+li.lista_menu_alimentos { width: 178px; height: 87px; background: url(../images/alimento.png) no-repeat; float: left; margin: 0 5px 0 0;}
 li.lista_menu_alimentos:hover { background: url(../images/alimentoHover.png) no-repeat;}
-li.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/produtos.png) no-repeat; float: left; cursor: pointer;}
+li.lista_menu_produtos { width: 178px; height: 87px; background: url(../images/produtos.png) no-repeat; float: left;}
 li.lista_menu_produtos:hover { background: url(../images/alimentoHover.png) no-repeat;}
+#box_menu li.lista_menu_cafe:hover ul.dropdownCafe{display: block;}
+#box_menu li.lista_menu_alimentos:hover ul.dropdownAlimento{display: block;}
+#box_menu li.lista_menu_produtos:hover ul.dropdownProduto{display: block;}
+
 /*Dropdown Cafés*/
-ul.dropdownCafe { width: 544px; background: #FFF; margin-top: 28px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownCafe { width: 544px; background: #FFF; margin-top: 28px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 li.tt_dropdown { width: 544px; height: 60px; border-bottom: solid 1px #DDD; display: block; float: left;}
 li a.tt_dropdown { font-family: "Georgia", Times New Roman, Times, serif; font-size: 18px; color: #666666; padding-left: 30px; padding-top: 15px; display: block; letter-spacing: 1px;}
 li a.tt_dropdown span.ttd_dropdown { font-size: 24px; color: #ff9600; font-style: italic;}
@@ -179,15 +191,18 @@ li.txtD_dropdown { width: 180px; float: left; display: block;}
 li a.txtD_dropdown { font-size: 13px; color: #ff9600; font-weight: bold; padding-left: 20px;}
 li.txt_dropdown { width: 180px; float: left; display: block;}
 li a.txt_dropdown { font-size: 11px; color: #666666; padding-left: 20px;}
+li a.txt_dropdown:hover { text-decoration: underline;}
 li.VejaMaisDropdown { width: 180px; float: left; display: block;}
-li a.VejaMaisDropdown { font-size: 9px; color: #969595; padding-left: 20px; text-decoration: underline; font-style: italic;}
+li a.VejaMaisDropdown { font-size: 9px; color: #969595; padding-left: 20px; font-style: italic;}
+li a.VejaMaisDropdown:hover { text-decoration: underline;}
 li.imgDropdown { width: 300px; float: right;}
 img.dom_menu { margin-top: 30px;}
+
 /*Dropdown Alimentos*/
-ul.dropdownAlimento { width: 544px; background: #FFF; margin-top: 28px; margin-left: -183px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownAlimento { width: 544px; background: #FFF; margin-top: 28px; margin-left: -183px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 img.BonecoSeleto { position: absolute; z-index: 4; display: block; right: -25px; top: 60px;}
 /*Dropdown Todos Alimentos*/
-ul.dropdownProduto { width: 544px; background: #FFF; margin-top: 28px; margin-left: -366px; padding: 0; display: block; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownProduto { width: 544px; background: #FFF; margin-top: 28px; margin-left: -366px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 /*******************CONTEUDO PRINCIPAL***************/
 #conteudo_principal { width: 1024px; float: left; position: relative; left: 50%; margin-left: -512px;} 
 /*******************COLUNA ESQUERDA***************/
@@ -224,7 +239,7 @@ li img.st_esq { float: right; padding-top: 1px; }
 li img.st_dir { padding-top: 1px; }
 li a.box_numeral { color: #666666; float: left; border: solid 1px #CCC; padding: 0 5px 0 5px; margin-right: 10px;}
 li a.box_numeral:hover { color: #FFF; float: left; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
-li > span.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #CCC; background: #666666; padding: 0 5px 0 5px; margin-right: 10px;}
+li > span.box_numeral_ligado { color: #FFF; float: left; border: solid 1px #ddd; color:#666; font-size: 12px; background: #FFF; padding: 5px;margin-right: 10px; margin-top: -3px}
 /*************************FIM DO SELETC BOX***********************/
 /*************************BOX PRODUTOS***********************/
 ul#box_categoria_produtos { width: 642px; margin-bottom: 5px; float: left; border-left: solid 1px #CCC; border-right: solid 1px #CCC; border-top: solid 1px #CCC; display: block;}
@@ -232,7 +247,7 @@ ul#box_categoria_produtos { width: 642px; margin-bottom: 5px; float: left; borde
 /*IMAGENS*/
 li.lista_categoria_produtos { width: 644px; height: 155px; float: left; border-bottom: solid 1px #CCC;}
 #descricao_produto_categoria { width: 300px; height: 125px; margin: 15px 0; float: left; border-right: solid 1px #CCC;}
-img.img_descricao_produto_categoria { width: 70px;  height: 115px;float: left; margin-left: 10px }
+img.img_descricao_produto_categoria { max-width: 86px; max-height: 102px;float: left; margin-left: 10px }
 p.txt_descricao_produto_categoria a { width: 200px; height: 54px;font-size: 13px; color: #666666; float: left; margin-left: 10px; max-height: 54px}
 p.txt_descricao_produto_categoria a:hover {text-decoration: underline;}
 strike.precoAntigo_categoria { color:#582700; font-size: 12px; width: 200px;float: left; margin-left: 10px}
@@ -250,9 +265,10 @@ li.qtMenos_PC a {position: relative; width: 13px; height: 10px; background: url(
 li.qtMudar_PC a {position: relative; text-indent: -9999px}
 /*BOTÃO CARRINHO*/
 #buttom_add_car_comprar { width: 198px; height: 125px; margin: 15px 0; float: left; }
-button.carrinhoCompras_categoria { background: url(../images/btn_ir_cesta.png) no-repeat left 8px center #351903;}
-button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 6px 8px 36px; }
-button.carrinhoCompras_categoria { font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px; } 
+button.carrinhoCompras_categoria { background: url(../images/btn_ir_cesta.png) no-repeat left 8px center #582700;  border: none; color:#FFF; font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px;  text-align: left; cursor: pointer; padding: 6px 6px 8px 36px; }
+button.carrinhoCompras_categoria:hover { background: url(../images/btn_ir_cesta.png) no-repeat left 8px center #351903;}
+/*button.carrinhoCompras_categoria { border: none; color:#FFF; text-align: left; cursor: pointer; padding: 6px 6px 8px 36px; }
+button.carrinhoCompras_categoria { font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px; } */
 
 /******************* COLUNA CENTRAL - HOME***************/
 #conteudo_central { width: 644px; float: left; margin-right: 15px;}
@@ -310,7 +326,9 @@ p.pagamentos {font-size: 14px; color:#582700; text-transform: uppercase; font-we
 h3.Nome_detalhe { font-size: 24px; color:#ff7f25; margin-left: 25px}
 h4.inf_produtos{ font-size: 24px; color:#351903;}
 #box_detalhe { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd; }
-#galeria_detalhe{width: 212px; float: left; border: solid 1px #ddd; padding:15px 10px; margin-left:20px; }
+#galeria_detalhe{ float: left; border: solid 1px #ddd; padding:15px 10px; margin-left:20px; width: 212px; }
+#zoom_galeria img.fotos_galeria { max-width: 212px; max-height: 159px;}
+img.thumb_produtos {max-height: 66px; max-width: 50px;}
 span.mouse_imagem { background:url(../images/lupa_zoom.png) no-repeat left top;font-size: 12px; color:#666; padding-left: 20px; padding-bottom: 5px; margin-left: 20px; }
 #comprar_detalhe{width: 323px; float: left; border: solid 1px #ddd;  padding: 10px; margin-left: 25px; font-size: 13px; text-align: center;}
 strike.precoAntigo_produto {font-weight: bold; color:#582700;}
@@ -325,14 +343,16 @@ ul li.qtd_mudar a {  right: 3px; display: list-item; }
 li.qtMais a{position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 0px; top:7px;}
 li.qtMenos a{position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 -20px; top:9px;}
 .btn_detalhe {width: 300px; margin:0 auto; }
-button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #351903;font-weight: bold; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left; margin-top: 13px;}
+button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #582700;font-weight: bold; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left; margin-top: 13px;}
+button.btn_carrinhoCompras_detalhe:hover {background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #351903 }
 a.btn_comprar_detalhe{ background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: right; padding: 19px; margin-top: 13px}
+a.btn_comprar_detalhe:hover{background:#e57220}
 /******************informaçoes produtos*********************/
 .informacoes_produtos { float: left; margin-left: 25px; width: 523px;}
 p.ingredientes{color:#666; font-size: 16px; font-weight: bold;}
 p.ingredientes_inf{color: #666; font-size: 13px; line-height: 18px }
 /******************Informações da Tabela*********************/
-table { width: 594px; display: table; font-size: 13px; margin-left: 25px; float: left; background: #f7f7f7; }
+table.tabelaNutricional { width: 594px; display: table; font-size: 13px; margin-left: 25px; float: left; background: #f7f7f7; }
 thead { height: 30px; display: table-header-group; vertical-align: middle; background: #dddddd;}
 tr { display: table-row; vertical-align: inherit;}
 td { display: table-cell; text-align: inherit; vertical-align: inherit; }
@@ -354,6 +374,7 @@ p.precoProduto_VejaTambem{font-size: 13px; color:#ff7f25; margin-top: 5px}
 .box_vejaTambem .desc_prod {color:#666; font-size: 13px; width: 180px;}
 button.btn_carrinhoCompras_vejaTambem{background: url(../images/btn_ir_cesta.png) no-repeat center #351903; text-indent: -9999px; float: left; border:none; border-radius: 5px; padding:15px 25px; cursor: pointer; width:60px}
 a.btn_comprar_vejaTambem {background: #ff7f25; font-weight: bold;  color:#FFF; border-radius: 5px; float: left; font-size: 13px; padding: 16px 20px; margin-left: 10px }
+.maisProd {max-width: 86px; max-height: 102px}
 /*set a border on the images to prevent shifting*/
 #gallery_01 img{border:2px solid white;} 
 /*Change the colour*/
@@ -540,6 +561,114 @@ p.txt_ResultadoNEncontrado { font-size: 14px; text-align: center; color: #858585
 img.ImgCestaSemProduto { margin-top: 25px; margin-left: 100px; float: left;}
 p.tt_CestaSemProduto { margin-left: 24px; font-size: 20px; color: #ff7f25; float: left;}
 p.txt_CestaSemProduto { width: 250px; margin: -5px 0 0 50px; font-size: 12px; color: #666666; float: left; text-align: center;}
+
+
+/*Acompanhar Seu Pedido*/
+#DetalheDoPedido { width: 1024px; float: left; margin-bottom: 30px;}
+h3.tt_DetalheDoPedido { background: url(../images/DetalhePedido.png) no-repeat; width: 279px; height:51px ; float: left; text-indent: -9999px; margin: 0px;}
+#BoxDetalheDoPedido { width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px;}
+ul#DadosDetalheDoPedido { width: 540px; height: 40px; float: left; background: #dddddd; margin-top: 12px; margin-left: 12px;}
+li.tt_Pedidos { margin: 12px 15px 0 15px; float: left; font-size: 14px; color: #666666; display: block;}
+#ContainerDetalheDoPedido { width: auto; height: 40px; float: left; font-size: 12px; color: #666666;}
+#BoxDetalheDoPedido > ul > li.DadosDoPedido { width: 538px; height: 50px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left; margin-left: 12px;}
+p.txt_DadosDoPedido { width: 120px; display: block; text-align: center; margin: 20px 15px 0 15px;}
+p.txt_ValorDadosDoPedido { width: 108px; display: block; text-align: center; margin: 20px 0 0 0;}
+p a.txt_NumeroDetalhePedido { width: 120px; display: block; text-align: center; margin: 20px 0 0 10px; color: #ff7f25; font-weight: bold;}
+p a.txt_NumeroDetalhePedido:hover { text-decoration: underline;}
+
+
+ul#Status { width: 220px; height: 40px; float: left; background: #dddddd; margin: -40px 5px 0 10px;}
+li.tt_Status { width: 220px; float: left; text-transform: uppercase; font-weight: bold; font-size: 15px; color: #666666; text-align: center; margin-top: 12px;}
+#BoxDetalheDoPedido > ul > li.BoxStatus { width: 218px; height: 50px; border-bottom: solid 1px #CCC; border-left: solid 1px #CCC; border-right: solid 1px #CCC; float: left; margin: 0 0 0 10px;}
+img.Txt_PagueAgora { margin: 6px 0 0 25px; }
+p.Txt_StatusPagamento { width: 220px; display: block; text-align: center; margin: 20px 0 0 0; }
+p.Txt_StatusEnvio { width: 220px; display: block; text-align: center; margin: 20px 0 0 0; }
+
+
+
+/*************Area do Cliente************/
+#AreaCliente { width: 1024px; float: left; margin-bottom: 30px;}
+/**/
+#MeusDados { width: 507px; float: left;}
+#BoxMeusDados { width: 505px; height: 270px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
+h5.tt_MeusDados { width: 335px; height: 51px; margin-bottom: 0px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/tt_MeusDados.png) no-repeat; }
+p.NameMeusDados { font-size: 16px; color: #666666; font-weight: bold; margin-left: 15px; margin-top: 10px;}
+p.EmailMeusDados { font-size: 13px; color: #666666; margin-left: 15px;}
+p.AlterarMeusDados a { font-size: 14px; color: #ff7f25; margin-left: 15px; text-decoration: underline;}
+input.EditarDados { color:#FFF; float:left; border: none; padding: 10px; cursor: pointer; letter-spacing: 1px; border-radius: 7px; background: #582700; text-transform: uppercase; margin-left: 10px; margin-top: 10px;}
+input.EditarDados:hover { background: #351903}
+
+
+/**/
+#MeuEndereco { width: 507px; float: right;}
+#BoxMeuEndereco { width: 505px; height: 270px; float: left; border: solid 1px #dddddd; padding-bottom: 10px;}
+h5.tt_MeuEndereco { width: 335px; height: 51px; margin-bottom: 0px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/tt_MeuEndereco.png) no-repeat; }
+p.NomeEndereco { font-size: 16px; color: #666666; font-weight: bold; margin-left: 15px; margin-top: 10px;}
+p.DescEndereco { font-size: 14px; color: #666666; margin-left: 15px; line-height: 30px;}
+input.NovoEndereco { font-size: 9px; color:#FFF; float:right; border: none; padding: 13px 10px 13px 10px; cursor: pointer; letter-spacing: 1px; margin-right: 10px; margin-top: 10px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-weight: bold;}
+input.NovoEndereco:hover { background: #e57220;}
+
+
+/*Pagina de Detalhes do Pedido*/
+#PageRequests { width: 1024px; float: left; margin-bottom: 30px;}
+h3.tt_PageRequests { background: url(../images/DetalhePedido.png) no-repeat; width: 279px; height:51px ; float: left; text-indent: -9999px; margin: 0px;}
+
+#BoxPageRequests{ width: 1020px; border: solid 2px #ff7f25; float: left; padding-bottom: 12px;}
+#ContainerPageRequests { width: 996px; float: left; margin-top: 12px; margin-left: 12px;}
+#NumberPageRequests { width: 996px; height: 40px; float: left; background: #DDD;}
+.txt_NumberPageRequests { font-size: 20px; color: #666666; text-align: center; margin-top: 6px;}
+span.DetalhePageRequests { font-weight: bold; color: #000000;}
+
+#BoxEsquerdo { width: 298px; float: left; margin-top: 8px; margin-right: 8px;}
+#ContBoxEsquerdo { width: 298px; float: left; border: solid 1px #DDD;}
+#tt_BoxEsquerdo { width: 298px; height: 40px; float: left; background: #DDD; margin-top: 0px;}
+.tt_PageRequests { font-size: 16px; font-weight: bold; float: left; color: #666666; text-transform: uppercase; margin-top: 10px; margin-left: 12px; }
+#cont_BoxEsquerdo { width: 298px; float: left; margin-top: 0px;}
+.cont_BoxEsquerdo { font-size: 13px; color: #666666; margin-top: 0px; margin-left: 12px; line-height: 25px;}
+span.NomeBoxEsquerdo { text-transform: uppercase; font-weight: bold; line-height: 40px;}
+span.PagBoxEsquerdo { margin-left: 12px; color: #666666; line-height: 40px;}
+
+#BoxDireito { width: 686px; margin-top: 8px; float: left; border-left: solid 1px #DDD; border-right: solid 1px #DDD;}
+#tt_BoxDireito { width: 686px; height: 40px; float: left; background: #DDD; margin-top: 0px;}
+#ListaUmBoxDireito { width: 686px; height: 40px; float: left; background: #eeeeee; margin-top: 0px;}
+.ListaUmBoxDireito { font-size: 14px; color: #666666; float: left; margin-top: 10px; margin-left: 50px;}
+.ListaUmBoxDireitoNome { font-size: 14px; color: #666666; float: left; margin: 10px 170px 0 12px;}
+.ListaDoisBoxDireito { width: 686px; float: left; border-bottom: solid 1px #DDD; display: block;}
+.ListaTresBoxDireito { width: 554px; height: 50px; float: left; border-bottom: solid 1px #DDD;}
+.ListaQuatroBoxDireito { width: 130px; height: 50px; float: left; border-left: solid 1px #DDD; border-bottom: solid 1px #DDD;}
+
+#BoxListaDois { width: auto; height: auto; float: left; font-size: 13px; color: #666666;}
+p.BoxListaDoisNome { width: 285px; display: block; float: left; margin-left: 12px; }
+p.BoxListaDoisPreco { width: 150px; text-align: center;}
+p.BoxListaDoisQTD { width: 100px; text-align: center;}
+p.BoxListaDoisSub { width: 124px; text-align: center; padding-left: 15px;}
+.txt_BoxDireito { font-size: 14px; color: #ff7f25; margin-left: 12px; font-weight: bold;}
+span.Total_BoxDireito { font-size: 20px; text-transform: uppercase;}
+#BoxListaQuatro { width: auto; height: auto; float: left; font-size: 13px; color: #ff7f25;}
+p.BoxListaQuatroSub { width: 131px; height: 17px; text-align: center; padding-top: 7px;}
+
+span.Total_BoxDireito { font-size: 20px; text-transform: uppercase;}
+span.ButtonVoltar { float: left; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; font-weight: 600; font-size: 12px; text-transform: uppercase; color: #FFF; background: #582700; padding: 10px 30px 10px 30px; margin-top: 10px; }
+span.ButtonVoltar:hover { background: #351903;}
+span.ButtonRastrearCompra { float: right; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; font-size: 12px; border: none; color: #FFF; text-transform: uppercase; background: #ff7f25; padding: 10px 30px 10px 30px; margin-top: 10px;}
+span.ButtonRastrearCompra:hover { background: #E76509;}
+/*Fim da Pagina de Detalhes do Pedido*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Hack ie10 */
 .ie10 input.lupa_topo { width: 50px; height: 55px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;

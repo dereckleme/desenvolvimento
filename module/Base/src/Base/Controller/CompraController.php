@@ -31,10 +31,9 @@ class CompraController extends AbstractActionController
         $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
-            $valorTotal = $service->calculoTotal(); //sem frete
+        $valorTotal = $service->calculoTotal(); //sem frete.
         if($auth->hasIdentity())
         {
-            $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
             $cep = $entity->getCep();
@@ -52,10 +51,14 @@ class CompraController extends AbstractActionController
                 $valorFreteFormatado = $filter->format($valorFrete);
             }
         }
+            $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $repository = $em->getRepository("Produto\Entity\ProdutoProdutos");
+                $produtosPublicidade = $repository->findBy(array(),array(),8);
+                shuffle($produtosPublicidade);
     	return new viewModel(array("carrinhoLista" => array(
     				"listaAtual" =>  $service->lista(),
     				"valorTotal" => $valorTotal
-    		),"cep" => $cep, "valorFrete" => $valorFreteFormatado));
+    		),"cep" => $cep, "valorFrete" => $valorFreteFormatado, "produtosPublicidade" => $produtosPublicidade));
     }
     public function finalizaAction()
     {
@@ -72,10 +75,7 @@ class CompraController extends AbstractActionController
             $cidadeEstadoUF = null;
             $cidadeSelected = null;
         ///frete
-            $frete = null;
-        ///token
-        $token = null;
-        ///    
+            $frete = null;   
         $entity = null;
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
@@ -111,17 +111,12 @@ class CompraController extends AbstractActionController
                             $valorFrete = str_replace(",", ".", $freteCalculo['cServico']['Valor']);
                             $frete = array("valorFrete" => $filter->format($valorFrete), "valorfreteTotal" => $filter->format($valorFrete+$valueUpdated));
                         }
-                        if(!empty($nome) && !empty($cep) && !empty($endereco) && !empty($numero) && !empty($bairro) && $frete != null)
-                        {
-                        	$serviceUrl = $this->getServiceLocator()->get("Pagseguro\Curl\post");
-                        	$token = $serviceUrl->requisicao();
-                        }
                     }    
         }
     	return new viewModel(array("carrinhoLista" => array(
     				"listaAtual" =>  $service->lista(),
     				"valorTotal" => $service->calculoTotal(),
     	            
-    		),"auth" => $auth, "estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"nomeCompleto" => $nome, "cep" => $cep,"endereco" => $endereco, "numero" => $numero, "bairro" => $bairro,"frete" =>$frete, "token" => $token));
+    		),"auth" => $auth, "estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"nomeCompleto" => $nome, "cep" => $cep,"endereco" => $endereco, "numero" => $numero, "bairro" => $bairro,"frete" =>$frete));
     }
 }

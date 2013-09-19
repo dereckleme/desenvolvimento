@@ -1,6 +1,6 @@
 <?php
 
-namespace Usuario\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="usuario_usuarios")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="Base\Entity\UsuarioUsuariosRepository")
  */
 class UsuarioUsuarios
 {

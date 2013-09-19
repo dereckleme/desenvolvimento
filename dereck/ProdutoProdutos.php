@@ -50,6 +50,41 @@ class ProdutoProdutos
     private $destaque;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="peso", type="decimal", nullable=false)
+     */
+    private $peso;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Comprimento", type="integer", nullable=false)
+     */
+    private $comprimento;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="altura", type="integer", nullable=false)
+     */
+    private $altura;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="largura", type="integer", nullable=false)
+     */
+    private $largura;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="acessos", type="integer", nullable=true)
+     */
+    private $acessos;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
