@@ -19,7 +19,8 @@ return array(
         'Pagamento',
         'Pagseguro',
         'CarrinhoCompras',
-        'DrkCorreios'
+        'DrkCorreios',
+        'WebinoImageThumb'
         ),
     'module_listener_options' => array(
         'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php'),

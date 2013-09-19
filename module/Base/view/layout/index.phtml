@@ -311,12 +311,10 @@
                 ?>
                   <div id="lista_produtos">
                     <h2><span class="tt_top_list">PRODUTOS SELETO</span></h2>
-
                     <ul class="lista_geral">                              
                         <?php
                         $a = 1;
                         foreach($this->categorias as $categoria): 
-							if( count($categoria->getSubcategorias()[0]->getProdutos()) > 0):
 						?>                        
                             <li>
                                 <a href="<?php echo $this->url('publico-categoria', array('categoriaslug'=>$categoria->getSlug())); ?>" class="tt_lista" <?php echo ($a == 1) ? "style='border-top:none; margin-top: 27px;'" : "";?>><?php echo $categoria->getNome(); ?></a>
@@ -324,18 +322,16 @@
                                     <?php
                                     $i = 1; 
                                     foreach($categoria->getSubcategorias() as $subcategoria): 
-                                    if( count($subcategoria->getProdutos()) > 0):
+                                        if(count($subcategoria->getProdutos()) > 0): 
                                     ?>
                                         <li class="itens_menu_lateral" <?php echo ($i == 1) ? "style='margin-top: 0px'" : "";?>>
                                             <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$categoria->getSlug(), 'subcategoriaslugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a>
                                         </li>
                                     <?php $i--; endif; endforeach; ?>                                                                   
                                 </ul>
-                            </li>
-                        
-                        <?php $a--; endif; endforeach; ?>
+                            </li>                        
+                        <?php $a--; endforeach; ?>
                     </ul>
-
                   </div>
                   <?php 
                     }

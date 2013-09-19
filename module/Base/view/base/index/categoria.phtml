@@ -6,7 +6,7 @@
                       <p class="tt_select_box">Ordenar por:</p>
                         <div class="styled-select">
                            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
-                               <input type="hidden" name="p" value="<?php echo $this->termo; ?>">
+                               <input type="hidden" name="item" value="<?php echo $this->termo; ?>">
                                 <select name="ordenarPor" onchange="this.form.submit()">
                                   <option value="">selecione</option>
                                   <option value="alfabetica">alfabética</option>
@@ -29,7 +29,9 @@
                   	        ?>
                 	        <li class="lista_categoria_produtos">
                       			<div id="descricao_produto_categoria">
-                      				<a href=""><img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produto_categoria2.png" title="#"></a>
+                      				<a href="">
+                      				    <img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $produto->getFoto();?>" title="#">
+                      				</a>
                       				<p class="txt_descricao_produto_categoria">
                       				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
                       				        <?php echo $produto->getTitulo(); ?>
@@ -66,7 +68,7 @@
                         <p class="tt_select_box">Ordenar por:</p>
                         <div class="styled-select">
                             <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
-                                <input type="hidden" name="p" value="<?php echo $this->termo; ?>">
+                                <input type="hidden" name="item" value="<?php echo $this->termo; ?>">
                                 <select name="ordenarPor" onchange="this.form.submit()">
                                     <option value="">selecione</option>
                                     <option value="alfabetica">alfabética</option>

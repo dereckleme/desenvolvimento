@@ -4,10 +4,9 @@
     		<h3 class="Nome_detalhe"><?=$this->detalheProduto->getTitulo()?></h3>
 
     		<div id="galeria_detalhe">
-            <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
-               
-				<img id="zoom_03" width="218" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/img_1.jpg" src="<?=$this->basePath()?>/images/produtos/small/img_1.png" style=" position: absolute;">
-				<!-- </div> -->
+            <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->               
+				<img id="zoom_03" class="fotos_galeria" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$this->detalheProduto->getFoto();?>" src="<?=$this->basePath()?>/images/produtos/small/<?=$this->detalheProduto->getFoto();?>" style=" position: absolute;">
+			<!-- </div> -->
 
 				<!--<div id="gallery_01" style="width:218px;float:left; margin-top:20px;">
 					<a class="elevatezoom-gallery active" data-zoom-image="images/large/img_1.jpg" data-image="images/small/img_1.png" data-update="" href="#">
@@ -220,7 +219,7 @@
 		    	    </a>
 		    	</p>
 		    	<div class="left_vejaTambem">
-		    		<img src="<?=$this->basePath()?>/images/img_vejaTambem.png" alt="" title="" style="width:86px; height:102px;" class="maisProd" />
+		    		<img src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $relacionados->getFoto();?>" alt="" title="" class="maisProd" />
 		    	</div>
 
 		    	<div class="right_vejaTambem">

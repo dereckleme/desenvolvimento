@@ -9,6 +9,20 @@ class ProdutoProdutosRepository extends EntityRepository {
     protected $slugCategoria;
     protected $slugSubcategoria;
     protected $search; 
+    protected $item;
+    
+    
+    public function myFindAll(){
+        $qb =  $this->createQueryBuilder('i');
+    	$qb->select('c');
+    	$qb->distinct('c.idcategorias');
+    	$qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
+    	$qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+    	$query = $qb->getQuery();
+    	#echo "<pre>", print($query->getDQL()), "</pre>";
+    	$results = $query->getResult();
+    	return $results;
+    } 
     
     public function detalheProduto()
     {
@@ -138,6 +152,15 @@ class ProdutoProdutosRepository extends EntityRepository {
         	$qb->setParameter(2, "%$this->search%");
         	$qb->setParameter(3, "%$this->search%");
     	}
+    	if($this->item)
+    	{
+    		$qb->where('s.slugSubcategoria = ?1');
+    		$qb->orWhere('c.slug = ?2');
+    		$qb->orWhere('i.slugProduto = ?3');
+    		$qb->setParameter(1, $this->item);
+    		$qb->setParameter(2, $this->item);
+    		$qb->setParameter(3, $this->item);
+    	}
     	if($order == 'alfabetica')
     	{
     	    $qb->orderBy('i.titulo');
@@ -165,10 +188,19 @@ class ProdutoProdutosRepository extends EntityRepository {
         {
             $qb->where($qb->expr()->like('s.nome', '?1'));
             $qb->orWhere($qb->expr()->like('c.nome', '?2'));
-            $qb->orWhere($qb->expr()->like('i.titulo', '?3'));
+            $qb->orWhere($qb->expr()->like('i.titulo', '?3'));            
             $qb->setParameter(1, "%$this->search%");
             $qb->setParameter(2, "%$this->search%");
             $qb->setParameter(3, "%$this->search%");
+        }
+        if($this->item)
+        {
+            $qb->where('s.slugSubcategoria = ?1');
+            $qb->orWhere('c.slug = ?2');
+            $qb->orWhere('i.slugProduto = ?3');
+            $qb->setParameter(1, $this->item);
+            $qb->setParameter(2, $this->item);
+            $qb->setParameter(3, $this->item);           
         }
         if($order == 'alfabetica')
         {
@@ -207,6 +239,9 @@ class ProdutoProdutosRepository extends EntityRepository {
 		$this->search = $search;
 	}
 
+	public function setItem($item) {
+		$this->item = $item;
+	}
     
 	
 }

@@ -192,12 +192,17 @@ class IndexController extends AbstractActionController
     {
         $page = ($this->params()->fromQuery('pagina') == "") ? 1 : $this->params()->fromQuery('pagina');        
         $ordem = $this->params()->fromQuery('ordenarPor');
-        $busca =  str_replace("-", " ", $this->params()->fromQuery('p'));
+        $busca = $this->params()->fromQuery('p');
+        $item = $this->params()->fromQuery('item');
         
         $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         if($busca)
         {
             $repository->setSearch($busca);
+        }
+        if($item)
+        {
+            $repository->setItem($item);
         }
         $countResultado = $repository->resultadoBuscaRows($ordem);
         $pagePart =  ($this->params()->fromQuery('pagina') == "") ? 0 : (($this->params()->fromQuery('pagina') - 1) * 1);
@@ -212,6 +217,7 @@ class IndexController extends AbstractActionController
             return new ViewModel(array(
                 "resultado"    =>    $resultado,
                 "termo"        =>    $busca,
+                "item"         =>    $item,
                 "ordenarPor"   =>    $ordem,
                 "page"         =>    $paginator,
                 "pagina"       =>    $page                

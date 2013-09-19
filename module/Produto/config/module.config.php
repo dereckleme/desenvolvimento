@@ -15,13 +15,14 @@ return array(
              * Rotas Administrativas
              */
         	 'admin-produto-home' => array(
-                'type'    => 'Literal',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/administrador/produto',
+                    'route'    => '/administrador/produto[/page/:page]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Produto\Controller',
                         'controller'    => 'Produto',
                         'action'        => 'index',
+                        'page'          => 1
                     ),
                 ),
                 'may_terminate' => true,

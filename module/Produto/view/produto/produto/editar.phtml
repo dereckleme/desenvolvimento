@@ -1,4 +1,4 @@
-<h3>Alterar Produto</h3>
+<!-- <h3>Alterar Produto</h3>
 
 <hr>
 
@@ -33,22 +33,33 @@
 	<div class="control-group">
 		<label class="control-label" for="inputTitulo">Titulo</label>
 		<div class="controls">
-			<input type="text" id="inputTitulo" placeholder="Titulo" value="<?php echo $this->produto->getTitulo()?>">
+			<input type="text" id="inputTitulo" placeholder="Titulo" value="<?php #echo $this->produto->getTitulo()?>">
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="inputValor">Valor</label>
 		<div class="controls">
-			<input type="text" id="inputValor" placeholder="R$ 0,00" value="<?php echo $this->produto->getValor()?>">
+			<input type="text" id="inputValor" placeholder="R$ 0,00" value="<?php #echo $this->produto->getValor()?>">
 		</div>
 	</div>
 
 	<div class="control-group">
 		<div class="controls">
-			<a class="btn" href="<?php echo $this->url('admin-produto-home'); ?>">Voltar</a>
+			<a class="btn" href="<?php #echo $this->url('admin-produto-home'); ?>">Voltar</a>
 			<button type="submit" class="btn btn-primary">Alterar</button>
 		</div>
 	</div>
 
-</form>
+</form> -->
+
+<?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url('admin-produto-home/admin-produto-adicionar', array('action'=>'criarProduto')));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<?php
+echo $this->form()->closeTag();
+?>

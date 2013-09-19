@@ -3,7 +3,10 @@
 namespace Produto\Form;
 
 use Zend\Form\Form;
-use Zend\Form\Element\Select;
+use Zend\Form\Element\Select,
+    Zend\Form\Element\Radio,
+    Zend\Form\Element\Hidden,
+    Zend\Form\Element\File;
 use Doctrine\DBAL\Event\SchemaEventArgs;
 
 class Produto extends Form {
@@ -16,6 +19,10 @@ class Produto extends Form {
 			 ->setAttribute('class', 'form-horizontal');
 		
 		$this->setInputFilter(new ProdutoFilter);
+		
+		$hidden = new Hidden('ativo');
+		$hidden->setValue('1');
+		$this->add($hidden);
 		
 		$select = new Select('inputCategoria');
 		$select->setAttribute('id', 'inputCategoria');
@@ -48,6 +55,53 @@ class Produto extends Form {
 					'id' => 'inputValor'
 				)
 		));
+		
+		$this->add(array(
+		    'name'    =>    'peso',
+		    'options' =>    array(
+		        'type'    =>    'text',
+		    ),
+		    'attributes'   =>    array(
+		        'placeholder' => '0.000',
+		        'id' => 'inputPeso'
+		    )
+		));
+		
+		$this->add(array(
+			'name'    =>    'comprimento',
+			'options' =>    array(
+				'type'    =>    'text'
+			),
+			'attributes'   =>    array(
+				'placeholder' => '0',
+				'class'       => 'input-medium myConfig'
+			)
+		));
+		
+		$this->add(array(
+				'name'    =>    'altura',
+				'options' =>    array(
+						'type'    =>    'text'
+				),
+				'attributes'   =>    array(
+						'placeholder' => '0',
+						'class'       => 'input-medium myConfig'
+				)
+		));
+		
+		$this->add(array(
+				'name'    =>    'largura',
+				'options' =>    array(
+						'type'    =>    'text'
+				),
+				'attributes'   =>    array(
+						'placeholder' => '0',
+						'class'       => 'input-medium myConfig'
+				)
+		));
+		
+		$file = new File('foto');
+		$this->add($file);
 		
 	}
 		

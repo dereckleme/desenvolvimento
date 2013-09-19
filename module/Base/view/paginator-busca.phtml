@@ -13,6 +13,17 @@ $formatUrl = function ($page){
 			    $url = "?pagina=$page&p={$_GET['p']}";
 			}
 		}
+		elseif(isset($_GET['item']))
+		{
+		    if(isset($_GET['ordenarPor']))
+		    {
+		    	$url = "?pagina=$page&item={$_GET['item']}&ordenarPor={$_GET['ordenarPor']}";
+		    }
+		    else
+		    {
+		    	$url = "?pagina=$page&item={$_GET['item']}";
+		    }
+		}		
 		else
 		{
 		    if(isset($_GET['ordenarPor']))
@@ -37,6 +48,17 @@ $formatUrl = function ($page){
 	    	else
 	    	{
 	    		$url = "?pagina=$page&p={$_GET['p']}";
+	    	}
+	    }
+	    elseif(isset($_GET['item']))
+	    {
+	    	if(isset($_GET['ordenarPor']))
+	    	{
+	    		$url = "?pagina=$page&item={$_GET['item']}&ordenarPor={$_GET['ordenarPor']}";
+	    	}
+	    	else
+	    	{
+	    		$url = "?pagina=$page&item={$_GET['item']}";
 	    	}
 	    }
 	    else

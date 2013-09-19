@@ -117,6 +117,6 @@ $(function(){
 		$( "#search, #search_footer" ).autocomplete({
     		minLength: 3,
  		    source: basePatch+"/autocomplete/"
-    	 });
+    	 });		
 		
 });		

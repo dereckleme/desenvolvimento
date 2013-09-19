@@ -82,6 +82,14 @@ class ProdutoProdutos
      */
     private $acessos;
     
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="foto", type="string", length=255, nullable=true)
+     */
+    private $foto;
+    
     /**
      * @var boolean
      *
@@ -223,6 +231,23 @@ class ProdutoProdutos
 	public function setAcessos($acessos) {
 		$this->acessos = $acessos;
 	}
+	
+	/**
+	 * @return the $foto
+	 */
+	public function getFoto() {
+		return $this->foto;
+	}
+
+	/**
+	 * @param string $foto
+	 */
+	public function setFoto($foto) {
+	    #echo "<pre>", print_r($foto), "</pre>";
+	    #die('by celso');
+		$this->foto = $foto['name'];
+	}
+
 
     
 

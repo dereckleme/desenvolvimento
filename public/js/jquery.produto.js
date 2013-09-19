@@ -84,45 +84,14 @@ $(function(){
 			});
 		});		
 		
-		$("#addProduto").on("click", function(){			
-			var categoria = $('#formProduto select[name=inputCategoria]').val();
-			var subcategoria = $('#formProduto select[name=inputSubCategoria]').val();
-			var titulo = $('#formProduto input[name=titulo]').val();
-			var valor = $('#formProduto input[name=valor]').val();
-			var des = $('#formProduto input[name=des]').val();
-			var active = $('#formProduto input[name=active]').val();
-			
-			$.ajax({
-				type	 :	"post",
-				url		 :	basePatch+"/administrador/produto/adicionar",
-				dataType :  "json",
-				data	 :	{inputCategoria:categoria, inputSubCategoria:subcategoria, titulo:titulo, valor:valor, Destaque:des, ativo:active},
-				success	 :	function(data){					
-					$("#message").removeClass("alert-error");
-					$("#message").removeClass("alert-success");
-					
-					var html = "";
-					if(data.titulo) {
-						html += "<span> O campo <strong>Titulo</strong> "+data.titulo+"</span>"; 
-						$("#message").addClass("alert-error");
-					}
-					if(data.success) {
-						html += "<span>"+data.success+"</span>"; 
-						$("#message").addClass("alert-success");
-						$("#addProdutos #fecharModal").html("Fechar");
-						$("#addProdutos #addProduto").remove();
-					}
-					
-					$("#message").html(html);
-					$("#message").css('display','block');
-					
-				},
-				error	:	function(){
-					alert("ERROR");			
-				}
-			});
-			
+		$(".input-medium").mask("9?99");
+		$("#inputPeso").mask("9.999");
+		$('#inputValor').priceFormat({
+		    prefix: false,
+		    centsSeparator: ',',
+		    thousandsSeparator: '.'
 		});
+		
 		$("#actionAddReferencia").on("click", function(){	
 			var eventReferencia = $("#criaReferencias .tituloReferencia").val();
 			$.ajax({

@@ -16,6 +16,7 @@
         "hounddog/doctrine-data-fixture-module": "dev-master",
         "doctrine/migrations": "dev-master",
         "doctrine/common": "dev-master",
-        "gedmo/doctrine-extensions": "dev-master"
+        "gedmo/doctrine-extensions": "dev-master",
+        "webino/webino-image-thumb": "1.*"
     }
 }

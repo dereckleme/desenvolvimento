@@ -112,8 +112,8 @@ class Module
     		/*
     		 * Listagem de categorias
     		 */    		    	
-    		$eventoCategoria = $e->getApplication()->getServiceManager()->get('Produto\Repository\Categorias');
-    		$categorias = $eventoCategoria->findAll();    		
+    		$eventoCategoria = $e->getApplication()->getServiceManager()->get('Produto\Repository\Produtos');
+    		$categorias = $eventoCategoria->myFindAll();
     		$controller->layout()->categorias = $categorias;
     		
     		
