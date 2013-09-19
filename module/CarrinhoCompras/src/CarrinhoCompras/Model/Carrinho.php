@@ -33,6 +33,7 @@ class Carrinho
     #	return $this->container->carrinho;
         return $configSessionProdutos;
     }
+    
     public function calculoTotal()
     {
         $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);

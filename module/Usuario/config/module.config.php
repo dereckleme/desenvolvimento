@@ -46,6 +46,39 @@ return array(
             						'action'        => 'index',
             				),
             		),
+                    'may_terminate' => true,
+                    'child_routes' => array(
+                        'Painel-usuario-recibo' => array(
+                        		'type'    => 'Segment',
+                        		'options' => array(
+                        				'route'    => '[/pedido[/:idPedido]]',
+                        				'defaults' => array(
+                        						'__NAMESPACE__' => 'Usuario\Controller',
+                        						'controller'    => 'Usuario',
+                        						'action'        => 'pedido',
+                        				),
+                        		),
+                        		'may_terminate' => true,
+                        		'child_routes' => array(
+                        
+                        		)
+                        ),
+                        'Painel-usuario-status' => array(
+                        		'type'    => 'Segment',
+                        		'options' => array(
+                        				'route'    => '[/status[/:idPedido]]',
+                        				'defaults' => array(
+                        						'__NAMESPACE__' => 'Usuario\Controller',
+                        						'controller'    => 'Usuario',
+                        						'action'        => 'status',
+                        				),
+                        		),
+                        		'may_terminate' => true,
+                        		'child_routes' => array(
+                        
+                        		)
+                        )
+                     ),
                 ),
         ),
     ),

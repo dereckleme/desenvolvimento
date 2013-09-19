@@ -15,7 +15,7 @@ class PagamentoStatusFpagamento
     /**
      * @var integer
      *
-     * @ORM\Column(name="idStatus", type="integer", nullable=false)
+     * @ORM\Column(name="idStatus", type="integer", nullable=true)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

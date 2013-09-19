@@ -2,8 +2,8 @@
 namespace Pagamento;
 
 use Pagamento\Service\Estoque as serviceEstoque;
-
-
+use Pagamento\Service\Recibo as serviceRecibo;
+use Pagamento\Service\Pedido as servicePedido;
 class Module
 {
     public function getConfig()
@@ -29,16 +29,14 @@ class Module
     	    	    $estoque = new serviceEstoque($service->get('Doctrine\ORM\EntityManager'));
     	    	    return $estoque;
     	        },
-    	        /*'Pagamento\Repository\Estoque' => function($service){
-    	            $em = $service->get("Doctrine\ORM\EntityManager");
-    	            $repositor = $em->getRepository("Pagamento\Entity\PagamentoControleestoque");
-    	            return $repositor;
-    	        }*/
     	        'Pagamento\Service\Recibo' => function($service){
-    	        	$estoque = new Recibo($service->get('Doctrine\ORM\EntityManager'));
-    	        	return $estoque;
+    	        	$recibo = new serviceRecibo($service->get('Doctrine\ORM\EntityManager'));
+    	        	return $recibo;
     	        },
-    	        
+    	        'Pagamento\Service\Pedido' => function($service){
+    	        	$pedido = new servicePedido($service->get('Doctrine\ORM\EntityManager'));
+    	        	return $pedido;
+    	        },
     	    )
     	);
     }

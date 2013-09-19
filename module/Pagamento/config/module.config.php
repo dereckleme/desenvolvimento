@@ -40,6 +40,17 @@ return array(
     		    	        ),
     		    	    ),    		            
     		        ),
+    		    'publico-fechar-pedido' => array(
+    		    		'type' => 'Literal',
+    		    		'options' => array(
+    		    				'route'    => '/compra/concluirPedido',
+    		    				'defaults' => array(
+    		    						'__NAMESPACE__' => 'Pagamento\Controller',
+            		    		        'controller'    => 'Financeiro',
+    		    						'action'        => 'fecharPedido',
+    		    				),
+    		    		),
+    		    ),
     		    ),
         ),
     'service_manager' => array(
@@ -64,6 +75,7 @@ return array(
     		'not_found_template'       => 'error/404',
     		'exception_template'       => 'error/index',
     		'template_map' => array(
+    		        'Layout/admin_logado'           => __DIR__ . '/../view/layout/index_logado.phtml',
     				'Layout/admin_logado_adm'           => __DIR__ . '/../view/layout/layout.phtml',
     				'Pagamento/index/index' => __DIR__ . '/../view/pagamento/index/index.phtml',
     				'error/404'               => __DIR__ . '/../view/error/404.phtml',

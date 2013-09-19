@@ -1,6 +1,6 @@
 <?php
 
-namespace Usuario\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -41,6 +41,20 @@ class UsuarioCadastro
      * @ORM\Column(name="rua", type="string", length=255, nullable=true)
      */
     private $rua;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bairro", type="string", length=255, nullable=true)
+     */
+    private $bairro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CEP", type="string", length=255, nullable=true)
+     */
+    private $cep;
 
     /**
      * @var string

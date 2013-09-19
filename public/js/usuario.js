@@ -189,7 +189,12 @@ $(document).ready(function(){
 		});
 			return false;
 	})
-	$('.EventcadastrarEndereco').on("click",function(){
+	$('.actionConcluirPedido').on("click",function(){
+		setTimeout(function(){
+			window.location =  basePatch+"/painel";
+		},3000)
+	})
+	$(".formAction").on("click",'.EventcadastrarEndereco',function(){
 		var actionNome = $("#BoxEndereco .BoxNome").val();
 		var actionCep = $("#BoxEndereco .BoxCEP").val();
 		var actionRua = $("#BoxEndereco .BoxEndereco").val();
@@ -215,7 +220,11 @@ $(document).ready(function(){
 		});	
 		return false;
 	})
-	
+	$('#bottaoAlterarCadastro').on("click",function(){
+			$(".formAction input, .formAction select").removeAttr("disabled");
+			$(".seletoInt").html('<input type="submit" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>');
+		return false;
+	})
 	$(".BoxCEP").mask("99999-999",{completed:function(){
 		var cepSet = this.val();
 		$.ajax({
@@ -351,4 +360,5 @@ $(document).ready(function(){
 					});	
 		  		}
 		});
+	
 })

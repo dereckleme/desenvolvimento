@@ -22,7 +22,73 @@ class UsuarioController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        if($auth->hasIdentity())
+        {
+            $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+            $recibos = $repoRecibo->findByusuariousuarios($auth->getIdentity()->getIdusuario());
+            $repo = $em->getRepository("Usuario\Entity\UsuarioCadastro");
+            return new ViewModel(array("usuario" => $auth->getIdentity(), "cadastro" => $repo->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario()), "recibos" => $recibos));
+        }
+    }
+    public function pedidoAction()
+    {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        if($auth->hasIdentity())
+        {
+            $idUser = $auth->getIdentity()->getIdusuario();
+            $param = $this->params()->fromRoute("idPedido");
+            $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+            $recibo = $repoRecibo->findOneByidcontrolerecibo($param/3500);
+               if(count($recibo) != 0)
+               {
+                   if($recibo->getUsuariousuarios()->getIdusuario() == $idUser)
+                   {
+
+                       return new viewModel(array("data" => $recibo));
+                   }
+                   else
+                   {
+                       return $this->redirect()->toRoute('Painel-usuario');
+                   }
+               }  
+               else {
+                   return $this->redirect()->toRoute('Painel-usuario');
+               }
+            
+        }
+        else 
+        {
+            return $this->redirect()->toRoute('Painel-usuario');
+        }
+    }
+    public function statusAction()
+    {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        if($auth->hasIdentity())
+        {
+            $params = $this->params()->fromRoute("idPedido");
+            
+        $status = null;    
+            $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+            $recibo = $repoRecibo->findOneByidcontrolerecibo($params);
+            if($recibo)
+            {
+            if($recibo->getSpagamento())
+            {
+                $status = $recibo->getSpagamento()->getTitulo();
+            }
+            }
+    	 $viewModel = new ViewModel(array('message' => $status));
+    	 $viewModel->setTerminal(true);
+    	 return $viewModel;
+        } 
     }
     public function novoUserAction()
     {

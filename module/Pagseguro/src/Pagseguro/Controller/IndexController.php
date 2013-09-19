@@ -36,12 +36,13 @@ class IndexController extends AbstractActionController
                 $data = $request->getPost()->toArray();
                 $service = $this->getServiceLocator()->get("Pagseguro\Curl\Retorno");
                 $return = $service->requisicao($data['notificationCode']);
-                #$return = $service->requisicao("FB9220-868A3B8A3BD6-8774E20FA2DA-E5FFA0");
-                $codigoUnitario = $return['code'];
+                #$return = $service->requisicao("4FEA8E-AF8A178A179B-A004FA4FA4D0-6B204F");
                 $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-                $repositoryRecibo = $em->getRepository("Pagseguro\Entity\PagamentoControlerecibo");
+                $repositoryRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
                 $service = $this->getServiceLocator()->get("Pagseguro\Service\Pagseguro");
-                    $objectRelacional = $repositoryRecibo->findOneBynpedido(array($codigoUnitario));
+              
+                    $objectRelacional = $repositoryRecibo->findOneByidcontrolerecibo($return['reference']);
+                
                 if(count($objectRelacional) == 0) // nao existe
                 {
                 	$service->insert(array("npedido" => $return['code'],"Setspagamento" => $return['status'], "SetfPagamento" => $return['paymentMethod']['type'], "valor" => $return['grossAmount']));
