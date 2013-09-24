@@ -50,18 +50,23 @@
                   	    	?>
                   	    	<li class="lista_categoria_produtos">
                       			<div id="descricao_produto_categoria">
-                      				<a href="">
-                      				    <img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $produto->getFoto();?>" title="#">
-                      				</a>
-                      				<p class="txt_descricao_produto_categoria">
-                      				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
-                      				        <?php echo $produto->getTitulo(); ?>
-                      				    </a>
-                      				</p>
-                      				<strike class="precoAntigo_categoria">R$ 7,50</strike>
-    								<p class="precoProduto_categoria">
-    								    <em class="moeda_monetaria"><strong><?php echo $produto->getValor(true); ?></strong></em>
-    								</p>
+                                <div id="categoria_produto_left">
+                            				<a href="">
+                            				    <img class="img_descricao_produto_categoria" src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $produto->getFoto();?>" title="#">
+                            				</a>
+                                </div>
+                                <div id="categoria_produto_right">
+                              				<p class="txt_descricao_produto_categoria">
+                              				    <a class="txt_descricao_produto_categoria" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto->getSlugProduto() )); ?>" title="<?php echo $produto->getTitulo(); ?>">
+                              				        <?php echo $produto->getTitulo(); ?>
+                              				    </a>
+                              				</p>
+                                      <br />
+                              				
+                      								<p class="precoProduto_categoria">
+                      								    <em class="moeda_monetaria"><strong><?php echo $produto->getValor(true); ?></strong></em>
+                      								</p>
+                                  </div>
                       			</div>
     
                       			<div id="quantidade_produto_categoria" class="prdQtd">

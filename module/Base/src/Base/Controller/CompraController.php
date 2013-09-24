@@ -119,4 +119,25 @@ class CompraController extends AbstractActionController
     	            
     		),"auth" => $auth, "estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"nomeCompleto" => $nome, "cep" => $cep,"endereco" => $endereco, "numero" => $numero, "bairro" => $bairro,"frete" =>$frete));
     }
+
+    public function getEstoqueAction()
+    {
+        $request = $this->getRequest();
+        $info = array();
+        if($request->isPost())
+        {
+            $post = $request->getPost()->toArray();
+            if(!empty($post['actionId']))
+            {
+                $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+                    $produto = $em->getRepository("Produto\Entity\ProdutoProdutos")->findOneByidproduto($post['actionId']);
+                $entity = $em->getRepository("Pagamento\Entity\PagamentoControleestoque")->findOneByprodutoproduto($produto);
+                $info['produto'] = $entity;
+            }
+        }
+        $viewModel = new ViewModel(array("data" => $info));
+        $viewModel->setTerminal(true);
+        return $viewModel;
+        
+    }
 }

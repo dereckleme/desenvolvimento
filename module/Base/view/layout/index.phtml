@@ -41,15 +41,17 @@
           <div id="ContenTopoHeader">
             <div id="mn_topo">
                   <ul class="mn_topo">
-                    <li class="Menu_topo" style="text-decoration:none;">
-                      <a href="">Bem vindo à nossa loja online</a>
+                    <li class="Menu_topo">
+                      Bem vindo à nossa loja online
                       </li>
                       <li class="Menu_topo">
                       <a href="#" class="eventOpenPopUp">Faça login ou cadastre-se</a>
                       </li>
-                      <li class="Menu_topo" style="background:none;">
+                      <li class="Menu_topo">
                       <a href="#" class="eventOpenPopUp">Acompanhe seus pedidos</a>
                     </li>
+                     <li class="Menu_topo" style="background:none;">
+                      <a href="">Dúvidas frequentes</a></li>
                   </ul>
              </div>
 
@@ -141,7 +143,7 @@
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
             </form>
-                <ul class="Menu" <?php echo ($this->matchedRoute != "home") ? 'style="display:none"' : ''; ?>>                    
+                <ul class="Menu">                    
                       <li class="lista_menu_cafe"><!--Cafés-->
                           <h3><a href="#">Cafes</a></h3>
                           
@@ -393,16 +395,16 @@
 
         <ul class="mn_footer">
           <li>ENTREGAS</li>
-          <img src="../public/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
+          <img src="<?=$this->basePath()?>/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
         </ul>
 
         <ul class="mn_footer">
           <li>REDES SOCIAIS</li>
             <ul class="submenu">  
                <p class="text_redes_sociais">Acompanhe o Café Seleto <br/> nas redes sociais:</p>      
-               <li><a href="" class="redes_sociais"><img src="../public/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
-               <li><a href="" class="redes_sociais"><img src="../public/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
-               <li><a href="" class="redes_sociais"><img src="../public/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="<?=$this->basePath()?>/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="<?=$this->basePath()?>/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
+               <li><a href="" class="redes_sociais"><img src="<?=$this->basePath()?>/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
             </ul>
         </ul>
 

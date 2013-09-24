@@ -5,8 +5,8 @@
 
     		<div id="galeria_detalhe">
             <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
-               <div id="zoom_galeria">
-					<img id="zoom_03" class="fotos_galeria" text-align="center" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$this->detalheProduto->getFoto();?>" src="<?=$this->basePath()?>/images/produtos/small/<?=$this->detalheProduto->getFoto();?>" style="position: absolute;">
+               <div id="zoom_galeria" >
+					<img id="zoom_03" class="fotos_galeria"  data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$this->detalheProduto->getFoto();?>" src="<?=$this->basePath()?>/images/produtos/small/<?=$this->detalheProduto->getFoto();?>" style="position: absolute;">
 				<!-- </div> -->
                 </div>
 				<div id="gallery_01" style="width:212px;float:left; margin-top:20px;">
@@ -29,12 +29,12 @@
 
 			<div id="comprar_detalhe">
 
-				<strike class="precoAntigo_produto">R$ 7,50</strike>
+				<!--  <strike class="precoAntigo_produto">R$ 7,50</strike>-->
 				<p class="precoProduto_detalhe">
 					<em class="un_monetaria">
 					<strong><?=$this->detalheProduto->getValor(true)?></strong></em> 
 				</p>
-
+                <div class="smsEstoque" style="display:none;color:red"></div>
 				<div class="qtd_produto">
 					<p class="text_qtd">Quantidade</p>
 					<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" class="box_qtd" type="text" name="quantidade" value="1">
@@ -259,7 +259,13 @@
 <script type="text/javascript">
 
 $(document).ready(function () {
-	$("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: "active", imageCrossfade: true, loadingIcon: "spinner.gif"}); 
+	$("#zoom_03").elevateZoom({
+		gallery:'gallery_01', 
+		cursor: 'pointer', 
+		galleryActiveClass: "active", 
+		imageCrossfade: true, 
+		loadingIcon: "spinner.gif"		
+	}); 
 
 	$("#zoom_03").bind("click", function(e) {  
 	  var ez =   $('#zoom_03').data('elevateZoom');

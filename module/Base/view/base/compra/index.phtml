@@ -133,8 +133,9 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 							<li class="ListaDaCesta2">								
 								<p class="txt_aviso"><span class="txt_aviso_atencao"><strong>Atenção:</strong></span> O prazo começa a contar a<br/> partir da aprovação do crédito.</p>
 		                        <p class="txt_frete"><?if(!empty($this->valorFrete)) print "FRETE: ".$this->valorFrete;?></p>
-		                        <p class="txt_TotalFrete">Total<?if(!empty($this->valorFrete)) print " com frete";?>:</p>
+		                        
 		                        <p class="CalcSomaValor"><?=$this->carrinhoLista['valorTotal']?></p>
+		                        <p class="txt_TotalFrete">Total<?if(!empty($this->valorFrete)) print " com frete";?>:</p>
 							</li>
 
 						  <a href="<?=$this->url("home")?>"><span class="ButtonCarCompras_Comprar">CONTINUAR COMPRANDO</span></a>
