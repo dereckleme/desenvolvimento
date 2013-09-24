@@ -17,12 +17,11 @@ return array(
         	 'admin-produto-home' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/administrador/produto[/page/:page]',
+                    'route'    => '/administrador/produto',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Produto\Controller',
                         'controller'    => 'Produto',
-                        'action'        => 'index',
-                        'page'          => 1
+                        'action'        => 'index',                        
                     ),
                 ),
                 'may_terminate' => true,
@@ -39,18 +38,33 @@ return array(
                             ),
                         ),
                     ),
+                    'admin-page' => array(
+                		'type'    => 'Segment',
+                		'options' => array(
+            				'route'    => '/[page/:page]',
+            				'constraints' => array(
+        						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+        						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+            				),
+            				'defaults' => array(
+            				    'controller'    => 'Produto',
+            				    'action'        => 'index',
+            				    'page'          => 1
+            				),
+                		),
+                    ),
                     'admin-produto-adicionar' => array(
-                    		'type'    => 'Segment',
-                    		'options' => array(
-                    				'route'    => '/[:action]',
-                    				'constraints' => array(
-                    						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    				),
-                    				'defaults' => array(
-                    				    
-                    				),
-                    		),
+                		'type'    => 'Segment',
+                		'options' => array(
+            				'route'    => '/[:action]',
+            				'constraints' => array(
+        						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+        						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+            				),
+            				'defaults' => array(
+            				    
+            				),
+                		),
                     ),
                     'admin-categorias-default' => array(
                         'type'    => 'Segment',

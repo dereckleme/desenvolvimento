@@ -1,6 +1,5 @@
-use Produto;
 <div class="alert">  
-  <strong><h4>Gerenciamento de Produtos</h4></strong> <br/> Nessa sessão você pode gerenciar seus produtos de acordo com as suas necessidades.
+  <strong><h4>Gerenciamento de Produtos</h4></strong> <br/> Nessa sessão você pode gerenciar seus produtos como criar, editar e ou exluir de acordo com as suas necessidades.
 </div>
 
 <div class="row">
@@ -73,7 +72,7 @@ use Produto;
 			<td><?php echo $produto->getProdutosubcategoria()->getNome(); ?></td>
 			<td><?php echo $produto->getTitulo(); ?></td>
 			<td><?php echo $produto->getValor(); ?></td>
-			<td><?php echo "em breve"; ?></td>			
+			<td><img src="<?php echo $this->basePath()?>/images/produtos/thumb/<?php echo $produto->getFoto();?>" title="Imagem do Produto" alt="Imagem do Produto: <?php echo $produto->getIdproduto(); ?>" /></td>			
 			<td width="150">				
 				<a class="btn btn-small" href="<?php echo $this->url('admin-produto-home/admin-default', array('action'=>'editar', 'id'=>$produto->getIdproduto())); ?>" title="Editar Produto">
 					<i class="icon-edit"></i> Editar

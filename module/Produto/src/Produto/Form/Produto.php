@@ -16,13 +16,20 @@ class Produto extends Form {
 		
 		$this->setAttribute('method','post')
 			 ->setAttribute('id','formProduto')
-			 ->setAttribute('class', 'form-horizontal');
+			 ->setAttribute('class', 'form-horizontal')
+		     ->setAttribute('enctype', 'multipart/form-data');
 		
 		$this->setInputFilter(new ProdutoFilter);
 		
 		$hidden = new Hidden('ativo');
 		$hidden->setValue('1');
 		$this->add($hidden);
+		
+		$id_produto = new Hidden('idproduto');
+		$this->add($id_produto);
+		
+		$foto_atual = new Hidden('foto_atual');
+		$this->add($foto_atual);
 		
 		$select = new Select('inputCategoria');
 		$select->setAttribute('id', 'inputCategoria');

@@ -53,13 +53,12 @@ class ProdutoController extends AbstractActionController {
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repositorCat = $this->getServiceLocator()->get("Produto\Repository\Categorias");        
         
-        
         $list = $repositor->findAll();
         $page = $this->params()->fromRoute('page');
         
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(10);
+        $paginator->setDefaultItemCountPerPage(2);
         
         return new ViewModel(array("categorias"=>$repositorCat->findAll(), "produto"=>$paginator));
     }
@@ -115,7 +114,7 @@ class ProdutoController extends AbstractActionController {
             $noFile = $request->getPost()->toArray();
             $File = $this->params()->fromFiles('foto');            
             $photoname = $File['name'];          
-            $data = array_merge($noFile, array('foto'=>$File));            
+            $data = array_merge($noFile, array('foto'=>$File['name']));            
             $form->setData($data);
             
                 
@@ -182,34 +181,140 @@ class ProdutoController extends AbstractActionController {
     
     public function editarAction(){
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");        
-        $produto = $repositor->findByIdproduto($this->params()->fromRoute('id',0));
-        
+        $produto = $repositor->find($this->params()->fromRoute('id',0));
         
         $form = new FrmProduto;
         $form->get('inputCategoria')->setValueOptions($this->getCategoryValuesOptions());
+        $form->get('inputCategoria')->setValue($produto->getProdutosubcategoria()->getCategorias()->getIdcategorias());
+        
+        $form->get('inputSubCategoria')->setValueOptions($this->getSubCategoryValuesOptions());
+        $form->get('inputSubCategoria')->setValue($produto->getProdutosubcategoria()->getIdsubcategoria());
+        
+        $form->get('idproduto')->setValue($produto->getIdproduto());
+        $form->get('titulo')->setValue($produto->getTitulo());
+        $form->get('valor')->setValue($produto->getValor(true));
+        $form->get('peso')->setValue($produto->getPeso());
+        $form->get('comprimento')->setValue($produto->getComprimento());
+        $form->get('altura')->setValue($produto->getAltura());
+        $form->get('largura')->setValue($produto->getLargura());
+        $form->get('ativo')->setValue($produto->getAtivo());
+        $form->get('foto_atual')->setValue($produto->getFoto());
+        
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+        	$nonFile = $request->getPost()->toArray();
+        	$File = $this->params()->fromFiles('foto');
+        	$data = array_merge($nonFile, array('foto'=>$File['name']));
+        	$form->setData($data);
+        	
+        	if($form->isValid())
+        	{
+        	    $size = new Size(array('max'=>2000000));
+        	    $adpter = new Http();
+        	    $adpter->setValidators(array($size), $File['name']);
+        	    
+        	    if(!$adpter->isValid())
+        	    {
+        	    	$dataError = $adpter->getMessages();
+        	    	$error = array();
+        	    	foreach ($dataError as $row){
+        	    		$error[] = $row;
+        	    	}
+        	    	$form->setMessages(array('foto'=>$error));
+        	    }
+        	    else 
+        	    {
+        	        $diretorio = $request->getServer()->DOCUMENT_ROOT . '/seletoLoja/public/images/produtos/large';
+        	        $adpter->setDestination($diretorio);
+        	        
+        	        if($adpter->receive($File['name']))
+        	        {
+        	            $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
+        	            
+        	            $small = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        	            $small->resize(212,159);
+        	            $small->save('public/images/produtos/small/'.$photoname);
+        	             
+        	            /////////////////////////////////////////////////////////////////////////////////////////////////
+        	             
+        	            $thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        	            $thumbsmall->resize(86,102);
+        	            $thumbsmall->save('public/images/produtos/thumb_small/'.$photoname);
+        	             
+        	            /////////////////////////////////////////////////////////////////////////////////////////////////
+        	             
+        	            $thumb = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        	            $thumb->resize(50,66);
+        	            $thumb->save('public/images/produtos/thumb/'.$photoname);
+        	            
+        	            $this->flashMessenger()->addMessage(array('success' => 'Foto alterado com sucesso.'));
+        	        } else {
+        	            $this->flashMessenger()->addMessage(array('error' => 'A foto não pode ser alterada.'));
+        	        }
+        	        
+        	    }
+        	    
+        	    
+        	}
+        	
+        	
+        	
+        	
+        	
+        }
         
         
         
-        #$catValues = $form->get('inputCategoria');
-        #$catValues->setValueOptions($this->getCategoryValuesOptions());
-        
-        $subValues = $form->get('inputSubCategoria');
-        $subValues->setValueOptions($this->getSubCategoryValuesOptions());
         
         
         
         
         
-        #echo $produto[0]->getTitulo();
-        
-        
-        
-        
-        
-        
-        
-    	return new ViewModel(array("produto"=>$produto));
+    	return new ViewModel(array(
+    	    "form" => $form,
+    	    "produto" => $produto
+    	));
     }
+    
+    public function gravarAlteracaoAction(){
+        $form = new FrmProduto;
+        $form->get('inputCategoria')->setValueOptions($this->getCategoryValuesOptions());
+        $form->get('inputSubCategoria')->setValueOptions($this->getSubCategoryValuesOptions());
+        
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $noFile = $request->getPost()->toArray();
+            
+            if($this->params()->fromPost('foto'))
+            {
+            	
+            }
+            else 
+            {
+            	$foto = array('foto'=>$noFile['foto_atual']);
+            	unset($noFile['foto_atual']);
+            	$data = array_merge($noFile, $foto);
+            	echo "<pre>", print_r($data), "</pre>";
+            	die();
+            }
+                    	
+            $form->setData($data);
+            
+            if($form->isValid())
+            {
+                echo "<pre>", print_r($data), "</pre>";
+                die('if');
+            }
+            else
+            {
+                echo "<pre>", print_r($form->getMessages()), "</pre>";
+                die('else');
+            }// fim da valicao do form            
+        }// fim da verificaçao do request
+    } 
     
     public function excluirAction(){
         $service = $this->getServiceLocator()->get("Produto\Service\Produto");
