@@ -40,9 +40,10 @@
             <div id="ContenTopoHeader">
               <div id="mn_topo">
                   <ul class="mn_topo">
-				            <li class="Menu_topo"><a href="">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</a></li>
+				            <li class="Menu_topo">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</li>
 				             <li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
-                      <li class="Menu_topo" style="background:none;"><a href="<?=$this->url("Painel-usuario")?>">Acompanhe seus pedidos</a></li>
+                      <li class="Menu_topo"><a href="<?=$this->url("Painel-usuario")?>">Acompanhe seus pedidos</a></li>
+                      <li class="Menu_topo" style="background:none;"><a href="">Dúvidas frequentes</a></li>
 			            </ul>
                </div>      
               <a href="#" class="actionOpenCarrinho">

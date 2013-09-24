@@ -55,9 +55,28 @@ class Caminho
         }
         else if($this->matchedRoute == "publico-carrinho-compra")
         {
-            $data[] = '<a class="txt_breadcrumbs" href="">Pagina Inicial</a> ';
+            $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
             $data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Minha Cesta</span></a> ';
             return $data;
+        }
+        else if($this->matchedRoute == "publico-finaliza-compra")
+        {
+        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+        	$data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Finalizar Compra</span></a> ';
+        	return $data;
+        }
+        else if($this->matchedRoute == "Painel-usuario")
+        {
+        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Site</a> ';
+        	$data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Acompanhar meus pedidos</span></a> ';
+        	return $data;
+        }
+        else if($this->matchedRoute == "Painel-usuario/Painel-usuario-recibo")
+        {
+        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Site</a> ';
+        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("Painel-usuario").'"><span class="txt_pagina">Acompanhar Pedidos</span></a> ';
+        	$data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Detalhe do Pedido</span></a> ';
+        	return $data;
         }
         else if($this->matchedRoute == "home")
         {

@@ -59,7 +59,7 @@ class IndexController extends AbstractActionController
         {
             $paginator = new ZendPaginator(new ArrayAdapter($countCategoria));
             $paginator->setCurrentPageNumber($pagePaginator);
-            $paginator->setDefaultItemCountPerPage(1);
+            $paginator->setDefaultItemCountPerPage(2);
             
             return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$paginator, 'termo'=>$busca));
         }
@@ -229,5 +229,8 @@ class IndexController extends AbstractActionController
         }
         
     }
-    
+    public function duvidasAction()
+    {
+        return new ViewModel();
+    }
 }

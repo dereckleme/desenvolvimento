@@ -44,6 +44,17 @@ return array(
             				),
             		),
             ),
+            'publico-produto-estoque' => array(
+            		'type' => 'Literal',
+            		'options' => array(
+            				'route'    => '/estoque',
+            				'defaults' => array(
+            						'__NAMESPACE__' => 'Base\Controller',
+            						'controller'    => 'Compra',
+            						'action'        => 'getEstoque',
+            				),
+            		),
+            ),
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
@@ -104,6 +115,17 @@ return array(
 						'action'        => 'buscaDeProdutos'
     				),
         		),
+            ),
+            'publico-duvidas' => array(
+            		'type'    => 'Segment',
+            		'options' => array(
+            				'route'    => '/duvidas_frequentes',
+            				'defaults' => array(
+            						'__NAMESPACE__' => 'Base\Controller',
+            						'controller'    => 'Index',
+            						'action'        => 'duvidas'
+            				),
+            		),
             ),
             'publico-mapeamento-cidades-estados' => array(
                 'type'    => 'Segment',
