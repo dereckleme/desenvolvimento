@@ -65,7 +65,7 @@ class IndexController extends AbstractActionController
         }
         else 
         {
-            return $this->redirect()->toRoute('publico-categoria', array('categoriaslug'=>$busca));            
+            return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));          
         }
     }
     
@@ -106,7 +106,7 @@ class IndexController extends AbstractActionController
         }
         else 
         {
-            return $this->redirect()->toRoute('publico-categoria/publico-categoria-e-subcategoria', array('categoriaslug'=>$slugCatBusca, 'subcategoriaslugSub'=>$slugSubcatBusca));
+            return $this->redirect()->toRoute('home');
         }
         
     }
