@@ -9,6 +9,7 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/js/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
                         ?>
         <script>var basePatch  = '<?=$this->basePath()?>'</script>
@@ -350,10 +351,10 @@
 
     <div id="box_search_footer">
       <div class="search_footer">
-
-              <input value="buscar produto" class="search_footer">
+            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
+               <input placeholder="buscar produto" class="search_footer" id="search_footer" name="p">
                <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
-
+            </form>
         </div>
     </div>
 
