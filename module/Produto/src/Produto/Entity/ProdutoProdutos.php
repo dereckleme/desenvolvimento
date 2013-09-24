@@ -112,7 +112,7 @@ class ProdutoProdutos
     private $produtosubcategoria;
     
     /**
-     * @ORM\OneToMany(targetEntity="Pagamento\Entity\PagamentoControleestoque", mappedBy="produtoproduto")
+     * @ORM\OneToMany(targetEntity="Produto\Entity\PagamentoControleestoque", mappedBy="produtoproduto")
      */
     protected $estoque;
     
