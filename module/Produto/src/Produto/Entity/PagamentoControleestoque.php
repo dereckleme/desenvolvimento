@@ -1,6 +1,6 @@
 <?php
-
 namespace Produto\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="pagamento_controleestoque")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Produto\Entity\PagamentoControleestoqueRepository")
  */
 class PagamentoControleestoque
 {
@@ -36,71 +37,47 @@ class PagamentoControleestoque
     private $dtAtualizacao;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Produto\Entity\ProdutoProdutos")
+     * @var \ProdutoProdutos
+     *
+     * @ORM\ManyToOne(targetEntity="ProdutoProdutos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Produto_idProduto", referencedColumnName="idProduto")
      * })
      */
     private $produtoproduto;
     
-    
-    
-	/**
-	 * @return the $idcontroleestoque
-	 */
 	public function getIdcontroleestoque() {
 		return $this->idcontroleestoque;
 	}
 
-	/**
-	 * @return the $quantidade
-	 */
 	public function getQuantidade() {
 		return $this->quantidade;
 	}
 
-	/**
-	 * @return the $dtAtualizacao
-	 */
 	public function getDtAtualizacao() {
 		return $this->dtAtualizacao;
 	}
 
-	/**
-	 * @return the $produtoproduto
-	 */
 	public function getProdutoproduto() {
 		return $this->produtoproduto;
 	}
 
-	/**
-	 * @param number $idcontroleestoque
-	 */
 	public function setIdcontroleestoque($idcontroleestoque) {
 		$this->idcontroleestoque = $idcontroleestoque;
 	}
 
-	/**
-	 * @param number $quantidade
-	 */
 	public function setQuantidade($quantidade) {
 		$this->quantidade = $quantidade;
 	}
 
-	/**
-	 * @param DateTime $dtAtualizacao
-	 */
 	public function setDtAtualizacao($dtAtualizacao) {
 		$this->dtAtualizacao = $dtAtualizacao;
 	}
 
-	/**
-	 * @param \Usuario\Entity\ProdutoProdutos $produtoproduto
-	 */
 	public function setProdutoproduto($produtoproduto) {
 		$this->produtoproduto = $produtoproduto;
 	}
 
 
-
+    
 }

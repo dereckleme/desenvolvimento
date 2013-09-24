@@ -322,5 +322,4 @@ class ProdutoController extends AbstractActionController {
             return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
         }                      
     }
-    
 }

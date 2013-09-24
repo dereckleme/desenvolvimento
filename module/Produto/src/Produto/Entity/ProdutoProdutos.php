@@ -5,6 +5,7 @@ namespace Produto\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\I18n\Filter;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ProdutoProdutos
@@ -15,6 +16,9 @@ use Zend\I18n\Filter;
  */
 class ProdutoProdutos
 {
+    public function __construct() {
+    	$this->estoque = new ArrayCollection();
+    }
     /**
      * @var integer
      *
@@ -107,7 +111,10 @@ class ProdutoProdutos
      */
     private $produtosubcategoria;
     
-    
+    /**
+     * @ORM\OneToMany(targetEntity="Produto\Entity\PagamentoControleestoque", mappedBy="produtoproduto")
+     */
+    protected $estoque;
     
 	/**
 	 * @return the $slugProduto
@@ -247,6 +254,14 @@ class ProdutoProdutos
 	    #die('by celso');
 		$this->foto = $foto['name'];
 	}
+	public function getEstoque() {
+		return $this->estoque;
+	}
+
+	public function setEstoque($estoque) {
+		$this->estoque = $estoque;
+	}
+
 
 
     
