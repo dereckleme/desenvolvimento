@@ -34,10 +34,27 @@
 					<em class="un_monetaria">
 					<strong><?=$this->detalheProduto->getValor(true)?></strong></em> 
 				</p>
-                <div class="smsEstoque" style="display:none;color:red"></div>
+				<?
+    								        if($this->detalheProduto->getEstoque()[0]->getQuantidade() == 1)
+    								        {
+    								            ?>
+    								            <div class="smsEstoque" style="display:block;color:red">Limite maximo estoque!</div>
+    								            <?
+    								        }
+    								        else
+    								        {
+    								        	?>
+    								        	<div class="smsEstoque" style="display:none;color:red"></div>
+    								        	<?
+    								        }
+    								        ?>
+                <?
+                                    if($this->detalheProduto->getEstoque()[0]->getQuantidade() != 0)
+                                    {
+                                ?>
 				<div class="qtd_produto">
 					<p class="text_qtd">Quantidade</p>
-					<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" class="box_qtd" type="text" name="quantidade" value="1">
+					<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" disabled class="box_qtd" type="text" name="quantidade" value="1" style="background-color:#fff">
 					<ul class="produto_quantidade">
 						<li class="qtd_mudar qtMais">
 							<a href="#">mais</a>
@@ -48,12 +65,37 @@
 
 					</ul>
 				</div>
-
+                                
 				<div class="btn_detalhe">
 					<button class="btn_carrinhoCompras_detalhe actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>">Adicionar ao <br /> carrinho de compras</button>
 					<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe">Comprar</a>
 				</div>
-           
+                               <?php 
+                      			    
+                                    }
+                                    else
+                                    {
+                                    	?>
+                          <div class="qtd_produto">
+							<p class="text_qtd">Quantidade</p>
+							<input id="produto_<?=$this->detalheProduto->getIdproduto()?>" disabled class="box_qtd" type="text" name="quantidade" value="0">
+					      <ul class="produto_quantidade">
+							<li class="qtd_mudar qtMais">
+								<a href="#">mais</a>
+							</li>
+							<li class="qtd_mudar qtMenos">
+								<a href="#">menos</a>
+							</li>
+					      </ul>
+				         </div>
+				         
+							<div class="btn_detalhe">
+								<button class="btn_carrinhoCompras_detalhe_off actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>">Produto indisponível</button>
+							</div>          	
+                                    	<?php 
+                                   
+                                    }
+                      			?> 
 			</div>
            
 			
