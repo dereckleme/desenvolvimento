@@ -7,15 +7,15 @@
                     <div id="container_home">
                       <h3 class="ProdutoDestaque">Produtos em destaque</h3>
                         <ul id="box_produto">
-                            <?php $i=0; foreach($this->prodDestaques as $destaque): ?>
-								<?php if($i <= 2): ?>
+                            <?php $i=count($this->prodDestaques); foreach($this->prodDestaques as $destaque): ?>
+								<?php if($i <= 2):?>
                 
 								  <li id="produto" <?php echo ($i == 0) ? "style='border:none'" : ""; ?>>
 									  <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$destaque->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$destaque->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$destaque->getSlugProduto())); ?>">
 										  <p class="txt_produto"><?php echo $destaque->getTitulo(); ?></p>
 									  </a>
 									  <a class="ImgProdutoHome" href="#">
-										  <img src="<?=$this->basePath()?>/images/teste2.png" class="imgProdutos_home" alt="<?php echo $destaque->getSlugProduto(); ?>" title="<?php echo $destaque->getTitulo(); ?>">
+										  <img src="<?=$this->basePath()?>/images/produtos/small/<?php echo $destaque->getFoto();?>" class="imgProdutos_home" alt="<?php echo $destaque->getSlugProduto(); ?>" title="<?php echo $destaque->getTitulo(); ?>">
 									  </a>
 									  <a href="javascript:void(0)">
 										  <p class="txt_valor"><?php echo $destaque->getValor(true); ?></p>
@@ -26,7 +26,7 @@
 								  </li>
 
 								<?php endif; ?>
-							<?php $i++; endforeach; ?>
+							<?php $i--; endforeach; ?>
                         </ul>
                     </div>
 
@@ -38,8 +38,7 @@
                              <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$visitado->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$visitado->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$visitado->getSlugProduto() ) ); ?>">
                                  <p class="txt_produto"><?php echo $visitado->getTitulo(); ?></p>
                              </a>
-                             <?php /*so pra ilustara*/ $image = ($i == 0) ? "33" : ( ($i >= 1) ? $i + 1 : "" );?>
-                             <a class="ImgProdutoHome" href="javascript:void(0)"> <img src="<?=$this->basePath()?>/images/teste<?=$image;?>.png" class="imgProdutos_home" alt="<?php echo $visitado->getSlugProduto(); ?>" title="<?php echo $visitado->getTitulo(); ?>"> </a>
+                             <a class="ImgProdutoHome" href="javascript:void(0)"> <img src="<?=$this->basePath()?>/images/produtos/small/<?php echo $visitado->getFoto();?>" class="imgProdutos_home" alt="<?php echo $visitado->getSlugProduto(); ?>" title="<?php echo $visitado->getTitulo(); ?>"> </a>
                              <a href="javascript:void(0)"> <p class="txt_valor"><?php echo  $visitado->getValor(true); ?></p> </a>
                              <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$visitado->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$visitado->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$visitado->getSlugProduto() ) ); ?>">
                                  <span class="comprar" title="mais detalhes" alt="comprar">mais detalhes</span>
