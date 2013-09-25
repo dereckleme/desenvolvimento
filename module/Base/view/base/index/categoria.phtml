@@ -26,6 +26,7 @@
                   	    <?php 
                   	    foreach($this->page as $produto)
                   	    {
+                  	       
                   	        ?>
                 	        <li class="lista_categoria_produtos">
                       			<div id="descricao_produto_categoria">
@@ -47,23 +48,56 @@
                   								</p>
                               </div>
                       			</div>
-    
+                                <?
+                                    if($produto->getEstoque()[0]->getQuantidade() != 0)
+                                    {
+                                ?>
                       			<div id="quantidade_produto_categoria" class="prdQtd">
                       				<p class="text_qtd_PC">Quantidade</p>
-    								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" type="text" name="quantidade" value="1">    
+    								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" disabled type="text" name="quantidade" value="1" style="background-color:#fff">    
     								        
     								<ul class="produto_quantidade">
     								    <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
                                         <li class="qtd_mudar_PC qtMenos_PC"> <a href="#">menos</a> </li>            									     
     								</ul>
     								<br/>
-    								<p class="text_qtd_PC smsEstoque" style="font-size:11px;color:red"></p>
+    								    
+    								<p class="text_qtd_PC smsEstoque" style="font-size:11px;color:red"><?
+    								        if($produto->getEstoque()[0]->getQuantidade() == 1)
+    								        {
+    								          print "Limite maximo estoque!";
+    								        }
+    								        ?></p>
                       			</div>
                       			
                       			            
                       			<div id="buttom_add_car_comprar">
-    						      <button class="carrinhoCompras_categoria actionAddCarrinho" rev="<?php echo $produto->getIdproduto();?>">Adicionar ao <br/> carrinho de compras</button>            
-                      			</div>            
+    						      <button class="carrinhoCompras_categoria actionAddCarrinho" title="Adicionar ao carrinho de compras"  rev="<?php echo $produto->getIdproduto();?>">Adicionar ao <br/> carrinho de compras</button>            
+                      			</div>  
+                      			<?php 
+                      			    
+                                    }
+                                    else
+                                    {
+                                    	?>
+                          <div id="quantidade_produto_categoria" class="prdQtd">
+                      				<p class="text_qtd_PC">Quantidade</p>
+    								           <input id="produto_<?php echo $produto->getIdproduto(); ?>" disabled class="box_qtd_PC" type="text" name="quantidade" value="0" >    
+    								        
+    								          <ul class="produto_quantidade">
+      								          <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
+                                <li class="qtd_mudar_PC qtMenos_PC"> <a href="#">menos</a> </li>
+    								         </ul><br/>
+    								           <p class="text_qtd_PC smsEstoque" style="font-size:11px;color:red"></p>
+                      		</div>
+                      			
+                      		<div id="buttom_add_car_comprar">
+    						            <button class="carrinhoCompras_categoria_off actionAddCarrinho" title="Produto indisponível" rev="<?php echo $produto->getIdproduto();?>">Produto indisponível</button>            
+                      		</div>    	
+                                    	<?php 
+                                   
+                                    }
+                      			?>          
                       		</li>                        	        
                 	        <?php
                   	    }

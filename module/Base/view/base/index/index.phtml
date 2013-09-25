@@ -1,4 +1,4 @@
-
+ 
 
                 <!--**********************CONTEUDO CENTRAL**********************-->
 
@@ -9,6 +9,7 @@
                         <ul id="box_produto">
                             <?php $i=0; foreach($this->prodDestaques as $destaque): ?>
 								<?php if($i <= 2): ?>
+                
 								  <li id="produto" <?php echo ($i == 0) ? "style='border:none'" : ""; ?>>
 									  <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$destaque->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$destaque->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$destaque->getSlugProduto())); ?>">
 										  <p class="txt_produto"><?php echo $destaque->getTitulo(); ?></p>
@@ -23,6 +24,7 @@
 										  <span class="comprar" title="mais detalhes" alt="comprar">mais detalhes</span>
 									  </a>
 								  </li>
+
 								<?php endif; ?>
 							<?php $i++; endforeach; ?>
                         </ul>
