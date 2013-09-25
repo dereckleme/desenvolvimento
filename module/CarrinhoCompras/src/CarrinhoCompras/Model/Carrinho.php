@@ -24,10 +24,20 @@ class Carrinho
             foreach($list AS $produto)
             {
                 $idProduto = $produto->getIdproduto();
+                if($produto->getEstoque()[0]->getQuantidade() < $this->container->carrinho[$idProduto]['quantProd'])
+                {
+                	$this->container->carrinho[$idProduto]['quantProd'] = $produto->getEstoque()[0]->getQuantidade();
+                }
+                if($produto->getEstoque()[0]->getQuantidade() == 0) 
+                {
+                    unset($this->container->carrinho[$idProduto]);
+                }
+                else {
             	$configSessionProdutos[] = array(
             	    "produto" => $produto,
             	    "quantidade" => $this->container->carrinho[$idProduto]['quantProd']
             	);
+                    }
             }
       }
     #	return $this->container->carrinho;

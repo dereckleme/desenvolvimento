@@ -176,7 +176,7 @@ li.lista_menu_produtos:hover { background: url(../images/produtosHover.png) no-r
 #box_menu li.lista_menu_produtos:hover ul.dropdownProduto{display: block;}
 
 /*Dropdown Cafés*/
-ul.dropdownCafe { width: 544px; background: #FFF; margin-top: 28px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownCafe { width: 544px; background: #FFF; margin-top: 28px; padding: 0; display: none; position: absolute; box-shadow:0 5px 40px 0 rgba(0, 0, 0, 0.3); z-index: 2; border-bottom: solid 4px #ff9600;}
 li.tt_dropdown { width: 544px; height: 60px; border-bottom: solid 1px #DDD; display: block; float: left;}
 li a.tt_dropdown { font-family: "Georgia", Times New Roman, Times, serif; font-size: 18px; color: #666666; padding-left: 30px; padding-top: 15px; display: block; letter-spacing: 1px;}
 li a.tt_dropdown span.ttd_dropdown { font-size: 24px; color: #ff9600; font-style: italic;}
@@ -193,10 +193,10 @@ li.imgDropdown { width: 300px; float: right;}
 img.dom_menu { margin-top: 30px;}
 
 /*Dropdown Alimentos*/
-ul.dropdownAlimento { width: 544px; background: #FFF; margin-top: 28px; margin-left: -183px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownAlimento { width: 544px; background: #FFF; margin-top: 28px; margin-left: -183px; box-shadow:0 5px 40px 0 rgba(0, 0, 0, 0.3); padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 img.BonecoSeleto { position: absolute; z-index: 4; display: block; right: -25px; top: 60px;}
 /*Dropdown Todos Alimentos*/
-ul.dropdownProduto { width: 544px; background: #FFF; margin-top: 28px; margin-left: -366px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
+ul.dropdownProduto { width: 544px; background: #FFF; box-shadow:0 5px 40px 0 rgba(0, 0, 0, 0.3); margin-top: 28px; margin-left: -366px; padding: 0; display: none; position: absolute; z-index: 2; border-bottom: solid 4px #ff9600;}
 /*******************CONTEUDO PRINCIPAL***************/
 #conteudo_principal { width: 1024px; float: left; position: relative; left: 50%; margin-left: -512px;} 
 /*******************COLUNA ESQUERDA***************/
@@ -482,13 +482,13 @@ img.ImgContSlider { padding: 25px 41px 27px 41px;}
 /*EFEITO COM A DESCRIÇÃO DO CONTEUDO DO SLIDER*/
 #ProductDescription { position:relative; top: 96px; left: 20px;}
 #BoxProductDescription { width: 164px; padding-top: 50px; position: absolute; z-index: 2;}
-#ProductDescriptionContent { width: 164px; background: #FFF; float: left; padding-bottom: 5px; box-shadow: 0 0 1px 1px #d7d4d4; -moz-box-shadow: 0 0 1px 1px #d7d4d4; -webkit-box-shadow: 0 0 1px 1px #d7d4d4;}
+#ProductDescriptionContent { width: 164px; background: #FFF; float: left; padding-bottom: 5px;  box-shadow:0 5px 20px 0 #999; -moz- box-shadow:0 5px 20px 0 #999; -webkit- box-shadow:0 5px 20px 0 #999;}
 img.detalhe_slider { position: absolute; left: 56px; top: 32px;}
-p.ValueProductDescription { width: 160px; color: #582700; font-size: 13px; font-weight: 600; padding-left: 12px; float: left; margin-top: 1px; display: block;}
-p.txtProductDescription { width: 160px; font-size: 11px; color: #666666; float: left; padding-left:13px;
+p.ValueProductDescription { width: 160px; color: #582700; font-size: 16px; font-weight: bold; padding-left: 12px; float: left; margin-top: 1px; display: block;}
+p.txtProductDescription { width: 160px; font-size: 13px; font-weight: bold; color: #666666; float: left; padding-left:13px;
 display: block; overflow: hidden;}
 span.ButtonProductDescription { margin-left: 11px; padding: 5px 15px 5px 15px; background: #582700; text-align: center; font-size: 13px; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; float: left;}
-
+span.ButtonProductDescription:hover {background: #351903}
 /*AVISO QUANDO NÃO TIVER ITEN NO CARRINHO*/
 #CestaVazia { width: 780px; float: right; padding-top: 50px; }
 img.imgCestaVazia { width: 131px; height: 102px; margin: 80px 20px 0 70px;}
@@ -524,6 +524,8 @@ p.SubTotalCheckout { width: 150px; text-align: center; margin-top: 0px; margin-l
 h5.ImgLogin { width: 335px; height: 51px; margin-bottom: 5px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/login.png) no-repeat; }
 p.txtBoxLogin {  width: 318px; font-size: 18px; font-weight: bold; color: #666666; text-align: left; padding-left: 13px; letter-spacing: 1px;}
 span.txtBoxLoginSpan { color: #000; text-decoration: underline;}
+
+
 span.ButtonBoxLogin { float: left;  font-size: 12px;letter-spacing: 1px; margin-left: 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color:#fff; background: #582700; padding: 10px; text-transform: uppercase;}
 span.ButtonBoxLogin:hover { background: #351903;}
 /**/
@@ -547,6 +549,10 @@ p.txtBoxResumo { width: 208px; height: 25px; font-size: 14px; color: #000; text-
 span.txtBoxResumoValor { width: 112px; height: 25px; font-size: 14px; float: right; color: #000; text-align: center; display: block; font-weight: bold; margin-top: 14px; padding-top: 5px; background: #fbc9a6; margin-bottom: -12px;}
 img.BoxResumoPagSeguro { margin-left: 13px; margin-top: 50px; float: left;}
 p.txtPagSeguro { width: 310px; padding-left: 15px; float: left; color: #333; font-size: 13px; line-height: 20px}
+
+
+
+
 span.BoxPagamentoButton {color:#FFF; float:right; border: none; padding: 10px; margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-size: 12px}
 span.BoxPagamentoButton:hover { background: #E76509;}
 /*FIM DA PAGINA DE FINALIZAR COMPRA*/
@@ -633,8 +639,10 @@ input.EditarDados:hover { background: #351903}
 h5.tt_MeuEndereco { width: 335px; height: 51px; margin-bottom: 0px; margin-top: 0px; float: left; text-indent: -9999px; background: url(../images/tt_MeuEndereco.png) no-repeat; }
 p.NomeEndereco { font-size: 16px; color: #666666; font-weight: bold; margin-left: 15px; margin-top: 10px;}
 p.DescEndereco { font-size: 14px; color: #666666; margin-left: 15px; line-height: 30px;}
-input.NovoEndereco { font-size: 9px; color:#FFF; float:right; border: none; padding: 13px 10px 13px 10px; cursor: pointer; letter-spacing: 1px; margin-right: 10px; margin-top: 10px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-weight: bold;}
+input.NovoEndereco { color:#FFF; float:right; border: none; padding: 10px; cursor: pointer; letter-spacing: 1px; margin-right: 10px; margin-top: 10px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
 input.NovoEndereco:hover { background: #e57220;}
+
+
 
 
 /*Pagina de Detalhes do Pedido*/
@@ -737,29 +745,39 @@ input.LimparFormInst:hover { background: #351903;}
 
 
 
+
+
+
+
+
+
+/* Hack Chorme */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  span.tt_top_list, .tt_top_list_right { font-weight: 500;}
+  input.ok_footer{ margin-top: 3px;}
+  button.carrinhoCompras_categoria { padding: 6px 20px 8px 36px;}
+  button.carrinhoCompras_categoria_off { padding: 16px 22px 16px 36px;}
+  img.dt_cesta { margin-top: -8px;}
+ }
+
 /* Hack ie10 */
-.ie10 input.lupa_topo { width: 50px; height: 55px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;
-      text-indent: -9999px; cursor: pointer;}
-.ie10 input.lupa_footer { width: 62px; height: 61px !important; margin-left: -4px; background: url(../images/lupa_topo.png) no-repeat
-      center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;}
-.ie10 input.ok_footer{background: #ff7f25; border: none; width: 85px; height: 31px; float: right; color:#FFF; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 1px;}
-.ie10 span.tt_top_list { width: 150px; height: 20px; margin-top: -13px; padding: 8px 0 0 0; font-size: 13px; font-weight: 500; background: #582700; color: #FFF; text-align: center; float: left; }
-.ie10 button.carrinhoCompras_categoria { padding: 6px 20px 8px 36px; }
+.ie10 span.tt_top_list, .tt_top_list_right { font-weight: 500;}
+.ie10 input.lupa_topo { height: 55px !important;}
+.ie10 input.lupa_footer { width: 62px; height: 61px !important;}
+.ie10 button.carrinhoCompras_categoria { padding: 6px 20px 8px 36px;}
 .ie10 button.carrinhoCompras_categoria_off { padding: 16px 22px 16px 36px;}
-.ie10 img.dt_cesta { z-index: -9999; margin-left: 92px; margin-top: -8px; float: left;}
+.ie10 img.dt_cesta { margin-top: -8px;}
+
+
+
 /* Hack Opera */
+x:-o-prefocus, span.tt_top_list, .tt_top_list_right { 
+  font-weight: 500;
+}
 
 x:-o-prefocus, input.lupa_footer { 
   width: 62px; height: 61px !important; margin-left: -4px;  background: url(../images/lupa_topo.png) no-repeat
 center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;
-}
-
-x:-o-prefocus, span.tt_top_list { 
-  width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #582700; color: #FFF; text-align: center; float: left;
- }
-
-x:-o-prefocus, p.txt_box { 
-  margin-left: 60px; margin-top: -27px; font-size: 16px; letter-spacing: 1px; color: #FFF; font-weight: 600;
 }
 
 x:-o-prefocus, button.carrinhoCompras_categoria { 
@@ -773,35 +791,6 @@ x:-o-prefocus, button.carrinhoCompras_categoria_off {
 
 
 x:-o-prefocus, img.dt_cesta {
- z-index: -9999; margin-left: 92px; margin-top: -7px; float: left;
+ margin-top: -7px;
 }
 
-x:-o-prefocus, span.ButtonBoxLogin { 
-    float: left; font-size: 16px; margin: 20px 0 0 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
-  }
-
-x:-o-prefocus, span.ButtonBoxEndereco { 
-  float: left; font-size: 16px; margin: 20px 0 0 3.5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
-}
-
- x:-o-prefocus, span.BoxPagamentoButton { 
-  float: left; font-size: 16px; margin: 20px 0 0 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;
-}
-
-
-/* Hack Chorme */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  input.lupa_topo { width: 50px; height: 56px !important; margin-left: -1px; margin-top: -10px; background: url(../images/lupa_topo.png) no-repeat center #ff7f25; border: none;
-  text-indent: -9999px; cursor: pointer;}
-  input.lupa_footer { width: 62px; height: 62px !important; margin-left: -4px;  background: url(../images/lupa_topo.png) no-repeat
-center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;}
-  input.ok_footer{background: #ff7f25; border: none; width: 85px; height: 32px; float: right; color:#FFF; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 3px;}
-  p.txt_box { margin-left: 60px; margin-top: -27px; font-size: 16px; color: #FFF; font-weight: 600; letter-spacing: 1px;}
-  span.tt_top_list { width: 150px; height: 22px; margin-top: -13px; padding: 6px 0 0 0; font-size: 13px; font-weight: 500; background: #582700; color: #FFF; text-align: center; float: left; }
-  button.carrinhoCompras_categoria { padding: 6px 20px 8px 36px;}
-  button.carrinhoCompras_categoria_off { padding: 16px 22px 16px 36px;}
-  img.dt_cesta { z-index: -9999; margin-left: 92px; margin-top: -8px; float: left;}
-  span.ButtonBoxLogin {float: left;  font-size: 12px;letter-spacing: 1px; margin-left: 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color:#fff; background: #582700; padding: 10px; text-transform: uppercase;}
-  span.ButtonBoxEndereco {  float: left; font-size: 16px; margin: 20px 0 0 13px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-weight: 600; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
-  span.BoxPagamentoButton { float: left; font-size: 16px; margin: 20px 0 0 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px 30px 10px 30px; text-transform: uppercase;}
- }

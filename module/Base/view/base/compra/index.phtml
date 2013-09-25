@@ -13,7 +13,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 					    {
 					?>
 						<li class="ContSlider">
-							<a href=""><img class="ImgContSlider" src="<?=$this->basePath()?>/images/img_slide.png"></a>
+							<a href="<?=$produto->getIdproduto()?>" rev="<?=$produto->getValor(true)?>" rel="<?=$produto->getTitulo()?>"><img class="ImgContSlider" src="<?=$this->basePath()?>/images/img_slide.png"></a>
 						</li>
 						<?php 
 					    }
@@ -30,7 +30,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				 	  	<div id="ProductDescriptionContent">
 				 	  		<p class="txtProductDescription">Lorem ipsum </p>
 				 	  		<p class="ValueProductDescription">R$ 00,00</p>
-				 	  		<a href=""><span class="ButtonProductDescription">Adicionar na cesta</span></a>
+				 	  		<a href="" class="adicionarAcesta"><span class="ButtonProductDescription">Adicionar na cesta</span></a>
 				 	  	</div> 
 				 	  </div>
 				 	  <!--Fim Descrição dos Produtos do Slider-->
@@ -72,7 +72,9 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								 		<img class="ImgProductsBasket" src="<?=$this->basePath()?>/images/img_pagina_carrinho_de_compra.png">
 								 	</div>
 								 	<div id="ProductsFromBasket">
-								 		<p class="DescriptionProductsBasket"><?=$produto['produto']->getTitulo()?></p>
+								 		<p class="DescriptionProductsBasket"><?=$produto['produto']->getTitulo()?><?
+								 		    if($produto['produto']->getEstoque()[0]->getQuantidade() <= $produto['quantidade']) print ',<br/><span style="color:red">Limite de estoque atingido.</span>';
+								 		?></p>
 								 	</div>
 								 	<div id="ProductsFromBasket">
 								 		<p class="ValueProductsFromBasket"><?=$produto['produto']->getValor(true)?></p>
@@ -80,10 +82,20 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
                                     <input class="actionCode" type="hidden" value="<?=$produto['produto']->getIdproduto()?>"/>
 								 	<div id="ProductsFromBasket">
 									 	<span class="AmountProductsFromBasket">	
-			            				  <input class="qtd_carrinho" type="text" name="quantidade" value="<?=$produto['quantidade']?>">
+									 	   
+			            				  <input style="background-color:#fff" disabled class="qtd_carrinho" type="text" name="quantidade" value="<?
+			            				  if($produto['produto']->getEstoque()[0]->getQuantidade() < $produto['quantidade'])
+			            				  {
+			            				  	  print $produto['produto']->getEstoque()[0]->getQuantidade();
+			            				  }
+			            				  else
+			            				  {
+			            				     print $produto['quantidade'];
+			            				  }
+			            				  ?>">
 			            					<ul class="Qtd_Mudar">
 			            					  <li class="change_qtd_carrinho MoreItens"> <a href="#">mais</a></li>
-			                                   <li class="change_qtd_carrinho  LessItens"> <a href="#">menos</a></li>
+			                                   <li class="change_qtd_carrinho  LessItens"> <a href="#">menos</a></li> 
 			            					</ul>
 			            				</span>
 								 	</div>

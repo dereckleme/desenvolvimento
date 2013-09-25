@@ -42,18 +42,6 @@ class UsuarioUsuarios extends \Pagamento\Entity\UsuarioUsuarios implements \Doct
     }
 
     
-    public function getNivelUsuario()
-    {
-        $this->__load();
-        return parent::getNivelUsuario();
-    }
-
-    public function setNivelUsuario($nivelUsuario)
-    {
-        $this->__load();
-        return parent::setNivelUsuario($nivelUsuario);
-    }
-
     public function getIdusuario()
     {
         if ($this->__isInitialized__ === false) {
@@ -81,16 +69,10 @@ class UsuarioUsuarios extends \Pagamento\Entity\UsuarioUsuarios implements \Doct
         return parent::getEmail();
     }
 
-    public function getDtCadastro()
+    public function getNivelUsuario()
     {
         $this->__load();
-        return parent::getDtCadastro();
-    }
-
-    public function getDtAtivacao()
-    {
-        $this->__load();
-        return parent::getDtAtivacao();
+        return parent::getNivelUsuario();
     }
 
     public function setIdusuario($idusuario)
@@ -117,22 +99,16 @@ class UsuarioUsuarios extends \Pagamento\Entity\UsuarioUsuarios implements \Doct
         return parent::setEmail($email);
     }
 
-    public function setDtCadastro($dtCadastro)
+    public function setNivelUsuario($nivelUsuario)
     {
         $this->__load();
-        return parent::setDtCadastro($dtCadastro);
-    }
-
-    public function setDtAtivacao($dtAtivacao)
-    {
-        $this->__load();
-        return parent::setDtAtivacao($dtAtivacao);
+        return parent::setNivelUsuario($nivelUsuario);
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idusuario', 'login', 'senha', 'email', 'dtCadastro', 'dtAtivacao', 'nivelUsuario');
+        return array('__isInitialized__', 'idusuario', 'login', 'senha', 'email', 'nivelUsuario');
     }
 
     public function __clone()
