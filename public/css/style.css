@@ -468,30 +468,52 @@ span.ButtonCarCompras_Comprar:hover { background: #351903;}
 span.ButtonCarCompras_Finalizar {font-size: 14px; letter-spacing: 1px; float: right; margin-top: 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color: #FFF; background: #ff7f25; padding: 10px;}
 span.ButtonCarCompras_Finalizar:hover { background: #E76509;}
 
+
+
+
+
 /*SLIDER DE PRODUTOS */
 #SliderProdutosGeral { width: 1024px; float: left; margin-bottom: 30px;}
 img.tt_SliderProdutos { float: left; }
+
 #StructureSlider { width: 1022px; float: left; border: solid 1px #d5d4d4;}
-span.seta_slider_esquerda { width: 17px; height: 25px; float: left; padding-top: 60px; padding-left: 5px;}
-span.seta_slider_direita { width: 17px; height: 25px; float: right; padding-top: 60px; padding-right: 5px;}
-#BoxSliderProdutos { width: 978px; float: left; overflow:hidden;}
-ul#BaseSlider { width: 2000px; position: relative;}
-li.ContSlider { width: 164px; height: 140px; float: left;}
+/*span.seta_slider_esquerda { width: 17px; height: 25px; float: left; padding-top: 60px; padding-left: 5px;}
+span.seta_slider_direita { width: 17px; height: 25px; float: right; padding-top: 60px; padding-right: 5px;}*/
+
+#BoxSliderProdutos { width: 1022px; float: left; overflow:hidden;}
+ul#BaseSlider { position: relative;}
+li.ContSlider { width: 164px; height: 140px; float: left; background: #CCC;}
 img.ImgContSlider { padding: 25px 41px 27px 41px;}
 
+
 /*EFEITO COM A DESCRIÇÃO DO CONTEUDO DO SLIDER*/
-#ProductDescription { position:relative; top: 96px; left: 20px;}
+#ProductDescription { position:absolute; top: 50px;}
+
 #BoxProductDescription { width: 164px; padding-top: 50px; position: absolute; z-index: 2;}
+
 #ProductDescriptionContent { width: 164px; background: #FFF; float: left; padding-bottom: 5px;  box-shadow:0 5px 20px 0 #999; -moz- box-shadow:0 5px 20px 0 #999; -webkit- box-shadow:0 5px 20px 0 #999;}
+
+
 img.detalhe_slider { position: absolute; left: 56px; top: 32px;}
+
+
 p.ValueProductDescription { width: 160px; color: #582700; font-size: 16px; font-weight: bold; padding-left: 12px; float: left; margin-top: 1px; display: block;}
 p.txtProductDescription { width: 160px; font-size: 13px; font-weight: bold; color: #666666; float: left; padding-left:13px;
 display: block; overflow: hidden;}
+
+
 span.ButtonProductDescription { margin-left: 11px; padding: 5px 15px 5px 15px; background: #582700; text-align: center; font-size: 13px; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; float: left;}
 span.ButtonProductDescription:hover {background: #351903}
+
+
+
+
+
+
+
 /*AVISO QUANDO NÃO TIVER ITEN NO CARRINHO*/
-#CestaVazia { width: 780px; float: right; padding-top: 50px; }
-img.imgCestaVazia { width: 131px; height: 102px; margin: 80px 20px 0 70px;}
+#CestaVazia { width: 780px; float: right; padding-top: 30px; }
+img.imgCestaVazia { width: 131px; height: 102px; margin: 60px 20px 0 70px;}
 p.txtCestaVazia { font-size: 13px; color: #666666;}
 span.ttCestaVazia { font-size: 20px; font-weight: 700; letter-spacing: 1px; color: #ff7f25;}
 span.ButtonCestaVazia { font-size: 14px; letter-spacing: 1px; float: left; margin: 20px 0 10px 0; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px;}
@@ -746,11 +768,6 @@ input.LimparFormInst:hover { background: #351903;}
 
 
 
-
-
-
-
-
 /* Hack Chorme */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   span.tt_top_list, .tt_top_list_right { font-weight: 500;}
@@ -768,28 +785,19 @@ input.LimparFormInst:hover { background: #351903;}
 .ie10 button.carrinhoCompras_categoria_off { padding: 16px 22px 16px 36px;}
 .ie10 img.dt_cesta { margin-top: -8px;}
 
-
-
 /* Hack Opera */
 x:-o-prefocus, span.tt_top_list, .tt_top_list_right { 
   font-weight: 500;
 }
-
 x:-o-prefocus, input.lupa_footer { 
-  width: 62px; height: 61px !important; margin-left: -4px;  background: url(../images/lupa_topo.png) no-repeat
-center #ddd; border: none; text-indent: -9999px; cursor: pointer; float: right;
+  width: 62px; height: 61px !important;
 }
-
 x:-o-prefocus, button.carrinhoCompras_categoria { 
   padding: 6px 20px 8px 36px; 
 }
- 
-
 x:-o-prefocus, button.carrinhoCompras_categoria_off { 
   padding: 16px 22px 16px 36px; 
 }
-
-
 x:-o-prefocus, img.dt_cesta {
  margin-top: -7px;
 }
