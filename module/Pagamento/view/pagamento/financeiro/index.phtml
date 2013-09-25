@@ -1,3 +1,4 @@
+
 <div class="alert alert-info">
   <h4>Controle financeiro</h4>
       Neste local você entra todas informações necessárias para gerar relatórios e analisar todo tráfego de vendas na sua <b>loja virtual</b>.
@@ -30,30 +31,58 @@
                 </tr>
               </thead>
               <tbody>
-              <?php 
-                  foreach($this->listaRecibos AS $recibo)
+              <?php
+                  foreach($this->recibos AS $recibo)
                   {
+                      
               ?>
                 <tr class="<?php 
-                    if(($recibo->getSpagamento()->getIdstatus()) == 7) print "error";
-                    else if(($recibo->getSpagamento()->getIdstatus()) == 1) print "info";
-                    else if(($recibo->getSpagamento()->getIdstatus()) == 3) print "success";
+                        if($recibo->getSpagamento())
+                        {
+                            if(($recibo->getSpagamento()->getIdstatus()) == 7) print "error";
+                            else if(($recibo->getSpagamento()->getIdstatus()) == 1) print "info";
+                            else if(($recibo->getSpagamento()->getIdstatus()) == 3) print "success";
+                        }
+                        else {
+                        	print "error";
+                        }
                 ?>">
                 <td><input type="checkbox"/></td>
-                  <td><center><?=$recibo->getIdcontrolerecibo()?></center></td>
+                <td><center><?=$recibo->getIdcontrolerecibo()?></center></td>
                   <td><a href="<?php print $this->url("admin-financeiro/admin-financeiro-action", array("idpedido" => $recibo->getIdcontrolerecibo()))?>"><?=$recibo->getNpedido()?></a></td>
                   <td>01/04/2012</td>
                   <td><?=$recibo->getUsuariousuarios()->getLogin()?></td>
-                  <td><center><?=$recibo->getFpagamento()->getTitulo()?></center></td>
+                  <td><center><?
+								 	if($recibo->getFpagamento())
+								 	{
+								 	    print $recibo->getFpagamento()->getTitulo();
+								 	}
+								 	else
+								 	{
+								 		print "Indisponível";
+								 	}
+								 	?></center></td>
                   <td><?=$recibo->getValor()?></td>
-                  <td><center><B><?=$recibo->getSpagamento()->getTitulo()?></B></center></td>
-                  <td><?php 
+                  <td><center><B><?php 
+							    if(!$recibo->getSpagamento())
+							    {
+							?>
+								 Indisponível
+								<?php 
+							    }else {
+                                ?>
+                                    <?=$recibo->getSpagamento()->getTitulo()?>
+                                <?							    	
+							    }
+								?></B></center></td>
+                  <td><center><?php 
                       $status = $recibo->getStatus();
                   if(empty($status)) print "Indisponível"; 
                   else  print  "Concluído";
-                  ?></td>
+                  ?></center></td>
                 </tr>
                 <?php 
+               
                   }
                 ?>
               </tbody>

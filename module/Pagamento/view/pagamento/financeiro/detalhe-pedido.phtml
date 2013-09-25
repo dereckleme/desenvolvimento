@@ -1,3 +1,6 @@
+ <?php 
+$filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
+?>  
 <div class="alert alert-success">
               <strong>Detalhe do pedido</strong> Nessa sessão você entra absolutamente tudo sobre o pedido processado.
             </div>
@@ -67,41 +70,69 @@ table.datatable tr:hover td {
  <table class="form" width="100%" border="0" cellspacing="2" cellpadding="3">
     <tbody>
       <tr>
-        <td class="fieldlabel">Date</td>
+        <td class="fieldlabel">Date da Venda</td>
 
-        <td class="fieldarea">12/08/2013 11:43</td>
+        <td class="fieldarea"><?php print $this->data->getDtVenda()->format("d/m/Y h:m:s");?></td>
 
-        <td width="15%" class="fieldlabel">Payment Method</td>
+        <td width="15%" class="fieldlabel">Forma de Pagamento</td>
 
-        <td class="fieldarea">PayPal</td>
+        <td class="fieldarea"><?
+								 	if($this->data->getFpagamento())
+								 	{
+								 	    print $this->data->getFpagamento()->getTitulo();
+								 	}
+								 	else
+								 	{
+								 		print "Indisponível";
+								 	}
+								 	?></td>
       </tr>
 
       <tr>
-        <td width="15%" class="fieldlabel">Order #</td>
+        <td width="15%" class="fieldlabel">N° do Pedido</td>
 
-        <td class="fieldarea">4849831192 (ID: 290)</td>
+        <td class="fieldarea">000<?=$this->data->getIdcontrolerecibo()?></td>
 
-        <td class="fieldlabel">Amount</td>
+        <td class="fieldlabel">Valor Total</td>
 
-        <td class="fieldarea">0.00</td>
+        <td class="fieldarea"><?=$filter->formatCurrency($this->data->getValor(), 'BRL');?></td>
       </tr>
 
       <tr>
-        <td class="fieldlabel" rowspan="3" valign="top">Client</td>
+        <td class="fieldlabel" rowspan="3" valign="top">Dados do Cliente</td>
 
-        <td class="fieldarea" rowspan="3" valign="top"><a href=
-        "clientssummary.php?userid=177"></a><a href="clientssummary.php?userid=177">
-           Dereck Leme</a> <a href=
-        "http://www.dnsstuff.com/tools/freemail/?domain=chientturbo@cwa.mu" target=
-        "_blank" title="Check if Free Email Account"><img src="images/info.gif" border=
-        "0" align="absmiddle" /></a><br />
-        kimds kannwe, qwdqw<br />
-        qwd, ,<br />
-        Mauritius</td>
+        <td class="fieldarea" rowspan="3" valign="top">
+           <b> <?=$this->cadastro->getNome();?></b>,<br/>
+            <?=$this->cadastro->getRua();?><br/>
+            <?=$this->cadastro->getMapeamentocidade()->getNome();?>,<?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome();?><br/>
+            <?=$this->cadastro->getBairro()?><br/>
+           cep: <?=$this->cadastro->getCep()?>
+        </td>
 
-        <td class="fieldlabel">Invoice #</td>
+        <td class="fieldlabel">Situação do pagamento</td>
 
-        <td class="fieldarea">No Invoice</td>
+        <td class="fieldarea"><?php 
+							    if(!$this->data->getSpagamento())
+							    {
+							?>
+								 Indisponível
+								<?php 
+							    }else {
+                                ?>
+                                    <?=$this->data->getSpagamento()->getTitulo()?>
+                                <?							    	
+							    }
+								?></td>
+      </tr>
+
+      <tr>
+        <td class="fieldlabel">Status do Envio</td>
+
+        <td class="fieldarea"><?php 
+                      $status = $this->data->getStatus();
+                  if(empty($status)) print "Indisponível"; 
+                  else  print  "Concluído";
+                  ?></td>
       </tr>
 
       <tr>
@@ -136,19 +167,9 @@ table.datatable tr:hover td {
       </tr>
 
       <tr>
-        <td class="fieldlabel">IP Address</td>
+        <td class="fieldlabel">Valor Frete</td>
 
-        <td class="fieldarea">196.20.231.206 - <a href=
-        "http://www.geoiptool.com/en/?IP=196.20.231.206" target="_blank">Lookup</a> |
-        <a href="orders.php?orderip=196.20.231.206">Filter</a> | <a href=
-        "configbannedips.php?ip=196.20.231.206&amp;reason=Banned%20due%20to%20Orders&amp;year=2020&amp;month=12&amp;day=31&amp;hour=23&amp;minutes=59&amp;token=99463329c3cb64d2f5f29138584138985da9119e">
-        Ban</a></td>
-      </tr>
-
-      <tr>
-        <td class="fieldlabel">Promotion Code</td>
-
-        <td class="fieldarea">None</td>
+        <td class="fieldarea"><?=$filter->formatCurrency($this->data->getValorFrete(), 'BRL');?></td>
 
         <td class="fieldlabel">Affiliate</td>
 
@@ -171,17 +192,19 @@ table.datatable tr:hover td {
                 </tr>
               </thead>
               <tbody>
+              <?php 
+								$calculSubtotal = 0;
+								    foreach($this->data->getProdutosRecibo() AS $produto)
+								    {
+								?>
                 <tr>
                   <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td><?=$produto->getProdutosproduto()->getTitulo()?></td>
+                  <td><?=$produto->getProdutosproduto()->getValor(true)?></td>
+                  <td><?=$produto->getQuantidade()?></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
+                <?php 
+								    }
+                ?>
               </tbody>
             </table>

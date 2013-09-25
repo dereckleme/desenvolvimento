@@ -14,12 +14,23 @@ class FinanceiroController extends AbstractActionController
 
     public function indexAction()
     {
-        $service = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-            $em = $service->getRepository("Pagamento\Entity\PagamentoControleRecibo")->findAll();
-        return new ViewModel(array("listaRecibos" => $em));
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+        return new ViewModel(array("recibos" => $repoRecibo->findAll()));
     }
     public function detalhePedidoAction(){
-        return new ViewModel();
+        $param = $this->params()->fromRoute("idpedido");
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+        $recibo = $repoRecibo->findOneByidcontrolerecibo($param);
+        if(count($recibo) != 0)
+        {
+            $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($recibo->getUsuariousuarios()->getIdusuario());
+        	return new viewModel(array("data" => $recibo,"cadastro" => $cadastro));
+        }
+        else {
+        	return $this->redirect()->toRoute('admin-financeiro');
+        }
     }
     public function fecharPedidoAction()
     {
