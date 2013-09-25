@@ -13,7 +13,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 					    {
 					?>
 						<li class="ContSlider">
-							<a href="<?=$produto->getIdproduto()?>" rev="<?=$produto->getValor(true)?>" rel="<?=$produto->getTitulo()?>"><img class="ImgContSlider" src="<?=$this->basePath()?>/images/img_slide.png"></a>
+							<a href="<?=$produto->getIdproduto()?>" rev="<?=$produto->getValor(true)?>" rel="<?=$produto->getTitulo()?>"><img class="ImgContSlider" src="<?=$this->basePath()?>/images/produtos/thumb_small/<?=$produto->getFoto();?>"></a>
 						</li>
 						<?php 
 					    }
