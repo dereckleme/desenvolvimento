@@ -86,26 +86,12 @@ $(function(){
 					});	
 		})
 		$(".actionOpenCarrinho").on("click", function(){	
-				/*var quantidadeItens = $("#DescricaoPrecoQuatidade li").size();
-				if(quantidadeItens >= 1)
-				{
-					$("#box_compras").slideToggle("fast", function () {});
-				}
-				else
-				{
-					alert("- Não existe produtos em sua cesta.");
-				}*/
 				$("#box_compras").slideToggle("fast", function () {});
 				return false;
 		});
-		
-		/*$(".actionOpenCarrinho").hover(function(){
-			$("#box_compras").slideDown("slow", function () {});
-		},function(){
-			$("#box_compras").slideUp("slow", function () {});
-		});*/
-		
-		
+		$("#header").on( "mouseleave", function() {
+			$("#box_compras").slideUp("fast", function () {});
+		})
 		$("#box_compras").on("click",".actionCloseCarrinho", function(){	
 				$("#box_compras").slideToggle("fast", function () {});
 			return false;
@@ -237,7 +223,44 @@ $(function(){
 			$(".adicionarAcesta").on("click",function(){
 				if(addProdutoSlide != null)
 					{
-					alert(addProdutoSlide);
+					$.ajax({
+						url: basePatch+"/carrinho/insert",
+						type: "post",
+						async:false,
+						data: {actionAddCart:addProdutoSlide,actionQuant:1},
+						success: function(data) {
+							$.ajax({
+								url: basePatch+"/carrinho/list",
+								type: "post",
+								async:false,
+								success: function(data) {
+									
+										$("#box_compras").html(data);
+										var quantidadeItens = $("#DescricaoPrecoQuatidade li").size();
+											$("#Box_Visor_Qtd .Visor_Qtd").html(quantidadeItens);
+											if($("#Box_Visor_Qtd").css("display") == "none")
+												{
+													$("#Box_Visor_Qtd").fadeIn();
+												}
+											$(".valor_total").slideUp("fast",function(){
+												$.ajax({
+													url: basePatch+"/carrinho/detalheCarrinho",
+													type: "post",
+													async:false,
+													success: function(data) {
+															$(".valor_total").html(data);
+															$(".valor_total").slideDown("fast");
+														}
+													})
+											})
+
+											return true;
+										},
+								error: function(){}
+									});
+						},
+						error: function(){}
+							});	
 					}
 				return false;
 			})

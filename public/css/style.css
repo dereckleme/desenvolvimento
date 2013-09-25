@@ -468,47 +468,29 @@ span.ButtonCarCompras_Comprar:hover { background: #351903;}
 span.ButtonCarCompras_Finalizar {font-size: 14px; letter-spacing: 1px; float: right; margin-top: 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;  border: none; color: #FFF; background: #ff7f25; padding: 10px;}
 span.ButtonCarCompras_Finalizar:hover { background: #E76509;}
 
-
-
-
-
 /*SLIDER DE PRODUTOS */
 #SliderProdutosGeral { width: 1024px; float: left; margin-bottom: 30px;}
 img.tt_SliderProdutos { float: left; }
-
 #StructureSlider { width: 1022px; float: left; border: solid 1px #d5d4d4;}
 /*span.seta_slider_esquerda { width: 17px; height: 25px; float: left; padding-top: 60px; padding-left: 5px;}
 span.seta_slider_direita { width: 17px; height: 25px; float: right; padding-top: 60px; padding-right: 5px;}*/
-
 #BoxSliderProdutos { width: 1022px; float: left; overflow:hidden;}
 ul#BaseSlider { position: relative;}
-li.ContSlider { width: 164px; height: 140px; float: left; background: #CCC;}
+li.ContSlider { width: 164px; height: 140px; float: left;}
 img.ImgContSlider { padding: 25px 41px 27px 41px;}
 
 
 /*EFEITO COM A DESCRIÇÃO DO CONTEUDO DO SLIDER*/
-#ProductDescription { position:absolute; top: 50px;}
-
+#ProductDescription { position:absolute; top: 150px;}
 #BoxProductDescription { width: 164px; padding-top: 50px; position: absolute; z-index: 2;}
-
 #ProductDescriptionContent { width: 164px; background: #FFF; float: left; padding-bottom: 5px;  box-shadow:0 5px 20px 0 #999; -moz- box-shadow:0 5px 20px 0 #999; -webkit- box-shadow:0 5px 20px 0 #999;}
-
-
 img.detalhe_slider { position: absolute; left: 56px; top: 32px;}
-
-
 p.ValueProductDescription { width: 160px; color: #582700; font-size: 16px; font-weight: bold; padding-left: 12px; float: left; margin-top: 1px; display: block;}
 p.txtProductDescription { width: 160px; font-size: 13px; font-weight: bold; color: #666666; float: left; padding-left:13px;
 display: block; overflow: hidden;}
-
-
+p.txtProductDescription:hover { text-decoration: underline;}
 span.ButtonProductDescription { margin-left: 11px; padding: 5px 15px 5px 15px; background: #582700; text-align: center; font-size: 13px; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit- border-radius: 5px; border: none; float: left;}
 span.ButtonProductDescription:hover {background: #351903}
-
-
-
-
-
 
 
 /*AVISO QUANDO NÃO TIVER ITEN NO CARRINHO*/
@@ -571,10 +553,6 @@ p.txtBoxResumo { width: 208px; height: 25px; font-size: 14px; color: #000; text-
 span.txtBoxResumoValor { width: 112px; height: 25px; font-size: 14px; float: right; color: #000; text-align: center; display: block; font-weight: bold; margin-top: 14px; padding-top: 5px; background: #fbc9a6; margin-bottom: -12px;}
 img.BoxResumoPagSeguro { margin-left: 13px; margin-top: 50px; float: left;}
 p.txtPagSeguro { width: 310px; padding-left: 15px; float: left; color: #333; font-size: 13px; line-height: 20px}
-
-
-
-
 span.BoxPagamentoButton {color:#FFF; float:right; border: none; padding: 10px; margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-size: 12px}
 span.BoxPagamentoButton:hover { background: #E76509;}
 /*FIM DA PAGINA DE FINALIZAR COMPRA*/
@@ -612,8 +590,13 @@ form.formAction input.EventcadastrarEndereco:hover {background: #e57220 ;}
 img.ImgNaoEncontrado { float: left; margin-left: 180px; margin-top: 60px;}
 p.tt_ResultadoNEncontrado { font-size: 25px; text-align: center; margin-left: 50px; font-weight: bold; float: left; color: #858585;}
 p.txt_ResultadoNEncontrado { font-size: 14px; text-align: center; color: #858585; float: left; margin-left: 95px; margin-top: -10px;}
+
+
+
+
+
 /*************Aviso de Produto Não Encontrado Na Cesta************/
-#CestaSemProduto { width: 343px; background: #FFF; float: left; border-right: solid 1px #351903; border-left: solid 1px #351903; border-bottom: solid 1px #351903;}
+#CestaSemProduto { width: 345px; background: #FFF; float: left; box-shadow:0 5px 20px 0 #999;}
 img.ImgCestaSemProduto { margin-top: 25px; margin-left: 100px; float: left;}
 p.tt_CestaSemProduto { margin-left: 24px; font-size: 20px; color: #ff7f25; float: left;}
 p.txt_CestaSemProduto { width: 250px; margin: -5px 0 0 50px; font-size: 12px; color: #666666; float: left; text-align: center;}
