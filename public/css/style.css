@@ -494,7 +494,7 @@ span.ButtonProductDescription:hover {background: #351903}
 img.imgCestaVazia { width: 131px; height: 102px; margin: 80px 20px 0 70px;}
 p.txtCestaVazia { font-size: 13px; color: #666666;}
 span.ttCestaVazia { font-size: 20px; font-weight: 700; letter-spacing: 1px; color: #ff7f25;}
-span.ButtonCestaVazia { font-size: 14px; letter-spacing: 1px; float: left; margin: 20px 0 10px 65px; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px;}
+span.ButtonCestaVazia { font-size: 14px; letter-spacing: 1px; float: left; margin: 20px 0 10px 0; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border: none; color: #FFF; background: #ff7f25; padding: 10px;}
 span.ButtonCestaVazia:hover { background: #E76509;}
 /*FIM DA PAGINA COM OS ITENS DO CARRINHO DE COMPRAS*/
 
