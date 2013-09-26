@@ -27,7 +27,7 @@ abstract class AbstractService
     }
     
     public function insert(array $data)
-    {
+    {        
         $entity = new $this->entity($data);
         $data['nivelUsuario'] = "2";
         if(!empty($this->targetEntity) && !is_array($this->targetEntity))
