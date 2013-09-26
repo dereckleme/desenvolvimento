@@ -10,6 +10,8 @@ class Produto extends AbstractService {
     protected $subCategoriaReferenc;
     protected $servicePagamento;
     
+    protected $id_produto;
+    
 	public function __construct(EntityManager $em, $servicePagamento){
 	    parent::__construct($em);
 	    $this->entity = "Produto\Entity\ProdutoProdutos";
@@ -27,7 +29,17 @@ class Produto extends AbstractService {
 		$this->setActionReference(null);
 		$servicoEstoque = $this->servicePagamento;
 		$servicoEstoque->setIdProduto($produto->getIdproduto());
-		$servicoEstoque->insert(array("quantidade" => 5));    
-		return $this->entity;
+		$servicoEstoque->insert(array("quantidade" => $data['quantidade']));    
+		#return $this->entity;
+		return $produto->getIdproduto();
 	}
+	
+	
+	/**
+	 * @param field_type $id_produto
+	 */
+	public function setId_produto($id_produto) {
+		$this->id_produto = $id_produto;
+	}
+	
 }

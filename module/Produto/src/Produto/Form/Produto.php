@@ -25,11 +25,8 @@ class Produto extends Form {
 		$hidden->setValue('1');
 		$this->add($hidden);
 		
-		$id_produto = new Hidden('idproduto');
+		$id_produto = new Hidden('id');
 		$this->add($id_produto);
-		
-		$foto_atual = new Hidden('foto_atual');
-		$this->add($foto_atual);
 		
 		$select = new Select('inputCategoria');
 		$select->setAttribute('id', 'inputCategoria');
@@ -86,28 +83,40 @@ class Produto extends Form {
 		));
 		
 		$this->add(array(
-				'name'    =>    'altura',
-				'options' =>    array(
-						'type'    =>    'text'
-				),
-				'attributes'   =>    array(
-						'placeholder' => '0',
-						'class'       => 'input-medium myConfig'
-				)
+			'name'    =>    'altura',
+			'options' =>    array(
+				'type'    =>    'text'
+			),
+			'attributes'   =>    array(
+				'placeholder' => '0',
+				'class'       => 'input-medium myConfig'
+			)
 		));
 		
 		$this->add(array(
-				'name'    =>    'largura',
-				'options' =>    array(
-						'type'    =>    'text'
-				),
-				'attributes'   =>    array(
-						'placeholder' => '0',
-						'class'       => 'input-medium myConfig'
-				)
+			'name'    =>    'largura',
+			'options' =>    array(
+				'type'    =>    'text'
+			),
+			'attributes'   =>    array(
+				'placeholder' => '0',
+				'class'       => 'input-medium myConfig'
+			)
+		));
+
+		$this->add(array(
+			'name'    =>    'quantidade',
+			'options' =>    array(
+				'type'    =>    'text'
+			),
+			'attributes'   =>    array(
+				'placeholder' => '0',
+				'class'       => 'input-mini'
+			)
 		));
 		
 		$file = new File('foto');
+		$file->setAttribute('multiple', true);		
 		$this->add($file);
 		
 	}

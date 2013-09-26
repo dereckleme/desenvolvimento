@@ -17,6 +17,7 @@
     $form->setAttribute('action', $this->url('admin-produto-home/admin-produto-adicionar', array('action'=>'gravarAlteracao')));
     $form->prepare();
     echo $this->form()->openTag($form);
+        echo $this->formRow($form->get('id'));
     ?>
         <div class="control-group">
             <label class="control-label" for="inputCategoria">Categoria</label>
@@ -100,9 +101,15 @@
             <label class="control-label" for="inputFoto">Foto Atual</label>                              
             <div class="controls">
                 <img src="<?php echo $this->basePath()?>/images/produtos/small/<?php echo $this->produto->getFoto();?>" class="img-polaroid">
-                <?php echo $this->formRow($form->get('foto_atual'));?>
             </div>
-        </div><!-- campo foto -->
+        </div><!-- campo foto visualizacao -->
+        
+        <div class="control-group">
+            <label class="control-label" for="quantidade">Quantidade do produto</label>
+            <div class="controls">                    
+                <?php echo $this->formRow($form->get('quantidade')); ?>
+            </div>
+        </div><!-- campo qtd -->
                 
         <div class="control-group">
             <label class="control-label" for="inputFoto">Foto</label>                              
@@ -124,8 +131,7 @@
                 <button type="submit" class="btn btn-warning">Alterar</button>
             </div>
         </div><!-- fim botao -->
-    <?php
-        echo $this->formRow($form->get('idproduto'));
+    <?php        
         echo $this->formRow($form->get('ativo'));
     echo $this->form()->closeTag();
     ?>

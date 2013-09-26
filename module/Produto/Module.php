@@ -15,6 +15,7 @@ use Produto\Service\Produto AS serviceProduto;
 use Produto\Service\Categoria AS serviceCategoria;
 use Produto\Service\Subcategoria AS serviceSubcategoria;
 use Produto\Service\Referencia AS serviceReferencia;
+use Produto\Service\ProdutoImagens AS serviceImagens;
 
 class Module {
     
@@ -62,7 +63,7 @@ class Module {
     				$em = $service->get("Doctrine\ORM\EntityManager");
     				$repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
     				return $repositor;
-    			},
+    			},    			
     			'Produto\Service\Categoria' => function($service){
     				$categoria = new serviceCategoria($service->get('Doctrine\ORM\EntityManager'));
     				return $categoria;
@@ -78,6 +79,10 @@ class Module {
     			'GenericService\Repository' => function($service){
     				return $service;
     			},
+    			'Produto\Entity\Imagens' => function($service){
+    				$imagens = new serviceImagens($service->get('Doctrine\ORM\EntityManager'));
+    				return $imagens;
+    			}
     		)
     	);
     }

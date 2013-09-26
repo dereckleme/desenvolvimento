@@ -19,6 +19,7 @@ use Zend\File\Transfer\Adapter\Http;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Produto\Entity\ProdutoProdutos;
+use Zend\Filter\File\Rename;
 
 class ProdutoController extends AbstractActionController {
 
@@ -48,6 +49,14 @@ class ProdutoController extends AbstractActionController {
     	}
     	return $this->subCategoriaValue;
     }
+    
+    public function setImagesProduto($idproduto, $inames){
+        $service = $this->getServiceLocator()->get('Produto\Entity\Imagens');
+        foreach ($inames as $image){
+        	$service->insert(array('images'=>$image, 'produtoProdutosproduto'=>$idproduto));
+        }
+        return;
+    } 
     
     public function indexAction() {
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
@@ -112,14 +121,12 @@ class ProdutoController extends AbstractActionController {
         if($request->isPost())
         {            
             $noFile = $request->getPost()->toArray();
-            $File = $this->params()->fromFiles('foto');            
-            $photoname = $File['name'];          
-            $data = array_merge($noFile, array('foto'=>$File['name']));            
+            $File = $this->params()->fromFiles('foto');                   
+            $data = array_merge($noFile, array('foto'=>$File[0]));            
             $form->setData($data);
             
-                
         	if($form->isValid())
-        	{
+        	{        	    
         	    $size = new Size(array('max'=>2000000));
         	    $adpter = new Http();
         	    $adpter->setValidators(array($size), $File);
@@ -136,41 +143,54 @@ class ProdutoController extends AbstractActionController {
         	        $diretorio = $request->getServer()->DOCUMENT_ROOT . '/seletoLoja/public/images/produtos/large';
         	        $adpter->setDestination($diretorio);        	                	       
         	        
-        	        if($adpter->receive($_FILES['name']))
-        	        { 
-                        $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');        	            
-                        
-        	            $small = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());        	                  	         
-        	            $small->resize(212,159);
-        	            $small->save('public/images/produtos/small/'.$photoname);
-        	            
-        	            /////////////////////////////////////////////////////////////////////////////////////////////////
-        	            
-        	            $thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
-        	            $thumbsmall->resize(86,102);
-        	            $thumbsmall->save('public/images/produtos/thumb_small/'.$photoname);
-        	            
-        	            /////////////////////////////////////////////////////////////////////////////////////////////////
-        	            
-        	            $thumb = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());        	            
-        	            $thumb->resize(50,66);        	            
-        	            $thumb->save('public/images/produtos/thumb/'.$photoname);
-        	            
+        	        $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
+        	        
+        	        foreach($adpter->getFileInfo() as $file=>$info){
+        	        	$name = $adpter->getFileName($file);        	        	
+        	        	#$fname = $diretorio . '/' . substr(md5(microtime()), 1, 4).$info['name'];
+        	        	$fname = substr(md5(microtime()), 1, 4).$info['name'];
+        	        	$adpter->addFilter(new Rename(array("target" => $fname, "randomize" => false)), null, $file);        	        	
+        	        	if($adpter->receive($file))
+        	        	{
+        	        	    $small = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
+        	        	    $small->resize(212,159);
+        	        	    $small->save('public/images/produtos/small/'.$fname);
+        	        	     
+        	        	    /////////////////////////////////////////////////////////////////////////////////////////////////
+        	        	     
+        	        	    $thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
+        	        	    $thumbsmall->resize(86,102);
+        	        	    $thumbsmall->save('public/images/produtos/thumb_small/'.$fname);
+        	        	     
+        	        	    /////////////////////////////////////////////////////////////////////////////////////////////////
+        	        	     
+        	        	    $thumb = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
+        	        	    $thumb->resize(50,66);
+        	        	    $thumb->save('public/images/produtos/thumb/'.$fname);
+        	        	    
+        	        	    $names[] = $fname;
+        	        	}
         	        }
-        	        else
-        	        {
-        	        	
-        	        }
+        	        
+        	        unset($data['foto']);
+        	        $data = array_merge($noFile, array('foto'=>$names));
         	    }
         	    
         	    $service = $this->getServiceLocator()->get("Produto\Service\Produto");
-        	    $service->insert($data);
+        	    $insertId = $service->insert($data);
         	    
+        	    /*$service2 = $this->getServiceLocator()->get('Produto\Entity\Imagens');
+                foreach ($names as $image){
+                	$service2->insert(array('images'=>$image, 'produtoProdutosproduto'=>$insertId));
+                }
+                return;
+        	    
+        	    exit(' id produto');*/
         	}
         	else 
         	{
         	    echo "<pre>", print_r($form->getMessages()), "</pre>";
-        		die();
+        		exit(' nao passou validacao');
         	}
         	
         	return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
@@ -183,94 +203,25 @@ class ProdutoController extends AbstractActionController {
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");        
         $produto = $repositor->find($this->params()->fromRoute('id',0));
         
+        #$repositor2 = $this->getServiceLocator()->get('Produto\Repository\Estoque');
+        #$estoque = $repositor2->findByIdproduto($this->params()->fromRoute('id',0));
+
         $form = new FrmProduto;
         $form->get('inputCategoria')->setValueOptions($this->getCategoryValuesOptions());
-        $form->get('inputCategoria')->setValue($produto->getProdutosubcategoria()->getCategorias()->getIdcategorias());
-        
         $form->get('inputSubCategoria')->setValueOptions($this->getSubCategoryValuesOptions());
-        $form->get('inputSubCategoria')->setValue($produto->getProdutosubcategoria()->getIdsubcategoria());
         
-        $form->get('idproduto')->setValue($produto->getIdproduto());
+        // setando valores        
+        $form->get('inputCategoria')->setValue($produto->getProdutosubcategoria()->getCategorias()->getIdcategorias());
+        $form->get('inputSubCategoria')->setValue($produto->getProdutosubcategoria()->getIdsubcategoria());
+        $form->get('id')->setValue($produto->getIdproduto());
         $form->get('titulo')->setValue($produto->getTitulo());
         $form->get('valor')->setValue($produto->getValor(true));
         $form->get('peso')->setValue($produto->getPeso());
         $form->get('comprimento')->setValue($produto->getComprimento());
         $form->get('altura')->setValue($produto->getAltura());
         $form->get('largura')->setValue($produto->getLargura());
+        #$form->get('quantidade')->setValue($estoque->getQuantidade());
         $form->get('ativo')->setValue($produto->getAtivo());
-        $form->get('foto_atual')->setValue($produto->getFoto());
-        
-        
-        $request = $this->getRequest();
-        if($request->isPost())
-        {
-        	$nonFile = $request->getPost()->toArray();
-        	$File = $this->params()->fromFiles('foto');
-        	$data = array_merge($nonFile, array('foto'=>$File['name']));
-        	$form->setData($data);
-        	
-        	if($form->isValid())
-        	{
-        	    $size = new Size(array('max'=>2000000));
-        	    $adpter = new Http();
-        	    $adpter->setValidators(array($size), $File['name']);
-        	    
-        	    if(!$adpter->isValid())
-        	    {
-        	    	$dataError = $adpter->getMessages();
-        	    	$error = array();
-        	    	foreach ($dataError as $row){
-        	    		$error[] = $row;
-        	    	}
-        	    	$form->setMessages(array('foto'=>$error));
-        	    }
-        	    else 
-        	    {
-        	        $diretorio = $request->getServer()->DOCUMENT_ROOT . '/seletoLoja/public/images/produtos/large';
-        	        $adpter->setDestination($diretorio);
-        	        
-        	        if($adpter->receive($File['name']))
-        	        {
-        	            $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
-        	            
-        	            $small = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
-        	            $small->resize(212,159);
-        	            $small->save('public/images/produtos/small/'.$photoname);
-        	             
-        	            /////////////////////////////////////////////////////////////////////////////////////////////////
-        	             
-        	            $thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
-        	            $thumbsmall->resize(86,102);
-        	            $thumbsmall->save('public/images/produtos/thumb_small/'.$photoname);
-        	             
-        	            /////////////////////////////////////////////////////////////////////////////////////////////////
-        	             
-        	            $thumb = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
-        	            $thumb->resize(50,66);
-        	            $thumb->save('public/images/produtos/thumb/'.$photoname);
-        	            
-        	            $this->flashMessenger()->addMessage(array('success' => 'Foto alterado com sucesso.'));
-        	        } else {
-        	            $this->flashMessenger()->addMessage(array('error' => 'A foto não pode ser alterada.'));
-        	        }
-        	        
-        	    }
-        	    
-        	    
-        	}
-        	
-        	
-        	
-        	
-        	
-        }
-        
-        
-        
-        
-        
-        
-        
         
     	return new ViewModel(array(
     	    "form" => $form,
@@ -279,6 +230,9 @@ class ProdutoController extends AbstractActionController {
     }
     
     public function gravarAlteracaoAction(){
+        $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
+        $produto = $repositor->find($this->params()->fromPost('id'));
+        
         $form = new FrmProduto;
         $form->get('inputCategoria')->setValueOptions($this->getCategoryValuesOptions());
         $form->get('inputSubCategoria')->setValueOptions($this->getSubCategoryValuesOptions());
@@ -286,34 +240,66 @@ class ProdutoController extends AbstractActionController {
         $request = $this->getRequest();
         if($request->isPost())
         {
-            $noFile = $request->getPost()->toArray();
-            
-            if($this->params()->fromPost('foto'))
-            {
-            	
-            }
-            else 
-            {
-            	$foto = array('foto'=>$noFile['foto_atual']);
-            	unset($noFile['foto_atual']);
-            	$data = array_merge($noFile, $foto);
-            	echo "<pre>", print_r($data), "</pre>";
-            	die();
-            }
-                    	
-            $form->setData($data);
-            
-            if($form->isValid())
-            {
-                echo "<pre>", print_r($data), "</pre>";
-                die('if');
-            }
-            else
-            {
-                echo "<pre>", print_r($form->getMessages()), "</pre>";
-                die('else');
-            }// fim da valicao do form            
-        }// fim da verificaçao do request
+        	$nonFile = $request->getPost()->toArray();
+        	$File = $this->params()->fromFiles('foto');
+        	$filename = ($File['name'] == "") ? $produto->getFoto() : $File['name'];
+        	$data = array_merge($nonFile, array('foto'=>$filename));
+        	#$form->setData($data);
+        	 
+        	#if($form->isValid())
+        	#{        	    
+        		if($File['name'] != ""){
+        			$size = new Size(array('max'=>2000000));
+        			$adpter = new Http();
+        			$adpter->setValidators(array($size), $File['name']);
+        			 
+        			if(!$adpter->isValid()) {
+        				$dataError = $adpter->getMessages();
+        				$error = array();
+        				foreach ($dataError as $row){
+        					$error[] = $row;
+        				}
+        				$form->setMessages(array('foto'=>$error));
+        			} else {
+        				 
+        				$diretorio = $request->getServer()->DOCUMENT_ROOT . '/seletoLoja/public/images/produtos/large';
+        				$adpter->setDestination($diretorio);
+        				 
+        				if($adpter->receive($File['name']))
+        				{
+        					$thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
+        						
+        					$small = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        					$small->resize(212,159);
+        					$small->save('public/images/produtos/small/'.$photoname);
+        
+        					/////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        					$thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        					$thumbsmall->resize(86,102);
+        					$thumbsmall->save('public/images/produtos/thumb_small/'.$photoname);
+        
+        					/////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        					$thumb = $thumbnailer->create('public/images/produtos/large/' . $photoname, $options = array());
+        					$thumb->resize(50,66);
+        					$thumb->save('public/images/produtos/thumb/'.$photoname);
+        						
+        					$this->flashMessenger()->addMessage(array('success' => 'Foto alterado com sucesso.'));
+        				} else {
+        					$this->flashMessenger()->addMessage(array('error' => 'A foto não pode ser alterada.'));
+        				}
+        			}
+        		}
+        		 
+        		$service = $this->getServiceLocator()->get("Produto\Service\Produto");        		    	
+        		$service->update($data);
+        		$this->flashMessenger()->addMessage(array('success' => 'Produto atualizado com sucesso.'));
+        		$this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
+        	#}
+        	#echo "<pre>", print_r($form->getMessages()), "</pre>";
+        }
+               
     } 
     
     public function excluirAction(){
@@ -322,4 +308,5 @@ class ProdutoController extends AbstractActionController {
             return $this->redirect()->toRoute($this->route,array('controller'=>$this->controller));
         }                      
     }
+    
 }

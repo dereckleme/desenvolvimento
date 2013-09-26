@@ -134,8 +134,11 @@ class ProdutoProdutos
 	public function getValor($formatado = false) {
 	    if($formatado)
 	    {
-	        $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
-	        return $filter->formatCurrency($this->valor, 'BRL');
+	        $filters = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);	        
+	        #$filter = explode("$", $filters->formatCurrency($this->valor, 'BRL'));
+	        #return $filter[0].'$ '.$filter[1];
+	        $filter = substr_replace($filters->formatCurrency($this->valor, 'BRL'), '$ ', 1, 1);
+	        return $filter;
 	    }
 	    else
 	    {
@@ -252,7 +255,7 @@ class ProdutoProdutos
 	public function setFoto($foto) {
 	    #echo "<pre>", print_r($foto), "</pre>";
 	    #die('by celso');
-		$this->foto = $foto['name'];
+		$this->foto = $foto[0];
 	}
 	public function getEstoque() {
 		return $this->estoque;
