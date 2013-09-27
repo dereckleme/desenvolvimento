@@ -50,14 +50,6 @@ class ProdutoController extends AbstractActionController {
     	return $this->subCategoriaValue;
     }
     
-    public function setImagesProduto($idproduto, $inames){
-        $service = $this->getServiceLocator()->get('Produto\Entity\Imagens');
-        foreach ($inames as $image){
-        	$service->insert(array('images'=>$image, 'produtoProdutosproduto'=>$idproduto));
-        }
-        return;
-    } 
-    
     public function indexAction() {
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repositorCat = $this->getServiceLocator()->get("Produto\Repository\Categorias");        
@@ -173,19 +165,12 @@ class ProdutoController extends AbstractActionController {
         	        }
         	        
         	        unset($data['foto']);
-        	        $data = array_merge($noFile, array('foto'=>$names));
+        	        $data = array_merge($noFile, array('foto'=>$names));        	       
         	    }
         	    
         	    $service = $this->getServiceLocator()->get("Produto\Service\Produto");
-        	    $insertId = $service->insert($data);
-        	    
-        	    /*$service2 = $this->getServiceLocator()->get('Produto\Entity\Imagens');
-                foreach ($names as $image){
-                	$service2->insert(array('images'=>$image, 'produtoProdutosproduto'=>$insertId));
-                }
-                return;
-        	    
-        	    exit(' id produto');*/
+        	    $service->insert($data);        	    
+        	    exit('aqui');
         	}
         	else 
         	{

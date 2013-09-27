@@ -11,19 +11,15 @@
 				    </center>
 				<!-- </div> -->
                 </div>
-				<div id="gallery_01" style="width:212px;float:left; margin-top:20px;">
-					<a class="elevatezoom-gallery active" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/image1.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/img_1.png" data-update="" href="#">
-						<img  src="<?=$this->basePath()?>/images/produtos/small/image1.png" class="thumb_produtos">
+				<div id="gallery_01" style="width:212px;float:left; margin-top:20px;">					
+					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$this->detalheProduto->getFoto();?>" data-image="<?=$this->basePath()?>/images/produtos/small/<?=$this->detalheProduto->getFoto();?>" href="tester">
+						<img  src="<?=$this->basePath()?>/images/produtos/thumb/<?=$this->detalheProduto->getFoto();?>" class="thumb_produtos">
 					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/image2.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/image2.png" href="#">
-						<img  src="<?=$this->basePath()?>/images/produtos/small/image2.png" class="thumb_produtos">
-					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/01.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/01.jpg" href="tester">
-						<img  src="<?=$this->basePath()?>/images/produtos/small/01.jpg" class="thumb_produtos">
-					</a>
-					<a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/00440.jpg" data-image="<?=$this->basePath()?>/images/produtos/small/00440.jpg" href="tester">
-						<img src="<?=$this->basePath()?>/images/produtos/small/00440.jpg" class="thumb_produtos">
-					</a>
+					<?php foreach ($this->detalheProduto->getImagens() as $imagem): ?>
+					    <a class="elevatezoom-gallery" data-zoom-image="<?=$this->basePath()?>/images/produtos/large/<?=$imagem->getImages();?>" data-image="<?=$this->basePath()?>/images/produtos/small/<?=$imagem->getImages();?>" href="#">
+						    <img  src="<?=$this->basePath()?>/images/produtos/thumb/<?=$imagem->getImages();?>" class="thumb_produtos">
+					    </a>
+					<?php endforeach; ?>
 				</div>
 			</div>
 

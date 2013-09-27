@@ -18,6 +18,7 @@ class ProdutoProdutos
 {
     public function __construct() {
     	$this->estoque = new ArrayCollection();
+    	$this->imagens = new ArrayCollection();
     }
     /**
      * @var integer
@@ -115,6 +116,11 @@ class ProdutoProdutos
      * @ORM\OneToMany(targetEntity="Produto\Entity\PagamentoControleestoque", mappedBy="produtoproduto")
      */
     protected $estoque;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Produto\Entity\ProdutoImagens", mappedBy="produtoProdutosproduto")
+     */
+    protected $imagens;
     
 	/**
 	 * @return the $slugProduto
@@ -252,11 +258,10 @@ class ProdutoProdutos
 	/**
 	 * @param string $foto
 	 */
-	public function setFoto($foto) {
-	    #echo "<pre>", print_r($foto), "</pre>";
-	    #die('by celso');
+	public function setFoto($foto) {	    
 		$this->foto = $foto[0];
 	}
+	
 	public function getEstoque() {
 		return $this->estoque;
 	}
@@ -265,6 +270,13 @@ class ProdutoProdutos
 		$this->estoque = $estoque;
 	}
 
+	public function getImagens() {
+		return $this->imagens;
+	}
+	
+	public function setImagens($imagens) {
+		$this->imagens = $imagens;
+	}
 
 
     

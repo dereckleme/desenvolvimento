@@ -46,7 +46,7 @@ class Module {
     	return array(
     		'factories' => array(
     			'Produto\Service\Produto' => function($service){
-    				$produto = new serviceProduto($service->get('Doctrine\ORM\EntityManager'),$service->get('Pagamento\Service\Estoque'));
+    				$produto = new serviceProduto($service->get('Doctrine\ORM\EntityManager'));
     				return $produto;
     			},    			
     			'Produto\Repository\Categorias' => function($service){
@@ -79,10 +79,10 @@ class Module {
     			'GenericService\Repository' => function($service){
     				return $service;
     			},
-    			'Produto\Entity\Imagens' => function($service){
+    			/*'Produto\Service\Imagens' => function($service){
     				$imagens = new serviceImagens($service->get('Doctrine\ORM\EntityManager'));
     				return $imagens;
-    			}
+    			}*/
     		)
     	);
     }

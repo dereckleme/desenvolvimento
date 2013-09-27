@@ -9,13 +9,13 @@ class Produto extends AbstractService {
     
     protected $subCategoriaReferenc;
     protected $servicePagamento;
+    protected $serviceImagens;
     
     protected $id_produto;
     
-	public function __construct(EntityManager $em, $servicePagamento){
+	public function __construct(EntityManager $em){
 	    parent::__construct($em);
 	    $this->entity = "Produto\Entity\ProdutoProdutos";
-	    $this->servicePagamento = $servicePagamento;
 	}
 	
 	public function insert(array $data) {
@@ -23,15 +23,29 @@ class Produto extends AbstractService {
 	    $this->setCampo("setProdutosubcategoria");
 	    $this->setActionReference($data['inputSubCategoria']);
 		$produto = parent::insert($data);
-		//Add estoque.
-		$this->setTargetEntity(null);
-		$this->setCampo(null);
-		$this->setActionReference(null);
-		$servicoEstoque = $this->servicePagamento;
-		$servicoEstoque->setIdProduto($produto->getIdproduto());
-		$servicoEstoque->insert(array("quantidade" => $data['quantidade']));    
-		#return $this->entity;
-		return $produto->getIdproduto();
+		
+		//Add estoque
+		$this->entity = "Produto\Entity\PagamentoControleestoque";		
+		$this->setTargetEntity("Produto\Entity\ProdutoProdutos");
+		$this->setCampo("setProdutoproduto");
+		$this->setActionReference($produto->getIdproduto());
+		$estoque = parent::insert(array("quantidade" => $data['quantidade']));    
+		
+		// add imagens
+		if(count($data['foto']) >= 2){
+		    $this->entity = "Produto\Entity\ProdutoImagens";
+		    $this->setTargetEntity("Produto\Entity\ProdutoProdutos");
+		    $this->setCampo("setProdutoProdutosproduto");
+		    $this->setActionReference($produto->getIdproduto());		    
+		    unset($data['foto'][0]);
+		    
+    		foreach($data['foto'] as $image)
+    		{    		    
+    		    parent::insert(array('images'=>$image));
+    		}
+		
+		}
+		return true;
 	}
 	
 	
