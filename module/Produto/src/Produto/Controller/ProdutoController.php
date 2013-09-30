@@ -146,7 +146,7 @@ class ProdutoController extends AbstractActionController {
         	        	{
         	        	    $small = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
         	        	    #$small->resize(212,159);
-        	        	    $small->resize(212,159);
+        	        	    $small->resize(159);
         	        	    $small->save('public/images/produtos/small/'.$fname);
         	        	     
         	        	    /////////////////////////////////////////////////////////////////////////////////////////////////
