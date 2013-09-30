@@ -313,6 +313,12 @@ $(document).ready(function(){
 				$.ajax({
 					url: basePatch+"/correios/frete",
 					async:false,
+					beforeSend:function(){
+						$(".CalcFret").append("<img src='"+basePatch+"/images/carregando.gif' width='12'/>");
+					},
+					complete:function(){
+						$(".CalcFret img").attr("src","ok.png");
+					},
 					type: "post",
 					data: {cep:cepSet},
 					success: function(data) {

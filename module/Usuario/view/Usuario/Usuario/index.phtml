@@ -112,7 +112,7 @@
 								<p class="NameMeusDados"><?if($this->cadastro->getNome()) print $this->cadastro->getNome(); else print "Nome não cadastrado.";?></p>
                                 <p class="EmailMeusDados"><?=$this->usuario->getEmail()?></p>
                                 <p class="AlterarMeusDados"><a href="#">alterar senha</a></p>
-					            <input type="submit" value="Editar" class="EditarDados">
+					           <!--  <input type="submit" value="Editar" class="EditarDados">-->
 							</div>
 					</div>
 
@@ -126,7 +126,7 @@
 								<B>Cidade:</B><?if($this->cadastro->getMapeamentocidade()) print $this->cadastro->getMapeamentocidade()->getNome(); else print "Cidade não cadastrada.";?><br/>
 								<B>Estado:</B><?if($this->cadastro->getMapeamentocidade()) print $this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome(); else print "Estado não cadastrado.";?><br/>
 								</p> 
-								<input type="submit" value="adicionar novo endereço" class="NovoEndereco">
+								<!-- <input type="submit" value="adicionar novo endereço" class="NovoEndereco"> -->
 					            <input type="submit" value="Editar" class="EditarDados">
 							</div>
 					</div>

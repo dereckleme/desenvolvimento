@@ -1,3 +1,17 @@
+ <script type="text/javascript">
+        function mudarTab(a){
+        	$("li.BoxMenuInstitucional a[href=#tab_"+a+"]").addClass("activetab_"+a);
+        	$("li.BoxMenuInstitucional a[href=#tab_"+tabAtual+"]").removeClass("activetab_"+tabAtual);
+	    	$("#tab_"+tabAtual).toggle();
+	    	$("#tab_"+a).toggle();
+	    	tabAtual=a
+	    	return false;
+    	}
+    	var tabAtual=1;
+      	$(function(){      		
+      		mudarTab(numeroTab);
+      	});      
+      </script>
 <!--Institucional-->
 
 				<div id="Institucional">

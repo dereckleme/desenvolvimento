@@ -48,8 +48,9 @@ class UsuarioController extends AbstractActionController
                {
                    if($recibo->getUsuariousuarios()->getIdusuario() == $idUser)
                    {
+                       $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
 
-                       return new viewModel(array("data" => $recibo));
+                       return new viewModel(array("data" => $recibo,"cadastro" => $cadastro));
                    }
                    else
                    {

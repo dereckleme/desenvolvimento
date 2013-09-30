@@ -30,6 +30,10 @@ class IndexController extends AbstractActionController
      */
     public function retornoAction()
     {
+        unlink("bloco1.txt");
+        $fp = fopen("bloco1.txt", "a");
+        $escreve = fwrite($fp, json_encode($_POST));
+        fclose($fp);
         $request = $this->getRequest();
             if($request->isPost())
             {

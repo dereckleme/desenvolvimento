@@ -90,7 +90,7 @@ $(function(){
 				return false;
 		});
 		$("#header").on( "mouseleave", function() {
-			$("#box_compras").slideUp("fast", function () {});
+			$("#box_compras").slideUp("fast", function () {}); 
 		})
 		$("#box_compras").on("click",".actionCloseCarrinho", function(){	
 				$("#box_compras").slideToggle("fast", function () {});
@@ -100,6 +100,10 @@ $(function(){
 			var id = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').attr("id").split("produto_")[1];
 			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
 			var element = $(this);
+			if(id == null)
+				{
+					var id = $(this).parents(".box_vejaTambem").find('input').attr("id").split("relacionadoProd_")[1];
+				}
 			$.ajax({
 				url: basePatch+"/estoque",
 				type: "post",
@@ -110,11 +114,12 @@ $(function(){
 						{
 						if(data == (parseInt(valor)+1))
 							{
-								$(element).parents("#quantidade_produto_categoria").find('.smsEstoque').html("Limite maximo estoque!");
-								$(element).parents("#quantidade_produto_categoria").find('.smsEstoque').fadeIn("slow");
-								
+								$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').html("Limite maximo estoque!");
+								$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').fadeIn("slow");
+								/*
 								$("#comprar_detalhe .smsEstoque").html("Limite maximo estoque!");
 								$("#comprar_detalhe .smsEstoque").fadeIn("slow");
+								*/
 							}
 						$(element).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)+1);
 						}
@@ -128,6 +133,10 @@ $(function(){
 			var id = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').attr("id").split("produto_")[1];
 			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val();
 			var element = $(this);	
+			if(id == null)
+			{
+				var id = $(this).parents(".box_vejaTambem").find('input').attr("id").split("relacionadoProd_")[1];
+			}
 			$.ajax({
 				url: basePatch+"/estoque",
 				type: "post",
@@ -136,8 +145,7 @@ $(function(){
 				success: function(data) {
 					if($.isNumeric(valor) && valor > 1 && data >= (parseInt(valor)-1)) 
 						{
-						$(element).parents("#quantidade_produto_categoria").find('.smsEstoque').fadeOut("slow");
-						$("#comprar_detalhe .smsEstoque").fadeOut("slow");
+						$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').fadeOut("slow");
 						$(element).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)-1);
 						}
 				},
@@ -265,4 +273,9 @@ $(function(){
 				return false;
 			})
 			$( "#SliderProdutosGeral" ).on( "mouseleave", function() {$("#ProductDescription").fadeOut();})
+			$(".maskTop").hover(function(){
+				$(".bgPng",this).animate({top: "-96",},100);
+			},function(){
+				$(".bgPng",this).animate({top: "0",},100);
+			});
 });		

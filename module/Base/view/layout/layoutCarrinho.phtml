@@ -24,7 +24,7 @@ if (count($this->carrinhoLista['listaAtual']) > 0) {
     			    <a href="#"><img src="<?=$this->basePath()?>/images/produtos/thumb/<?=$produto['produto']->getFoto();?>"></a>
     			</span> 
     			<a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto['produto']->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto['produto']->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto['produto']->getSlugProduto() )); ?>">
-    			    <p class="descricao_produto_cesta"><?=$produto['produto']->getTitulo()?> - 500g</p>
+    			    <p class="descricao_produto_cesta"><?=$produto['produto']->getTitulo()?></p>
    			    </a>
     		</div>
     		<div id="BoxDescricaoPreco">
@@ -53,7 +53,7 @@ else
         <img class="ImgCestaSemProduto" src="<?=$this->basePath()?>/images/cestaVazia.png">
         <p class="tt_CestaSemProduto">Sua cesta de compras esta vazia.</p>
         <p class="txt_CestaSemProduto">Você ainda não adicionou nenhum produto ao seu carrinho de compras.Navegue pelo site e selecione os produtos desejados.</p>
-        <a href="#"><span class="ButtonCestaVazia" style="margin-left:68px" title="continuar comprando">CONTINUAR COMPRANDO</span></a>
+        <a href="#"><span class="ButtonCestaVazia" style="margin-left:82px" title="continuar comprando">CONTINUAR COMPRANDO</span></a>
     </div>
                         
 <?php	
