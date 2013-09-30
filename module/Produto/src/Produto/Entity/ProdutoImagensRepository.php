@@ -2,7 +2,7 @@
 
 namespace Produto\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\EntityRepository;
 
 class ProdutoImagensRepository extends EntityRepository {
 
