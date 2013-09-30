@@ -51,7 +51,7 @@
                       <a href="#" class="eventOpenPopUp">Acompanhe seus pedidos</a>
                     </li>
                      <li class="Menu_topo" style="background:none;">
-                      <a href="">Dúvidas frequentes</a></li>
+                      <a href="<?=$this->url("publico-duvidas")?>">Dúvidas frequentes</a></li>
                   </ul>
              </div>
 
@@ -95,7 +95,6 @@
                    <label class="status_password">Senha:</label><br/><input type="password" class="Password" value="criar senha"><br/>
                    <a href="" class="esqueceuSenha">Esqueceu sua senha?</a><br/>
                    <input type="submit" value="Entrar" class="Eventlogin"><br/><br/><br/>
-                   <p class="criar_conta">Ainda não tem uma conta?<a href="" class="criar_conta"> criar uma conta</a></p>
               </form>
            </div>
 
@@ -307,7 +306,7 @@
 
                 <!--MENU LATERAL-->
                 <?php 
-                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra")
+                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra" && $this->matchedRoute != "publico-duvidas")
                     {
                 ?>
                   <div id="lista_produtos">

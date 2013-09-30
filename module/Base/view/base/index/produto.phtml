@@ -36,13 +36,13 @@
     								        if($this->detalheProduto->getEstoque()[0]->getQuantidade() == 1)
     								        {
     								            ?>
-    								            <div class="smsEstoque" style="display:block;color:red">Limite maximo estoque!</div>
+    								            <div class="smsEstoque" style="display:block;">Limite máximo de estoque!</div>
     								            <?
     								        }
     								        else
     								        {
     								        	?>
-    								        	<div class="smsEstoque" style="display:none;color:red"></div>
+    								        	<div class="smsEstoque" style="display:none;"></div>
     								        	<?
     								        }
     								        ?>
@@ -245,8 +245,11 @@
     </div>
 
     <!--box mais produtos-->
+
 <div id="VejaTambem">
-	<h2><span class="tt_top_list_right">VEJA TAMBÉM</span></h2>
+
+    <h2><span class="tt_top_list_right">Veja mais produtos</span></h2>	
+
     <div id="box_vejaTambem">
     <?php 
         foreach($this->produtosRelacionados AS $relacionados)
@@ -264,8 +267,9 @@
 		    	</div>
 
 		    	<div class="right_vejaTambem">
-		    		    <strike class="precoAntigo_produto">R$ 7,50</strike>
+		    		    
 						<p class="precoProduto_VejaTambem">
+						    
 							<em class="un_monetaria"><strong><?=$relacionados->getValor(true)?></strong></em> 
 							
 						</p>
@@ -282,6 +286,7 @@
 								</li>
 
 							</ul>
+							<br/><span class="smsEstoque" style="display:none"></span>
 						</div>
 			   </div>
 			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rev="<?=$relacionados->getIdproduto()?>">Adicionar ao carrinho de compras</button>

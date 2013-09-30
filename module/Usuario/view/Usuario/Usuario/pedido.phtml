@@ -15,12 +15,12 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								<p class="tt_PageRequests">endereço de envio</p>
 							</div>
 							<div id="cont_BoxEsquerdo">
-								<p class="cont_BoxEsquerdo"><span class="NomeBoxEsquerdo">Aline dos Santos</span><br/>
-								Rua Professor Dias Castejon,77<br/>
-								Jardim Monte Kemel<br/>
-								Cep:05633-050<br/>
-								São Paulo<br/>
-								São Paulo</p>
+								<p class="cont_BoxEsquerdo"><span class="NomeBoxEsquerdo"><?=$this->cadastro->getNome()?></span><br/>
+								<?=$this->cadastro->getRua()?>,<?=$this->cadastro->getNumero()?><br/>
+								<?=$this->cadastro->getBairro()?><br/>
+								Cep:<?=$this->cadastro->getCep()?><br/>
+								<?=$this->cadastro->getMapeamentocidade()->getNome()?><br/>
+								<?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome()?></p>
 							</div>
 							<!--FORMA DE PAGAMENTO-->
 							<div id="tt_BoxEsquerdo">
