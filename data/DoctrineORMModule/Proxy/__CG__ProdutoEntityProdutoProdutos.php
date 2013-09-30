@@ -42,6 +42,12 @@ class ProdutoProdutos extends \Produto\Entity\ProdutoProdutos implements \Doctri
     }
 
     
+    public function getSlugProduto()
+    {
+        $this->__load();
+        return parent::getSlugProduto();
+    }
+
     public function getIdproduto()
     {
         if ($this->__isInitialized__ === false) {
@@ -57,10 +63,10 @@ class ProdutoProdutos extends \Produto\Entity\ProdutoProdutos implements \Doctri
         return parent::getTitulo();
     }
 
-    public function getValor()
+    public function getValor($formatado = false)
     {
         $this->__load();
-        return parent::getValor();
+        return parent::getValor($formatado);
     }
 
     public function getProdutosubcategoria()
@@ -81,10 +87,10 @@ class ProdutoProdutos extends \Produto\Entity\ProdutoProdutos implements \Doctri
         return parent::setTitulo($titulo);
     }
 
-    public function setValor($valor)
+    public function setValor($valor, $formatar = true)
     {
         $this->__load();
-        return parent::setValor($valor);
+        return parent::setValor($valor, $formatar);
     }
 
     public function setProdutosubcategoria($produtosubcategoria)
@@ -93,10 +99,142 @@ class ProdutoProdutos extends \Produto\Entity\ProdutoProdutos implements \Doctri
         return parent::setProdutosubcategoria($produtosubcategoria);
     }
 
+    public function getDestaque()
+    {
+        $this->__load();
+        return parent::getDestaque();
+    }
+
+    public function setDestaque($destaque)
+    {
+        $this->__load();
+        return parent::setDestaque($destaque);
+    }
+
+    public function getAtivo()
+    {
+        $this->__load();
+        return parent::getAtivo();
+    }
+
+    public function setAtivo($ativo)
+    {
+        $this->__load();
+        return parent::setAtivo($ativo);
+    }
+
+    public function getPeso()
+    {
+        $this->__load();
+        return parent::getPeso();
+    }
+
+    public function getComprimento()
+    {
+        $this->__load();
+        return parent::getComprimento();
+    }
+
+    public function getAltura()
+    {
+        $this->__load();
+        return parent::getAltura();
+    }
+
+    public function getLargura()
+    {
+        $this->__load();
+        return parent::getLargura();
+    }
+
+    public function setPeso($peso)
+    {
+        $this->__load();
+        return parent::setPeso($peso);
+    }
+
+    public function setComprimento($comprimento)
+    {
+        $this->__load();
+        return parent::setComprimento($comprimento);
+    }
+
+    public function setAltura($altura)
+    {
+        $this->__load();
+        return parent::setAltura($altura);
+    }
+
+    public function setLargura($largura)
+    {
+        $this->__load();
+        return parent::setLargura($largura);
+    }
+
+    public function getAcessos()
+    {
+        $this->__load();
+        return parent::getAcessos();
+    }
+
+    public function setAcessos($acessos)
+    {
+        $this->__load();
+        return parent::setAcessos($acessos);
+    }
+
+    public function getFoto()
+    {
+        $this->__load();
+        return parent::getFoto();
+    }
+
+    public function setFoto($foto)
+    {
+        $this->__load();
+        return parent::setFoto($foto);
+    }
+
+    public function getEstoque()
+    {
+        $this->__load();
+        return parent::getEstoque();
+    }
+
+    public function setEstoque($estoque)
+    {
+        $this->__load();
+        return parent::setEstoque($estoque);
+    }
+
+    public function getImagens()
+    {
+        $this->__load();
+        return parent::getImagens();
+    }
+
+    public function setImagens($imagens)
+    {
+        $this->__load();
+        return parent::setImagens($imagens);
+    }
+
+    public function getDescricao()
+    {
+        $this->__load();
+        return parent::getDescricao();
+    }
+
+    public function setDescricao($descricao)
+    {
+        $this->__load();
+        return parent::setDescricao($descricao);
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idproduto', 'titulo', 'slugProduto', 'valor', 'produtosubcategoria');
+        return array('__isInitialized__', 'idproduto', 'titulo', 'descricao', 'slugProduto', 'valor', 'peso', 'comprimento', 'altura', 'largura', 'destaque', 'acessos', 'foto', 'ativo', 'produtosubcategoria', 'estoque', 'imagens');
     }
 
     public function __clone()
