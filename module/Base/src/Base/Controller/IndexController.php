@@ -53,13 +53,13 @@ class IndexController extends AbstractActionController
         $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repository->setSlugCategoria($busca);
         $countCategoria = $repository->categoriaCountRow();
-        $categoriaBySlug = $repository->productForCategory(1, $page);        
+        $categoriaBySlug = $repository->productForCategory(5, $page);        
         
         if(count($categoriaBySlug) > 0)
         {
             $paginator = new ZendPaginator(new ArrayAdapter($countCategoria));
             $paginator->setCurrentPageNumber($pagePaginator);
-            $paginator->setDefaultItemCountPerPage(2);
+            $paginator->setDefaultItemCountPerPage(5);
             
             return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$paginator, 'termo'=>$busca));
         }
@@ -90,13 +90,13 @@ class IndexController extends AbstractActionController
         $repository->setSlugSubcategoria($slugSubcatBusca);
         
         $countSub = $repository->subCountRow();
-        $subCatBySlug = $repository->productForCatAndSub(1, $page);
+        $subCatBySlug = $repository->productForCatAndSub(5, $page);
         
         if(count($subCatBySlug) > 0)
         {
             $paginator = new ZendPaginator(new ArrayAdapter($countSub));
             $paginator->setCurrentPageNumber($pagePaginator);
-            $paginator->setDefaultItemCountPerPage(1);
+            $paginator->setDefaultItemCountPerPage(5);
             
             return new ViewModel(array(
                 'produtosPorSubCategoria'=>$subCatBySlug, 
@@ -206,13 +206,13 @@ class IndexController extends AbstractActionController
         }
         $countResultado = $repository->resultadoBuscaRows($ordem);
         $pagePart =  ($this->params()->fromQuery('pagina') == "") ? 0 : (($this->params()->fromQuery('pagina') - 1) * 1);
-        $resultado = $repository->resultadoBusca($ordem, 1, $pagePart);
+        $resultado = $repository->resultadoBusca($ordem, 5, $pagePart);
                 
         if(count($resultado) > 0)
         {
             $paginator = new ZendPaginator(new ArrayAdapter($countResultado));
             $paginator->setCurrentPageNumber($page);
-            $paginator->setDefaultItemCountPerPage(1);
+            $paginator->setDefaultItemCountPerPage(5);
             
             return new ViewModel(array(
                 "resultado"    =>    $resultado,

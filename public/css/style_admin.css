@@ -35,6 +35,9 @@ div.container a.brand {
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
-#message{ display: none; }
+#message, #mensagensItens, #mensagensTables, #itens, #tabelas { display: none; }
 
 .myConfig{ width: 117px;}
+
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th { background-color: #e9e6e6; }

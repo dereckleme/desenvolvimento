@@ -30,12 +30,26 @@ class ProdutoProdutos
     private $idproduto;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="codigo_produto", type="integer", nullable=true)
+     */
+    private $codigoProduto;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255, nullable=true)
      */
     private $titulo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="text", nullable=true)
+     */
+    private $descricao;
+    
     /**
      * @var string
      * @Gedmo\Slug(fields={"titulo"}, unique=true)
@@ -122,6 +136,7 @@ class ProdutoProdutos
      */
     protected $imagens;
     
+	
 	/**
 	 * @return the $slugProduto
 	 */
@@ -277,8 +292,36 @@ class ProdutoProdutos
 	public function setImagens($imagens) {
 		$this->imagens = $imagens;
 	}
+	
+	/**
+	 * @return the $descricao
+	 */
+	public function getDescricao() {
+		return $this->descricao;
+	}
 
+	/**
+	 * @param string $descricao
+	 */
+	public function setDescricao($descricao) {
+		$this->descricao = $descricao;
+	}
 
+	/**
+	 * @return the $codigoProduto
+	 */
+	public function getCodigoProduto() {
+		return $this->codigoProduto;
+	}
+	
+	/**
+	 * @param number $codigoProduto
+	 */
+	public function setCodigoProduto($codigoProduto) {
+		$this->codigoProduto = $codigoProduto;
+	}
+	
+    
     
 
     

@@ -6,7 +6,8 @@ use Zend\Form\Form;
 use Zend\Form\Element\Select,
     Zend\Form\Element\Radio,
     Zend\Form\Element\Hidden,
-    Zend\Form\Element\File;
+    Zend\Form\Element\File,
+    Zend\Form\Element\Textarea;
 use Doctrine\DBAL\Event\SchemaEventArgs;
 
 class Produto extends Form {
@@ -37,6 +38,16 @@ class Produto extends Form {
 		$select2->setValueOptions(array(''=>'--SELECIONE--'));
 		$this->add($select2);
 		
+		$this->add(array(
+			'name' => 'codigoProduto',
+			'options' => array(
+				'type' => 'int',
+			),
+			'attributes' => array(
+					'placeholder' => 'Código Interno do Produto',
+					'id' => 'codigoProduto'
+			)
+		));
 		
 		$this->add(array(
 				'name' => 'titulo',
@@ -114,6 +125,10 @@ class Produto extends Form {
 				'class'       => 'input-mini'
 			)
 		));
+		
+		$textarea = new Textarea('descricao');
+		$textarea->setAttribute('row', '3');
+		$this->add($textarea);
 		
 		$file = new File('foto');
 		$file->setAttribute('multiple', true);		

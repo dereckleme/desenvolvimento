@@ -53,7 +53,7 @@ class ProdutoController extends AbstractActionController {
     public function indexAction() {
         $repositor = $this->getServiceLocator()->get("Produto\Repository\Produtos");
         $repositorCat = $this->getServiceLocator()->get("Produto\Repository\Categorias");        
-        
+                
         $list = $repositor->findAll();
         $page = $this->params()->fromRoute('page');
         
@@ -145,6 +145,7 @@ class ProdutoController extends AbstractActionController {
         	        	if($adpter->receive($file))
         	        	{
         	        	    $small = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
+        	        	    #$small->resize(212,159);
         	        	    $small->resize(212,159);
         	        	    $small->save('public/images/produtos/small/'.$fname);
         	        	     

@@ -5,7 +5,7 @@ $(function(){
 		$(".actionSubcategoriaGerenciar").on("click",function(){
 			$(".gerSubCategorias").slideToggle();
 		});
-		$('#criaCategorias,#criaSubCategorias,#addProdutos').on('hidden', function () {
+		$('#criaCategorias,#criaSubCategorias,#addProdutos,#myModalItens,#myModalTable').on('hidden', function () {
 			location.reload();
 		});
 		$("#actionAddCat").on("click",function(){
@@ -35,6 +35,7 @@ $(function(){
 			
 			return false;
 		});
+		
 		$("#actionAddSubCat").on("click",function(){
 			var eventCategoria = $("#criaSubCategorias .categoriaId").val();
 			var eventSubcategoria = $("#criaSubCategorias .tituloSubCat").val();
@@ -117,6 +118,65 @@ $(function(){
 				}
 			});
 			return false;
-		})
+		});
+		
+		$(".my-accordion-toggle").on('click', function(){
+			var identif = $(this).attr('href');
+			$(identif).slideToggle();
+			return false;
+		});
+		
+		$("#addItems").on("click", function(){
+			var item = $("input[name=item]").val();
+			$.ajax({
+				url: basePatch+"/administrador/nutricional/adicionarItem",
+				type: "POST",
+				data: {saltda:item},
+				success: function(data){
+					if(data == "")
+					{
+						$("#mensagensItens").removeClass('alert-error');
+						$("#mensagensItens").addClass('alert-success');
+						$("#mensagensItens").html("Item adicionado com sucesso.");
+						$("#addItems").fadeOut();
+					}
+					else
+					{
+						$("#mensagensItens").removeClass('alert-success');
+						$("#mensagensItens").addClass('alert-error');
+						$("#mensagensItens").html(data);
+					}
+					$("#mensagensItens").fadeIn();
+				}
+			});
+		});
+		
+		$("#addTableNutricional").on("click", function(){			
+			var iditem = $("select[name=idnutricionalNomes]").val();
+			var idprod = $("select[name=idproduto]").val();
+			var qtd = $("input[name=quantidade]").val();
+			var valor = $("input[name=vd]").val();
+			$.ajax({
+				url: basePatch+"/administrador/nutricional/criarTabelaNutricional",
+				type: "POST",
+				data: {quantidade:qtd, vd:valor, idnutricionalNomes:iditem, idproduto:idprod},
+				success: function(data){					
+					if(data == "")
+					{
+						$("#mensagensTables").removeClass('alert-error');
+						$("#mensagensTables").addClass('alert-success');
+						$("#mensagensTables").html("Adicionado com sucesso.");
+						$("#addTableNutricional").fadeOut();
+					}
+					else
+					{
+						$("#mensagensTables").removeClass('alert-success');
+						$("#mensagensTables").addClass('alert-error');
+						$("#mensagensTables").html(data);
+					}
+					$("#mensagensTables").fadeIn();
+				}
+			});
+		});
 		
 });

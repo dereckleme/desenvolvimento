@@ -39,7 +39,7 @@ abstract class AbstractService
         else if(!empty($this->targetEntity) && is_array($this->targetEntity))
         {
             foreach($this->targetEntity AS $entityes)
-            {
+            {                
                 $reference = $this->em->getReference($entityes['setTargetEntity'], $entityes['setActionReference']);
                 $string = $entityes['setCampo'];
                 $entity->$string($reference);

@@ -15,7 +15,8 @@ use Produto\Service\Produto AS serviceProduto;
 use Produto\Service\Categoria AS serviceCategoria;
 use Produto\Service\Subcategoria AS serviceSubcategoria;
 use Produto\Service\Referencia AS serviceReferencia;
-use Produto\Service\ProdutoImagens AS serviceImagens;
+use Produto\Service\Nutricional as serviceNutricional;
+use Produto\Service\NutricionalTabela as serviceNutricionalTabela;
 
 class Module {
     
@@ -60,10 +61,21 @@ class Module {
     				return $repository;
     			},    			
     			'Produto\Repository\Produtos' => function($service){
-    				$em = $service->get("Doctrine\ORM\EntityManager");
-    				$repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
+    			    $em = $service->get("Doctrine\ORM\EntityManager");
+    			    $repositor = $em->getRepository("Produto\Entity\ProdutoProdutos");
     				return $repositor;
-    			},    			
+    			}, 
+    			'Produto\Repository\Nutricional' => function($service){
+    				$em = $service->get("Doctrine\ORM\EntityManager");
+    				$repositor = $em->getRepository("Produto\Entity\ProdutoNutricionalNomes");
+    				return $repositor;
+    			},
+    			'Produto\Repository\NutricionalTabela' => function($service){
+    				$em = $service->get("Doctrine\ORM\EntityManager");
+    				$repositor = $em->getRepository("Produto\Entity\ProdutoNutricional");
+    				return $repositor;
+    			},
+    			
     			'Produto\Service\Categoria' => function($service){
     				$categoria = new serviceCategoria($service->get('Doctrine\ORM\EntityManager'));
     				return $categoria;
@@ -79,10 +91,14 @@ class Module {
     			'GenericService\Repository' => function($service){
     				return $service;
     			},
-    			/*'Produto\Service\Imagens' => function($service){
-    				$imagens = new serviceImagens($service->get('Doctrine\ORM\EntityManager'));
-    				return $imagens;
-    			}*/
+    			'Produto\Service\Nutricional' => function($service){
+    				$nutricional = new serviceNutricional($service->get('Doctrine\ORM\EntityManager'));
+    				return $nutricional;
+    			},
+    			'Produto\Service\NutricionalTabela' => function($service){
+    				$table = new serviceNutricionalTabela($service->get('Doctrine\ORM\EntityManager'));
+    				return $table;
+    			}
     		)
     	);
     }

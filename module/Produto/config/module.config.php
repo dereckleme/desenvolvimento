@@ -118,7 +118,32 @@ return array(
                     				),
                     		),
                     ),
-               ), 
+               ),
+               'admin-produto-nutricional' => array(
+            		'type'    => 'Literal',
+            		'options' => array(
+        				'route'    => '/administrador/nutricional',
+        				'defaults' => array(
+    						'__NAMESPACE__' => 'Produto\Controller',
+    						'controller'    => 'Nutricional',
+    						'action'        => 'index',
+        				),
+            		),
+            		'may_terminate' => true,
+            		'child_routes' => array(
+        				'admin-produto-nutricional-action' => array(
+    						'type'    => 'Segment',
+    						'options' => array(
+								'route'    => '[/:action]',
+								'constraints' => array(
+									'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+								),
+								'defaults' => array(
+								),
+    						),
+        				),
+            		),
+               ),
             'admin-produto-referencia' => array(
             		'type'    => 'Literal',
             		'options' => array(
@@ -159,7 +184,8 @@ return array(
         'invokables' => array(
             'Produto\Controller\Produto' => 'Produto\Controller\ProdutoController',
             'Produto\Controller\Categoria' => 'Produto\Controller\CategoriaController',
-            'Produto\Controller\Referencia' => 'Produto\Controller\ReferenciaController'
+            'Produto\Controller\Referencia' => 'Produto\Controller\ReferenciaController',
+            'Produto\Controller\Nutricional' => 'Produto\Controller\NutricionalController',
         ),
     ),
     'view_manager' => array(

@@ -55,8 +55,9 @@ class ProdutoProdutosRepository extends EntityRepository {
         $qb->select('i');
         $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');
         $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
-        #$qb->where('c.slug = ?1');
-        #$qb->setParameter(1, $this->slugCategoria);
+        $qb->leftJoin('Produto\Entity\PagamentoControleestoque','e', 'WITH', 'e.produtoproduto  = i.idproduto');
+        $qb->where('e.quantidade != ?1');
+        $qb->setParameter(1, 0);
         $qb->orderBy('i.acessos', 'DESC');
         $qb->setMaxResults(3);
         $query = $qb->getQuery();
