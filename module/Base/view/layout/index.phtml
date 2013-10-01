@@ -62,10 +62,24 @@
                   <div id="Box_Visor_Qtd" style="<?if(count($this->carrinhoLista['listaAtual']) != 0) print "display:block"; else print "display:none";?>">  
                     <span class="Visor_Qtd"><?if(count($this->carrinhoLista['listaAtual']) != 0) print count($this->carrinhoLista['listaAtual']);?></span>
                   </div>
-
+					<?
+						if($this->carrinhoLista['listaAtual'])
+						{
+					?>
                   <p class="mc">MINHA CESTA</p>
                    <p class="valor_total"><?=$this->carrinhoLista['valorTotal']?></p>
                     <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">
+						<?
+						}
+						else
+						{
+						
+						?>
+						<p class="mc">MINHA CESTA</p>
+					 <img class="dt_cesta" src="<?=$this->basePath()?>/images/dt_cesta.png">	
+						<?
+						}
+						?>
                 </span>
               </a>
            </div>

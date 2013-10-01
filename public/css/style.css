@@ -265,8 +265,8 @@ button.carrinhoCompras_categoria_off { background: url(../images/btn_ir_cesta_of
 ul#box_produto { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd; display: block;}
 li#produto { width: 213px; height: 340px; float: left; border-right: dashed 1px #ddd;
 text-align: center; margin-top: 25px; display: block;}
-a.ImgProdutoHome { width: 214px; height: 196px; float: left; text-align: center;}
-a img.imgProdutos_home{ max-width: 150px; max-height: 196px;}
+a.ImgProdutoHome { width: 214px; height: 196px; float: left; text-align: center;border: 1px solid red}
+a img.imgProdutos_home{ max-width: 150px; max-height: 196px; border: 1px solid #666 }
 a:hover p.txt_produto { text-decoration: underline;}
 p.txt_produto { width: 170px; height: 35px; font-size: 13px; color: #666666; font-weight: bold; float: left; text-align: center; margin: 0 0 15px 25px;}
 p.txt_valor { width: 150px; height: 20px; font-size: 18px; color: #ff7f25; font-weight: bold; float: left;  text-align: center; margin: 15px 0 20px 30px;}
@@ -696,7 +696,7 @@ ul.BoxMenuInstitucional li a.FaleConosco:hover { background: url(../images/FaleC
 
 /**/
 .QuemSomos { width: 1024px; float: left;}
-#BoxInstitucional { width: 868px; float: left; margin-left: 78px;}
+#BoxInstitucional { width: 868px; float: left; margin-left: 78px; margin-bottom: 90px}
 h3.tt_Institucional { font-size: 30px; color: #ffa800; font-weight: bold; letter-spacing: 1px; margin: 30px 0 0 5px;}
 p.txt_Institucional { margin: 10px 0 0 5px; font-size: 15px; color: #666666; line-height: 25px;}
 h5.Sub_tt { margin: 20px 0 0 5px; font-size: 18px; color: #666666;}
