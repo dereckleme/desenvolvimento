@@ -30,9 +30,9 @@ class ProdutoProdutos
     private $idproduto;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="codigo_produto", type="integer", nullable=true)
+     * @ORM\Column(name="codigo_produto", type="string", length=60, nullable=true)
      */
     private $codigoProduto;
     
@@ -306,20 +306,23 @@ class ProdutoProdutos
 	public function setDescricao($descricao) {
 		$this->descricao = $descricao;
 	}
-
+	
 	/**
 	 * @return the $codigoProduto
 	 */
 	public function getCodigoProduto() {
 		return $this->codigoProduto;
 	}
-	
+
 	/**
-	 * @param number $codigoProduto
+	 * @param string $codigoProduto
 	 */
 	public function setCodigoProduto($codigoProduto) {
 		$this->codigoProduto = $codigoProduto;
 	}
+
+
+	
 	
     
     
