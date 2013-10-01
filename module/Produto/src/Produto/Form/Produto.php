@@ -41,7 +41,7 @@ class Produto extends Form {
 		$this->add(array(
 			'name' => 'codigoProduto',
 			'options' => array(
-				'type' => 'int',
+				'type' => 'text',
 			),
 			'attributes' => array(
 					'placeholder' => 'Código Interno do Produto',
