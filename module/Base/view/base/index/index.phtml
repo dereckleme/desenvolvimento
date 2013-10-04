@@ -15,7 +15,7 @@
 										  <p class="txt_produto"><?php echo $destaque->getTitulo(); ?></p>
 									  </a>
 									  <a class="ImgProdutoHome" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$destaque->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$destaque->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$destaque->getSlugProduto())); ?>">
-										  <img src="<?=$this->basePath()?>/images/produtos/small_large/<?php echo $destaque->getFoto();?>" class="imgProdutos_home" alt="<?php echo $destaque->getSlugProduto(); ?>" title="<?php echo $destaque->getTitulo(); ?>">
+										  <img src="<?=$this->basePath()?>/images/produtos/small/<?php echo $destaque->getFoto();?>" class="imgProdutos_home" alt="<?php echo $destaque->getSlugProduto(); ?>" title="<?php echo $destaque->getTitulo(); ?>">
 									  </a>
 									  <a href="javascript:void(0)">
 										  <p class="txt_valor"><?php echo $destaque->getValor(true); ?></p>
@@ -27,20 +27,6 @@
 
 								<?php endif; ?>
 							<?php $i--; endforeach; ?>
-							<!-- <li id="produto">
-									  <a href="#">
-										  <p class="txt_produto">O titulo vem aqui</p>
-									  </a>
-									  <a class="ImgProdutoHome" href="#">
-										  <img src="<?#=$this->basePath()?>/images/teste2.png" class="imgProdutos_home" alt="" title="">
-									  </a>
-									  <a href="javascript:void(0)">
-										  <p class="txt_valor">R$ 200,00</p>
-									  </a>
-									  <a href="#">
-										  <span class="comprar" title="mais detalhes" alt="comprar">mais detalhes</span>
-									  </a>
-								  </li> -->
                         </ul>
                     </div>
 
