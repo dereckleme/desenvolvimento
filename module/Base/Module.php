@@ -33,7 +33,6 @@ class Module
     public function onBootstrap($e)
     {
     	$e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractActionController', 'dispatch', function($e) {
-    	    
     		/*
     		 * Definições de sessoes
     		*/

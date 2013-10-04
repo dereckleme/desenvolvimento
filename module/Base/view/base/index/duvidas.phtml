@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $this->basePath();?>/js/jquery-ui-1.10.3/themes/base/jquery.ui.accordion.css">
+<script type="text/javascript" src="<?php echo $this->basePath();?>/js/jquery-ui-1.10.3/ui/jquery.ui.accordion.js"></script>
  <script type="text/javascript">
         function mudarTab(a){
         	$("li.BoxMenuInstitucional a[href=#tab_"+a+"]").addClass("activetab_"+a);
@@ -8,8 +10,10 @@
 	    	return false;
     	}
     	var tabAtual=1;
+    	var numeroTab;
       	$(function(){      		
       		mudarTab(numeroTab);
+      		$("#accordion").accordion();
       	});      
       </script>
 <!--Institucional-->
@@ -24,7 +28,7 @@
 								<a href="#tab_2" class="MapaSite" title="Mapa do Site" onclick="mudarTab(2)">Mapa do Site</a>
 							</li>
 							<li class="BoxMenuInstitucional">
-								<a href="#tab_3" class="TermosPesquisa" title="Perguntas Frequentes" onclick="mudarTab(3)">Perguntas Frequentes</a>
+								<a href="#tab_3" class="PerguntasFrequentes" title="Perguntas Frequentes" onclick="mudarTab(3)">Perguntas Frequentes</a>
 							</li>
 							<li class="BoxMenuInstitucional">
 								<a href="#tab_4" class="TrocasDevolucoes" title="Trocas e Devoluções" onclick="mudarTab(4)">Trocas e Devoluções</a>
@@ -53,8 +57,65 @@
 						</div>
 					</div>
 					
-					<div id="tab_2" class="MapaSite" style="display:none;">MapaSite</div>
-					<div id="tab_3" class="TermosPesquisa" style="display:none;">TermosPesquisa</div>
+					<div id="tab_2" class="MapaSite" style="display:none;">
+						<div id="BoxInstitucional">
+							<h3 class="tt_Institucional">Mapa Site</h3>
+						</div>	
+					</div>
+
+
+					<div id="tab_3" class="PerguntasFrequentes" style="display:none;">
+						<div id="BoxInstitucional">
+							<h3 class="tt_Institucional">Perguntas Frequentes</h3>
+							<div id="accordion">
+								  <h3 class="TituloAccordion">Como faço para comprar os produtos Seleto pela internet?</h3>
+								  <div id="BoxAccordion">
+								    <p class="TextoAccordion">
+								    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+								    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+								    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+								    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+								    </p>
+								  </div>
+								  <h3 class="TituloAccordion">Qual prazo de entrega dos meus pedidos?</h3>
+								  <div id="BoxAccordion">
+								    <p class="TextoAccordion">
+								    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+								    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+								    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+								    suscipit faucibus urna.
+								    </p>
+								  </div>
+								  <h3 class="TituloAccordion">Como posso acompanhar a entrega do meu pedido?</h3>
+								  <div id="BoxAccordion">
+								    <p class="TextoAccordion">
+								    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+								    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+								    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+								    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+								    </p>
+								  </div>
+								  <h3 class="TituloAccordion">Como verificar ou cancelar um pedido?</h3>
+								  <div id="BoxAccordion">
+								    <p class="TextoAccordion">
+								    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+								    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+								    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+								    mauris vel est.
+								    </p>
+								  </div>
+								  <h3 class="TituloAccordion">Quanto rende um pacote de café?</h3>
+								  <div id="BoxAccordion">
+								    <p class="TextoAccordion">
+								    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+								    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+								    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+								    mauris vel est.
+								    </p>
+								  </div>
+							</div>
+						</div>
+					</div>
 
 					<div id="tab_4" class="TrocasDevolucoes" style="display:none;">
 						<div id="BoxInstitucional">

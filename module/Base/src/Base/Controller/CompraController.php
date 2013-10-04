@@ -130,8 +130,8 @@ class CompraController extends AbstractActionController
             if(!empty($post['actionId']))
             {
                 $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-                    $produto = $em->getRepository("Produto\Entity\ProdutoProdutos")->findOneByidproduto($post['actionId']);
-                $entity = $em->getRepository("Pagamento\Entity\PagamentoControleestoque")->findOneByprodutoproduto($produto);
+               $produto = $em->getRepository("Produto\Entity\ProdutoProdutos")->findOneByidproduto($post['actionId']);
+               $entity = $em->getRepository("Pagamento\Entity\PagamentoControleestoque")->findOneByprodutoproduto($produto);
                 $info['produto'] = $entity;
             }
         }

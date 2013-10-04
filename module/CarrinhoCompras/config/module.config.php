@@ -23,12 +23,23 @@ return array(
                 				),
                 		),
                 ),
+                
             ),  
+            'carrinho-rest' => array(
+            		'type' => 'Segment',
+            		'options' => array(
+            				'route' => '/carrinhoRest',
+            				'defaults' => array(
+            						'controller' => 'CarrinhoCompras\Controller\CarrinhoRest'
+            				)
+            		)
+            ),
         ),
     ),
     'controllers' => array(
     		'invokables' => array(
-    				'CarrinhoCompras\Controller\Index' => 'CarrinhoCompras\Controller\IndexController'
+    				'CarrinhoCompras\Controller\Index' => 'CarrinhoCompras\Controller\IndexController',
+    		        'CarrinhoCompras\Controller\CarrinhoRest' => 'CarrinhoCompras\Controller\CarrinhoRestController'
     		),
     ),
     'view_manager' => array(
@@ -46,5 +57,8 @@ return array(
     		'template_path_stack' => array(
     				__DIR__ . '/../view',
     		),
+        'strategies' => array(
+        		'ViewJsonStrategy'
+        )
     ),
 );

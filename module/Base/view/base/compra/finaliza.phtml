@@ -62,7 +62,7 @@ $offValue = false;
 					<h5 class="ImgLogin">Login</h5>
 							<div id="ContBoxLogin">
 								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
-								<a href="<?=$this->url("publico-carrinho-compra")?>"><span class="ButtonBoxLogin">voltar para meu carrinho</span></a>
+								<a href="<?=$this->url("publico-carrinho-compra")?>"><span class="ButtonBoxLogin" title="Voltar para meu carrinho">voltar para meu carrinho</span></a>
 							</div>
 							
 							
@@ -93,9 +93,9 @@ $offValue = false;
 
 					                 <input type="password" class="BoxPasswordConfirmar actionPassowordConfirm" ><br/><br/>
 
-					                 <input type="submit" value="criar conta" class="EventcadastrarLoginFinaliza">
+					                 <input type="submit" title="Criar Conta" value="criar conta" class="EventcadastrarLoginFinaliza">
 
-					                 <input type="submit" value="login" class="eventOpenPopUp">
+					                 <input type="submit" title="Login" value="login" class="eventOpenPopUp">
 
 					                </form>
 								
@@ -191,13 +191,13 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
                                         <?if($offValue)
                                         {
                                             ?>
-                                            <span class="seletoInt"><a href="#"><span class="ButtonBoxLogin" id="bottaoAlterarCadastro" style="margin-left:0px;">Alterar meu cadastro</span></a></span>
+                                            <span class="seletoInt"><a href="#"><span class="ButtonBoxLogin" id="bottaoAlterarCadastro" style="margin-left:0px" title="Alterar meu cadastro">Alterar meu cadastro</span></a></span>
                                             <?
 					                    }
 					                    else
 					                    {
 					                    	?>
-					                    	<input type="submit" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>
+					                    	<input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>
 					                    	<?
 					                    }    ?>
 					                 
@@ -253,7 +253,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 
 
 
-					                 <input type="submit" value="Salvar Endereço" class="EventcadastrarEnderecoOff"><br/><br/><br/>
+					                 <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEnderecoOff"><br/><br/><br/>
 
 					                </form>
 							</div>
@@ -316,13 +316,13 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    if(empty($this->nomeCompleto) || empty($this->cep) || empty($this->endereco) || empty($this->numero) || empty($this->bairro) || $this->frete == null)
 								    {
 								    ?>
-								    <a href="#" onclick="return false"><span class="BoxPagamentoButtonOff">Concluir Pedido</span></a>
+								    <a href="#" onclick="return false"><span class="BoxPagamentoButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>
 								    <?php 
 								    }
 								    else 
 								    {
 								?>
-								<a  href="<?=$this->url('publico-fechar-pedido');?>" target="_blank" class="actionConcluirPedido"><span class="BoxPagamentoButton">Concluir Pedido</span></a>
+								<a  href="<?=$this->url('publico-fechar-pedido');?>" target="_blank" class="actionConcluirPedido"><span class="BoxPagamentoButton" title="Concluir Pedido">Concluir Pedido</span></a>
 								<?php 
 								    }
 								?>
@@ -358,7 +358,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    ?></span>
 									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
 									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
-								<a href="#"><span class="BoxPagamentoButtonOff" onclick="return false">Finalizar pagamento</span></a>
+								<a href="#"><span class="BoxPagamentoButtonOff" title="Finalizar pagamento" onclick="return false">Finalizar pagamento</span></a>
 							</div>
 						</div>
 					<!--Fim da Conteudo Pagamento Vazio-->		
@@ -385,7 +385,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
     							<div id="CestaVazia">
     								<p class="txtCestaVazia"><span class="ttCestaVazia">Sua cesta de compras esta vazia.</span><br/><br/>
     								Você ainda não adicionou nenhum produto ao seu carrinho de compras. Navegue pelo site<br/> e selecione os produtos desejados.</p>
-    								<a href="#"><span class="ButtonCestaVazia" title="continuar comprando">CONTINUAR COMPRANDO</span></a>
+    								<a href="#"><span class="ButtonCestaVazia" title="Continuar Comprando">CONTINUAR COMPRANDO</span></a>
     							</div>	
     
     					</div>

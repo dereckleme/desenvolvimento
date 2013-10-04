@@ -55,6 +55,18 @@ return array(
             				),
             		),
             ),
+            'estoque-rest' => array(
+            		'type' => 'Segment',
+            		'options' => array(
+            				'route' => '/api/Estoque[/:id]',
+            				'constraints' => array(
+            						'id' => '[0-9]+'
+            				),
+            				'defaults' => array(
+            						'controller' => 'Base\Controller\EstoqueRest'
+            				)
+            		)
+            ),
             'publico-categoria' => array(
             	'type'    => 'Segment',
             	'options' => array(
@@ -166,7 +178,8 @@ return array(
     		'invokables' => array(
     		        'Base\Controller\Compra' => 'Base\Controller\CompraController',
     				'Base\Controller\Index' => 'Base\Controller\IndexController',
-    		        'Base\Controller\Mapeamento' => 'Base\Controller\MapeamentoController'
+    		        'Base\Controller\Mapeamento' => 'Base\Controller\MapeamentoController',
+    		        'Base\Controller\EstoqueRest' => 'Base\Controller\EstoqueRestController'
     		),
     ),
     'view_manager' => array(
@@ -189,5 +202,8 @@ return array(
     		'template_path_stack' => array(
     				__DIR__ . '/../view',
     		),
+        'strategies' => array(
+        		'ViewJsonStrategy'
+        )
     ),
 );

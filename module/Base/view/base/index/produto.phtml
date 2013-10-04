@@ -65,8 +65,8 @@
 				</div>
                                 
 				<div class="btn_detalhe">
-					<button class="btn_carrinhoCompras_detalhe actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>">Adicionar ao <br /> carrinho de compras</button>
-					<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe">Comprar</a>
+					<button class="btn_carrinhoCompras_detalhe actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao <br /> carrinho de compras</button>
+					<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe" title="Comprar">Comprar</a>
 				</div>
                                <?php 
                       			    
@@ -100,8 +100,8 @@
 			<div class="informacoes_produtos">
 				 <span class="mouse_imagem">passe o mouse na imagem</span>
 				<h4 class="inf_produtos">Informações sobre o produto</h4>
-				<p class="ingredientes">Ingredientes:</p>
-				<p class="ingredientes_inf">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI.<br/> Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI. </p>
+				<p class="ingredientes">Detalhe:</p>
+				<p class="ingredientes_inf"><?=$this->detalheProduto->getDescricao()?></p>
 			</div>
 
                   <!--tabela Nutricional-->
@@ -119,115 +119,28 @@
 							<td class="qtd">
 							Informação Nutricional
 							<br>
-							Porção de 20g
+							porcao
 							</td>
 							<td class="vd"></td>
 							</tr>
 
-							<tr>
-							<th class="desc">Valor Energético</th>
-							<td class="qtd">75kcal</td>
-							<td class="vd">4</td>
-							</tr>
+							<?php 
+							    foreach($this->nutricional AS $nutricional)
+							    {
+							?>
 
 							<tr>
-							<th class="desc">Carboidratos</th>
-							<td class="qtd">18g</td>
-							<td class="vd">6</td>
+							<th class="desc"><?=$nutricional->getProdutonutricionalNomes()->getNome()?></th>
+							<td class="qtd"><?=$nutricional->getQuantidade()?></td>
+							<td class="vd"><?=$nutricional->getVd()?></td>
 							</tr>
-
-							<tr>
-							<th class="desc">Fibra alimentar</th>
-							<td class="qtd">0,6g</td>
-							<td class="vd">2</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Ferro</th>
-							<td class="qtd">1,35mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Sódio</th>
-							<td class="qtd">25mg</td>
-							<td class="vd">1</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Zinco</th>
-							<td class="qtd">0,84mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina A</th>
-							<td class="qtd">75ug RE</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina H</th>
-							<td class="qtd">3ug</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamna D</th>
-							<td class="qtd">0,75ug</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina B1</th>
-							<td class="qtd">0,14mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina B2</th>
-							<td class="qtd">0,14mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina B6</th>
-							<td class="qtd">0,15mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina PP</th>
-							<td class="qtd">1,8mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Pantotenato de cálcio</th>
-							<td class="qtd">0,6mg</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Ácido fólico</th>
-							<td class="qtd">26,55ug</td>
-							<td class="vd">15</td>
-							</tr>
-
-							<tr>
-							<th class="desc">Vitamina B12</th>
-							<td class="qtd">0,27ug</td>
-							<td class="vd">15</td>
-							</tr>
-
+                        <?php 
+							    }
+                        ?>
 							<tr>
 							<th class="desc"></th>
 							<td class="qtd">
-							(*) Valores Diários de Referência com base em uma dieta de 2.000 calorias ou 8.400 Kj.
-							<br>
-							(**) Valor Não Estabelecido
-							<br>
-							<br>
+							complemento
 							</td>
 							<td class="vd"></td>
 							</tr>
@@ -289,8 +202,8 @@
 							<br/><span class="smsEstoque" style="display:none"></span>
 						</div>
 			   </div>
-			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rev="<?=$relacionados->getIdproduto()?>">Adicionar ao carrinho de compras</button>
-			   <a href="#" class="btn_comprar_vejaTambem">Comprar</a>
+			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rev="<?=$relacionados->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao carrinho de compras</button>
+			   <a href="#" class="btn_comprar_vejaTambem" title="Comprar">Comprar</a>
 		</div>
 <?php 
     
