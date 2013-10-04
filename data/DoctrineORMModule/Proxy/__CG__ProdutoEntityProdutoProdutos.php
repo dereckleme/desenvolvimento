@@ -231,10 +231,22 @@ class ProdutoProdutos extends \Produto\Entity\ProdutoProdutos implements \Doctri
         return parent::setDescricao($descricao);
     }
 
+    public function getCodigoProduto()
+    {
+        $this->__load();
+        return parent::getCodigoProduto();
+    }
+
+    public function setCodigoProduto($codigoProduto)
+    {
+        $this->__load();
+        return parent::setCodigoProduto($codigoProduto);
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idproduto', 'titulo', 'descricao', 'slugProduto', 'valor', 'peso', 'comprimento', 'altura', 'largura', 'destaque', 'acessos', 'foto', 'ativo', 'produtosubcategoria', 'estoque', 'imagens');
+        return array('__isInitialized__', 'idproduto', 'codigoProduto', 'titulo', 'descricao', 'slugProduto', 'valor', 'peso', 'comprimento', 'altura', 'largura', 'destaque', 'acessos', 'foto', 'ativo', 'produtosubcategoria', 'estoque', 'imagens');
     }
 
     public function __clone()
