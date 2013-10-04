@@ -5,7 +5,7 @@
              {
          ?>
 		<div id="DetalheDoPedido">
-				<h3 class="tt_DetalheDoPedido">Meus Pedidos</h3>
+				<h3 class="tt_AcompanheSeuPedido">Acompanhe os seus pedidos</h3>
 				<div id="BoxDetalheDoPedido">
 					<!--CONTEUDO DETALHES DO PEDIDO-->
 					<?php     
@@ -111,7 +111,7 @@
 							<div id="BoxMeusDados">
 								<p class="NameMeusDados"><?if($this->cadastro->getNome()) print $this->cadastro->getNome(); else print "Nome não cadastrado.";?></p>
                                 <p class="EmailMeusDados"><?=$this->usuario->getEmail()?></p>
-                                <p class="AlterarMeusDados"><a href="#">alterar senha</a></p>
+                                <p class="AlterarMeusDados"><a href="#" title="Alterar Senha">alterar senha</a></p>
 					           <!--  <input type="submit" value="Editar" class="EditarDados">-->
 							</div>
 					</div>
@@ -127,7 +127,7 @@
 								<B>Estado:</B><?if($this->cadastro->getMapeamentocidade()) print $this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome(); else print "Estado não cadastrado.";?><br/>
 								</p> 
 								<!-- <input type="submit" value="adicionar novo endereço" class="NovoEndereco"> -->
-					            <input type="submit" value="Editar" class="EditarDados">
+					            <input type="submit" value="Editar" title="Editar Endereço" class="EditarDados">
 							</div>
 					</div>
 

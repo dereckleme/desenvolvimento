@@ -4,15 +4,14 @@ $(document).ready(function(){
 		return false;
 	})
 	$(".status_criar_conta").on("click",function(){
-		$("#form_login").fadeOut("slow",function(){
-			$("#form_cadastro").fadeIn();
-		});
+		$("#form_login").css("display","none");
+		$("#form_cadastro").css("display","block");
 		return false;
 	})
 	$(".status_entrar").on("click",function(){
-		$("#form_cadastro").fadeOut("slow",function(){
-			$("#form_login").fadeIn();
-		});
+		$("#form_cadastro").css("display","none");
+		$("#form_login").css("display","block");
+		
 		return false;
 	})
 	
@@ -138,7 +137,10 @@ $(document).ready(function(){
 										}
 										else
 										{
-											$(".return").html(data);
+											$(".erro").html("Detalhe do erro(s) encontrado.");
+											$(".tipo_erro").html(data);
+											$("#form_erro").fadeIn();
+											//$(".return").html(data);
 										}
 							},
 							error: function(){}
@@ -146,8 +148,10 @@ $(document).ready(function(){
 						}
 					else
 						{
-							
-							$(".return").html(data);
+							$(".erro").html("Detalhe do erro(s) encontrado.");
+							$(".tipo_erro").html(data);
+							$("#form_erro").fadeIn();
+							//$(".return").html(data);
 						}
 			},
 			error: function(){}
@@ -201,6 +205,13 @@ $(document).ready(function(){
 		var actionNumero = $("#BoxEndereco .BoxNumero").val();
 		var actionBairro = $("#BoxEndereco .BoxBairro").val();
 		var actionCidade = $("#BoxEndereco .BoxCidade option:selected").val();
+		var errorCadastro = 0;
+		$(".formAction input").each(function( index,element ) {
+			if($(element).val() == "")
+				{
+					errorCadastro = 1;
+				}
+		});
 		$.ajax({
 			url: basePatch+"/actionUser/Usuario/atualiza",
 			type: "post",
@@ -209,11 +220,27 @@ $(document).ready(function(){
 			success: function(data) {
 				if(data==1)
 					{
-					$(".msgCadastrase").css("display","none");
-						$(".msgCadastrase").html("Seu cadastro foi atualizado com sucesso.");
-						$(".msgCadastrase").fadeIn("slow",function(){
+						if(errorCadastro == 0)
+						{
 							location.reload();
-						});
+						}
+							else
+								{
+								$(".erro").html("Alguns campos baixo estão em banco.");
+								$(".tipo_erro").html("");
+								$(".formAction input").each(function( index,element ) {
+									
+									if($(element).val() == "")
+										{
+											if(index == 0) $(".tipo_erro").append("<Br/> - Nome do Destinatário");
+											if(index == 1) $(".tipo_erro").append("<Br/> - Numero do CEP");
+											if(index == 2) $(".tipo_erro").append("<Br/> - Endereço de entrega");
+											if(index == 3) $(".tipo_erro").append("<Br/> - Numero");
+											if(index == 4) $(".tipo_erro").append("<Br/> - Bairro");
+										}
+								});
+								$("#form_erro").fadeIn();
+								}
 					}
 			},
 			error: function(){}

@@ -114,6 +114,7 @@ class IndexController extends AbstractActionController
     public function produtoAction()
     {
         $params = $this->params();
+        $em = $this->getServiceLocator()->get("DOCTRINE\ORM\EntityManager");
         $repository = $this->getServiceLocator()->get("Produto\Repository\Produtos");
             $repository->setSlugProduto($params->fromRoute("produtoSlug"));
             $repository->setSlugSubcategoria($params->fromRoute("subcategoriaslugSub"));
@@ -123,6 +124,7 @@ class IndexController extends AbstractActionController
                 $service = $this->getServiceLocator()->get('Produto\Service\Produto');
                 $visitas = $repository->findBySlugProduto($params->fromRoute("produtoSlug"));                
                 $newQtd = $visitas[0]->getAcessos() + 1;
+                    $repositoryNutricional = $em->getRepository("Produto\Entity\ProdutoNutricional")->findByProdutoproduto($return);
                 $data = array(
                     'id'  => $visitas[0]->getIdproduto(),
                     'titulo'  => $visitas[0]->getTitulo(),
@@ -131,12 +133,12 @@ class IndexController extends AbstractActionController
                     'produtosubcategoria'  => $visitas[0]->getProdutosubcategoria(),
                     'destaque'  => $visitas[0]->getDestaque(),
                     'ativo'  => $visitas[0]->getAtivo(),
-                    'acessos'  => $newQtd,
+                    'acessos'  => $newQtd
                 );            
                 $service->update($data);
                 
                 $relacionados =  $repository->produtosRelacionados();
-    	        return new ViewModel(array('detalheProduto' => $return,'produtosRelacionados' => $relacionados ));
+    	        return new ViewModel(array('detalheProduto' => $return,'produtosRelacionados' => $relacionados , 'nutricional' => $repositoryNutricional));
             }
             else
             {
