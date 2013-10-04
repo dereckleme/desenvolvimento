@@ -45,8 +45,9 @@ class Produto extends AbstractService {
     		}
 		
 		}
-		return true;
+		return $produto->getIdproduto();
 	}
+	
 	
 	
 	/**

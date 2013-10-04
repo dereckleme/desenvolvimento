@@ -85,14 +85,14 @@ class ProdutoFilter extends InputFilter {
     		)
         ));
         
-        $this->add(array(
+        /*$this->add(array(
     		'name'       => 'foto',
     		'required'   => true,
     		'filters'    => array(
     				array('name'=>'StripTags'),
     				array('name'=>'StringTrim')
     		)
-        ));
+        ));*/
         
     }
     

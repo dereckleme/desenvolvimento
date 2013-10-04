@@ -166,7 +166,7 @@ class Http extends AbstractAdapter
                     unset($this->files[$file]['filters'][$key]);
                 }
 
-                // Should never return false when it's tested by the upload validator
+                // Should never return false when it's tested by the upload validator				
                 if (!move_uploaded_file($content['tmp_name'], $filename)) {
                     if ($content['options']['ignoreNoFile']) {
                         $this->files[$file]['received'] = true;
@@ -177,7 +177,7 @@ class Http extends AbstractAdapter
                     $this->files[$file]['received'] = false;
                     return false;
                 }
-
+				
                 if ($rename !== null) {
                     $this->files[$file]['destination'] = dirname($filename);
                     $this->files[$file]['name']        = basename($filename);

@@ -178,5 +178,17 @@ $(function(){
 				}
 			});
 		});
-		
+				
+		$('#cropbox').Jcrop({
+		    onChange: showCoords,	
+	        onSelect: showCoords
+	    });		
+		function showCoords(e){
+			$('#w').val(e.w);
+		    $('#h').val(e.h);		    
+		    $('#x').val(e.x);
+		    $('#y').val(e.y);
+		    $('#x2').val(e.x2);
+		    $('#y2').val(e.y2);
+		}
 });

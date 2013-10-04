@@ -12,11 +12,13 @@
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style_admin.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-fileupload.min.css')
+                        ->prependStylesheet($this->basePath() . '/js/jcrop/css/jquery.Jcrop.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
         <script>var basePatch  = '<?=$this->basePath()?>'</script>
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/jquery.produto.js')
         							  ->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        							  ->prependFile($this->basePath() . '/js/jcrop/js/jquery.Jcrop.min.js')
         							  ->prependFile($this->basePath() . '/js/bootstrap-fileupload.min.js')
         							  ->prependFile($this->basepath() . '/js/jquery.maskedinput.min.js')
         							  ->prependFile($this->basepath() . '/js/jquery.price_format.1.8.min.js')
@@ -55,10 +57,13 @@
         	<?php echo $this->content; ?>
         	
         	<hr>
-      		<footer>
-       			<p>&copy; SpicyWeb 2013</p>
-      		</footer>
-
+        	
+        	<div class="row">
+        	    <footer>
+       			    <p>&copy; SpicyWeb 2013</p>
+      		    </footer>
+        	</div>
+      		
     	</div> <!-- /container -->        
     </body>
 </html>

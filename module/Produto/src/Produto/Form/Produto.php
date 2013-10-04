@@ -131,7 +131,8 @@ class Produto extends Form {
 		$this->add($textarea);
 		
 		$file = new File('foto');
-		$file->setAttribute('multiple', true);		
+		$file->setAttribute('multiple', true);
+		$file->setAttribute('id', 'up_img');
 		$this->add($file);
 		
 	}
