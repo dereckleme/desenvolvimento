@@ -3,7 +3,7 @@ $(function(){
 	$(".ButtonCestaVazia").on("click", function(){	$("#box_compras").slideUp();
 	return false;
 		
-	})
+	});
 	
 		$(".actionAddCarrinho").on("click", function(){	
 			var actionIdProduto = $(this).attr("rev");	
@@ -112,7 +112,7 @@ $(function(){
 				error: function(){}
 					});	
 			return false;
-		})
+		});
 		$(".btn_comprar_detalhe").on("click", function(){	
 			var actionIdProduto = $(this).attr("rev");	
 			var actionQuant = $(this).parents("#comprar_detalhe, .box_vejaTambem, .lista_categoria_produtos").find('input').val();
@@ -155,14 +155,14 @@ $(function(){
 				},
 				error: function(){}
 					});	
-		})
+		});
 		$(".actionOpenCarrinho").on("click", function(){	
 				$("#box_compras").slideToggle("fast", function () {});
 				return false;
 		});
 		$("#header").on( "mouseleave", function() {
 			$("#box_compras").slideUp("fast", function () {}); 
-		})
+		});
 		$("#box_compras").on("click",".actionCloseCarrinho", function(){	
 				$("#box_compras").slideToggle("fast", function () {});
 			return false;
@@ -212,7 +212,7 @@ $(function(){
 				$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').fadeOut("slow");
 				$(element).parents("#quantidade_produto_categoria, .qtd_produto").find('input').val(parseInt(valor)-1);
 				}
-			})
+			});
 			return false;
 		});
 		$(".MoreItens").on("click",function(){
@@ -320,11 +320,25 @@ $(function(){
 							});	
 					}
 				return false;
-			})
+			});
 			$( "#SliderProdutosGeral" ).on( "mouseleave", function() {$("#ProductDescription").fadeOut();})
 			$(".maskTop").hover(function(){
 				$(".bgPng",this).animate({top: "-96",},100);
 			},function(){
 				$(".bgPng",this).animate({top: "0",},100);
 			});
+			
+			$("#accordion").accordion();
+			
+			$(".tab").css({display: 'none', marginTop: 0, borderTopWidth: 0});
+            $('#tab_1').css('display', 'block');
+            $("a", $("#nav")).on("click",function(){
+            	var i = $('a', $('#nav')).index(this);
+            	var j = i + 1;
+            	$("#conteudo_tabs").children(".tab:visible").hide();
+            	$("#tab_" + j).show();                
+            	$(this).parents('#nav').find('a').removeClass('activetab');
+            	$(this).addClass('activetab');
+            	return false;
+            });
 });		

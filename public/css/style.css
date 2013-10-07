@@ -681,12 +681,12 @@ ul.BoxMenuInstitucional li a.TrocasDevolucoes:hover { background: url(../images/
 ul.BoxMenuInstitucional li a.PoliticaPrivacidade:hover { background: url(../images/PoliticaPrivacidadeHover.png) no-repeat;}
 ul.BoxMenuInstitucional li a.FaleConosco:hover { background: url(../images/FaleConoscoHover.png) no-repeat;}
 
-.activetab_1 { background: url(../images/QuemSomosHover.png) no-repeat !important;}
-.activetab_2 { background: url(../images/MapaSiteHover.png) no-repeat !important;}
-.activetab_3 { background: url(../images/PerguntasFrequentesHover.png) no-repeat !important;}
-.activetab_4 { background: url(../images/TrocasDevolucoesHover.png) no-repeat !important;}
-.activetab_5 { background: url(../images/PoliticaPrivacidadeHover.png) no-repeat !important;}
-.activetab_6 { background: url(../images/FaleConoscoHover.png) no-repeat !important;}
+#nav > #tab1 .activetab { background: url(../images/QuemSomosHover.png) no-repeat !important;}
+#nav > #tab2 .activetab { background: url(../images/MapaSiteHover.png) no-repeat !important;}
+#nav > #tab3 .activetab { background: url(../images/PerguntasFrequentesHover.png) no-repeat !important;}
+#nav > #tab4 .activetab { background: url(../images/TrocasDevolucoesHover.png) no-repeat !important;}
+#nav > #tab5 .activetab { background: url(../images/PoliticaPrivacidadeHover.png) no-repeat !important;}
+#nav > #tab6 .activetab { background: url(../images/FaleConoscoHover.png) no-repeat !important;}
 
 /**/
 .QuemSomos { width: 1024px; float: left;}
@@ -694,6 +694,9 @@ ul.BoxMenuInstitucional li a.FaleConosco:hover { background: url(../images/FaleC
 h3.tt_Institucional { font-size: 30px; color: #ffa800; font-weight: bold; letter-spacing: 1px; margin: 30px 0 0 5px;}
 p.txt_Institucional { margin: 10px 0 0 5px; font-size: 15px; color: #666666; line-height: 25px;}
 h5.Sub_tt { margin: 20px 0 0 5px; font-size: 18px; color: #666666;}
+
+/**/
+.MapaSite{}
 
 /**/
 #PerguntasFrequentes {width: 1024px; float: left;}
