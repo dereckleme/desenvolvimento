@@ -328,8 +328,6 @@ $(function(){
 				$(".bgPng",this).animate({top: "0",},100);
 			});
 			
-			$("#accordion").accordion();
-			
 			$(".tab").css({display: 'none', marginTop: 0, borderTopWidth: 0});
             $('#tab_1').css('display', 'block');
             $("a", $("#nav")).on("click",function(){
