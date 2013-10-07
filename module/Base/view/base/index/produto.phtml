@@ -103,7 +103,10 @@
 				<p class="ingredientes">Detalhe:</p>
 				<p class="ingredientes_inf"><?=$this->detalheProduto->getDescricao()?></p>
 			</div>
-
+<?php 
+            if($this->nutricional)
+            {
+?>
                   <!--tabela Nutricional-->
 				<table class="tabelaNutricional" summary="layout table">
 					<thead>
@@ -119,7 +122,7 @@
 							<td class="qtd">
 							Informação Nutricional
 							<br>
-							porcao
+							<!-- porcao -->
 							</td>
 							<td class="vd"></td>
 							</tr>
@@ -154,6 +157,9 @@
 							</tfoot>
 				    </table>
                   <!--Fim da Tabela Nutricional-->
+                  <?php 
+            }
+                  ?>
     	</div>	
     </div>
 
@@ -189,7 +195,7 @@
 
 						<div class="qtd_produto qtd_VejaTambem">
 							
-							<input id="relacionadoProd_<?=$relacionados->getIdproduto()?>" class="box_qtd" type="text" name="quantidade1" value="1">
+							<input  id="relacionadoProd_<?=$relacionados->getIdproduto()?>" class="box_qtd" type="text" name="quantidade1" value="1">
 							<ul class="produto_quantidade">
 								<li class="qtd_mudar qtMais">
 									<a href="#">mais</a>
@@ -202,8 +208,8 @@
 							<br/><span class="smsEstoque" style="display:none"></span>
 						</div>
 			   </div>
-			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rev="<?=$relacionados->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao carrinho de compras</button>
-			   <a href="#" class="btn_comprar_vejaTambem" title="Comprar">Comprar</a>
+			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rel="0" rev="<?=$relacionados->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao carrinho de compras</button>
+			   <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() )); ?>" class="btn_comprar_vejaTambem" title="Comprar">Comprar</a>
 		</div>
 <?php 
     

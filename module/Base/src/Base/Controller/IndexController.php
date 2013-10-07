@@ -54,14 +54,16 @@ class IndexController extends AbstractActionController
         $repository->setSlugCategoria($busca);
         $countCategoria = $repository->categoriaCountRow();
         $categoriaBySlug = $repository->productForCategory(5, $page);        
-        
+            $categoriaRepository = $this->getServiceLocator()->get("DOCTRINE\ORM\EntityManager");
+            $categoriaRepository = $categoriaRepository->getRepository("Produto\Entity\ProdutoCategorias");
+                
         if(count($categoriaBySlug) > 0)
         {
             $paginator = new ZendPaginator(new ArrayAdapter($countCategoria));
             $paginator->setCurrentPageNumber($pagePaginator);
             $paginator->setDefaultItemCountPerPage(5);
             
-            return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$paginator, 'termo'=>$busca));
+            return new ViewModel(array("produtosPorCategoria"=>$categoriaBySlug, 'page'=>$paginator, 'termo'=>$busca,"titulo"=> $categoriaRepository->findOneByslug($busca)));
         }
         else 
         {
@@ -97,11 +99,13 @@ class IndexController extends AbstractActionController
             $paginator = new ZendPaginator(new ArrayAdapter($countSub));
             $paginator->setCurrentPageNumber($pagePaginator);
             $paginator->setDefaultItemCountPerPage(5);
-            
+                $subcategoriaRepository = $this->getServiceLocator()->get("DOCTRINE\ORM\EntityManager");
+                $subcategoriaRepository = $subcategoriaRepository->getRepository("Produto\Entity\ProdutoSubcategoria");
             return new ViewModel(array(
                 'produtosPorSubCategoria'=>$subCatBySlug, 
                 'page'=>$paginator, 
-                'termo'=>$this->params()->fromRoute('subcategoriaslugSub',0)            
+                'termo'=>$this->params()->fromRoute('subcategoriaslugSub',0),
+                "titulo"=> $subcategoriaRepository->findOneByslugSubcategoria($slugSubcatBusca)
             ));
         }
         else 

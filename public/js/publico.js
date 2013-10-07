@@ -15,13 +15,20 @@ $(function(){
 					$(element).mouseenter(function() {
 						$(element).css("background-color", "#582700");
 						});
+					
 					$(element).css("background-image","url("+basePatch+"/images/loading.gif)");
+					if($(element).attr("rel") != 0)
+					{
 					$(element).html("Adicionando o <br/>produto ao carrinho..");
+					}
 					$(element).css("background-color", "#582700");
 				},
 				complete:function(){
 					$(element).css("background-image","url("+basePatch+"/images/btn_ir_cesta.png)");
+					if($(element).attr("rel") != 0)
+					{
 					$(element).html("Adicionar ao<br/> carrinho de compras");
+					}
 					$(element).mouseenter(function() {
 						$(element).css("background-color", "#351903");
 						});

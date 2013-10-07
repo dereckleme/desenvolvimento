@@ -172,8 +172,15 @@ li.tt_dropdown { width: 544px; height: 60px; border-bottom: solid 1px #DDD; disp
 li a.tt_dropdown { font-family: "Georgia", Times New Roman, Times, serif; font-size: 18px; color: #666666; padding-left: 30px; padding-top: 15px; display: block; letter-spacing: 1px;}
 li a.tt_dropdown span.ttd_dropdown { font-size: 24px; color: #ff9600; font-style: italic;}
 li.BoxAllFood { width: 180px; display: block; float: left; margin-bottom: 10px;}
+
+
+
 li.txtD_dropdown { width: 180px; float: left; display: block;}
 li a.txtD_dropdown { font-size: 13px; color: #ff9600; font-weight: bold; padding-left: 20px;}
+li a.txtD_dropdown:hover { text-decoration: underline;}
+
+
+
 li.txt_dropdown { width: 180px; float: left; display: block;}
 li a.txt_dropdown { font-size: 11px; color: #666666; padding-left: 20px;}
 li a.txt_dropdown:hover { text-decoration: underline;}

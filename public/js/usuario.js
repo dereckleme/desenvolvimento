@@ -331,7 +331,8 @@ $(document).ready(function(){
 		return false;
 	})
 	$(".DigCep1").mask("99999-999");
-	$(".CalcFret").on("click",function(){
+	$(".CalcFret").on("click",function(){ 
+		var element = this;
 		if($(".DigCep1").val().length == 9)
 			{
 			var cepSet = $(".DigCep1").val();
@@ -339,12 +340,11 @@ $(document).ready(function(){
 			//Front Set Frete
 				$.ajax({
 					url: basePatch+"/correios/frete",
-					async:false,
 					beforeSend:function(){
-						$(".CalcFret").append("<img src='"+basePatch+"/images/carregando.gif' width='12'/>");
+						$(element).html("enviando");
 					},
 					complete:function(){
-						$(".CalcFret img").attr("src","ok.png");
+						$(element).html("foi");
 					},
 					type: "post",
 					data: {cep:cepSet},
