@@ -177,7 +177,6 @@ li.BoxAllFood { width: 180px; display: block; float: left; margin-bottom: 10px;}
 
 li.txtD_dropdown { width: 180px; float: left; display: block;}
 li a.txtD_dropdown { font-size: 13px; color: #ff9600; font-weight: bold; padding-left: 20px;}
-li a.txtD_dropdown:hover { text-decoration: underline;}
 
 
 
