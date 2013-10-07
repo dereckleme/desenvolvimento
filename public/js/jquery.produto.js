@@ -183,7 +183,7 @@ $(function(){
 		    onChange: showCoords,	
 	        onSelect: showCoords
 	    });		
-		function showCoords(e){
+		function showCoords(e) {
 			$('#w').val(e.w);
 		    $('#h').val(e.h);		    
 		    $('#x').val(e.x);
@@ -191,4 +191,9 @@ $(function(){
 		    $('#x2').val(e.x2);
 		    $('#y2').val(e.y2);
 		}
+		function checkCoords() {
+			if (parseInt($('#w').val())) return true;
+			alert('Por favor, escolha uma região para o recorte e pressione o botão de recorte.');
+			return false;
+		};
 });
