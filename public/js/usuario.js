@@ -258,10 +258,15 @@ $(document).ready(function(){
 			url: basePatch+"/correios/restCep",
 			type: "post",
 			beforeSend: function(){
-				$(".ajaxMsg").html("Carregando...");
-			     $(".ajaxMsg").show();
+					$(".atencaoErro").html("Aguarde um momento.");
+					$(".erro").html("");
+					$(".tentarNovamente").css("display","none");
+					$(".tipo_erro").html("Localizando endereço do cep: "+cepSet);
+					$("#form_erro").fadeIn();
 			   },
-			async:false,
+			complete:function(){
+				$("#form_erro").fadeOut();
+			},   
 			data: {cep:cepSet},
 			success: function(data) {
 				$(".ajaxMsg").fadeOut();
@@ -324,7 +329,10 @@ $(document).ready(function(){
 					error: function(){}
 				});	
 			},
-			error: function(){alert("Não conseguimos se comunicar com o gateway dos correios, preencha seus dados manualmente.");}
+			error: function(){
+				$("#form_erro").fadeOut();
+				alert("Não conseguimos se comunicar com o gateway dos correios, preencha seus dados manualmente.");
+				}
 		});	
 	}});
 	$(".DigCep1").on("click",function(){
@@ -341,10 +349,10 @@ $(document).ready(function(){
 				$.ajax({
 					url: basePatch+"/correios/frete",
 					beforeSend:function(){
-						$(element).html("enviando");
+						$(element).html("<img src='"+basePatch+"/images/486.GIF'/> "+"Calculando Valor");
 					},
 					complete:function(){
-						$(element).html("foi");
+						$(element).html("Calcular frete");
 					},
 					type: "post",
 					data: {cep:cepSet},
