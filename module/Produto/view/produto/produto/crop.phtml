@@ -14,13 +14,13 @@
     <div class="span12">
        <img id="cropbox" width="<?php echo $this->width;?>" height="<?php echo $this->height;?>" alt="" src="<?php echo $this->basepath()?>/images/produtos/large/<?php echo $this->produto->getFoto();?>">
        
-       <form action="<?php echo $this->url('admin-produto-home/admin-default', array('action' => 'crop','id' => $this->produto->getIdproduto()));?>" method="post">
+       <form action="<?php echo $this->url('admin-produto-home/admin-default', array('action' => 'crop','id' => $this->produto->getIdproduto()));?>" method="post" onsubmit="return checkCoords();">
            <input type="hidden" name="imagem" value="<?php echo $this->produto->getFoto();?>" >
            <input type="hidden" id="x" name="x" />
 		   <input type="hidden" id="y" name="y" />		   
 		   <input type="hidden" id="w" name="w" />
 		   <input type="hidden" id="h" name="h" />
-		   <input type="submit" value="Crop Image" class="btn btn-large btn-inverse" />
+		   <input type="submit" value="Recortar" class="btn btn-large btn-inverse" />
        </form>
     </div>	
 </div>
