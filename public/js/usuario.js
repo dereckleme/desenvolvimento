@@ -6,6 +6,7 @@ $(document).ready(function(){
 	$(".status_criar_conta").on("click",function(){
 		$("#form_login").css("display","none");
 		$("#form_cadastro").css("display","block");
+		
 		return false;
 	})
 	$(".status_entrar").on("click",function(){
