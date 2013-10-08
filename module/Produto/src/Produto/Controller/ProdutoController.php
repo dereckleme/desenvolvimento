@@ -161,25 +161,7 @@ class ProdutoController extends AbstractActionController
                                 $resize = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
                                 $resize->resize(1000);
                                 $resize->save('public/images/produtos/large/'.$fname);
-                            }
-                            
-                            // $small = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
-                            // $small->resize(212,159);
-                            // $small->adaptiveResize(212,159);
-                            // $small->save('public/images/produtos/small/'.$fname);
-                            
-                            // ///////////////////////////////////////////////////////////////////////////////////////////////
-                            
-                            // $thumbsmall = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
-                            // $thumbsmall->resize(86,102);
-                            // $thumbsmall->save('public/images/produtos/thumb_small/'.$fname);
-                            
-                            // ///////////////////////////////////////////////////////////////////////////////////////////////
-                            
-                            // $thumb = $thumbnailer->create('public/images/produtos/large/' . $fname, $options = array());
-                            // $thumb->resize(50,66);
-                            // $thumb->save('public/images/produtos/thumb/'.$fname);
-                            
+                            }                            
                             $names[] = $fname;
                         }                        
                     }
@@ -194,7 +176,6 @@ class ProdutoController extends AbstractActionController
                 echo "<pre>", print_r($form->getMessages()), "</pre>";
                 exit('nao passou validacao');
             }
-            #exit;            
             return $this->redirect()->toRoute('admin-produto-home/admin-default', array('action' => 'crop','id' => $idproduto));
         }
     }
@@ -211,25 +192,6 @@ class ProdutoController extends AbstractActionController
         if($request->isPost())
         {
         	$data = $request->getPost()->toArray();
-        	
-        	/*
-        	$imagename = explode('.', $data['imagem']);        	
-        	$targ_w = $data['w'];
-        	$targ_h = $data['h'];
-        	$jpeg_quality = 90;
-        	
-        	$src = $request->getServer()->DOCUMENT_ROOT . '/seletoLoja/public/images/produtos/large/'.$data['imagem']; 
-        	$img_r = imagecreatefromjpeg($src);
-        	$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
-        	
-        	imagecopyresampled($dst_r,$img_r,0,0,$data['x'],$data['y'],$targ_w,$targ_h,$data['w'],$data['h']);
-        	
-        	header('Content-type: image/jpeg');
-        	imagejpeg($dst_r,null,$jpeg_quality);
-        	*/
-        	
-        	#$nameimage = explode(".", $data['imagem']);
-        	#$newname = md5(time().rand(0,2000)).'.'.$nameimage[1];
         	
         	$thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         	$newimage = $thumbnailer->create('public/images/produtos/large/' . $data['imagem'], $options = array());
@@ -256,7 +218,6 @@ class ProdutoController extends AbstractActionController
         	#return $this->redirect()->toRoute('admin-produto-home/admin-default', array('action' => 'crop','id' => $idproduto));
         	return $this->redirect()->toRoute('admin-produto-home');
         }
-        
         
         return new ViewModel(array(
             'produto' => $produto,

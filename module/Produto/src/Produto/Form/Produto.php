@@ -122,13 +122,29 @@ class Produto extends Form {
 			),
 			'attributes'   =>    array(
 				'placeholder' => '0',
-				'class'       => 'input-mini'
 			)
 		));
 		
 		$textarea = new Textarea('descricao');
-		$textarea->setAttribute('row', '3');
+		$textarea->setAttributes(array(
+		    'row' => '3',
+		    'id'  => 'descricao'
+		));
 		$this->add($textarea);
+		
+		$imformacaoNutricional = new Textarea('imformacaoNutricional');
+		$imformacaoNutricional->setAttributes(array(
+		    'row' => '3',
+		    'id'  => 'imformacaoNutricional'
+		));
+		$this->add($imformacaoNutricional);
+		
+		$complemento = new Textarea('complemento');
+		$complemento->setAttributes(array(
+		    'row' => '3',
+		    'id'  => 'complemento'
+		));
+		$this->add($complemento);
 		
 		$file = new File('foto');
 		$file->setAttribute('multiple', true);

@@ -85,14 +85,41 @@ class ProdutoFilter extends InputFilter {
     		)
         ));
         
-        /*$this->add(array(
+        $this->add(array(
+    		'name'       => 'descricao',
+    		'required'   => true,
+    		'filters'    => array(
+				array('name'=>'StripTags'),
+				array('name'=>'StringTrim')
+    		)
+        ));
+
+        $this->add(array(
+    		'name'       => 'imformacaoNutricional',
+    		'required'   => true,
+    		'filters'    => array(
+				array('name'=>'StripTags'),
+				array('name'=>'StringTrim')
+    		)
+        ));
+
+        $this->add(array(
+    		'name'       => 'complemento',
+    		'required'   => true,
+    		'filters'    => array(
+				array('name'=>'StripTags'),
+				array('name'=>'StringTrim')
+    		)
+        ));
+        
+        $this->add(array(
     		'name'       => 'foto',
     		'required'   => true,
     		'filters'    => array(
-    				array('name'=>'StripTags'),
-    				array('name'=>'StringTrim')
+				array('name'=>'StripTags'),
+				array('name'=>'StringTrim')
     		)
-        ));*/
+        ));
         
     }
     

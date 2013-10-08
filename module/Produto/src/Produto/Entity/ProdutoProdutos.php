@@ -101,14 +101,27 @@ class ProdutoProdutos
      */
     private $acessos;
     
-
     /**
      * @var string
      *
      * @ORM\Column(name="foto", type="string", length=255, nullable=true)
      */
     private $foto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imformacao_nutricional", type="text", nullable=true)
+     */
+    private $imformacaoNutricional;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="complemento", type="text", nullable=true)
+     */
+    private $complemento;
+        
     /**
      * @var boolean
      *
@@ -297,7 +310,7 @@ class ProdutoProdutos
 	 * @return the $descricao
 	 */
 	public function getDescricao() {
-		return $this->descricao;
+		return nl2br($this->descricao);
 	}
 
 	/**
@@ -320,8 +333,37 @@ class ProdutoProdutos
 	public function setCodigoProduto($codigoProduto) {
 		$this->codigoProduto = $codigoProduto;
 	}
+	
+	/**
+	 * @return the $imformacaoNutricional
+	 */
+	public function getImformacaoNutricional() {
+		return nl2br($this->imformacaoNutricional);
+	}
+
+	/**
+	 * @return the $complemento
+	 */
+	public function getComplemento() {
+		return $this->complemento;
+	}
+
+	/**
+	 * @param string $imformacaoNutricional
+	 */
+	public function setImformacaoNutricional($imformacaoNutricional) {
+		$this->imformacaoNutricional = $imformacaoNutricional;
+	}
+
+	/**
+	 * @param string $complemento
+	 */
+	public function setComplemento($complemento) {
+		$this->complemento = $complemento;
+	}
 
 
+    
 	
 	
     
