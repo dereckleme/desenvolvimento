@@ -125,9 +125,11 @@ a.tentarNovamente{background: #ff7f25; border-radius: 7px; padding: 10px 17px; m
 #btn_form {width: 453px; margin: 0 auto; }
 #form_login {width: 453px; margin: 0 auto; background: #FFF }
 #form_cadastro {width: 453px; margin: 0 auto; background: #FFF }
-a.status_entrar { background: url(../images/btn_entrar.png) no-repeat top; width:150px; height: 51px; float: left; text-indent: -9999px}
-a.status_entrar:hover{ background: url(../images/btn_entrar_desativado.png) no-repeat top; z-index: 1 }
+a.status_entrar { background: url(../images/btn_entrar_desativado.png) no-repeat top; z-index: 1; width:150px; height: 51px; float: left; text-indent: -9999px}
+a.status_entrar_active { background: url(../images/btn_entrar.png) no-repeat top; }
+a.status_entrar:hover{ background: url(../images/btn_entrar.png) no-repeat top; }
 a.status_criar_conta { background: url(../images/btn_criarConta_desativado.png) no-repeat top; width:219px; height: 51px; float: left; text-indent: -9999px}
+a.status_criar_conta_active { background: url(../images/btn_criarConta.png) no-repeat top; }
 a.status_criar_conta:hover { background: url(../images/btn_criarConta.png) no-repeat top; }
 a.status_fechar {background: url(../images/fechar_loginCadastro.png) no-repeat top; width:84px; height: 51px; float: left; text-indent: -9999px}
 a.esqueceuSenha { color:#333; text-decoration: underline; margin-left: 12%;}

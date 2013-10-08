@@ -2,19 +2,21 @@ $(document).ready(function(){
 	$(".tentarNovamente").on("click",function(){
 		$("#form_erro").fadeOut();
 		return false;
-	})
+	});
 	$(".status_criar_conta").on("click",function(){
 		$("#form_login").css("display","none");
 		$("#form_cadastro").css("display","block");
-		
+		$("#btn_form a.status_criar_conta").addClass("status_criar_conta_active");
+		$("#btn_form a.status_entrar").removeClass("status_entrar_active");
 		return false;
-	})
+	});
 	$(".status_entrar").on("click",function(){
 		$("#form_cadastro").css("display","none");
 		$("#form_login").css("display","block");
-		
+		$("#btn_form a.status_entrar").addClass("status_entrar_active");
+		$("#btn_form a.status_criar_conta").removeClass("status_criar_conta_active");
 		return false;
-	})
+	});
 	
 	
 	/*
