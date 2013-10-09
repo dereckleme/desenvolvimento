@@ -170,8 +170,12 @@ class IndexController extends AbstractActionController
                             $termos["label"] = $value;
                         }
                         else
-                        {   
-                            $termos["label$i"] = $value;                        
+                        { 
+                            if($i <= 5)
+                            {
+                                $termos["label$i"] = $value;
+                            }  
+                                                    
                         }                    
                         $i++;
                     }            	

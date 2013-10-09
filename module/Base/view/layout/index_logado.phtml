@@ -9,7 +9,8 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/js/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')
+                        #->prependStylesheet($this->basePath() . '/js/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')
+                        ->prependStylesheet($this->basePath() . '/js/jquery-ui-1.10.3/themes/base/jquery-ui.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
                         ?>
         <script>var basePatch  = '<?=$this->basePath()?>'</script>
@@ -19,7 +20,8 @@
                                       ->prependFile($this->basePath() . '/js/usuario.js')
                                       ->prependFile($this->basePath() . '/js/publico.js')
                                       ->prependFile($this->basePath() . '/js/jquery.maskedinput.min.js')
-                                      ->prependFile($this->basePath() . '/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js')
+                                      #->prependFile($this->basePath() . '/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js')
+                                      ->prependFile($this->basePath() . '/js/jquery-ui-1.10.3/ui/jquery-ui.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
 
