@@ -80,6 +80,18 @@ return array(
                         )
                      ),
                 ),
+            'cadastro-rest' => array(
+            		'type' => 'Segment',
+            		'options' => array(
+            				'route' => '/api/Cadastro[/:id]',
+            				'constraints' => array(
+            						'id' => '[0-9]+'
+            				),
+            				'defaults' => array(
+            						'controller' => 'Usuario\Controller\CadastroRest'
+            				)
+            		)
+            ),
         ),
     ),
     'service_manager' => array(
@@ -104,7 +116,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Usuario\Controller\Usuario' => 'Usuario\Controller\UsuarioController',
-            'Usuario\Controller\Login' => 'Usuario\Controller\LoginController'
+            'Usuario\Controller\Login' => 'Usuario\Controller\LoginController',
+            'Usuario\Controller\CadastroRest' => 'Usuario\Controller\CadastroRestController'
         ),
     ),
     'view_manager' => array(

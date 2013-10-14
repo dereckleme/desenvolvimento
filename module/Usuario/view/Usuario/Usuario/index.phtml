@@ -1,13 +1,108 @@
 <!--PAGINA DETALHES DO PEDIDO-->
          <?php 
          $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
-             if($this->recibos)
-             {
+             
          ?>
-		<div id="DetalheDoPedido">
-				<h3 class="tt_AcompanheSeuPedido">Acompanhe os seus pedidos</h3>
-				<div id="BoxDetalheDoPedido">
-					<!--CONTEUDO DETALHES DO PEDIDO-->
+
+	<div id="PaginaDoUsuario">
+			<div id="MenuDoUsuario">
+				<ul class="BoxMenuDoUsuario">
+					<li class="BoxMenuInstitucional">
+						<a href="" class="MeusDados" title="Meus Dados">Meus Dados</a>
+					</li>
+					<li class="BoxMenuInstitucional">
+						<a href="" class="EndEntrega" title="Endereços de Entregas">Endereços de Entregas</a>
+					</li>
+					<li class="BoxMenuInstitucional">
+						<a href="" class="SeuPedido" title="Seus Pedidos">Seus Pedidos</a>
+					</li>
+				</ul>
+			</div>
+
+		<div id="BoxPaginaDoUsuario" >
+
+			<!-- CONTEUDO DADOS DO USUARIO-->
+			<div id="BoxMeusDados" >
+				 <div id="MeusDados">
+				  <p class="TituloEnderecoResidencial">Meu Cadastro</p>
+				   <p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+					<form action="" class="formAction">
+					 <label class="FormNome">Nome do Destinatário*:</label><br/><input disabled="disabled" type="text" class="BoxNome" value=""><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
+					  <span class="EditarDados" title="Editar Cadastro">Editar</span></a>
+					   <input type="submit" title="Salvar Cadastro" value="Salvar Cadastro" class="EventcadastrarEndereco"><br/><br/><br/>
+					</form>
+				</div>
+				
+				<div id="MeuEndereco">
+				  <p class="TituloEnderecoResidencial">Meu Endereço</br>
+                    <span class="DetalheEnderecoResidencial">Para alterar o endereço informe primeiro o CEP</p>
+                      <p class="ttBoxLogin">*Todos os campos são obrigatórios</p></br>
+						<form action="" class="formAction">
+					      <label class="FormCEP">CEP*:</label><br/><input type="text" class="BoxCEP"><br/><br/>
+					        <label class="FormEndereco">Endereço*:</label><br/><input type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
+                                      Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
+					           <label class="FormNumero">Numero*:</label>                                      
+                               <label class="FormComplemento">Complemento:</label>
+                                <br/>
+					            <input type="text" class="BoxNumero" >
+					            <input type="text" class="BoxComplemento" ><br/><br/>
+					            <label class="FormBairro">Bairro*:</label>
+					            <label class="FormCidade">Cidade*:</label><br/>
+					            <input type="text" class="BoxBairro" >
+					            <select class="BoxCidade"><option>Selecione</option></select><br/><br/>
+					            <label class="FormEstado">Estado*:</label><br/>
+					            <select class="BoxEstado"><option>Selecione</option></select><br/><br/>
+					            <label class="FormTelResidencial">Telefone Residencial*:</label><br/><input type="text" class="BoxTelResidencial"><br/><br/>
+					            <label class="FormTelCelular">Telefone Celular:</label><br/><input type="text" class="BoxTelCelular"><br/><br/>
+					            <label class="FormTelComercial">Telefone Comercial:</label><br/><input type="text" class="BoxTelComercial"><br/><br/>
+					            <span class="EditarDados" title="Editar Endereço">Editar</span></a>
+					            <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>
+					        </form>
+						
+					</div>
+					
+				</div>
+
+			<!-- FIM DO CONTEUDO DADOS DO USUARIO-->
+
+			<!--ENDEREÇOS DO USUARIO-->
+			<div id="BoxMeuEndereco" style="display:none">
+
+				<div id="BoxTitulo">
+					<p class="TituloBoxMeuEndereco">Meus Endereços Cadastrados</p>
+				    <span class="ButtonNovoEndereco" title="Novo Endereço">Novo Endereço</span></a>
+				</div>
+					<table id="EditarEndereco">
+						<tr class="BoxRadio">
+						<th class="radio"><input type="radio" name=myradio value="1" checked></th>
+						<th class="TextoEditarEnd"><?=$this->endereco?> - <?=$this->numero?> ,
+						<?=$this->bairro?> - <?=$this->cadastro->getMapeamentocidade()->getNome()?> - <?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
+
+						<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>
+
+						<th class="bt_editar"><a href="" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
+						</tr>
+					</table>
+
+					<table id="EditarEndereco">
+						<tr class="BoxRadio">
+						<th class="radio"><input type="radio" name=myradio value="1" checked></th>
+						<th class="TextoEditarEnd"><?=$this->endereco?> - <?=$this->numero?> ,
+						<?=$this->bairro?> - <?=$this->cadastro->getMapeamentocidade()->getNome()?> - <?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
+
+						<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>
+
+						<th class="bt_editar"><a href="" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
+						</tr>
+					</table>
+			</div>
+
+			<!-- FIM DO ENDEREÇOS DO USUARIO-->    
+
+
+
+			<!--PEDIDOS-->
+				<div id="BoxDetalheDoPedido" style="display:none">
 					<?php     
 					    foreach($this->recibos AS $recibo)
 					    {
@@ -89,47 +184,16 @@
 								</div>
 							</li>
 						</ul>
-				<!--FIM DO CONTEUDO DETALHES DO PEDIDO-->
+				
 <?php 
 					    }	    
 ?>
-				</div>		
-				
-		</div>
-		<?php 
-             }
-		?>
-    <!--FIM DA PAGINA DETALHES DO PEDIDO-->
-
-
-
-<!--Area do Cliente-->
-
-				<div id="AreaCliente">
-					<div id="MeusDados">
-						<h5 class="tt_MeusDados">Meus Dados</h5>
-							<div id="BoxMeusDados">
-								<p class="NameMeusDados"><?if($this->cadastro->getNome()) print $this->cadastro->getNome(); else print "Nome não cadastrado.";?></p>
-                                <p class="EmailMeusDados"><?=$this->usuario->getEmail()?></p>
-                                <p class="AlterarMeusDados"><a href="#" title="Alterar Senha">alterar senha</a></p>
-					           <!--  <input type="submit" value="Editar" class="EditarDados">-->
-							</div>
-					</div>
-
-					<div id="MeuEndereco">
-						<h5 class="tt_MeuEndereco">Meu Endereço</h5>
-							<div id="BoxMeuEndereco">
-								<p class="NomeEndereco"><?if($this->cadastro->getNome()) print $this->cadastro->getNome(); else print "Nome não cadastrado.";?></p>
-								<p class="DescEndereco"><b>Endereço:</b><?if($this->cadastro->getRua()) print $this->cadastro->getRua().",".$this->cadastro->getNumero(); else print "Indisponivel";?><br/>
-								<B>Bairro:</B><?if($this->cadastro->getBairro()) print $this->cadastro->getBairro(); else print "Indisponivel";?><br/>
-								<B>Cep:</B><?if($this->cadastro->getCep()) print $this->cadastro->getCep(); else print "Indisponivel";?><br/>
-								<B>Cidade:</B><?if($this->cadastro->getMapeamentocidade()) print $this->cadastro->getMapeamentocidade()->getNome(); else print "Cidade não cadastrada.";?><br/>
-								<B>Estado:</B><?if($this->cadastro->getMapeamentocidade()) print $this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome(); else print "Estado não cadastrado.";?><br/>
-								</p> 
-								<!-- <input type="submit" value="adicionar novo endereço" class="NovoEndereco"> -->
-					            <input type="submit" value="Editar" title="Editar Endereço" class="EditarDados">
-							</div>
-					</div>
-
 				</div>
-				<!--Fim da Area do Cliente-->	
+
+				<!--FIM DO PEDIDOS-->
+	
+    		</div>
+			  	
+	</div>
+
+	

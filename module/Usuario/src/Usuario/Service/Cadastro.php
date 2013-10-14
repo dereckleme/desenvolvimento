@@ -18,7 +18,7 @@ class Cadastro extends AbstractService{
 	    				"setCampo" => "setUsuariosusuarios",
 	    				"setActionReference" => $idUsuario)
 	    ));
-	     parent::insert(array());
+	    return parent::insert(array("ativo" => 1,"padrao" => 1));
 	}
 	public function update(array $data)
 	{

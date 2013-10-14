@@ -34,7 +34,18 @@ class UsuarioCadastro
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ativo", type="integer", nullable=true)
+     */
+    private $ativo;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="padrao", type="integer", nullable=true)
+     */
+    private $padrao;
     /**
      * @var string
      *
@@ -211,7 +222,23 @@ class UsuarioCadastro
 	public function setBairro($bairro) {
 		$this->bairro = $bairro;
 	}
+	public function getAtivo() {
+		return $this->ativo;
+	}
 
+	public function getPadrao() {
+		return $this->padrao;
+	}
+
+	public function setAtivo($ativo) {
+		$this->ativo = $ativo;
+	}
+
+	public function setPadrao($padrao) {
+		$this->padrao = $padrao;
+	}
+
+    
 
 
     

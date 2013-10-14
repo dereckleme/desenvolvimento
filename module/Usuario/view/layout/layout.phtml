@@ -41,9 +41,11 @@
             <div id="ContenTopoHeader">
               <div id="mn_topo">
                   <ul class="mn_topo">
-				            <li class="Menu_topo"><a href="">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</a></li>
+				            <li class="Menu_topo">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</li>
 				             <li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
-                      <li class="Menu_topo" style="background:none;"><a href="">Acompanhe seus pedidos</a></li>
+                      <li class="Menu_topo" ><a href="">Acompanhe seus pedidos</a></li>
+                      <li class="Menu_topo" style="background:none;">
+                      <a href="<?=$this->url("publico-duvidas")?>">Dúvidas frequentes</a></li>
 			            </ul>
                </div>      
               <a href="#" class="actionOpenCarrinho">
@@ -122,11 +124,10 @@
 
 <div id="geral">
 
-
+ <!--*****************************CONTEUDO TOPO*****************************-->
   <div id="topo_menu">
-      
     <div id="menu_central">
-      <a href="<?=$this->basePath()?>"><h1 class="logo_seleto">SELETO ALIMENTOS</h1></a>
+      <a href="<?=$this->basePath()?>" title="SELETO ALIMENTOS"><h1 class="logo_seleto" title="Seleto Alimentos">SELETO ALIMENTOS</h1></a>
             
           <div id="box_menu">
             <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
@@ -135,44 +136,41 @@
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
             </form>
-                <ul class="Menu" <?php 
-                if($this->matchedRoute != "home")
-                {
-                    print 'style="display:none"';
-                }
-                ?>>                    
+
+                    <ul class="Menu">                    
                       <li class="lista_menu_cafe"><!--Cafés-->
-                            <h3 class="lista_menu_cafe"><a href="#">Cafes</a></h3>
-                              <ul class="dropdownCafe" style="display:none">
-                                  <li class="tt_dropdown">
-                                      <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
-                                  </li>
-
-                                  <li class="imgDropdown">
-                                      <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
-                                  </li>
-
-                                <li class="BoxAllFood">
+                          <h3><a href="#">Cafes</a></h3>
+                          
+                          <ul class="dropdownCafe">
+                              <li class="tt_dropdown">
+                                  <a class="tt_dropdown" href="#">O Café Seleto tem um sabor <span class="ttd_dropdown"> delicioso</span></a>
+                              </li>
+                              <li class="imgDropdown">
+                                  <img class="dom_menu" src="<?=$this->basePath()?>/images/dom_menu.png">
+                              </li>
+                              <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em pó</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Tradicional</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Vacuo Forte</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Conheça Seleto Dom</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Levissimo</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Intenso</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Coador de papel</a></li>
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                      <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown">Café em pó</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/tipo-vacuo">Tipo vácuo</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/tipo-almofada">Tipo almofada</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/cafe-em-po">Veja Mais</a></li>
+                                      
+                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Café em cápsulas</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas/seleto-dom/cafe-seleto-em-capsula-levissimo">Seleto Dom Levissimo</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas/seleto-dom/cafe-seleto-em-capsula-intenso">Seleto Dom Intenso</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas">Veja Mais</a></li>
+                                      <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Descartáveis para casa</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/filtro-de-papel">Filtro de papel</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/filtro-de-papel">Veja Mais</a></li>
                                   </ul>
-                                </li> 
-                            </ul>
+                              </li> 
+                          </ul>
                       </li>
                       
                       <li class="lista_menu_alimentos"><!--Alimentos-->
-                        <h3 class="lista_menu_alimentos"><a href="#">Alimentos</a></h3>
-                          <ul class="dropdownAlimento" style="min-height:300px; display:none">
+                        <h3><a href="#">Alimentos</a></h3>
+                          
+                          <ul class="dropdownAlimento" style="min-height:300px;">
                             <li class="tt_dropdown">
                               <a class="tt_dropdown" href="#">Seleto alimentos, seu café da manhã  <span class="ttd_dropdown"> completo</span>
                               </a>
@@ -184,87 +182,62 @@
 
                                <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
-
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
-
-                                     
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
-
-                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown">Mistura para bolo</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo/mistura-para-bolo-de-chocolate-400g">Mistura para bolo de chocolate</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo/mistura-para-bolo-de-coco-400g">Mistura para bolo de coco</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo">Veja Mais</a></li>
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown">Achocolatados em pó</a></li>  
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po/achocolatado-seleto-pote-400g">Achocolatado pote</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po/achocolatado-seleto-sache-400g">Achocolatado sache</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po/preparo-de-morango-400g">Preparo de morango em pó</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po">Veja Mais</a></li>
                                   </ul> 
                               </li>
                           </ul>
                       </li>
 
                       <li class="lista_menu_produtos"><!--Todos Produtos-->
-                        <h3 class="lista_menu_produtos"><a href="#">Todos Produtos</a></h3>
-                          <ul class="dropdownProduto" style="display:none">
+                        <h3><a href="#">Todos Produtos</a></h3>
+                          <ul class="dropdownProduto">
                             <li class="tt_dropdown">
-                              <a class="tt_dropdown" href="#">Lorem ipsum dolor sit amet, <span class="ttd_dropdown"> consectetur</span>
+                              <a class="tt_dropdown" href="#">Veja todos os produtos,<span class="ttd_dropdown"> Seleto</span>
                               </a>
                             </li>
                                 <!--Coluna 1-->
                              <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
+                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown">Mistura para bolo</a></li>
 
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo/mistura-para-bolo-de-chocolate-400g">Mistura para bolo de chocolate</a></li>
 
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo/mistura-para-bolo-de-coco-400g">Mistura para bolo de coco</a></li>
 
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/alimentos/mistura-para-bolo">Veja Mais</a></li>
+                                     <li class="txtD_dropdown"><a class="txtD_dropdown">Descartáveis para casa</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Filtro de papel</a></li>
                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
-
-                                     
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
-
-                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
                                   </ul> 
                               </li>
                                  <!--Coluna 2-->
                                <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
-
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
-
-                                     
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
-
-                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                    <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown">Achocolatados em pó</a></li>  
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po/achocolatado-seleto-pote-400g">Achocolatado pote</a></li>
+                                     <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po/achocolatado-seleto-sache-400g">Achocolatado sache</a></li>
+                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/alimentos/achocolatados-em-po">Veja Mais</a></li>
+                                    <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown">Café em pó</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/tipo-vacuo">Tipo vácuo</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-po/tipo-almofada">Tipo almofada</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/cafe-em-po">Veja Mais</a></li>
                                   </ul> 
-                              </li>
+                               </li>
                                   <!--Coluna 3-->
                                <li class="BoxAllFood">
                                   <ul>
-                                     <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Matinais / Sobremesas</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Mistura para bolo</a></li>
-
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Preparo de morango em pó</a></li>
-
-                                     <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
-                                     
-                                     <li class="txtD_dropdown"><a class="txtD_dropdown" href="#">Achocolatados em pó</a></li>
-
-                                     
-                                     <li class="txt_dropdown"><a class="txt_dropdown" href="">Achocolatado instantâneo</a></li>
-
-                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="">Veja Mais</a></li>
+                                    <li class="txtD_dropdown" style="margin-top:10px"><a class="txtD_dropdown" href="#">Café em cápsulas</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas/seleto-dom/cafe-seleto-em-capsula-levissimo">Seleto Dom Levissimo</a></li>
+                                      <li class="txt_dropdown"><a class="txt_dropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas/seleto-dom/cafe-seleto-em-capsula-intenso">Seleto Dom Intenso</a></li>
+                                      <li class="VejaMaisDropdown"><a class="VejaMaisDropdown" href="<?=$this->basePath()?>/produto/cafe-em-capsulas">Veja Mais</a></li>
                                   </ul> 
                               </li>
                           </ul>
@@ -312,25 +285,25 @@
 </div>
 
         
-       <!--*******************FOOTER************************-->
+     <!--*******************FOOTER************************-->
 
 <div id="footer">
 
     <div id="box_search_footer">
-      <div class="search_footer">
-
-              <input value="buscar produto" class="search_footer">
-               <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
-
+        <div class="search_footer">
+            <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">
+              <input placeholder="buscar produto" class="search_footer" id="search_footer" name="p">
+              <input type="submit" value="pesquisar" class="lupa_footer" title="Buscar Produto">
+            </form>
         </div>
     </div>
 
     <div id="box_newsletter_footer">
       <div class="newsletter_footer">
            <p class="newsletter_footer">RECEBA DESCONTOS E OFERTAS EXCLUSIVAS</p>
-           <input value="Digite seu nome" class="news_footer">
-           <input value="Digite seu e-mail" class="news_footer">
-           <input type="submit" class="ok_footer" value="OK" title="Receba descontos e ofertas exclusivas">
+           <input placeholder="Digite seu nome" class="news_footer"/>
+           <input placeholder="Digite seu e-mail" class="news_footer"/>
+           <input type="submit" class="ok_footer" value="OK" title="Receba descontos e ofertas exclusivas"/>
         </div>
     </div>
 
@@ -348,7 +321,7 @@
         <ul class="mn_footer">
           <li>DÚVIDAS FREQUENTES</li>
             <ul class="submenu">
-               <li><a href="" title="Termos de Pesquisa">Termos de Pesquisa</a></li>
+               <li><a href="" title="Termos de Pesquisa">Perguntas Frequentes</a></li>
                <li><a href="" title="Meus Pedidos">Meus Pedidos</a></li>
                <li><a href="" title="Trocas e Devoluções">Trocas e Devoluções</a></li>
                 <li><a href="" title="Editar Cadastro">Editar Cadastro</a></li>
@@ -358,16 +331,16 @@
 
         <ul class="mn_footer">
           <li>ENTREGAS</li>
-          <img src="../public/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
+          <img src="<?=$this->basePath()?>/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
         </ul>
 
         <ul class="mn_footer">
           <li>REDES SOCIAIS</li>
             <ul class="submenu">  
                <p class="text_redes_sociais">Acompanhe o Café Seleto <br/> nas redes sociais:</p>      
-               <li><a href="" class="redes_sociais"><img src="../public/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
-               <li><a href="" class="redes_sociais"><img src="../public/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
-               <li><a href="" class="redes_sociais"><img src="../public/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
+               <li><a href="https://www.facebook.com/SeletoAlimentos?ref=ts&fref=ts" target="_blank" class="redes_sociais"><img src="<?=$this->basePath()?>/images/facebook.png" alt="facebook" title="Facebook"/></a></li>
+               <li><a href="https://twitter.com/seletoalimentos" target="_blank" class="redes_sociais"><img src="<?=$this->basePath()?>/images/twitter.png" alt="twitter" title="Twitter"/></a></li>
+               <li><a href="http://instagram.com/seletoalimentos#" target="_blank" class="redes_sociais"><img src="<?=$this->basePath()?>/images/instagran.png" alt="instagran" title="Instagran"/></a></li>
             </ul>
         </ul>
 

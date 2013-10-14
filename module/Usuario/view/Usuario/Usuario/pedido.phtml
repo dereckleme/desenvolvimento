@@ -61,8 +61,13 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 							
 							<ul id="ListaUmBoxDireito">
 								<li class="ListaUmBoxDireitoNome">Nome do produto</li>
+
+								<li class="ListaUmBoxDireito" style="margin-right:8px">Data</li>
+
 								<li class="ListaUmBoxDireito">Preço (R$)</li>
+
 								<li class="ListaUmBoxDireito"> Quantidade</li>
+
 								<li class="ListaUmBoxDireito">Subtotal (R$)</li>
 							</ul>
 
@@ -78,6 +83,9 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								<li class="ListaDoisBoxDireito">
 									<div id="BoxListaDois">
 										<p class="BoxListaDoisNome"><?=$produto->getProdutosproduto()->getTitulo()?></p>
+									</div>
+									<div id="BoxListaDois">
+										<p class="BoxListaDoisData">20/10/15</p>
 									</div> 
 									<div id="BoxListaDois">
 										<p class="BoxListaDoisPreco"><?=$produto->getProdutosproduto()->getValor(true)?></p>

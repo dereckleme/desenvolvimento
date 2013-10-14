@@ -180,7 +180,7 @@ $(function(){
 					{
 					if(data.num == (parseInt(valor)+1))
 						{
-							$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').html("Limite maximo estoque!");
+							$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').html("Limite máximo do estoque!");
 							$(element).parents("#quantidade_produto_categoria,#comprar_detalhe,.box_vejaTambem").find('.smsEstoque').fadeIn("slow");
 							
 							$(".atencaoErro").html("Uma informação para você");
@@ -216,8 +216,10 @@ $(function(){
 			return false;
 		});
 		$(".MoreItens").on("click",function(){
+			
 			var referenceId = $(this).parents(".ListaDaCesta").find(".actionCode").val();
 			var valor = $(this).parents("#quantidade_produto_categoria, .qtd_produto, #ProductsFromBasket").find('input').val();
+			var element = this;
 			$.ajax({
 				url: basePatch+"/estoque",
 				type: "post",
@@ -241,9 +243,15 @@ $(function(){
 							$.ajax({
 								url: basePatch+"/carrinho/insert",
 								type: "post",
-								async:false,
+								beforeSend:function(){
+									$(element).parents(".ListaDaCesta").append('<div class="backloading" style="width:998px;height: 75px;position:absolute;background: url('+basePatch+'/images/fundo_form.png);color:#FFFFFF;padding-top:50px;display:none"><center><b>Calculando nova quantidade de produto.</b></center></div>');
+									$(element).parents(".ListaDaCesta").find(".backloading").fadeIn();
+								},
+								complete:function(){},
 								data: {actionAddCart:referenceId,actionQuant:UpdateValor},
-								success: function(data) {location.reload();},
+								success: function(data) {
+										location.reload();
+									},
 								error: function(){}
 						});
 						}

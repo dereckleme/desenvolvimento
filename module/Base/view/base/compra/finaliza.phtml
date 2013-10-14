@@ -1,6 +1,10 @@
 <?php 
 $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 $offValue = false;
+if($this->auth->hasIdentity())
+{
+if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) && !empty($this->numero) && !empty($this->bairro) && $this->frete != null && $this->cidades) $offValue = true;
+}
 ?>
 <!--Pagina Finalizar de Compra-->
 <?php 
@@ -60,13 +64,34 @@ $offValue = false;
 					    {
 					?>
 					<h5 class="ImgLogin">Login</h5>
-							<div id="ContBoxLogin">
+					<div id="ContBoxLogin">
+					<?
+					if(!$offValue)
+					{
+					?>
+							
 								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
 								<a href="<?=$this->url("publico-carrinho-compra")?>"><span class="ButtonBoxLogin" title="Voltar para meu carrinho">voltar para meu carrinho</span></a>
-							</div>
 							
-							
-							
+					<?
+					}
+					else
+					{
+						?>
+						<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/></p>
+						
+						<?=$this->nomeCompleto?>,<Br/>
+						<?=$this->cep?><br/>
+						<?=$this->endereco?><br/>
+						<?=$this->numero?><Br/>
+						<?=$this->bairro?><Br/>
+						<?=$this->cadastro->getMapeamentocidade()->getNome()?>
+						<?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?><Br/>
+						<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a>
+						<?php
+					}
+					?>		
+					</div>
 							<?php 
 					    }
 					    else {
@@ -111,9 +136,7 @@ $offValue = false;
 
 					<?php 
 					if($this->auth->hasIdentity())
-					    {
-					        if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) && !empty($this->numero) && !empty($this->bairro) && $this->frete != null && $this->cidades) $offValue = true;
-					        
+					    {   
 					?>
 					<div id="BoxEndereco">
 						
@@ -127,7 +150,88 @@ $offValue = false;
 								    }
 								?>">Endereço</h5>
 							<div id="ContBoxEndereco">
-								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+							    <?php 
+							        if($offValue)
+							        {
+							    ?>
+								<table id="NovoEndereco">
+								  <tr class="TituloBoxRadio">
+								  	<th>Escolha um endereço da lista abaixo:</th>
+								  </tr>
+
+							      <tr class="BoxRadio">
+							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$this->cadastro->getCep()?>" value="<?=$this->cadastro->getIdcadastro()?>"  checked></th>
+							        <th class="TextoEnd"><?=$this->endereco?> - <?=$this->numero?> ,
+                                     <?=$this->bairro?> - <?=$this->cadastro->getMapeamentocidade()->getNome()?> - <?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
+							        <th class="bt_excluir"></th>
+							      </tr>
+                                    <?php
+                                        foreach($this->cadastrosAlternativos AS $alternativo)
+                                        {
+                                        	?>
+                                   <tr class="BoxRadio">
+							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$alternativo->getCep()?>" value="<?=$alternativo->getIdcadastro()?>"></th>
+							        <th class="TextoEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
+                                    <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
+							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.gif"></a></th>
+							      </tr>      	
+                                        	<?php
+                                        }
+                                    ?>
+							      <tr class="BoxRadio">
+							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio value="actionNewEndereco"></th>
+							        <th class="TextoEndNovo">NOVO ENDEREÇO DE ENTREGA</br>
+                                    <span class="TextoDetalheEnd">Para cadastrar um novo endereço de entrega</span>
+                                    </th>
+							      </tr>
+
+							    </table> 
+							    <div class="enderecoAlternativoAction" style="display:none">
+							    <p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+                                   
+									<form action="" class="formAction">
+
+					                  <label class="FormCEP">CEP*:</label><br/><input  type="text" class="BoxCEP"><br/><br/>
+					                  
+
+					                  <label class="FormEndereco">Endereço*:</label><br/><input   type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
+Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
+
+					                  <label class="FormNumero">Numero*:</label>         
+
+                                      <br/>
+					                  <input type="text"   class="BoxNumero" ><br/><br/>
+
+					                  <label class="FormBairro">Bairro*:</label>
+					                  <label class="FormCidade">Cidade*:</label><br/>
+
+					                  <input type="text"  class="BoxBairro" >
+					                   <select class="BoxCidade" disabled="disabled"><option value="">Selecione</option></select><br/><br/>
+					                  <label class="FormEstado">Estado*:</label><br/>
+					                  <select class="BoxEstado">
+					                  <option value="">Selecione</option>
+					                      <?php 
+					                          foreach($this->estados AS $estados)
+					                          {
+					                      ?>
+					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
+					                      <?php 
+					                          }?>
+					                  </select><br/><br/>
+
+
+
+
+					                 <input type="submit" title="Salvar Endereço" value="Salvar Endereço alternativo" class="EventcadastrarEnderecoAlternativo"><br/><br/><br/>
+
+					                </form>
+					                
+					           </div>     
+							    <?php 
+							        }
+							        else {
+    							        ?>
+    							        <p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
                                    <span class="msgCadastrase"></span>
 									<form action="" class="formAction">
 					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input <?if($offValue) print 'disabled="disabled"'?> type="text" class="BoxNome" value="<?=$this->nomeCompleto?>"><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
@@ -203,6 +307,9 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                 
 
 					                </form>
+    							        <?php
+							        }
+							    ?>
 							</div>
 						</div>		
 							<!--Fim do Conteudo Finalizar Endereço Vazio-->
@@ -312,6 +419,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    </span>
 									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
 									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
+								<div class="restStatusService">
 								<?php 
 								    if(empty($this->nomeCompleto) || empty($this->cep) || empty($this->endereco) || empty($this->numero) || empty($this->bairro) || $this->frete == null)
 								    {
@@ -326,6 +434,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								<?php 
 								    }
 								?>
+								</div>	
 							</div>
 							<?php 
 					    }

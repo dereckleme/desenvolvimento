@@ -1,4 +1,23 @@
-$(document).ready(function(){	
+$(document).ready(function(){
+	$( ".actionRadioEndereco" ).change(function(){
+		if($(this).val() == "actionNewEndereco")
+			{
+			$(".formAction input,select").each(function( index,element ) {
+				if(index != 6)
+					{
+				$(element).val("");
+					}
+			});
+				$(".enderecoAlternativoAction").slideDown("fast");
+				$("#despesaFrete").html("Indisponível");
+				$("#valortotalMaisFrete").html("Indisponível");
+				$(".restStatusService").html('<a href="#" onclick="return false"><span class="BoxPagamentoButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>');
+			}
+		else{
+			$(".enderecoAlternativoAction").slideUp("fast");
+		}
+		return false;
+	});
 	$(".tentarNovamente").on("click",function(){
 		$("#form_erro").fadeOut();
 		return false;
@@ -201,6 +220,51 @@ $(document).ready(function(){
 			window.location =  basePatch+"/painel";
 		},3000)
 	})
+	$(".formAction").on("click",'.EventcadastrarEnderecoAlternativo',function(){
+		var actionCep = $("#BoxEndereco .BoxCEP").val();
+		var actionRua = $("#BoxEndereco .BoxEndereco").val();
+		var actionNumero = $("#BoxEndereco .BoxNumero").val();
+		var actionBairro = $("#BoxEndereco .BoxBairro").val();
+		var actionCidade = $("#BoxEndereco .BoxCidade option:selected").val();
+		var errorCadastro = 0;
+		$(".formAction input,select").each(function( index,element ) {
+			if($(element).val() == "")
+				{
+					errorCadastro = 1;
+				}
+		});
+		if(errorCadastro == 0)
+		{
+			$.ajax({
+				url: basePatch+"/api/Cadastro",
+				type: "post",
+				async:false,
+				data: {actionCep:actionCep,actionRua:actionRua,actionNumero:actionNumero,actionBairro:actionBairro,actionCidade:actionCidade},
+				success: function(data) {
+					alert("Endereço alternativo adicionado com sucesso!");
+					location.reload();
+				}
+			});
+		}
+			else
+				{
+				$(".erro").html("Alguns campos baixo estão em banco.");
+				$(".tipo_erro").html("");
+				$(".tentarNovamente").css("display","block");
+				$(".formAction input,select").each(function( index,element ) {
+					if($(element).val() == "")
+						{
+							if(index == 0) $(".tipo_erro").append("<Br/> - Numero do CEP");
+							if(index == 1) $(".tipo_erro").append("<Br/> - Endereço de entrega");
+							if(index == 2) $(".tipo_erro").append("<Br/> - Numero");
+							if(index == 3) $(".tipo_erro").append("<Br/> - Bairro");
+							if(index == 4) $(".tipo_erro").append("<Br/> - Cidade");
+						}
+				});
+				$("#form_erro").fadeIn();
+				}
+		return false;
+	})
 	$(".formAction").on("click",'.EventcadastrarEndereco',function(){
 		var actionNome = $("#BoxEndereco .BoxNome").val();
 		var actionCep = $("#BoxEndereco .BoxCEP").val();
@@ -231,6 +295,7 @@ $(document).ready(function(){
 								{
 								$(".erro").html("Alguns campos baixo estão em banco.");
 								$(".tipo_erro").html("");
+								$(".tentarNovamente").css("display","block");
 								$(".formAction input").each(function( index,element ) {
 									
 									if($(element).val() == "")

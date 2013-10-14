@@ -79,12 +79,14 @@ class CompraController extends AbstractActionController
         $entity = null;
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
-
+        $entityAlternativos = null;
         $service = $this->getServiceLocator()->get('CarrinhoCompras\Model\Carrinho');
         if($auth->hasIdentity())
         {
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            $entityAlternativos = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"padrao" => "0"));
+             
             $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
                     $nome = $entity->getNome();
                     $cep = $entity->getCep();
@@ -117,7 +119,7 @@ class CompraController extends AbstractActionController
     				"listaAtual" =>  $service->lista(),
     				"valorTotal" => $service->calculoTotal(),
     	            
-    		),"auth" => $auth, "estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"nomeCompleto" => $nome, "cep" => $cep,"endereco" => $endereco, "numero" => $numero, "bairro" => $bairro,"frete" =>$frete));
+    		),"auth" => $auth, "estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"nomeCompleto" => $nome, "cep" => $cep,"endereco" => $endereco, "numero" => $numero, "bairro" => $bairro,"frete" =>$frete,"cadastro" => $entity,"cadastrosAlternativos" => $entityAlternativos));
     }
 
     public function getEstoqueAction()
