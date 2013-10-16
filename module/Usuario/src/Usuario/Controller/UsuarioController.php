@@ -100,9 +100,9 @@ class UsuarioController extends AbstractActionController
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $entity = $em->getRepository("Usuario\Entity\UsuarioUsuarios");
             $requestArray = $this->getRequest()->getPost()->toArray();
-                if(count($entity->findOneByLogin($requestArray['eventLogin'])) != 0 || empty($requestArray['eventLogin'])) $error[] = "- Login usado já existe, ou está em branco:<br/>";
-                if(count($entity->findOneByEmail($requestArray['eventEmail'])) != 0 || empty($requestArray['eventEmail'])) $error[] = "- Email já está cadastrado, ou está em branco:<br/>";
-                if(empty($requestArray['eventPassword']) || ($requestArray['eventPassword'] != $requestArray['eventPasswordConfirm'])) $error[] = "- Senha cadastrada está em branco ou não coincide:";
+                if(count($entity->findOneByLogin($requestArray['eventLogin'])) != 0 || empty($requestArray['eventLogin'])) $error[] = "- Login usado já existe, ou está em branco;<br/>";
+                if(count($entity->findOneByEmail($requestArray['eventEmail'])) != 0 || empty($requestArray['eventEmail'])) $error[] = "- Email já está cadastrado, ou está em branco;<br/>";
+                if(empty($requestArray['eventPassword']) || ($requestArray['eventPassword'] != $requestArray['eventPasswordConfirm'])) $error[] = "- Senha cadastrada está em branco ou não coincide;";
 
                 if(count($error) == 0)
                     {
