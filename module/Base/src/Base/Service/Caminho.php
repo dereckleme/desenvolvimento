@@ -21,7 +21,7 @@ class Caminho
             $append = $repository->findOneByslug($name);
             if(!empty($append))
             {
-                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Página Inicial</a> ';
             	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria",array('categoriaslug' => $append->getSlug())).'"><span class="txt_pagina">'.$append->getNome().'</span></a> ';
             }
         	return $data;
@@ -33,7 +33,7 @@ class Caminho
             $append = $repository->findOneByslugSubcategoria($name);
             if(!empty($append))
             {
-                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Página Inicial</a> ';
                 $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria",array('categoriaslug' => $append->getCategorias()->getSlug())).'">'.$append->getCategorias()->getNome().'</a> ';
             	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria/publico-categoria-e-subcategoria", array("categoriaslug" => $append->getCategorias()->getSlug(), "subcategoriaslugSub" => $append->getSlugSubcategoria())).'"><span class="txt_pagina">'.$append->getNome().'</span></a> ';
             }
@@ -46,7 +46,7 @@ class Caminho
             $append = $repository->findOneByslugProduto($name);
             if(!empty($append))
             {
-                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+                $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Página Inicial</a> ';
                 $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria",array('categoriaslug' => $append->getProdutosubcategoria()->getCategorias()->getSlug())).'">'.$append->getProdutosubcategoria()->getCategorias()->getNome().'</a> ';
                 $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria/publico-categoria-e-subcategoria", array("categoriaslug" => $append->getProdutosubcategoria()->getCategorias()->getSlug(), "subcategoriaslugSub" => $append->getProdutosubcategoria()->getSlugSubcategoria())).'">'.$append->getProdutosubcategoria()->getNome().'</a> ';
                 $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("publico-categoria/publico-categoria-e-subcategoria/publico-produto",array("categoriaslug" => $append->getProdutosubcategoria()->getCategorias()->getSlug(), "subcategoriaslugSub" => $append->getProdutosubcategoria()->getSlugSubcategoria(), "produtoSlug" => $append->getSlugProduto())).'"><span class="txt_pagina">'.$append->getTitulo().'</span></a> ';
@@ -55,13 +55,13 @@ class Caminho
         }
         else if($this->matchedRoute == "publico-carrinho-compra")
         {
-            $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+            $data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Página Inicial</a> ';
             $data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Minha Cesta</span></a> ';
             return $data;
         }
         else if($this->matchedRoute == "publico-finaliza-compra")
         {
-        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Pagina Inicial</a> ';
+        	$data[] = '<a class="txt_breadcrumbs" href="'.$this->controller->url()->fromRoute("home").'">Página Inicial</a> ';
         	$data[] = '<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Finalizar Compra</span></a> ';
         	return $data;
         }
@@ -80,7 +80,7 @@ class Caminho
         }
         else if($this->matchedRoute == "home")
         {
-            return array('<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Pagina Inicial</span></a> ');
+            return array('<a class="txt_breadcrumbs" href=""><span class="txt_pagina">Página Inicial</span></a> ');
         }   
     	return array();
     }
