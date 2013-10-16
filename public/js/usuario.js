@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$( ".actionRadioEndereco" ).change(function(){
+		var element = this;
 		if($(this).val() == "actionNewEndereco")
 			{
 			$(".formAction input,select").each(function( index,element ) {
@@ -14,6 +15,48 @@ $(document).ready(function(){
 				$(".restStatusService").html('<a href="#" onclick="return false"><span class="BoxPagamentoButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>');
 			}
 		else{
+				var cepSet = $(this).attr("rel");
+				$.ajax({
+					url: basePatch+"/correios/frete",
+					type: "post",
+					data: {cep:cepSet},
+					beforeSend:function(){
+						$(".atencaoErro").html("Selecione um endereço de entrega.");
+						$(".erro").html("");
+						$(".tentarNovamente").css("display","none");
+						$(".tipo_erro").html("Estamos atualizando os dados da sua compra.");
+						$("#form_erro").fadeIn();
+					},
+					complete:function(){
+						$("#form_erro").fadeOut();
+					},
+					success: function(data) {
+						$("#despesaFrete").html(data);
+						$.ajax({
+							url: basePatch+"/correios/frete/total",
+							async:false,
+							type: "post",
+							data: {cep:cepSet},
+							success: function(data) {
+								$("#valortotalMaisFrete").html(data);
+								var value = $(element).val();
+								$.ajax({
+									url: basePatch+"/api/Cadastro/"+value,
+									async:false,
+									type: "post",
+									data: {cep:cepSet},
+									success: function(data) {
+										alert(data);
+									},
+									error: function(){}
+								});
+							},
+							error: function(){}
+						});
+						
+					},
+					error: function(){}
+				});	
 			$(".enderecoAlternativoAction").slideUp("fast");
 		}
 		return false;
@@ -159,7 +202,7 @@ $(document).ready(function(){
 										}
 										else
 										{
-											$(".erro").html("Detalhe do erro(s) encontrado.");
+											$(".erro").html("Detalhe(s) do(s) erro(s) encontrado(s).");
 											$(".tipo_erro").html(data);
 											$("#form_erro").fadeIn();
 											//$(".return").html(data);
@@ -170,7 +213,7 @@ $(document).ready(function(){
 						}
 					else
 						{
-							$(".erro").html("Detalhe do erro(s) encontrado.");
+							$(".erro").html("Detalhe(s) do(s) erro(s) encontrado(s).");
 							$(".tipo_erro").html(data);
 							$("#form_erro").fadeIn();
 							//$(".return").html(data);
@@ -241,22 +284,29 @@ $(document).ready(function(){
 				async:false,
 				data: {actionCep:actionCep,actionRua:actionRua,actionNumero:actionNumero,actionBairro:actionBairro,actionCidade:actionCidade},
 				success: function(data) {
-					alert("Endereço alternativo adicionado com sucesso!");
-					location.reload();
+					$(".atencaoErro").html("Selecione um endereço de entrega.");
+					$(".erro").html("");
+					$(".tentarNovamente").css("display","block");
+					$(".tentarNovamente").html("Continuar compra");
+					$(".tipo_erro").html("Parabéns você adicionou um endereço alternativo.");
+					$("#form_erro").fadeIn();
+					$(".tentarNovamente").on("click",function(){
+						location.reload();
+					})
 				}
 			});
 		}
 			else
 				{
-				$(".erro").html("Alguns campos baixo estão em banco.");
+				$(".erro").html("Alguns campos abaixo estão em branco:");
 				$(".tipo_erro").html("");
 				$(".tentarNovamente").css("display","block");
 				$(".formAction input,select").each(function( index,element ) {
 					if($(element).val() == "")
 						{
-							if(index == 0) $(".tipo_erro").append("<Br/> - Numero do CEP");
+							if(index == 0) $(".tipo_erro").append("<Br/> - Número do CEP");
 							if(index == 1) $(".tipo_erro").append("<Br/> - Endereço de entrega");
-							if(index == 2) $(".tipo_erro").append("<Br/> - Numero");
+							if(index == 2) $(".tipo_erro").append("<Br/> - Número");
 							if(index == 3) $(".tipo_erro").append("<Br/> - Bairro");
 							if(index == 4) $(".tipo_erro").append("<Br/> - Cidade");
 						}
@@ -293,7 +343,7 @@ $(document).ready(function(){
 						}
 							else
 								{
-								$(".erro").html("Alguns campos baixo estão em banco.");
+								$(".erro").html("Alguns campos abaixo estão em branco:");
 								$(".tipo_erro").html("");
 								$(".tentarNovamente").css("display","block");
 								$(".formAction input").each(function( index,element ) {
@@ -301,9 +351,9 @@ $(document).ready(function(){
 									if($(element).val() == "")
 										{
 											if(index == 0) $(".tipo_erro").append("<Br/> - Nome do Destinatário");
-											if(index == 1) $(".tipo_erro").append("<Br/> - Numero do CEP");
+											if(index == 1) $(".tipo_erro").append("<Br/> - Número do CEP");
 											if(index == 2) $(".tipo_erro").append("<Br/> - Endereço de entrega");
-											if(index == 3) $(".tipo_erro").append("<Br/> - Numero");
+											if(index == 3) $(".tipo_erro").append("<Br/> - Número");
 											if(index == 4) $(".tipo_erro").append("<Br/> - Bairro");
 										}
 								});
@@ -399,7 +449,7 @@ $(document).ready(function(){
 			},
 			error: function(){
 				$("#form_erro").fadeOut();
-				alert("Não conseguimos se comunicar com o gateway dos correios, preencha seus dados manualmente.");
+				alert("Infelizmente não foi possível se comunicar com o gateway dos correios, por favor preencher seus dados manualmente.");
 				}
 		});	
 	}});
