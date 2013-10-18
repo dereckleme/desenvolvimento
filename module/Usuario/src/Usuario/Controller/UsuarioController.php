@@ -22,6 +22,11 @@ class UsuarioController extends AbstractActionController
 {
     public function indexAction()
     {
+        $estados = null;
+        $cidades = null;
+        $cidadeEstadoUF = null;
+        $cidadeSelected = null;
+        
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
         if($auth->hasIdentity())
@@ -30,7 +35,16 @@ class UsuarioController extends AbstractActionController
             $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
             $recibos = $repoRecibo->findByusuariousuarios($auth->getIdentity()->getIdusuario());
             $repo = $em->getRepository("Usuario\Entity\UsuarioCadastro");
-            return new ViewModel(array("usuario" => $auth->getIdentity(), "cadastro" => $repo->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario()), "recibos" => $recibos));
+            $entityAlternativos = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"padrao" => "0"));
+            $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
+            $entity = $repo->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            if($entity->getMapeamentocidade())
+            {
+            	$cidadeEstadoUF = $entity->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura();
+            	$cidadeSelected = $entity->getMapeamentocidade()->getIdcidade();
+            	$cidades = $em->getRepository("Usuario\Entity\MapeamentoCidade")->findBynomeclatura($cidadeEstadoUF);
+            }
+            return new ViewModel(array("estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected,"usuario" => $auth->getIdentity(), "cadastro" => $entity, "recibos" => $recibos,'cadastrosAlternativos' => $entityAlternativos));
         }
     }
     public function pedidoAction()

@@ -84,12 +84,14 @@ class CompraController extends AbstractActionController
         if($auth->hasIdentity())
         {
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"padrao" => "1"));
             $entityAlternativos = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"padrao" => "0"));
-             
+            $entityCadastroSelected = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"ativo" => "1"));
+            
             $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
                     $nome = $entity->getNome();
                     $cep = $entity->getCep();
+                    $cepAtivo = $entityCadastroSelected->getCep();
                     $endereco = $entity->getRua();
                     $numero = $entity->getNumero();
                     $bairro = $entity->getBairro();
@@ -99,10 +101,10 @@ class CompraController extends AbstractActionController
                         $cidadeSelected = $entity->getMapeamentocidade()->getIdcidade();
                     	$cidades = $em->getRepository("Usuario\Entity\MapeamentoCidade")->findBynomeclatura($cidadeEstadoUF);
                     }
-                    if(!empty($cep))
+                    if(!empty($cepAtivo))
                     {
                         $serviceFrete = $this->getServiceLocator()->get("DrkCorreios\Service\Frete");
-                        $serviceFrete->setSCepDestino($cep);
+                        $serviceFrete->setSCepDestino($cepAtivo);
                         $freteCalculo = $xml->fromString($serviceFrete->calcularFrete());
                         if($freteCalculo['cServico']['Erro'] == 0)
                         {

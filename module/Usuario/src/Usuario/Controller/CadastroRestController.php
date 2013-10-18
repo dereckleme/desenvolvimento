@@ -45,6 +45,21 @@ class CadastroRestController extends AbstractRestfulController
     }
     public function update($id, $data)
     {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        if($auth->hasIdentity())
+        {
+            $repository = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+            $service = $this->getServiceLocator()->get('Usuario\Service\Cadastro');
+            $entity = $repository->getRepository('Usuario\Entity\UsuarioCadastro');
+               $verify = $entity->findOneBy(array('idcadastro' => $id));
+                   if($verify->getUsuariosusuarios()->getIdusuario() == $auth->getIdentity()->getIdusuario())
+                   {
+            $idEntityAlvo = $entity->findOneBy(array('usuariosusuarios' => $auth->getIdentity(),'ativo' => 1));
+            $service->update(array("id" => $idEntityAlvo->getIdcadastro(), 'ativo'=> 0));
+            $service->update(array("id" => $id, 'ativo'=> 1));
+                   }
         return new JsonModel();
+        }
     }
 }

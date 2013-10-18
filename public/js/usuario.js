@@ -28,7 +28,10 @@ $(document).ready(function(){
 						$("#form_erro").fadeIn();
 					},
 					complete:function(){
-						$("#form_erro").fadeOut();
+						$(".tentarNovamente").html("Continuar").fadeIn();
+						$(".tentarNovamente").on("click",function(){
+							location.reload();
+						})
 					},
 					success: function(data) {
 						$("#despesaFrete").html(data);
@@ -41,15 +44,12 @@ $(document).ready(function(){
 								$("#valortotalMaisFrete").html(data);
 								var value = $(element).val();
 								$.ajax({
-									url: basePatch+"/api/Cadastro/"+value,
-									async:false,
-									type: "post",
-									data: {cep:cepSet},
-									success: function(data) {
-										alert(data);
-									},
-									error: function(){}
-								});
+									  url: basePatch+"/api/Cadastro/"+value,
+									  type: 'PUT',
+									  data: {cep:cepSet},
+									  success: function(data) {
+									  }
+									});
 							},
 							error: function(){}
 						});
@@ -316,12 +316,12 @@ $(document).ready(function(){
 		return false;
 	})
 	$(".formAction").on("click",'.EventcadastrarEndereco',function(){
-		var actionNome = $("#BoxEndereco .BoxNome").val();
-		var actionCep = $("#BoxEndereco .BoxCEP").val();
-		var actionRua = $("#BoxEndereco .BoxEndereco").val();
-		var actionNumero = $("#BoxEndereco .BoxNumero").val();
-		var actionBairro = $("#BoxEndereco .BoxBairro").val();
-		var actionCidade = $("#BoxEndereco .BoxCidade option:selected").val();
+		var actionNome = $(".BoxNome").val();
+		var actionCep = $(".BoxCEP").val();
+		var actionRua = $(".BoxEndereco").val();
+		var actionNumero = $(".BoxNumero").val();
+		var actionBairro = $(".BoxBairro").val();
+		var actionCidade = $(".BoxCidade option:selected").val();
 		var errorCadastro = 0;
 		$(".formAction input").each(function( index,element ) {
 			if($(element).val() == "")

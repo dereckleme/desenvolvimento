@@ -70,8 +70,10 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 					{
 					?>
 							
-								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
-								<a href="<?=$this->url("publico-carrinho-compra")?>"><span class="ButtonBoxLogin" title="Voltar para meu carrinho">voltar para meu carrinho</span></a>
+								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">
+								<span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
+								<a href="<?=$this->url("publico-carrinho-compra")?>">
+								<span class="ButtonBoxLogin" title="Voltar para meu carrinho">voltar para meu carrinho</span></a>
 							
 					<?
 					}
@@ -160,7 +162,7 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 								  </tr>
 
 							      <tr class="BoxRadio">
-							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$this->cadastro->getCep()?>" value="<?=$this->cadastro->getIdcadastro()?>"  checked></th>
+							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$this->cadastro->getCep()?>" value="<?=$this->cadastro->getIdcadastro()?>"  <?if($this->cadastro->getAtivo() == 1) print "checked";?>></th>
 							        <th class="TextoEnd"><?=$this->endereco?> - <?=$this->numero?> ,
                                      <?=$this->bairro?> - <?=$this->cadastro->getMapeamentocidade()->getNome()?> - <?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
 							        <th class="bt_excluir"></th>
@@ -170,7 +172,7 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
                                         {
                                         	?>
                                    <tr class="BoxRadio">
-							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$alternativo->getCep()?>" value="<?=$alternativo->getIdcadastro()?>"></th>
+							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$alternativo->getCep()?>" value="<?=$alternativo->getIdcadastro()?>" <?if($alternativo->getAtivo() == 1) print "checked";?>></th>
 							        <th class="TextoEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
                                     <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
 							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.gif"></a></th>

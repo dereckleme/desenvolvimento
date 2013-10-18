@@ -112,6 +112,22 @@ li.ButtonFinalizarCompra a:hover { background: #e76509;}
 /***********FIM DOS BOTÕES DO CARRINHO DE COMPRA**********/
 
 /******************ERRO LOGIN - CADASTRO****************************/
+
+#form_erro {width: 100%; min-width: 1024px; height:100%; position: fixed; left:0px; top:0px; z-index: 9999; background: url(../images/fundo_form.png); }
+#BoxFormErro { width: 100%; min-width: 1024px; position:fixed; top:30%; }
+#atencao_erro {background: #fff; width: 411px; margin: 0 auto; border: 4px solid #e22123;  text-align: center; padding-bottom: 30px }
+p.atencaoErro {background:url(../images/atencaoErro.png) no-repeat ; text-indent: -9999px; height:95px; margin-left:76px;}
+p.erro{font-weight: bold; font-size: 16px; color:#000;}
+span.tipo_erro{ line-height: 25px; color:#000;}
+a.tentarNovamente {background: #e22123; border-radius: 7px; padding: 10px; text-transform: uppercase; color:#fff; font-size: 13px; letter-spacing: 1px}
+a.tentarNovamente:hover {background: #bf1618}
+
+#atualizando_dados {background: #fff; width: 411px; margin: 0 auto; border: 4px solid #5b9000;  text-align: center; padding-bottom: 30px }
+#atualizando_dados p.atencaoErro {background:url(../images/atualizandoDados.png) no-repeat ; text-indent: -9999px; height:69px; margin-left:105px;}
+#atualizando_dados span.tipo_erro{ line-height: 25px; color:#000;}
+#atualizando_dados a.tentarNovamente {background: #5b9000; border-radius: 7px; padding: 10px; text-transform: uppercase; color:#fff; font-size: 13px; letter-spacing: 1px}
+#atualizando_dados a.tentarNovamente:hover {background: #497201}
+/*
 #form_erro { width: 100%; min-width: 1024px; height:100%; position: fixed; left:0px; top:0px; z-index: 9999; background: url(../images/fundo_form.png);}
 #BoxFormErro { width: 100%; min-width: 1024px; position: fixed; top: 35%;}
 #atencao_erro{width: 411px; margin: 0 auto; background:url(../images/fundo_trasparente.png); text-align: center; border-top:5px solid #ff7f25; border-bottom: 5px solid #ff7f25; padding-bottom: 30px}
@@ -119,7 +135,7 @@ p.atencaoErro{background: url(../images/atencao.png) no-repeat left; font-size: 
 p.erro{font-weight: bold; font-size: 1.000em; color:#FFF;}
 span.tipo_erro{ line-height: 25px; color:#fff; }
 a.tentarNovamente{background: #ff7f25; border-radius: 7px; padding: 10px 17px; margin-top: 30px; text-transform: uppercase; color: #FFF; font-weight: bold;font-size: 0.875em; letter-spacing: 1px}
-
+*/
 /******************LOGIN - CADASTRO****************************/
 #Login_Cadastro { width: 100%; min-width: 1024px; height:100%; position: fixed ; left:0px; top:0px; z-index: 9999; background: url(../images/fundo_form.png);}
 #BoxLoginCadastro {  width: 100%; min-width: 1024px; position: fixed; top: 25%;}
@@ -210,13 +226,16 @@ a.tt_lista:hover { text-decoration: underline;}
 li.itens_menu_lateral { width: 100%; }
 li.itens_menu_lateral a {  width: 133px; padding: 10px 0;  padding-left: 15px; display: block;  font-weight: 700; color:  #666; font-size: 12px;  border-top: solid 1px #ddd;}
 li.itens_menu_lateral a:hover { background:#582700; color: #FFF;}
+
 /*************************BANNER INFORMATIVO***********************/
 #banner_informativo { width: 100%; min-width: 1024px; float: left; background: #ff7f25;}
-#box_banner_informativo { width: 1024px; height: 100px; margin: 0 auto; }
+#box_banner_informativo { width: 1024px; height: 100px; margin: 0 auto;}
 h6.banner_pagamento { width: 294px; height: 80px; float: left;  background: url(../images/pagamentos.png) no-repeat; text-indent: -9999px;}
 h6.banner_entrega { width: 265px; height: 80px; float: left; margin-left: 67px;  background: url(../images/entregas.png) no-repeat; text-indent: -9999px;}
-h6.banner_redes { width: 344px; height: 80px; float:right; background: url(../images/redes.png) no-repeat; text-indent: -9999px;}
+h6.banner_redes { width: 344px; height: 80px; float:right; background: url(../images/redes.png) no-repeat;}
+#banner_face { float: right; margin-top: 44px;}
 /*************************FIM DO BANNER INFORMATIVO***********************/
+
 /*************************BREADCRUMBS DAS PAGINAS***********************/
 #breadcrumbs { width: 100%; min-width: 1024px; float: left; }
 #box_breadcrumbs { width: 1024px; height: 30px; margin: 0 auto; font-size: 11px; color: #666666; }
@@ -419,7 +438,7 @@ ul li.change_qtd_carrinho  a {  right: 3px; display: list-item;}
 li.MoreItens a {position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 0px; top:7px;}
 li.LessItens a {position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 -20px; top:9px;}
 p.SubTotalProductsFromBasket { width: 200px; height: 56px; text-align: center; float: left;  padding-top: 35px;}
-img.CloseProductsFromBasket { width: 30px; height: 29px; text-align: center; float: left; margin-top: 37px;  margin-left: 17px;}
+img.CloseProductsFromBasket { width: 30px; height: 29px; text-align: center; float: left; margin-top: 37px;  margin-left: 14px;}
 
 /*CONTEUDO CEP + PRAZO DE ENTREGA*/
 li.txt_prazoDentrega { float: left; font-size: 15px; color: #666666; padding: 14px 20px 15px 20px;  font-weight: 600;}
@@ -498,9 +517,9 @@ li.FinalizarQtd { padding: 18px 0 0 350px; float: left; font-size: 14px; color: 
 li.FinalizarValor { padding: 18px 0 0 120px; float: left; font-size: 14px; color: #666666; text-align: center;}
 li.FinalizarSub { padding: 18px 50px 0 0; float: right; font-size: 14px; color: #666666; text-align: center;}
 ul#BoxListaFinalizar { width: 1000px; float: left; margin-left: 12px; display: block;}
-li.ListaFinalizar { width: 1000px; float: left; display: block;}
+li.ListaFinalizar { width: 998px; margin-left: -2px; float: left; display: block; border-right: solid 1px #DDDDDD; border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD;}
 /**/
-#Checkout{ width: auto; height: 80px; float: left; font-size: 12px; color: #666666;}
+#Checkout{ width: auto; height: 40px; padding-top: 10px; float: left; font-size: 12px; color: #666666;}
 p.DescriptionCheckout { width: 385px; max-height: 80px; padding: 10px 0 0 15px; text-align: left; margin-top: 0px;}
 p.QtdCheckout { width: 120px; text-align: center; margin-top: 0px; margin-left: 5px; padding-top: 10px;}
 p.ValueCheckout { width: 140px; text-align: center; margin-top: 0px; margin-left: 75px; padding-top: 10px;}
@@ -550,6 +569,7 @@ span.msgCadastrase { margin-left: 19px; font-size: 13px; color: green; display: 
 .ajaxMsg { margin-left: 5px;}
 p.xxx { font-size: 11px; color: #ff7f25; margin: 0 0 -5px 15px;}
 form.formAction { width: 313px; float: left; margin-left: 20px}
+form.formActionCadastroUsuario { width: 313px; float: left; margin-left: 20px}
 a span.BoxPagamentoButtonOff {color:#666; float:right; font-size: 12px; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ddd; text-transform: uppercase;}
 
 /**/
@@ -576,11 +596,29 @@ label.FormPasswordConfirmar { margin-left: 100px;}
 p.xxx{margin-left: 0px}
 
 /*************FORMULARIO CADASTRAR ENDEREÇO*****************************************/
-form.formAction input.BoxNome, input.BoxEndereco{width: 210px;}
+form.formAction input.BoxEndereco, input.PessoaSeletc { width: 220px;}
+input.BoxNome, input.PessoaSeletc, input.InscEstadual { width: 220px; padding: 8px 5px; border: 1px solid #DDD; margin-top: 5px}
+
+select.BoxCidade, input.BoxTelResidencial, input.BoxTelCelular, input.BoxTelComercial, input.BoxTelComercial,
+input.BoxSenha, input.BoxNovaSenha, input.BoxNovaSenha, input.BoxAlterarSenha {width: 142px; padding: 8px 5px; border: 1px solid #DDD; margin-top: 5px}
+
+input.EventcadastrarCadastro {color:#fff; float:right; cursor: pointer; margin-top: 5px; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
+input.EventcadastrarCadastro:hover {background: #e57220 ;}
+
+
+
 select.BoxEstado {width: 235px; padding: 8px 5px; border: 1px solid #DDD; margin-top: 5px}
-select.BoxCidade {width: 142px; padding: 9px 5px; border: 1px solid #DDD; margin-top: 5px}
 label.FormComplemento {margin-left: 94px} 
-label.FormCidade {margin-left: 105px}
+label.FormCidade { margin-left: 105px}
+label.FormTelCelular { margin-left: 25px}
+
+
+
+p.AlterarMinhaSenha a { font-size: 14px; color: #ff7f25; font-style: italic;}
+p.AlterarMinhaSenha a:hover { text-decoration: underline;}
+
+
+
 
 form.formAction input.EventcadastrarEnderecoOff {color:#666; cursor: pointer; float:right; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ddd; text-transform: uppercase;}
 form.formAction input.EventcadastrarEndereco {color:#fff; float:right; cursor: pointer; border: none; padding: 10px;  margin-right: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase;}
@@ -656,7 +694,7 @@ input.NovoEndereco:hover { background: #e57220;}*/
 #BoxMeuEndereco { width: 988px; float: left; border-top: solid 1px #dddddd; border-right: solid 1px #dddddd; border-left: solid 1px #dddddd; margin: 15px 0 15px 15px;}
 #BoxTitulo { width: 988px; float: left; border-bottom: solid 1px #CCC;}
 p.TituloBoxMeuEndereco { font-size: 22px; font-weight: bold; float: left; color: #FF7F25; margin-left: 15px;}
-span.ButtonNovoEndereco { color:#FFF; float:right; border: none; padding: 10px; margin-right: 20px; margin-top: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-size: 12px}
+span.ButtonNovoEndereco { color:#FFF; float:right; border: none; padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 12px; margin-right: 20px; margin-top: 20px; letter-spacing: 1px; border-radius: 7px; background: #ff7f25; text-transform: uppercase; font-size: 12px}
 span.ButtonNovoEndereco:hover { background: #E76509;}
 table#EditarEndereco { width: 988px; float: left; border-bottom: solid 1px #CCC; padding-top: 12px;}
 tr.BoxRadio { margin-bottom: 15px; float: left;}
@@ -754,8 +792,6 @@ h5.Sub_tt { margin: 20px 0 0 5px; font-size: 18px; color: #666666;}
 #accordion { float: left; margin-top: 10px; margin-bottom: 0px;}
 #BoxAccordion { width: 789px;}
 
-#BoxAccordion1 { width: 789px; height: 80px !important;}
-#BoxAccordion2 { width: 789px; height: 200px !important;}
 
 h3.TituloAccordion { font-size: 18px;}
 p.TextoAccordion { font-size: 15px; color: #666666;}
