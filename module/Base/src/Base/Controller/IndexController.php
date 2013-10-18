@@ -129,17 +129,17 @@ class IndexController extends AbstractActionController
                 $visitas = $repository->findBySlugProduto($params->fromRoute("produtoSlug"));                
                 $newQtd = $visitas[0]->getAcessos() + 1;
                     $repositoryNutricional = $em->getRepository("Produto\Entity\ProdutoNutricional")->findByProdutoproduto($return);
-                $data = array(
+                /*$data = array(
                     'id'  => $visitas[0]->getIdproduto(),
                     'titulo'  => $visitas[0]->getTitulo(),
                     'slugProduto'  => $visitas[0]->getSlugProduto(),
                     'valor'  => number_format($visitas[0]->getValor(),2,',','.'),
-                    'produtosubcategoria'  => $visitas[0]->getProdutosubcategoria(),
+                    'produtosubcategoria'  => $visitas[0]->getProdutosubcategoria()->getIdsubcategoria(),
                     'destaque'  => $visitas[0]->getDestaque(),
                     'ativo'  => $visitas[0]->getAtivo(),
                     'acessos'  => $newQtd
                 );            
-                $service->update($data);
+                $service->updateAcessos($data);*/
                 
                 $relacionados =  $repository->produtosRelacionados();
     	        return new ViewModel(array('detalheProduto' => $return,'produtosRelacionados' => $relacionados , 'nutricional' => $repositoryNutricional));

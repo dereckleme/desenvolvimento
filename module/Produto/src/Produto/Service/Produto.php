@@ -54,7 +54,7 @@ class Produto extends AbstractService {
 	    $this->setActionReference($data['inputSubCategoria']);
 	    $produto = parent::update($data);
 	    
-	    // edit estoque
+	    // edit estoque	    
 	    $this->entity = "Produto\Entity\PagamentoControleestoque";
 	    $this->setTargetEntity("Produto\Entity\ProdutoProdutos");
 	    $this->setCampo("setProdutoproduto");
