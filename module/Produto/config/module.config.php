@@ -52,8 +52,8 @@ return array(
             				    'page'          => 1
             				),
                 		),
-                    ),
-                    'admin-produto-adicionar' => array(
+                    ),                    
+                    'admin-produto-gerenciar' => array(
                 		'type'    => 'Segment',
                 		'options' => array(
             				'route'    => '/[:action]',
@@ -62,9 +62,8 @@ return array(
         						'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
             				),
             				'defaults' => array(
-            				    
             				),
-                		),
+                		),                        
                     ),
                     'admin-categorias-default' => array(
                         'type'    => 'Segment',

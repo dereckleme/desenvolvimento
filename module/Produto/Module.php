@@ -25,6 +25,13 @@ class Module {
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        $translator = $e->getApplication()->getServiceManager()->get('MvcTranslator');
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zendframework/resources/languages/pt_BR/Zend_Validate.php'
+        );
+        \Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
     }
 
     public function getConfig()

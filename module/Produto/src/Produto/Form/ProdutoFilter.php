@@ -24,6 +24,31 @@ class ProdutoFilter extends InputFilter {
         ));
         
         $this->add(array(
+    		'name'    => 'id',
+    		'required'   => true,
+    		'filters'    => array(
+    				array('name'=>'Int')
+    		),
+        ));
+        
+        $this->add(array(
+    		'name'       => 'codigoProduto',
+    		'required'   => true,
+    		'filters'    => array(
+				array('name'=>'StripTags'),
+				array('name'=>'StringTrim')
+    		),
+    		'validators' => array(
+				array(
+					'name'     => 'NotEmpty',
+					'options'  => array(
+						'messages' => array('isEmpty'=>'Favor preencher corretamente o campo Código Interno do Produto')
+					)
+				)
+    		)
+        ));
+        
+        $this->add(array(
             'name'       => 'titulo',
             'required'   => true,
             'filters'    => array(
@@ -91,7 +116,15 @@ class ProdutoFilter extends InputFilter {
     		'filters'    => array(
 				array('name'=>'StripTags'),
 				array('name'=>'StringTrim')
-    		)
+    		),
+            'validators' => array(
+        		array(
+    				'name'     => 'NotEmpty',
+    				'options'  => array(
+						'messages' => array('isEmpty'=>'Favor preencher corretamente o campo descrição')
+    				)
+        		)
+            )
         ));
 
         $this->add(array(
@@ -100,7 +133,15 @@ class ProdutoFilter extends InputFilter {
     		'filters'    => array(
 				array('name'=>'StripTags'),
 				array('name'=>'StringTrim')
-    		)
+    		),
+            'validators' => array(
+        		array(
+    				'name'     => 'NotEmpty',
+    				'options'  => array(
+						'messages' => array('isEmpty'=>'Favor preencher corretamente o campo informação nutricional')
+    				)
+        		)
+            )
         ));
 
         $this->add(array(
@@ -109,16 +150,20 @@ class ProdutoFilter extends InputFilter {
     		'filters'    => array(
 				array('name'=>'StripTags'),
 				array('name'=>'StringTrim')
-    		)
+    		),
+            'validators' => array(
+        		array(
+    				'name'     => 'NotEmpty',
+    				'options'  => array(
+						'messages' => array('isEmpty'=>'Favor preencher corretamente o campo complemento')
+    				)
+        		)
+            )
         ));
         
         $this->add(array(
     		'name'       => 'foto',
     		'required'   => true,
-    		'filters'    => array(
-				array('name'=>'StripTags'),
-				array('name'=>'StringTrim')
-    		)
         ));
         
     }

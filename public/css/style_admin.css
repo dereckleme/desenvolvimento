@@ -41,3 +41,5 @@ div.container a.brand {
 
 .table-hover tbody tr:hover > td,
 .table-hover tbody tr:hover > th { background-color: #e9e6e6; }
+
+.jcrop-holder{border: 1px solid #CCC;}

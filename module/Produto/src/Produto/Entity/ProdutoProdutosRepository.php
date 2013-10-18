@@ -11,6 +11,9 @@ class ProdutoProdutosRepository extends EntityRepository {
     protected $search; 
     protected $item;
     
+    protected $maxLimit;
+    protected $offset;
+    
     
     public function myFindAll(){
         $qb =  $this->createQueryBuilder('i');
@@ -224,6 +227,43 @@ class ProdutoProdutosRepository extends EntityRepository {
         return $results;
     }
     
+    
+    
+    
+    
+    public function findProdutoFor($pagination=false)
+    {
+        $qb =  $this->createQueryBuilder('i');
+        $qb->select('i');        
+        $qb->innerJoin('Produto\Entity\ProdutoSubcategoria', 's', 'WITH', 'i.produtosubcategoria = s.idsubcategoria');        
+        $qb->innerJoin('Produto\Entity\ProdutoCategorias', 'c', 'WITH', 's.categorias = c.idcategorias');
+        
+        if($this->slugSubcategoria)
+        {
+            $qb->where('s.slugSubcategoria = ?1');
+            $qb->andWhere('c.slug = ?2');
+            $qb->setParameter(1, $this->slugSubcategoria);
+            $qb->setParameter(2, $this->slugCategoria);
+        }
+        else 
+        {
+            $qb->where('c.slug = ?1');
+            $qb->setParameter(1, $this->slugCategoria);
+        }
+        
+        if($pagination)
+        {
+            $qb->setFirstResult($this->offset);
+            $qb->setMaxResults($this->maxLimit);
+        }
+       
+        $query = $qb->getQuery();
+        #echo "<pre>", print($query->getDQL()), "</pre>";
+        $results = $query->getResult();
+        return $results;
+    } 
+    
+    // Metodos Set's    
 	public function setSlugProduto($slugProduto) {
 		$this->slugProduto = $slugProduto;
 	}
@@ -242,7 +282,21 @@ class ProdutoProdutosRepository extends EntityRepository {
 
 	public function setItem($item) {
 		$this->item = $item;
+	}	
+	/**
+	 * @param field_type $maxLimit
+	 */
+	public function setMaxLimit($maxLimit) {
+		$this->maxLimit = $maxLimit;
 	}
+
+	/**
+	 * @param field_type $offset
+	 */
+	public function setOffset($offset) {
+		$this->offset = $offset;
+	}
+
     
 	
 }

@@ -5,7 +5,6 @@ namespace Produto\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\DBAL\Schema\View;
-use Produto\Form\Produto as FrmProduto;
 
 class CategoriaController extends AbstractActionController
 {
@@ -64,13 +63,27 @@ class CategoriaController extends AbstractActionController
         
         $categoriaBySlug = $repository->findByslug($busca);
         
-        $form = new FrmProduto;
-        return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca, "form"=>$form ));
+        return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca));
     }
     
     public function listaProdutosBySubcategoriaAction()
     {
-    	die('byCLS');
+        $categoriaRepositorio = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $listaCategoria = $categoriaRepositorio->findAll();
+        $listaCategoriaSlug = $categoriaRepositorio->findByslug($this->params()->fromRoute('slug',0));
+        
+    	$produtoRepositorio = $this->getServiceLocator()->get('Produto\Repository\Produtos');
+    	$produtoRepositorio->setSlugCategoria($this->params()->fromRoute('slug',0));
+    	$produtoRepositorio->setSlugSubcategoria($this->params()->fromRoute('slugSub',0));
+    	$produtolist = $produtoRepositorio->findProdutoFor();
+    	
+    	return new ViewModel(array(
+    	    'data'              =>    $produtolist,
+    	    'categorias'        =>    $listaCategoria,
+    	    'listaCategoriaSlug'=>    $listaCategoriaSlug,
+    	    'slugCategoria'     =>    $this->params()->fromRoute('slug',0),
+    	    'slugSubCategoria'  =>    $this->params()->fromRoute('slugSub',0)
+    	));
     }
     
 }

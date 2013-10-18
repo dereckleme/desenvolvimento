@@ -11,10 +11,10 @@
 <hr/>
 
 <div class="row">
-    <div class="span9">
+    <div class="span12">
     <?php 
     $form = $this->form;
-    $form->setAttribute('action', $this->url('admin-produto-home/admin-produto-adicionar', array('action'=>'gravarAlteracao')));
+    $form->setAttribute('action', $this->url('admin-produto-home/admin-default', array('action'=>'editar','id'=>$this->produto->getIdproduto())));
     $form->prepare();
     echo $this->form()->openTag($form);
         echo $this->formRow($form->get('id'));
@@ -32,6 +32,13 @@
                 <?php echo $this->formRow($form->get('inputSubCategoria')); ?>
             </div>
         </div><!-- campo subcategoria -->
+    
+        <div class="control-group">
+            <label class="control-label" for="codigoProduto">Codigo do Produto</label>
+            <div class="controls">                    
+                <?php echo $this->formRow($form->get('codigoProduto')); ?>
+            </div>
+        </div><!-- campo do codigo-produto -->
         
         <div class="control-group">
             <label class="control-label" for="inputTitulo">Titulo</label>
@@ -98,32 +105,55 @@
         </div><!-- campo largura -->
         
         <div class="control-group">
-            <label class="control-label" for="inputFoto">Foto Atual</label>                              
-            <div class="controls">
-                <img src="<?php echo $this->basePath()?>/images/produtos/small/<?php echo $this->produto->getFoto();?>" class="img-polaroid">
-            </div>
-        </div><!-- campo foto visualizacao -->
-        
-        <div class="control-group">
             <label class="control-label" for="quantidade">Quantidade do produto</label>
             <div class="controls">                    
                 <?php echo $this->formRow($form->get('quantidade')); ?>
             </div>
         </div><!-- campo qtd -->
-                
+        
+        <div class="control-group">
+            <label class="control-label" for="descricao">Descrição do produto</label>
+            <div class="controls">                    
+                <?php echo $this->formRow($form->get('descricao')); ?>
+            </div>
+        </div><!-- campo descricao -->
+        
+        <div class="control-group">
+            <label class="control-label" for="imformacaoNutricional">Informação Nutricional</label>
+            <div class="controls">                    
+                <?php echo $this->formRow($form->get('imformacaoNutricional')); ?>
+            </div>
+        </div><!-- campo informacao nutricional -->
+        
+        <div class="control-group">
+            <label class="control-label" for="complemento">Complemento</label>
+            <div class="controls">                    
+                <?php echo $this->formRow($form->get('complemento')); ?>
+            </div>
+        </div><!-- campo complemento -->
+        
+        <?php /*<div class="control-group">
+            <label class="control-label" for="inputFoto">Foto(s) do Produto</label>                              
+            <div class="controls">
+                <img src="<?php echo $this->basePath()?>/images/produtos/small/<?php echo $this->produto->getFoto();?>" class="img-polaroid">
+                <?php foreach ($this->produto->getImagens() as $imagem): ?>
+                    <img src="<?php echo $this->basePath()?>/images/produtos/small/<?php echo $imagem->getImages();?>" class="img-polaroid">
+                <?php endforeach; ?>
+            </div>
+        </div><!-- campo foto visualizacao -->
+        
         <div class="control-group">
             <label class="control-label" for="inputFoto">Foto</label>                              
             <div class="controls">
                 <div class="fileupload fileupload-new" data-provides="fileupload">
                     <span class="btn btn-file">
                         <span class="fileupload-new">Selecione o arquivo</span>
-                        <span class="fileupload-exists">Alterar o arquivo</span>
-                        <!-- <input type="file" /> -->
-                        <?php echo $this->formRow($form->get('foto')); ?>
+                        <span class="fileupload-exists">Alterar o arquivo</span>                        
+                        <?php echo $this->formRow($form->get('foto')); ?>                        
                     </span>                        
                 </div>
             </div>
-        </div><!-- campo foto -->
+        </div><!-- campo foto -->*/?>
                 
         <div class="control-group">
             <div class="controls">

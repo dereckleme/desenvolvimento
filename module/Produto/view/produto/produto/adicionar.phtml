@@ -14,7 +14,7 @@
     <div class="span9">
         <?php 
         $form = $this->form;
-        $form->setAttribute('action', $this->url('admin-produto-home/admin-produto-adicionar', array('action'=>'criarProduto')));
+        $form->setAttribute('action', $this->url('admin-produto-home/admin-produto-gerenciar', array('action'=>'adicionar')));
         $form->prepare();
         echo $this->form()->openTag($form);
         ?>
@@ -139,9 +139,8 @@
                         <span class="btn btn-file">
                             <span class="fileupload-new">Selecione o(s) arquivo(s)</span>
                             <span class="fileupload-exists">Alterar o(s) arquivo(s)</span>
-                            <!-- <input type="file" /> -->
                             <?php echo $this->formRow($form->get('foto')); ?>
-                        </span>                        
+                        </span>
                     </div>
                 </div>
             </div><!-- campo foto -->
