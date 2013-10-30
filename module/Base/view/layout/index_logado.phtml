@@ -46,7 +46,7 @@
 				            <li class="Menu_topo">Olá <?=$this->infoUser->getLogin()?>, seja bem vindo a Loja Seleto</li>
 				             <li class="Menu_topo"><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">Sair</a></li>
                       <li class="Menu_topo"><a href="<?=$this->url("Painel-usuario")?>">Acompanhe seus pedidos</a></li>
-                      <li class="Menu_topo" style="background:none;"><a href="">Dúvidas frequentes</a></li>
+                      <li class="Menu_topo" style="background:none;"><a href="<?=$this->url("publico-duvidas")?>">Dúvidas frequentes</a></li>
 			            </ul>
                </div>      
               <a href="#" class="actionOpenCarrinho">
@@ -72,6 +72,7 @@
                   </div>
               </div>
           </div>
+
          <!--ERRO-->
         <div id="form_erro" style="display:none">
           <div id="BoxFormErro">
@@ -84,6 +85,8 @@
                 </div>   
           </div>
         </div>
+
+
     <!--*****************************CONTEUDO*****************************-->
 
 <div id="geral">
@@ -93,7 +96,7 @@
             
           <div id="box_menu">
             <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
-            <p class="txt_phone">Televendas: 55 11 8855-9966</p>
+            <p class="txt_phone">Televendas: 55 11 3611-3143 / 3611-3179</p>
             <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">            
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
@@ -245,7 +248,7 @@
            <!--*********************MENU LATERAL*********************-->
 
                 <?php 
-                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra")
+                    if($this->matchedRoute != "publico-carrinho-compra" && $this->matchedRoute != "publico-finaliza-compra" && $this->matchedRoute != "publico-duvidas")
                     {
                 ?>
                   <div id="lista_produtos">
@@ -315,26 +318,25 @@
           <ul class="mn_footer">
              <li>INSTITUCIONAL</li>
                  <ul class="submenu">
-                    <li><a href="" title="Quem Somos">Quem Somos</a></li>
-                    <li><a href="" title="Mapa do Site">Mapa do Site</a></li>
-                    <li><a href="" title="Fale Conosco">Fale Conosco</a></li>
+                     <li><a href="<?=$this->url("publico-duvidas")?>#tab_1" title="Quem Somos">Quem Somos</a></li>
+                    <li><a href="<?=$this->url("publico-duvidas")?>#tab_2" title="Mapa do Site">Mapa do Site</a></li>
+                    <li><a href="<?=$this->url("publico-duvidas")?>#tab_6" title="Fale Conosco">Fale Conosco</a></li>
                  </ul>
           </ul>
 
         <ul class="mn_footer">
           <li>DÚVIDAS FREQUENTES</li>
             <ul class="submenu">
-               <li><a href="" title="Termos de Pesquisa">Perguntas Frequentes</a></li>
-               <li><a href="" title="Meus Pedidos">Meus Pedidos</a></li>
-               <li><a href="" title="Trocas e Devoluções">Trocas e Devoluções</a></li>
-                <li><a href="" title="Editar Cadastro">Editar Cadastro</a></li>
-                <li><a href="" title="Política de Privacidade">Política de Privacidade</a></li>
+               <li><a href="<?=$this->url("publico-duvidas")?>" title="Termos de Pesquisa">Perguntas Frequentes</a></li>
+               <li><a href="<?=$this->url("Painel-usuario")?>" title="Meus Pedidos">Meus Pedidos</a></li>
+                <li><a href="<?=$this->url("Painel-usuario")?>" title="Editar Cadastro">Editar Cadastro</a></li>
+                <li><a href="<?=$this->url("publico-duvidas")?>#tab_5" title="Política de Privacidade">Política de Privacidade</a></li>
             </ul>
         </ul>
 
         <ul class="mn_footer">
           <li>ENTREGAS</li>
-          <img src="../public/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
+          <img src="<?=$this->basePath()?>/images/icon_sedex.png" alt="sedex" title="Entrega via Sedex"/>
         </ul>
 
         <ul class="mn_footer">

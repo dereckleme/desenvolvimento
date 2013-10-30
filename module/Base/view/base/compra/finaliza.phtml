@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 $offValue = false;
 if($this->auth->hasIdentity())
@@ -82,14 +82,23 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 						?>
 						<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/></p>
 						
-						<?=$this->nomeCompleto?>,<Br/>
-						<?=$this->cep?><br/>
-						<?=$this->endereco?><br/>
-						<?=$this->numero?><Br/>
-						<?=$this->bairro?><Br/>
-						<?=$this->cadastro->getMapeamentocidade()->getNome()?>
-						<?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?><Br/>
-						<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><span class="txtBoxLoginSpan" title="sair">Sair</span></a>
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Nome do destinatário:</span> <?=$this->nomeCompleto?></span>
+						
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Cep:</span> <?=$this->cep?></span>
+						
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Endereço:</span> <?=$this->endereco?></span>
+						
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Numero:</span> <?=$this->numero?></span>
+						
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Bairro:</span> <?=$this->bairro?></span>
+						
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Cidade:</span> <?=$this->cadastro->getMapeamentocidade()->getNome()?></span>
+						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Estado:</span> <?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?></span>
+						<br/>
+						
+						<a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">
+							<span class="txtBoxLoginSpan" title="sair">Sair</span>
+						</a>
 						<?php
 					}
 					?>		
@@ -127,6 +136,7 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 					                </form>
 								
 							</div>
+
 					</div>		
 					<!--Fim do Conteudo Finalizar Login Vazio-->
 
@@ -145,12 +155,13 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 
                     		<!--Conteudo Finalizar Endereço Vazio-->
 						<div id="BoxEndereco">
+						
 								<h5 class="ImgEndereco<?php 
 								    if($offValue)
 								    {
-								    	print "Off";
+								    	print "OffNovoOff";
 								    }
-								?>">Endereço</h5>
+								?>">Endereços</h5>
 							<div id="ContBoxEndereco">
 							    <?php 
 							        if($offValue)
@@ -175,7 +186,8 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 							        <th class="radio"><input class="actionRadioEndereco" type="radio" name=myradio rel="<?=$alternativo->getCep()?>" value="<?=$alternativo->getIdcadastro()?>" <?if($alternativo->getAtivo() == 1) print "checked";?>></th>
 							        <th class="TextoEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
                                     <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
-							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.gif"></a></th>
+							        <!--<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>-->
+							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega" class="bt_excluirEnd">excluir</a></th>
 							      </tr>      	
                                         	<?php
                                         }
@@ -239,7 +251,13 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input <?if($offValue) print 'disabled="disabled"'?> type="text" class="BoxNome" value="<?=$this->nomeCompleto?>"><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
 
 
-
+                                         <input type="radio" class="tipoUsuario" name="tipoUsuario"  value="1" <?if($this->cadastro->getTipoUser() == 1) print 'checked';?>>Pessoa Física*:
+					 <input type="radio" class="tipoUsuario" name="tipoUsuario"  value="2" <?if($this->cadastro->getTipoUser() == 2) print 'checked';?>>Pessoa Jurídica*:<br/>
+					  <input type="text" value="<?if($this->cadastro->getTipoUser() == 1){print $this->cadastro->getCpf();}else{print $this->cadastro->getCnpj();}?>" class="PessoaSeletc" ><br/><p class="xxx">(Informe seu CPF ou CNPJ)</p><br/>
+					  <div class="showInscEstadual"  <?if($this->cadastro->getTipoUser() == 1) print 'style="display:none"';?>>
+					 <label class="FormEstado">Numero da Inscrição Estadual*:</label><br/>
+					 <input type="text" class="InscEstadual" value="<?=$this->cadastro->getInscricaoEstadual()?>"><br/><p class="xxx">(Informe o Numero da Inscrição Estadual)</p><br/>
+                        </div>
 
 					                  <label class="FormCEP">CEP*:</label><br/><input type="text" <?if($offValue) print 'disabled="disabled"'?> class="BoxCEP" value="<?=$this->cep?>"><span class="ajaxMsg" style="color:red;display:none"></span><br/><br/>
 					                  
@@ -292,7 +310,15 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                          }?>
 					                  </select><br/><br/>
 
-
+                                         <label class="FormTelResidencial">Telefone Residencial*:</label>
+                                         <label class="FormTelCelular">Telefone Celular:</label>
+                              
+					                     <input type="text" class="BoxTelResidencial" value="<?=$this->cadastro->getTelefoneRes()?>">
+									     <input type="text" class="BoxTelCelular" value="<?=$this->cadastro->getTelefoneCel()?>"><br/><br/>
+					                         <div class="showInscEstadual"  <?if($this->cadastro->getTipoUser() == 1) print 'style="display:none"';?>>
+										 <label class="FormTelComercial">Telefone Comercial:</label><br/>
+										 <input type="text" class="BoxTelComercial" value="<?=$this->cadastro->getTelefoneCom()?>"><br/><br/>
+					     </div>
 
                                         <?if($offValue)
                                         {
@@ -330,39 +356,48 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								<h5 class="ImgEnderecoOff">Endereço</h5>
 							<div id="ContBoxEndereco">
 								<p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+
                                    
 									<form action="" class="formAction">
 
 					                  <label class="FormNome">Nome do Destinatário*:</label><br/><input disabled="disabled" type="text" class="BoxNome" value=""><br/><p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
 
+					                  <input type="radio" disabled="disabled">Pessoa Física*:
+									  <input type="radio" disabled="disabled">Pessoa Jurídica*:<br/>
+									  <input type="text" disabled="disabled" class="PessoaSeletc"><br/><p class="xxx">(Informe seu CPF ou CNPJ)</p><br/>
+										   
+					                  <label class="FormEstado">Numero da Inscrição Estadual*:</label><br/>
 
-
-
+					                  <input type="text" disabled="disabled" class="InscEstadual"><br/><p class="xxx">(Informe o Numero da Inscrição Estadual)</p><br/>
+                        
 					                  <label class="FormCEP">CEP*:</label><br/><input disabled="disabled" type="text" class="BoxCEP"><br/><br/>
 					                  
-
 					                  <label class="FormEndereco">Endereço*:</label><br/><input  disabled="disabled" type="text" class="BoxEndereco" value=""><br/><p class="xxx">(Deverá ser informado se o endereço é Rua/Avenida/
 Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 
 					                  <label class="FormNumero">Numero*:</label>                                      
-                                      <label class="FormComplemento">Complemento:</label>
-
                                       <br/>
-					                  <input type="text"  disabled="disabled" class="BoxNumero" >
-					                  <input type="text"  disabled="disabled" class="BoxComplemento" ><br/><br/>
+					                  <input type="text"  disabled="disabled" class="BoxNumero" ><br/><br/>
 
 					                  <label class="FormBairro">Bairro*:</label>
 					                  <label class="FormCidade">Cidade*:</label><br/>
 
-					                  <input type="text" disabled="disabled" class="BoxBairro" >
-					                   <select class="BoxCidade" disabled="disabled"><option>Selecione</option></select><br/><br/>
+					                  <input type="text" disabled="disabled" class="BoxBairro">
+
+					                  <select class="BoxCidade" disabled="disabled"><option>Selecione</option></select><br/><br/>
 					                  <label class="FormEstado">Estado*:</label><br/>
 					                  <select class="BoxEstado" disabled="disabled"><option>Selecione</option></select><br/><br/>
 
+					                  <label class="FormTelResidencial">Telefone Residencial*:</label>
+                                      <label class="FormTelCelular">Telefone Celular:</label>
 
+					                  <input type="text" disabled="disabled" class="BoxTelResidencial">
+									  <input type="text" disabled="disabled" class="BoxTelCelular"><br/><br/>
+					                         
+									  <label class="FormTelComercial">Telefone Comercial:</label><br/>
+									  <input type="text" disabled="disabled" class="BoxTelComercial"><br/><br/>
 
-
-					                 <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEnderecoOff"><br/><br/><br/>
+					                  <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEnderecoOff"><br/><br/><br/>
 
 					                </form>
 							</div>

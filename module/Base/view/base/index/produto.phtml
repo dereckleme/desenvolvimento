@@ -82,13 +82,14 @@
 								<a href="#">mais</a>
 							</li>
 							<li class="qtd_mudar qtMenos">
-								<a href="#">menos</a>
+				 				<a href="#">menos</a>
 							</li>
 					      </ul>
 				         </div>
 				         
 							<div class="btn_detalhe">
-								<button class="btn_carrinhoCompras_detalhe_off actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>">Produto indisponível</button>
+								<button class="btn_carrinhoCompras_detalhe_off">Produto indisponível</button><br/>
+								<span class="txt_categoria_off" title="Avise-me quando chegar" style="margin-left:0px">Avise-me quando chegar</span>
 							</div>          	
                                     	<?php 
                                    
@@ -180,7 +181,9 @@
 		    	    </a>
 		    	</p>
 		    	<div class="left_vejaTambem">
+		    	 <a class="desc_prod" href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() ));?>" title="<?=$relacionados->getTitulo();?>">
 		    		<img src="<?=$this->basePath()?>/images/produtos/thumb_small/<?php echo $relacionados->getFoto();?>" alt="" title=""  class="maisProd" />
+		    	    </a>
 		    	</div>
 
 		    	<div class="right_vejaTambem">
@@ -207,7 +210,7 @@
 						</div>
 			   </div>
 			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rel="0" rev="<?=$relacionados->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao carrinho de compras</button>
-			   <a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$relacionados->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$relacionados->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$relacionados->getSlugProduto() )); ?>" class="btn_comprar_vejaTambem" title="Comprar">Comprar</a>
+			  <a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$relacionados->getIdproduto()?>" class="btn_comprar_vejaTambem btn_comprar_detalhe" title="Comprar" style="margin-top:1px;">Comprar</a>
 		</div>
 <?php 
     

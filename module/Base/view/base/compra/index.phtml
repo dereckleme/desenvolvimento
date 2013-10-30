@@ -69,12 +69,12 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								 <li class="ListaDaCesta">
 								     
 								 	<div id="ImgProductsBasket">
-								 		<img src="<?=$this->basePath()?>/images/produtos/thumb_small/<?=$produto['produto']->getFoto();?>">
+								 		<a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto['produto']->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto['produto']->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto['produto']->getSlugProduto() )); ?>"><img src="<?=$this->basePath()?>/images/produtos/thumb_small/<?=$produto['produto']->getFoto();?>"></a>
 								 	</div>
 								 	<div id="ProductsFromBasket">
-								 		<p class="DescriptionProductsBasket"><?=$produto['produto']->getTitulo()?><?
+								 		<a href="<?php echo $this->url('publico-categoria/publico-categoria-e-subcategoria/publico-produto', array('categoriaslug'=>$produto['produto']->getProdutosubcategoria()->getCategorias()->getSlug(), 'subcategoriaslugSub'=>$produto['produto']->getProdutosubcategoria()->getSlugSubcategoria(), 'produtoSlug'=>$produto['produto']->getSlugProduto() )); ?>"><p class="DescriptionProductsBasket"><?=$produto['produto']->getTitulo()?><?
 								 		    if($produto['produto']->getEstoque()[0]->getQuantidade() <= $produto['quantidade']) print ',<br/><span style="color:red">Limite de estoque atingido.</span>';
-								 		?></p>
+								 		?></p></a>
 								 	</div>
 								 	<div id="ProductsFromBasket">
 								 		<p class="ValueProductsFromBasket"><?=$produto['produto']->getValor(true)?></p>
@@ -106,7 +106,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 
 								 	<div id="ProductsFromBasket">
 								 	  <a href="#" rev="<?=$produto['produto']->getIdproduto()?>" class="actionRemoveCart">
-								 		<img class="CloseProductsFromBasket" src="<?=$this->basePath()?>/images/bt_excluir.png" title="excluir do carrinho de compras">
+								 		<img class="CloseProductsFromBasket" title="excluir do carrinho de compras">
 								 	  </a>
 								 	</div>
 								  </li>
@@ -139,11 +139,11 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 						<ul id="BoxListaProduto">
 						 <span class="BoxEntrega">						 	
 						 	 <p class="TxtBoxEntrega">
-						 		<span class="CaixaAltaEntrega">prazo máximo de entrega:</span>
+						 		<span class="CaixaAltaEntrega">Prazo máximo de entrega:</span>
 						 		 até 7 dias úteis</p>
 						 </span>
 							<li class="ListaDaCesta2">								
-								<p class="txt_aviso"><span class="txt_aviso_atencao"><strong>Atenção:</strong></span> O prazo começa a contar a<br/> partir da aprovação do crédito.</p>
+								<p class="txt_aviso"><span class="txt_aviso_atencao">Atenção:</span> O prazo começa a contar a<br/> partir da aprovação do crédito.</p>
 		                        <p class="txt_frete"><?if(!empty($this->valorFrete)) print "FRETE: ".$this->valorFrete;?></p>
 		                        
 		                        <p class="CalcSomaValor"><?=$this->carrinhoLista['valorTotal']?></p>

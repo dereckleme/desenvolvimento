@@ -57,7 +57,7 @@
                                 ?>
                       			<div id="quantidade_produto_categoria" class="prdQtd">
                       				<p class="text_qtd_PC">Quantidade</p>
-    								<input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" disabled type="text" name="quantidade" value="1" style="background-color:#fff">    
+    								          <input id="produto_<?php echo $produto->getIdproduto(); ?>" class="box_qtd_PC" disabled type="text" name="quantidade" value="1" style="background-color:#fff">    
     								        
     								<ul class="produto_quantidade">
     								    <li class="qtd_mudar_PC qtMais_PC"> <a href="#">mais</a> </li>
@@ -95,7 +95,9 @@
                       		</div>
                       			
                       		<div id="buttom_add_car_comprar">
-    						            <button class="carrinhoCompras_categoria_off actionAddCarrinho" title="Produto indisponível" rev="<?php echo $produto->getIdproduto();?>">Produto indisponível</button>            
+    						            <button class="carrinhoCompras_categoria_off" title="Produto indisponível" rev="<?php echo $produto->getIdproduto();?>">Produto indisponível</button>
+                            <span class="txt_categoria_off" title="Avise-me quando chegar">Avise-me quando chegar</span>
+
                       		</div>    	
                                     	<?php 
                                    

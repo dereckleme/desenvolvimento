@@ -149,6 +149,7 @@ class UsuarioController extends AbstractActionController
     {
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage("Usuario"));
+        $error = null;
         if($auth->hasIdentity())
         {
             if($this->request->isPost())
@@ -157,15 +158,97 @@ class UsuarioController extends AbstractActionController
                 $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
                     $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
                     $service = $this->getServiceLocator()->get('Usuario\Service\Cadastro');
-                    $service->update(array("id" => $entity->getIdcadastro(), 
-                        "nome" => $requestArray['actionNome'], 
-                        "cep" => $requestArray['actionCep'], 
-                        "rua" => $requestArray['actionRua'],
-                        "numero" => $requestArray['actionNumero'],
-                        "bairro" => $requestArray['actionBairro'],
-                        "cidade" => $requestArray['actionCidade'],
-                    ));
-                $viewModel = new ViewModel(array('message' => 1));
+                    if(isset($requestArray["actiontipoUsuario"]))
+                    {    
+                        if($requestArray["typeUpdate"] == 1)
+                        {    
+                            if($requestArray["actiontipoUsuario"] == 1)
+                            {
+                                if(empty($requestArray['actionNome'])) $error .= "- Nome do Destinatário<br/>";
+                                if(empty($requestArray['actioncpfCnpj'])) $error .= "- Informe seu CPF ou CNPJ<br/>";
+                                if(empty($requestArray['actiontelRes'])) $error .= "- Telefone Residencial";
+                                    if(empty($error))
+                                    {
+                                        $service->update(array("id" => $entity->getIdcadastro(),
+                                        		"tipoUser" => $requestArray["actiontipoUsuario"],
+                                        		"nome" => $requestArray['actionNome'],
+                                        		"cpf" => $requestArray["actioncpfCnpj"],
+                                                "telefoneRes" => $requestArray["actiontelRes"],
+                                                "telefoneCel" => $requestArray["actiontelCel"],
+                                        ));
+                                        $viewModel = new ViewModel(array('message' =>null));
+                                    }
+                                    else 
+                                    {
+                                        $viewModel = new ViewModel(array('message' =>$error));
+                                    }
+                            }
+                            else if($requestArray["actiontipoUsuario"] == 2)
+                            {
+                                
+                            }
+                        }
+                        else if($requestArray["typeUpdate"] == 2)
+                        {
+                            if($requestArray["actiontipoUsuario"] == 1)
+                            {
+                                if(empty($requestArray['actionNome'])) $error .= "- Nome do Destinatário<br/>";
+                                if(empty($requestArray['actioncpfCnpj'])) $error .= "- Informe seu CPF ou CNPJ<br/>";
+                                if(empty($requestArray['actiontelRes'])) $error .= "- Telefone Residencial<br/>";
+                                if(empty($requestArray['actionCep'])) $error .= "- Número do CEP<br/>";
+                                if(empty($requestArray['actionRua'])) $error .= "- Endereço de entrega<br/>";
+                                if(empty($requestArray['actionNumero'])) $error .= "- Numero<br/>";
+                                if(empty($requestArray['actionBairro'])) $error .= "- Digite seu bairro<br/>";
+                                if(empty($requestArray['actionCidade'])) $error .= "- Selecione sua cidade<br/>";
+                                    if(empty($error))
+                                    {
+                                        $service->update(array("id" => $entity->getIdcadastro(),
+                                        		"tipoUser" => $requestArray["actiontipoUsuario"],
+                                        		"nome" => $requestArray['actionNome'],
+                                        		"cep" => $requestArray['actionCep'],
+                                        		"rua" => $requestArray['actionRua'],
+                                        		"numero" => $requestArray['actionNumero'],
+                                        		"bairro" => $requestArray['actionBairro'],
+                                        		"cidade" => $requestArray['actionCidade'],
+                                        		"cpf" => $requestArray["actioncpfCnpj"],
+                                                "telefoneRes" => $requestArray["actiontelRes"],
+                                                "telefoneCel" => $requestArray["actiontelCel"],
+                                        ));
+                                        $viewModel = new ViewModel(array('message' =>null));
+                                    }
+                                    else
+                                    {
+                                        $viewModel = new ViewModel(array('message' =>$error));
+                                    }
+                            }
+                        }
+                 } 
+                 else if($requestArray["typeUpdate"] == 3)
+                 {
+                            if(empty($requestArray['actionCep'])) $error .= "- Número do CEP<br/>";
+                     		if(empty($requestArray['actionRua'])) $error .= "- Endereço de entrega<br/>";
+                     		if(empty($requestArray['actionNumero'])) $error .= "- Numero<br/>";
+                     		if(empty($requestArray['actionBairro'])) $error .= "- Digite seu bairro<br/>";
+                     		if(empty($requestArray['actionCidade'])) $error .= "- Selecione sua cidade<br/>";
+                     		if(empty($error))
+                     		{
+                     			$service->update(array("id" => $entity->getIdcadastro(),
+                     					"cep" => $requestArray['actionCep'],
+                     					"rua" => $requestArray['actionRua'],
+                     					"numero" => $requestArray['actionNumero'],
+                     					"bairro" => $requestArray['actionBairro'],
+                     					"cidade" => $requestArray['actionCidade'],
+                     			));
+                     			$viewModel = new ViewModel(array('message' =>null));
+                     		}
+                     		else
+                     		{
+                     			$viewModel = new ViewModel(array('message' =>$error));
+                     		}
+                 } 
+                 else {
+                     $viewModel = new ViewModel(array('message' => "Selecione pessoa física ou pessoa jurídica"));
+                 }        
             }
             else 
             {
@@ -183,5 +266,32 @@ class UsuarioController extends AbstractActionController
     public function ativarUserAction()
     {
     	
+    }
+    public function editarCadastroRequestAction()
+    {
+        $repository = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $data = array();
+        $auth = new AuthenticationService;
+        $auth->setStorage(new SessionStorage("Usuario"));
+        $requestArray = $this->getRequest()->getPost()->toArray();
+        $estados = $repository->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
+        if($auth->hasIdentity() && !empty($requestArray['idCadastro']))
+        {
+            $entity = $repository->getRepository('Usuario\Entity\UsuarioCadastro');
+            $idEntityAlvo = $entity->findOneBy(array('usuariosusuarios' => $auth->getIdentity(),'idcadastro' => $requestArray['idCadastro']));
+            $data = $idEntityAlvo;
+            if($idEntityAlvo->getMapeamentocidade())
+            {
+            	$cidadeEstadoUF = $idEntityAlvo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura();
+            	$cidadeSelected = $idEntityAlvo->getMapeamentocidade()->getIdcidade();
+            	$cidades = $repository->getRepository("Usuario\Entity\MapeamentoCidade")->findBynomeclatura($cidadeEstadoUF);
+            }
+            $viewModel = new ViewModel(array("data" => $data,"estados" => $estados,"cidades" => $cidades,"cidadeEstadoUF" => $cidadeEstadoUF,"cidadeSelected" => $cidadeSelected));
+        }
+        else {
+        $viewModel = new ViewModel(array("data" => $data,"estados" => $estados));
+        }
+        $viewModel->setTerminal(true);
+        return $viewModel;
     }
 }

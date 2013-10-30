@@ -1,4 +1,341 @@
 $(document).ready(function(){
+	
+	$(".ButtonNovoEndereco").on("click",function(){
+		idCadastro = null;
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/editarCadastroRequest",
+			type: "post",
+			async:false,
+			data: {idCadastro:idCadastro},
+			success: function(data) {
+				$("#ajaxRecebimento").html(data);
+				$("#ajaxRecebimento").fadeIn();
+				$(".BoxCEPResquest").mask("99999-999",{completed:function(){
+					var cepSet = this.val();
+					$.ajax({
+						url: basePatch+"/correios/restCep",
+						type: "post",
+						beforeSend: function(){
+								$(".atencaoErro").html("Aguarde um momento.");
+								$(".erro").html("");
+								$(".tentarNovamente").css("display","none");
+								$(".tipo_erro").html("Localizando endereço do cep: "+cepSet);
+								$("#form_erro").fadeIn();
+						   },
+						complete:function(){
+							$("#form_erro").fadeOut();
+						},   
+						data: {cep:cepSet},
+						success: function(data) {
+							$(".ajaxMsg").fadeOut();
+							obj = JSON.parse(data);
+							if(obj.cep == null)
+							{
+								$(".BoxEndereco").val("");
+								$(".BoxBairro").val("");
+								$(".BoxEstado option").removeAttr("selected");
+								$(".BoxCidade").html('<option value="">Selecione</option>');
+								$(".BoxCidade").attr('disabled', true);
+								$(".ajaxMsg").html("Endereço não encontrado.");
+								$(".ajaxMsg").fadeIn();
+							}
+							else
+								{
+									$(".formActionResquest .BoxEnderecoResquest").val(obj.rua);
+									$(".formActionResquest .BoxBairroResquest").val(obj.bairro);
+									jQuery.each($(".BoxEstado option"), function(i, val) {
+											if(obj.uf == $(val).val())	
+												{
+													$(val).attr('selected', true);
+													$.ajax({
+														url: basePatch+"/mapeamento-cidades-estados/cidade/nomeclatura/"+obj.uf,
+														async:false,
+														success: function(data) {
+															$(".BoxCidade").html(data);
+															$(".BoxCidade").removeAttr("disabled");
+															jQuery.each($(".BoxCidade option"), function(ix, value) {
+																	if($(value).text() == obj.cid)
+																		{
+																			$(value).attr('selected', true);
+																		}
+																})
+														},
+														error: function(){}
+													});	
+												}
+														    });
+								}
+						},
+						error: function(){
+							$("#form_erro").fadeOut();
+							alert("Infelizmente não foi possível se comunicar com o gateway dos correios, por favor preencher seus dados manualmente.");
+							}
+					});
+				}});
+				
+				$(document).on("click",".EventcadastrarEnderecoResquestNovo",function(){
+					var actionCep = $(".formActionResquest .BoxCEPResquest").val();
+					var actionRua = $(".formActionResquest .BoxEnderecoResquest").val();
+					var actionNumero = $(".formActionResquest .BoxNumeroResquest").val();
+					var actionBairro = $(".formActionResquest .BoxBairroResquest").val();
+					var actionCidade = $(".formActionResquest .BoxCidade option:selected").val();
+					var errorCadastro = 0;
+					$(".formActionResquest input,select").each(function( index,element ) {
+						if($(element).val() == "")
+							{
+								errorCadastro = 1;
+							}
+					});
+					if(errorCadastro == 0)
+					{
+						$.ajax({
+							url: basePatch+"/api/Cadastro",
+							type: "post",
+							async:false,
+							data: {actionCep:actionCep,actionRua:actionRua,actionNumero:actionNumero,actionBairro:actionBairro,actionCidade:actionCidade},
+							success: function(data) {
+								$(".atencaoErro").html("Selecione um endereço de entrega.");
+								$(".erro").html("");
+								$(".tentarNovamente").css("display","block");
+								$(".tentarNovamente").html("Continuar compra");
+								$(".tipo_erro").html("Parabéns você adicionou um endereço alternativo.");
+								$("#form_erro").fadeIn();
+								$(".tentarNovamente").on("click",function(){
+									location.reload();
+								})
+							}
+						});
+					}
+						else
+							{
+							$(".erro").html("Alguns campos abaixo estão em branco:");
+							$(".tipo_erro").html("");
+							$(".tentarNovamente").css("display","block");
+							$(".formActionResquest input,select").each(function( index,element ) {
+								if($(element).val() == "")
+									{
+										if(index == 0) $(".tipo_erro").append("<Br/> - Número do CEP");
+										if(index == 1) $(".tipo_erro").append("<Br/> - Endereço de entrega");
+										if(index == 2) $(".tipo_erro").append("<Br/> - Número");
+										if(index == 3) $(".tipo_erro").append("<Br/> - Bairro");
+										if(index == 4) $(".tipo_erro").append("<Br/> - Cidade");
+									}
+							});
+							$("#form_erro").fadeIn();
+							}
+					return false;
+				});
+			}
+		});
+			
+		return false;
+	});
+	$(".openEventEditCadastro").on("click",function(){
+		var idCadastro = $(this).attr("rel");
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/editarCadastroRequest",
+			type: "post",
+			async:false,
+			data: {idCadastro:idCadastro},
+			success: function(data) {
+				$("#ajaxRecebimento").html(data);
+				$("#ajaxRecebimento").fadeIn();
+				$(".BoxCEPResquest").mask("99999-999",{completed:function(){
+					var cepSet = this.val();
+					$.ajax({
+						url: basePatch+"/correios/restCep",
+						type: "post",
+						beforeSend: function(){
+								$(".atencaoErro").html("Aguarde um momento.");
+								$(".erro").html("");
+								$(".tentarNovamente").css("display","none");
+								$(".tipo_erro").html("Localizando endereço do cep: "+cepSet);
+								$("#form_erro").fadeIn();
+						   },
+						complete:function(){
+							$("#form_erro").fadeOut();
+						},   
+						data: {cep:cepSet},
+						success: function(data) {
+							$(".ajaxMsg").fadeOut();
+							obj = JSON.parse(data);
+							if(obj.cep == null)
+							{
+								$(".BoxEndereco").val("");
+								$(".BoxBairro").val("");
+								$(".BoxEstado option").removeAttr("selected");
+								$(".BoxCidade").html('<option value="">Selecione</option>');
+								$(".BoxCidade").attr('disabled', true);
+								$(".ajaxMsg").html("Endereço não encontrado.");
+								$(".ajaxMsg").fadeIn();
+							}
+							else
+								{
+									$(".formActionResquest .BoxEnderecoResquest").val(obj.rua);
+									$(".formActionResquest .BoxBairroResquest").val(obj.bairro);
+									jQuery.each($(".BoxEstado option"), function(i, val) {
+											if(obj.uf == $(val).val())	
+												{
+													$(val).attr('selected', true);
+													$.ajax({
+														url: basePatch+"/mapeamento-cidades-estados/cidade/nomeclatura/"+obj.uf,
+														async:false,
+														success: function(data) {
+															$(".BoxCidade").html(data);
+															$(".BoxCidade").removeAttr("disabled");
+															jQuery.each($(".BoxCidade option"), function(ix, value) {
+																	if($(value).text() == obj.cid)
+																		{
+																			$(value).attr('selected', true);
+																		}
+																})
+														},
+														error: function(){}
+													});	
+												}
+														    });
+								}
+						},
+						error: function(){
+							$("#form_erro").fadeOut();
+							alert("Infelizmente não foi possível se comunicar com o gateway dos correios, por favor preencher seus dados manualmente.");
+							}
+					});
+				}});
+				
+				$(document).on("click",".EventcadastrarEnderecoResquest",function(){
+					var actionCep = $(".formActionResquest .BoxCEPResquest").val();
+					var actionRua = $(".formActionResquest .BoxEnderecoResquest").val();
+					var actionNumero = $(".formActionResquest .BoxNumeroResquest").val();
+					var actionBairro = $(".formActionResquest .BoxBairroResquest").val();
+					var actionCidade = $(".formActionResquest .BoxCidade option:selected").val();
+					$.ajax({
+						url: basePatch+"/actionUser/Usuario/atualiza",
+						type: "post",
+						async:false,
+						data: {typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
+						success: function(data) {
+							if(data != "")
+								{
+									$(".erro").html("Alguns campos abaixo estão em branco:");
+									$(".tipo_erro").html("");
+									$(".tentarNovamente").css("display","block");
+									$(".tipo_erro").html(data);
+									$("#form_erro").fadeIn();
+								}
+							else{
+									location.reload();
+								}
+						}
+					});
+					return false;
+				});
+			}
+		});
+		
+		return false;
+	});
+	//Interface Meu Cadastro
+	$(".EventSalvarEnderecoPainel").on("click",function(){
+		var actionNome = $(".formActionCadastroUsuario .BoxNome").val();
+		var actioncpfCnpj = $(".formActionCadastroUsuario .PessoaSeletc").val();
+		var actionInscEstadual = $(".formActionCadastroUsuario .InscEstadual").val();
+		var actiontipoUsuario = $('.formActionCadastroUsuario input[type="radio"]:checked').val();
+		var actiontelRes =  $(".formActionCadastroUsuario .BoxTelResidencial").val();
+		var actiontelCel = $(".formActionCadastroUsuario .BoxTelCelular").val();
+		var actiontelCom = $(".formActionCadastroUsuario .BoxTelComercial").val();
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/atualiza",
+			type: "post",
+			async:false,
+			data: {typeUpdate:1,actiontelCom:actiontelCom,actiontelCel:actiontelCel,actiontelRes:actiontelRes,actiontipoUsuario:actiontipoUsuario,actionInscEstadual:actionInscEstadual,actioncpfCnpj:actioncpfCnpj,actionNome:actionNome},
+			success: function(data) {
+				if(data != "")
+					{
+						$(".erro").html("Alguns campos abaixo estão em branco:");
+						$(".tipo_erro").html("");
+						$(".tentarNovamente").css("display","block");
+						$(".tipo_erro").html(data);
+						$("#form_erro").fadeIn();
+					}
+			}
+		});
+		return false;
+	});
+	$(".formAction").on("click",'.EventcadastrarEndereco',function(){
+		var actionNome = $(".formAction .BoxNome").val();
+		var actioncpfCnpj = $(".formAction .PessoaSeletc").val();
+		var actionInscEstadual = $(".formAction .InscEstadual").val();
+		var actiontipoUsuario = $('.formAction input[type="radio"]:checked').val();
+		var actiontelRes =  $(".formAction .BoxTelResidencial").val();
+		var actiontelCel = $(".formAction .BoxTelCelular").val();
+		var actiontelCom = $(".formAction .BoxTelComercial").val();
+		var actionCep = $(".formAction .BoxCEP").val();
+		var actionRua = $(".formAction .BoxEndereco").val();
+		var actionNumero = $(".formAction .BoxNumero").val();
+		var actionBairro = $(".formAction .BoxBairro").val();
+		var actionCidade = $(".formAction .BoxCidade option:selected").val();
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/atualiza",
+			type: "post",
+			async:false,
+			data: {typeUpdate:2,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep,actiontelCom:actiontelCom,actiontelCel:actiontelCel,actiontelRes:actiontelRes,actiontipoUsuario:actiontipoUsuario,actionInscEstadual:actionInscEstadual,actioncpfCnpj:actioncpfCnpj,actionNome:actionNome},
+			success: function(data) {
+				if(data != "")
+					{
+						$(".erro").html("Alguns campos abaixo estão em branco:");
+						$(".tipo_erro").html("");
+						$(".tentarNovamente").css("display","block");
+						$(".tipo_erro").html(data);
+						$("#form_erro").fadeIn();
+					}
+				else{
+						location.reload();
+					}
+			}
+		});
+		return false;
+	})
+	$(".formAction").on("click",'.EventsalvarEnderecoPainel',function(){		
+		var actionCep = $(".formAction .BoxCEP").val();
+		var actionRua = $(".formAction .BoxEndereco").val();
+		var actionNumero = $(".formAction .BoxNumero").val();
+		var actionBairro = $(".formAction .BoxBairro").val();
+		var actionCidade = $(".formAction .BoxCidade option:selected").val();
+		$.ajax({
+			url: basePatch+"/actionUser/Usuario/atualiza",
+			type: "post",
+			async:false,
+			data: {typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
+			success: function(data) {
+				if(data != "")
+					{
+						$(".erro").html("Alguns campos abaixo estão em branco:");
+						$(".tipo_erro").html("");
+						$(".tentarNovamente").css("display","block");
+						$(".tipo_erro").html(data);
+						$("#form_erro").fadeIn();
+					}
+				else{
+						location.reload();
+					}
+			}
+		});
+		return false;
+	})
+	
+	//
+	$( ".tipoUsuario" ).change(function(){
+		if($(this).val() == 2)
+			{
+			$(".showInscEstadual").slideDown();
+			}
+		else
+			{
+			$(".showInscEstadual").slideUp();	
+			}
+		$(".PessoaSeletc").attr("value","");
+	})
 	$( ".actionRadioEndereco" ).change(function(){
 		var element = this;
 		if($(this).val() == "actionNewEndereco")
@@ -65,6 +402,37 @@ $(document).ready(function(){
 		$("#form_erro").fadeOut();
 		return false;
 	});
+	$(".MeusDados").on("click",function(){
+		$(this).attr("class","MeusDadosActive");
+		$(".EndEntregaActive").attr("class","EndEntrega");
+		$(".SeuPedidoActive").attr("class","SeuPedido");
+		$("#BoxDetalheDoPedido").slideUp();
+		$("#BoxMeuEndereco").slideUp();
+		$("#BoxMeusDados").slideDown();
+		return false;
+	});
+	$(".EndEntrega").on("click",function(){
+		$(this).attr("class","EndEntregaActive");
+		$(".MeusDadosActive").attr("class","MeusDados");
+		$(".SeuPedidoActive").attr("class","SeuPedido");
+		$("#BoxDetalheDoPedido").slideUp();
+		$("#BoxMeusDados").slideUp();
+		$("#BoxMeuEndereco").slideDown();
+		
+		return false;
+	});
+	$(".BoxMenuInstitucional").on("click",".SeuPedido",function(){
+		$(this).attr("class","SeuPedidoActive");
+		$(".EndEntregaActive").attr("class","EndEntrega");
+		$(".MeusDadosActive").attr("class","MeusDados");
+		$("#BoxMeusDados").slideUp();
+		$("#BoxMeuEndereco").slideUp();
+		$("#BoxDetalheDoPedido").slideDown();
+		return false;
+	});
+	
+	
+	
 	$(".status_criar_conta").on("click",function(){
 		$("#form_login").css("display","none");
 		$("#form_cadastro").css("display","block");
@@ -315,59 +683,10 @@ $(document).ready(function(){
 				}
 		return false;
 	})
-	$(".formAction").on("click",'.EventcadastrarEndereco',function(){
-		var actionNome = $(".BoxNome").val();
-		var actionCep = $(".BoxCEP").val();
-		var actionRua = $(".BoxEndereco").val();
-		var actionNumero = $(".BoxNumero").val();
-		var actionBairro = $(".BoxBairro").val();
-		var actionCidade = $(".BoxCidade option:selected").val();
-		var errorCadastro = 0;
-		$(".formAction input").each(function( index,element ) {
-			if($(element).val() == "")
-				{
-					errorCadastro = 1;
-				}
-		});
-		$.ajax({
-			url: basePatch+"/actionUser/Usuario/atualiza",
-			type: "post",
-			async:false,
-			data: {actionNome:actionNome,actionCep:actionCep,actionRua:actionRua,actionNumero:actionNumero,actionBairro:actionBairro,actionCidade:actionCidade},
-			success: function(data) {
-				if(data==1)
-					{
-						if(errorCadastro == 0)
-						{
-							location.reload();
-						}
-							else
-								{
-								$(".erro").html("Alguns campos abaixo estão em branco:");
-								$(".tipo_erro").html("");
-								$(".tentarNovamente").css("display","block");
-								$(".formAction input").each(function( index,element ) {
-									
-									if($(element).val() == "")
-										{
-											if(index == 0) $(".tipo_erro").append("<Br/> - Nome do Destinatário");
-											if(index == 1) $(".tipo_erro").append("<Br/> - Número do CEP");
-											if(index == 2) $(".tipo_erro").append("<Br/> - Endereço de entrega");
-											if(index == 3) $(".tipo_erro").append("<Br/> - Número");
-											if(index == 4) $(".tipo_erro").append("<Br/> - Bairro");
-										}
-								});
-								$("#form_erro").fadeIn();
-								}
-					}
-			},
-			error: function(){}
-		});	
-		return false;
-	})
+	
 	$('#bottaoAlterarCadastro').on("click",function(){
 			$(".formAction input, .formAction select").removeAttr("disabled");
-			$(".seletoInt").html('<input type="submit" value="Salvar Endereço" class="EventcadastrarEndereco"><br/><br/><br/>');
+			$(".seletoInt").html('<input type="submit" value="Salvar Endereço" class="EventsalvarEnderecoPainel"><br/><br/><br/>');
 		return false;
 	})
 	$(".BoxCEP").mask("99999-999",{completed:function(){
@@ -504,7 +823,7 @@ $(document).ready(function(){
 			}
 		return false;
 	})
-	$(".BoxEstado").change(function() {
+	$(document).on('change',".BoxEstado",function() {
 		  	var val = $(this).val();
 		  	if(val != "")
 		  		{

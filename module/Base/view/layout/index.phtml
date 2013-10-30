@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+      
         <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
@@ -130,6 +131,7 @@
 
 
        <!--ERRO-->
+
         <div id="form_erro" style="display:none">
           <div id="BoxFormErro">
                 <div id="atencao_erro">
@@ -141,8 +143,11 @@
                 </div>   
           </div>
         </div>
-          
+
+        
           <!--*****************************CONTEUDO*****************************-->
+
+
 
 <div id="geral">
 
@@ -153,7 +158,7 @@
             
           <div id="box_menu">
             <img class="phone"src="<?=$this->basePath()?>/images/phone.png">
-            <p class="txt_phone">Televendas: 55 11 8855-9966</p>
+            <p class="txt_phone">Televendas: 55 11 3611-3143 / 3611-3179</p>
             <form action="<?php echo $this->url('publico-busca-produto'); ?>" method="get">            
                 <input placeholder="buscar produto" class="search_topo" id="search" name="p">
                 <input type="submit" value="Pesquisar" class="lupa_topo">
@@ -377,20 +382,19 @@
           <ul class="mn_footer">
              <li>INSTITUCIONAL</li>
                  <ul class="submenu">
-                    <li><a href="" title="Quem Somos">Quem Somos</a></li>
-                    <li><a href="" title="Mapa do Site">Mapa do Site</a></li>
-                    <li><a href="" title="Fale Conosco">Fale Conosco</a></li>
+                    <li><a href="<?=$this->url("publico-duvidas")?>#tab_1" title="Quem Somos">Quem Somos</a></li>
+                    <li><a href="<?=$this->url("publico-duvidas")?>#tab_2" title="Mapa do Site">Mapa do Site</a></li>
+                    <li><a href="<?=$this->url("publico-duvidas")?>#tab_6" title="Fale Conosco">Fale Conosco</a></li>
                  </ul>
           </ul>
 
         <ul class="mn_footer">
           <li>DÚVIDAS FREQUENTES</li>
             <ul class="submenu">
-               <li><a href="" title="Termos de Pesquisa">Perguntas Frequentes</a></li>
-               <li><a href="" title="Meus Pedidos">Meus Pedidos</a></li>
-               <li><a href="" title="Trocas e Devoluções">Trocas e Devoluções</a></li>
-                <li><a href="" title="Editar Cadastro">Editar Cadastro</a></li>
-                <li><a href="" title="Política de Privacidade">Política de Privacidade</a></li>
+               <li><a href="<?=$this->url("publico-duvidas")?>" title="Termos de Pesquisa">Perguntas Frequentes</a></li>
+               <li><a href="" title="Faça login ou cadastre-se" class="eventOpenPopUp">Faça login ou cadastre-se</a></li>
+               <li><a href="" title="Meus Pedidos" class="eventOpenPopUp">Meus Pedidos</a></li>
+                <li><a href="<?=$this->url("publico-duvidas")?>#tab_5" title="Política de Privacidade">Política de Privacidade</a></li>
             </ul>
         </ul>
 

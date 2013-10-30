@@ -43,6 +43,12 @@ class UsuarioCadastro
     /**
      * @var integer
      *
+     * @ORM\Column(name="tipoUsuario", type="integer", nullable=false)
+     */
+    private $tipoUser;
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="padrao", type="integer", nullable=true)
      */
     private $padrao;
@@ -52,6 +58,12 @@ class UsuarioCadastro
      * @ORM\Column(name="cep", type="string", length=255, nullable=true)
      */
     private $cep;
+   /**
+     * @var string
+     *
+     * @ORM\Column(name="inscricaEstadual", type="string", length=255, nullable=true)
+     */
+    private $inscricaoEstadual;
     /**
      * @var string
      *
@@ -99,6 +111,12 @@ class UsuarioCadastro
      * @ORM\Column(name="telefone_cel", type="string", length=255, nullable=true)
      */
     private $telefoneCel;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone_com", type="string", length=255, nullable=true)
+     */
+    private $telefoneCom;
 
     /**
      * @var \MapeamentoCidade
@@ -237,10 +255,29 @@ class UsuarioCadastro
 	public function setPadrao($padrao) {
 		$this->padrao = $padrao;
 	}
+	public function getTelefoneCom() {
+		return $this->telefoneCom;
+	}
+
+	public function setTelefoneCom($telefoneCom) {
+		$this->telefoneCom = $telefoneCom;
+	}
+	public function getTipoUser() {
+		return $this->tipoUser;
+	}
+	public function setTipoUser($tipoUser) {
+		$this->tipoUser = $tipoUser;
+	}
+	public function getInscricaoEstadual() {
+		return $this->inscricaoEstadual;
+	}
+
+	public function setInscricaoEstadual($inscricaoEstadual) {
+		$this->inscricaoEstadual = $inscricaoEstadual;
+	}
+
 
     
-
-
-    
-    
+	
+ 
 }

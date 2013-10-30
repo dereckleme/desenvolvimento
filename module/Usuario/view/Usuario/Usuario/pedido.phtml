@@ -6,7 +6,7 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 				<h3 class="tt_PageRequests">Meus Pedidos</h3>
 				<div id="BoxPageRequests">
 					<div id="ContainerPageRequests">
-						<div id="NumberPageRequests"><p class="txt_NumberPageRequests">Compra número <span class="DetalhePageRequests"><?=$this->data->getIdcontrolerecibo()?></span></p></div>
+						<div id="NumberPageRequests"><p class="txt_NumberPageRequests">Compra número <span class="DetalhePageRequests"><?=$this->data->getIdcontrolerecibo()?> - <?=$this->data->getDtVenda()->format("d/m/Y h:m:s");?></span></p></div>
                        <!--COLUNA ESQUERDA-->
 					<div id="BoxEsquerdo">
 						<div id="ContBoxEsquerdo">
@@ -62,8 +62,6 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 							<ul id="ListaUmBoxDireito">
 								<li class="ListaUmBoxDireitoNome">Nome do produto</li>
 
-								<li class="ListaUmBoxDireito" style="margin-right:8px">Data</li>
-
 								<li class="ListaUmBoxDireito">Preço (R$)</li>
 
 								<li class="ListaUmBoxDireito"> Quantidade</li>
@@ -84,9 +82,6 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 									<div id="BoxListaDois">
 										<p class="BoxListaDoisNome"><?=$produto->getProdutosproduto()->getTitulo()?></p>
 									</div>
-									<div id="BoxListaDois">
-										<p class="BoxListaDoisData">20/10/15</p>
-									</div> 
 									<div id="BoxListaDois">
 										<p class="BoxListaDoisPreco"><?=$produto->getProdutosproduto()->getValor(true)?></p>
 									</div> 

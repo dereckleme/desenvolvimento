@@ -4,7 +4,9 @@
          $offValue = false;
          if($this->cadastro->getRua() && $this->cadastro->getNumero() && $this->cadastro->getBairro() && $this->cadastro->getMapeamentocidade() && $this->cadastro->getMapeamentocidade()->getMapeamentoestado() && $this->cadastro->getCep()) $offValue = true;
          ?>
-
+         <div id="ajaxRecebimento" style="display:none">
+         
+         </div>
 	<div id="PaginaDoUsuario">
 			<div id="MenuDoUsuario">
 				<ul class="BoxMenuDoUsuario">
@@ -15,41 +17,45 @@
 						<a href="" class="EndEntrega" title="Endereços de Entregas">Endereços de Entregas</a>
 					</li>
 					<li class="BoxMenuInstitucional">
-						<a href="" class="SeuPedido" title="Seus Pedidos">Seus Pedidos</a>
+						<a href="" class="SeuPedidoActive" title="Seus Pedidos">Seus Pedidos</a>
 					</li>
 				</ul>
 			</div>
 
-		<div id="BoxPaginaDoUsuario">
+		<div id="BoxPaginaDoUsuario" >
 
 			<!-- CONTEUDO DADOS DO USUARIO-->
-			<div id="BoxMeusDados">
+			<div id="BoxMeusDados" style="display:none">
 				 <div id="MeusDados">
 				  <p class="TituloEnderecoResidencial">Meu Cadastro</p>
 				   <p class="ttBoxLogin">*Todos os campos são obrigatórios</p><br/>
+
 					<form action="" class="formActionCadastroUsuario">
                             
 					 <label class="FormNome">Nome do Destinatário*:</label><br/>
 					 <input type="text" class="BoxNome" value="<?=$this->cadastro->getNome()?>"><br/>
 					 <p class="xxx">(Nome que deverá ser impresso na nota fiscal)</p><br/>
 
-					 <input type="radio" name=myradio value="Pessoa Física" checked>Pessoa Física*:
-					 <input type="radio" name=myradio value="Pessoa Juridíca">Pessoa Jurídica*:<br/>
-					 <input type="text" class="PessoaSeletc"><br/><p class="xxx">(Informe seu CPF ou CNPJ)</p><br/>
-					   
+					 <input type="radio" class="tipoUsuario" name="tipoUsuario"  value="1" <?if($this->cadastro->getTipoUser() == 1) print 'checked';?>>Pessoa Física*:
+					 <input type="radio" class="tipoUsuario" name="tipoUsuario"  value="2" <?if($this->cadastro->getTipoUser() == 2) print 'checked';?>>Pessoa Jurídica*:<br/>
+					 <input type="text" value="<?if($this->cadastro->getTipoUser() == 1){print $this->cadastro->getCpf();}else{print $this->cadastro->getCnpj();}?>" class="PessoaSeletc"><br/><p class="xxx">(Informe seu CPF ou CNPJ)</p><br/>
+					   <div class="showInscEstadual"  <?if($this->cadastro->getTipoUser() == 1) print 'style="display:none"';?>>
 					 <label class="FormEstado">Numero da Inscrição Estadual*:</label><br/>
-					 <input type="text" class="InscEstadual"><br/><p class="xxx">(Informe o Numero da Inscrição Estadual)</p><br/>
-
+					 <input type="text" class="InscEstadual" value="<?=$this->cadastro->getInscricaoEstadual()?>"><br/><p class="xxx">(Informe o Numero da Inscrição Estadual)</p><br/>
+                        </div>
                      <label class="FormTelResidencial">Telefone Residencial*:</label>
                      <label class="FormTelCelular">Telefone Celular:</label>
                               
-                     <input type="text" class="BoxTelResidencial">
-				     <input type="text" class="BoxTelCelular"><br/><br/>
-
+                     <input type="text" class="BoxTelResidencial" value="<?=$this->cadastro->getTelefoneRes()?>">
+				     <input type="text" class="BoxTelCelular" value="<?=$this->cadastro->getTelefoneCel()?>"><br/><br/>
+                         <div class="showInscEstadual"  <?if($this->cadastro->getTipoUser() == 1) print 'style="display:none"';?>>
 					 <label class="FormTelComercial">Telefone Comercial:</label><br/>
-					 <input type="text" class="BoxTelComercial"><br/><br/>
-
-					
+					 <input type="text" class="BoxTelComercial" value="<?=$this->cadastro->getTelefoneCom()?>"><br/><br/>
+					     </div>
+					 <input type="submit" title="Salvar Cadastro" value="Salvar Cadastro" class="EventSalvarEnderecoPainel">
+					     <br/><br/><br/>
+                     </form>
+					<form action="" class="formActionCadastroUsuario">
                      <p class="AlterarMinhaSenha"><a href="#">Alterar minha Senha:</a></p>
                      	
 		                     <label class="FormSenha">Senha Atual:</label><br/>
@@ -60,14 +66,15 @@
 		           
 		                     <label class="FormConfirmarSenha">Confirmar Nova Senha:</label><br/>
 		                     <input type="text" class="BoxAlterarSenha"><br/><br/>
-	                    
-
-					  <span class="EditarDados" title="Editar Cadastro">Editar</span></a>
-					   <input type="submit" title="Salvar Cadastro" value="Salvar Cadastro" class="EventcadastrarCadastro"><br/><br/><br/>
-					</form>
+		                      <input type="submit" title="Alterar Senha" value="Alterar Senha" class="EventcadastrarCadastro"><br/><br/><br/>
+	                </form>
+        
+					 
+					  
+					
 				 </div>
 				
-				<div id="MeuEndereco">
+				<div id="MeuEndereco" >
 				  <p class="TituloEnderecoResidencial">Meu Endereço</br>
                     <span class="DetalheEnderecoResidencial">Para alterar o endereço informe primeiro o CEP</p>
                       <p class="ttBoxLogin">*Todos os campos são obrigatórios</p></br>
@@ -127,7 +134,7 @@
 				else
 				{
 					        ?>
-					        <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventcadastrarEndereco">
+					        <input type="submit" title="Salvar Endereço" value="Salvar Endereço" class="EventsalvarEnderecoPainel">
 					        <?php 
 				}	        
 					        ?>
@@ -139,7 +146,7 @@
 			<!-- FIM DO CONTEUDO DADOS DO USUARIO-->
 
 			<!--ENDEREÇOS DO USUARIO-->
-			<div id="BoxMeuEndereco">
+			<div id="BoxMeuEndereco" style="display:none">
 
 				<div id="BoxTitulo">
 					<p class="TituloBoxMeuEndereco">Meus Endereços Cadastrados</p>
@@ -165,9 +172,9 @@
                                     
                                     ?> - <?=$this->cadastro->getCep()?></th>
 
-						<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>
+						<th class="bt_excluirEditarEnd" title="Excluir endereço de entrega"></th>
 
-						<th class="bt_editar"><a href="" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
+						<th class="bt_editar"><a href="" rel="<?=$this->cadastro->getIdcadastro()?>" class="openEventEditCadastro" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
 						</tr>
 					</table>
 					<?php 
@@ -189,9 +196,9 @@
 						<th class="TextoEditarEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
                                     <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - <?=$alternativo->getCep()?></th>
 
-						<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>
+						<th class="bt_excluirEditarEnd" title="Excluir endereço de entrega"></th>
 
-						<th class="bt_editar"><a href="" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
+						<th class="bt_editar"><a href="" rel="<?=$alternativo->getIdcadastro()?>" class="openEventEditCadastro" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
 						</tr>
 					</table>
 					            <?php 
@@ -205,10 +212,12 @@
 
 			<!--PEDIDOS-->
 				<div id="BoxDetalheDoPedido">
+					
 					<?php     
 					    foreach($this->recibos AS $recibo)
 					    {
 					?>
+
 						<ul id="DadosDetalheDoPedido">
 							 <li class="tt_Pedidos">Número do pedido</li>
 							 <li class="tt_Pedidos">Data do pedido</li>
