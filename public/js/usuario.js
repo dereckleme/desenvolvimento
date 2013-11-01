@@ -213,7 +213,7 @@ $(document).ready(function(){
 						url: basePatch+"/actionUser/Usuario/atualiza",
 						type: "post",
 						async:false,
-						data: {typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
+						data: {idCadastro:idCadastro,typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
 						success: function(data) {
 							if(data != "")
 								{
@@ -233,6 +233,29 @@ $(document).ready(function(){
 			}
 		});
 		
+		return false;
+	});
+	$(".EventRemoverCadastro").on("click",function(){
+		var id = $(this).attr("rel");
+		
+		$.ajax({
+			  url: basePatch+"/api/Cadastro/"+id,
+			  type: 'DELETE',
+			  success: function(data) {alert(data)},
+			  beforeSend:function(){
+					$(".atencaoErro").html("Endereço de entrega.");
+					$(".erro").html("");
+					$(".tentarNovamente").css("display","none");
+					$(".tipo_erro").html("Estamos removendo o endereço selecionado.");
+					$("#form_erro").fadeIn();
+				},
+				complete:function(){
+					$(".tentarNovamente").html("Continuar").fadeIn();
+					$(".tentarNovamente").on("click",function(){
+						location.reload();
+					})
+				},
+			});
 		return false;
 	});
 	//Interface Meu Cadastro
@@ -302,6 +325,7 @@ $(document).ready(function(){
 		var actionNumero = $(".formAction .BoxNumero").val();
 		var actionBairro = $(".formAction .BoxBairro").val();
 		var actionCidade = $(".formAction .BoxCidade option:selected").val();
+		
 		$.ajax({
 			url: basePatch+"/actionUser/Usuario/atualiza",
 			type: "post",

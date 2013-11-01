@@ -53,7 +53,8 @@ class CompraController extends AbstractActionController
         }
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $repository = $em->getRepository("Produto\Entity\ProdutoProdutos");
-                $produtosPublicidade = $repository->findBy(array(),array(),7);
+            $produtosPublicidade = $repository->geraOfertasCarrinho();
+           
                 shuffle($produtosPublicidade);
     	return new viewModel(array("carrinhoLista" => array(
     				"listaAtual" =>  $service->lista(),

@@ -62,7 +62,7 @@ class UsuarioController extends AbstractActionController
                {
                    if($recibo->getUsuariousuarios()->getIdusuario() == $idUser)
                    {
-                       $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+                       $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" =>$auth->getIdentity()->getIdusuario(), "ativo" => 1));
 
                        return new viewModel(array("data" => $recibo,"cadastro" => $cadastro));
                    }
@@ -225,6 +225,10 @@ class UsuarioController extends AbstractActionController
                  } 
                  else if($requestArray["typeUpdate"] == 3)
                  {
+                     $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByidcadastro($requestArray['idCadastro']);
+                     
+                    if($entity->getUsuariosusuarios()->getIdusuario() == $auth->getIdentity()->getIdusuario())
+                    {
                             if(empty($requestArray['actionCep'])) $error .= "- Número do CEP<br/>";
                      		if(empty($requestArray['actionRua'])) $error .= "- Endereço de entrega<br/>";
                      		if(empty($requestArray['actionNumero'])) $error .= "- Numero<br/>";
@@ -232,7 +236,7 @@ class UsuarioController extends AbstractActionController
                      		if(empty($requestArray['actionCidade'])) $error .= "- Selecione sua cidade<br/>";
                      		if(empty($error))
                      		{
-                     			$service->update(array("id" => $entity->getIdcadastro(),
+                     			$service->update(array("id" => $requestArray['idCadastro'],
                      					"cep" => $requestArray['actionCep'],
                      					"rua" => $requestArray['actionRua'],
                      					"numero" => $requestArray['actionNumero'],
@@ -244,7 +248,12 @@ class UsuarioController extends AbstractActionController
                      		else
                      		{
                      			$viewModel = new ViewModel(array('message' =>$error));
-                     		}
+                     		} 	
+                    } 		
+                    else
+                    {
+                        $viewModel = new ViewModel(array('message' =>"Endereço Inválido"));
+                    }	
                  } 
                  else {
                      $viewModel = new ViewModel(array('message' => "Selecione pessoa física ou pessoa jurídica"));

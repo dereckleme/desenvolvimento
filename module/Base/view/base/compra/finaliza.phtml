@@ -69,17 +69,23 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 					if(!$offValue)
 					{
 					?>
-							
-								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/><a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">
-								<span class="txtBoxLoginSpan" title="sair">Sair</span></a></p>
+							   
+								<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/>
+									<a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>"><br/>
+								    <span class="txtBoxLoginSpan" title="sair">Sair</span>
+								    </a>
+								</p>
+
 								<a href="<?=$this->url("publico-carrinho-compra")?>">
-								<span class="ButtonBoxLogin" title="Voltar para meu carrinho">voltar para meu carrinho</span></a>
+								 <span class="ButtonBoxLogin" title="Voltar para meu carrinho" style="margin-top:-18px; margin-left: 40px">voltar para meu carrinho</span>
+							    </a>
 							
 					<?
 					}
 					else
 					{
 						?>
+					
 						<p class="txtBoxLogin">Bem-vindo(a),<?=$this->auth->getIdentity()->getLogin()?>!<br/></p>
 						
 						<span class="txtBoxInfoUsuario"><span class="DetalheBoxInfoUsuario">Nome do destinatário:</span> <?=$this->nomeCompleto?></span>
@@ -97,7 +103,7 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 						<br/>
 						
 						<a href="<?php print $this->url("Usuario/UsuarioAction",array("controller"=>"Login","action" => "logout"))?>">
-							<span class="txtBoxLoginSpan" title="sair">Sair</span>
+							<span class="txtBoxLoginSpan" style="margin-left: 10px" title="sair">Sair</span>
 						</a>
 						<?php
 					}
@@ -187,7 +193,7 @@ if(!empty($this->nomeCompleto) && !empty($this->cep) && !empty($this->endereco) 
 							        <th class="TextoEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
                                     <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - 07111-120</th>
 							        <!--<th class="bt_excluir"><a href="" title="Excluir endereço de entrega"><img src="<?=$this->basePath()?>/images/bt_excluir.png"></a></th>-->
-							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega" class="bt_excluirEnd">excluir</a></th>
+							        <th class="bt_excluir"><a href="" title="Excluir endereço de entrega" class="bt_excluirEnd EventRemoverCadastro" rel="<?=$alternativo->getIdcadastro()?>">excluir</a></th>
 							      </tr>      	
                                         	<?php
                                         }
@@ -420,7 +426,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    }
 								?>">Pagamento</h5>
 							<div id="ContBoxPagamento">
-							<span class="obs_pagamento">Conclua seu cadastro com cep para calcular o frente.</span>
+							<span class="obs_pagamento">Conclua seu cadastro com CEP para calcular o frente.</span>
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
 								    <span class="txtBoxResumoValor"><?=$this->carrinhoLista['valorTotal']?></span>

@@ -288,11 +288,12 @@ $(function(){
 				var leftPosition = $(this).position().left;
 				var valor = $(this).attr("rev");
 				var titulo =$(this).attr("rel");
+				var link = $(this).attr("href");
 				addProdutoSlide = $(this).attr("alt");
 				
 				$("#ProductDescription .txtProductDescription").html(titulo);
 				$("#ProductDescription .ValueProductDescription").html(valor);
-				
+				$("#ProductDescriptionContent .linkProductDescriptionDesc").attr("href",link);
 				if($("#ProductDescription").css("display") == "none")
 				{
 					$("#ProductDescription").css("left",leftPosition+"px");

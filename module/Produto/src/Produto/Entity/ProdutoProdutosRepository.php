@@ -14,7 +14,16 @@ class ProdutoProdutosRepository extends EntityRepository {
     protected $maxLimit;
     protected $offset;
     
-    
+    public function geraOfertasCarrinho()
+    {
+        $qb =  $this->createQueryBuilder('i')->setMaxResults(7);
+        $qb->select('i');
+        $qb->innerJoin('Produto\Entity\PagamentoControleestoque', 'c', 'WITH', 'c.produtoproduto = i.idproduto');
+        $qb->where("c.quantidade > 0");
+        $query = $qb->getQuery();
+    	$results = $query->getResult();
+    	return $results;
+    }
     public function myFindAll(){
         $qb =  $this->createQueryBuilder('i');
     	$qb->select('c');

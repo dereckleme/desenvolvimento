@@ -172,7 +172,7 @@
                                     
                                     ?> - <?=$this->cadastro->getCep()?></th>
 
-						<th class="bt_excluirEditarEnd" title="Excluir endereço de entrega"></th>
+						<th class="bt_excluirVasio"></th>
 
 						<th class="bt_editar"><a href="" rel="<?=$this->cadastro->getIdcadastro()?>" class="openEventEditCadastro" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
 						</tr>
@@ -196,7 +196,7 @@
 						<th class="TextoEditarEnd"><?=$alternativo->getRua()?> - <?=$alternativo->getNumero()?> ,
                                     <?=$alternativo->getBairro()?> - <?=$alternativo->getMapeamentocidade()->getNome()?> - <?=$alternativo->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura()?> - <?=$alternativo->getCep()?></th>
 
-						<th class="bt_excluirEditarEnd" title="Excluir endereço de entrega"></th>
+						<th class="bt_excluirEditarEnd EventRemoverCadastro" rel="<?=$alternativo->getIdcadastro()?>" title="Excluir endereço de entrega"></th>
 
 						<th class="bt_editar"><a href="" rel="<?=$alternativo->getIdcadastro()?>" class="openEventEditCadastro" title="Editar endereço de entrega"><img src="<?=$this->basePath()?>/images/icon_editar.png"></a></th>
 						</tr>
@@ -212,7 +212,7 @@
 
 			<!--PEDIDOS-->
 				<div id="BoxDetalheDoPedido">
-					
+					<p class="txtAvisoPedido">*Clique no número do pedido para mais informações:</p>
 					<?php     
 					    foreach($this->recibos AS $recibo)
 					    {
