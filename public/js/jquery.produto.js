@@ -129,10 +129,10 @@ $(function(){
 		$("#addItems").on("click", function(){
 			var item = $("input[name=item]").val();
 			$.ajax({
-				url: basePatch+"/administrador/nutricional/adicionarItem",
+				url: basePatch+"/administrador/produto/nutricional/adicionarItem",
 				type: "POST",
-				data: {saltda:item},
-				success: function(data){
+				data: {nome:item},
+				success: function(data){					
 					if(data == "")
 					{
 						$("#mensagensItens").removeClass('alert-error');
@@ -151,22 +151,77 @@ $(function(){
 			});
 		});
 		
-		$("#addTableNutricional").on("click", function(){			
-			var iditem = $("select[name=idnutricionalNomes]").val();
-			var idprod = $("select[name=idproduto]").val();
-			var qtd = $("input[name=quantidade]").val();
-			var valor = $("input[name=vd]").val();
+		$("#idproduto").on("change", function(){			
+			var valor = $(this).val();			
+			var texto = $("#idproduto option[value="+valor+"]").text();			
+			if(valor != ""){
+				$("#produtos[name=produtos]").each(function(e){
+					$("#produtos[name=produtos]").val(texto);
+				});
+			}else{
+				$("#produtos[name=produtos]").each(function(e){
+					$("#produtos[name=produtos]").val("");
+				});
+			}
+		});
+		
+		$("#addLinha").on("click", function(){
+			var produto = $("select[name=idproduto]").val();
+			var qtd;
+			
+			$("#formNutricional div#line-form").each(function(e){				
+				qtd = e;
+			});			
+			qtd = parseInt(qtd) + 1;
+			
+			if(produto) {
+				$.ajax({
+					url: basePatch+"/administrador/produto/nutricional/inserirlinha",
+					type: "post",
+					data:{produto:produto},
+					success: function(data){
+						
+						$('<div>',{
+							id:"line-form",
+							class:"row line"+qtd+"",
+							html:data
+						}).appendTo("#formNutricional");						
+						
+					}
+				});
+			} else {
+				alert("Por favor, escolha um produto.");
+			}
+		});
+		
+		$("#addTableNutricional").on("click", function(){
+			/*var inputs = new Array();
+			$('#formNutricional input').each(function(){
+				inputs.push($(this).val());
+			});*/
+			
+			var dados = new Array();			
+			$("#formNutricional div#line-form").each(function(e){				
+				dados[e] = [];
+				dados[e].push($("#formNutricional div#line-form #idproduto").val());
+				dados[e].push($("#formNutricional div.line"+e+" #idnutricionalNomes").val());
+				dados[e].push($("#formNutricional div.line"+e+" #quantidade").val());
+				dados[e].push($("#formNutricional div.line"+e+" #vd").val());		
+			});
+			//console.log( dados );
+			
 			$.ajax({
-				url: basePatch+"/administrador/nutricional/criarTabelaNutricional",
+				url: basePatch+"/administrador/produto/nutricional/criarTabelaNutricional",
 				type: "POST",
-				data: {quantidade:qtd, vd:valor, idnutricionalNomes:iditem, idproduto:idprod},
+				data: {matriz:dados},
 				success: function(data){					
+					console.log(data);
 					if(data == "")
 					{
 						$("#mensagensTables").removeClass('alert-error');
 						$("#mensagensTables").addClass('alert-success');
 						$("#mensagensTables").html("Adicionado com sucesso.");
-						$("#addTableNutricional").fadeOut();
+						$("#addTableNutricional, #addLinha").fadeOut();
 					}
 					else
 					{
@@ -177,8 +232,8 @@ $(function(){
 					$("#mensagensTables").fadeIn();
 				}
 			});
+			
 		});
-				
 		
 		$("form#formCrop").on("click", function(){
 			if (parseInt($('#w').val())) return true;
@@ -197,5 +252,7 @@ $(function(){
 		    $('#x2').val(e.x2);
 		    $('#y2').val(e.y2);
 		}
+		
+		
 		
 });

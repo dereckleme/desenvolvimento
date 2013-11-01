@@ -47,8 +47,8 @@
                         <td><?php echo $item->getIdnutricionalNomes(); ?></td>
                         <td><?php echo $item->getNome(); ?></td>
                         <td>
-                            <a href="#" class="label"><i class="icon-edit"></i> Editar</a>
-                            <a href="#" class="label"><i class="icon-remove"></i> Remover</a>
+                            <a href="<?php echo $this->url('admin-produto-home/admin-produto-nutricional/admin-produto-nutricional-gerenciar',array('action'=>'editarItem','id'=>$item->getIdnutricionalNomes())); ?>" class="label"><i class="icon-edit"></i> Editar</a>
+                            <a href="<?php echo $this->url('admin-produto-home/admin-produto-nutricional/admin-produto-nutricional-gerenciar',array('action'=>'excluirItem','id'=>$item->getIdnutricionalNomes())); ?>" class="label" onclick="return confirm('Confima a exclusão do Item?');"><i class="icon-remove"></i> Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -63,9 +63,9 @@
                 <caption><h5>Gerenciando itens da tabela</h5></caption>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Item</th>
+                        <th>#</th>                        
                         <th>Produto</th>
+                        <th>Item</th>
                         <th>Quantidade</th>
                         <th>Valor Diário</th>
                         <th>Ações</th>
@@ -73,14 +73,14 @@
                 </thead>
                 <tbody>
                     <?php foreach ($this->tableNutricional as $table): ?>
-                        <tr>
+                        <tr class="<?php echo $this->cores[$table->getProdutoproduto()->getIdproduto()]; ?>">
                             <td><?php echo $table->getIdprodutoNutricional(); ?></td>
-                            <td><?php echo $table->getProdutonutricionalNomes()->getNome(); ?></td>
                             <td><?php echo $table->getProdutoproduto()->getTitulo();?></td>
+                            <td><?php echo $table->getProdutonutricionalNomes()->getNome(); ?></td>
                             <td><?php echo $table->getQuantidade(); ?></td>
                             <td><?php echo $table->getVd(); ?></td>                            
-                            <td><a href="#" class="label"><i class="icon-edit"></i> Editar</a></td>
-                            <td><a href="#" class="label"><i class="icon-remove"></i> Remover</a></td>
+                            <td><a href="<?php echo $this->url('admin-produto-home/admin-produto-nutricional/admin-produto-nutricional-gerenciar',array('action'=>'editarTabelaNutricional','id'=>$table->getIdprodutoNutricional())); ?>" class="label"><i class="icon-edit"></i> Editar</a></td>
+                            <td><a href="<?php echo $this->url('admin-produto-home/admin-produto-nutricional/admin-produto-nutricional-gerenciar',array('action'=>'excluirTabelaNutricional','id'=>$table->getIdprodutoNutricional())); ?>" class="label" onclick="return confirm('Confima a exclusão da linha da Tabela Nutricional?');"><i class="icon-remove"></i>  Excluir</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -113,8 +113,8 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>            
         </div>
         <p>
-            <label class="control-label" for="item">Nome:</label>
-            <input type="text" placeholder="Item" name="item">
+            <label class="control-label" for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Nome do Item" name="item">
         </p>           
     </div>
     <div class="modal-footer">
@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<div id="myModalTable" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModalTable" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 952px;left: 42%">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Adicionar Tabela Nutricional</h3>
@@ -132,42 +132,92 @@
         <div class="alert" id="mensagensTables">
             <button type="button" class="close" data-dismiss="alert">&times;</button>            
         </div>
-        <p>
+        <!-- <p>
             <?php 
-            $form = $this->form;
-            $form->setAttribute('action', '#');
-            $form->prepare();
-            echo $this->form()->openTag($form);
-            ?>
-              <div class="control-group">
-                <label class="control-label" for="idnutricionalNomes">Itens</label>
-                <div class="controls">
-                  <?php echo $this->formRow($form->get('idnutricionalNomes')); ?>
-                </div>
-              </div>
+            #$form = $this->form;
+            #$form->setAttribute('action', '#');
+            #$form->prepare();
+            #echo $this->form()->openTag($form);
+            ?>              
               <div class="control-group">
                 <label class="control-label" for="idproduto">Produtos</label>
                 <div class="controls">
-                  <?php echo $this->formRow($form->get('idproduto')); ?>
+                  <?php #echo $this->formRow($form->get('idproduto')); ?>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="idnutricionalNomes">Itens</label>
+                <div class="controls">
+                  <?php #echo $this->formRow($form->get('idnutricionalNomes')); ?>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label" for="quantidade">Quantidade</label>
                 <div class="controls">
-                  <?php echo $this->formRow($form->get('quantidade')); ?>
+                  <?php #echo $this->formRow($form->get('quantidade')); ?>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label" for="vd">Valor diário</label>
                 <div class="controls">
-                  <?php echo $this->formRow($form->get('vd')); ?>
+                  <?php #echo $this->formRow($form->get('vd')); ?>
                 </div>
               </div>
-            <?php echo $this->form()->closeTag(); ?>
-        </p>           
+            <?php #echo $this->form()->closeTag(); ?>
+        </p> -->
+        
+        <?php 
+        $form = $this->form;
+        $form->setAttribute('action', '#');
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        ?>
+        <div class="row line0" id="line-form">
+            <?php 
+                echo $this->formRow($form->get('idproduto'));
+                echo $this->formRow($form->get('idnutricionalNomes'));
+                echo $this->formRow($form->get('quantidade'));
+                echo $this->formRow($form->get('vd'));
+            ?>
+        </div>
+        <!-- <div class="row line1" id="line-form">
+            <?php 
+                echo $this->formRow($form->get('produtos'));
+                echo $this->formRow($form->get('idnutricionalNomes'));
+                echo $this->formRow($form->get('quantidade'));
+                echo $this->formRow($form->get('vd'));
+            ?>
+        </div>
+        <div class="row line2" id="line-form">
+            <?php 
+                echo $this->formRow($form->get('produtos'));
+                echo $this->formRow($form->get('idnutricionalNomes'));
+                echo $this->formRow($form->get('quantidade'));
+                echo $this->formRow($form->get('vd'));
+            ?>
+        </div>
+        <div class="row line3" id="line-form">
+            <?php 
+                echo $this->formRow($form->get('produtos'));
+                echo $this->formRow($form->get('idnutricionalNomes'));
+                echo $this->formRow($form->get('quantidade'));
+                echo $this->formRow($form->get('vd'));
+            ?>
+        </div>
+        <div class="row line4" id="line-form">
+            <?php 
+                echo $this->formRow($form->get('produtos'));
+                echo $this->formRow($form->get('idnutricionalNomes'));
+                echo $this->formRow($form->get('quantidade'));
+                echo $this->formRow($form->get('vd'));
+            ?>
+        </div> -->
+        <?php echo $this->form()->closeTag(); ?>
+        
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+        <button id="addLinha" class="btn btn-info">Adicionar linha</button>
         <button id="addTableNutricional" class="btn btn-primary">Adcionar</button>
     </div>
 </div>

@@ -43,3 +43,5 @@ div.container a.brand {
 .table-hover tbody tr:hover > th { background-color: #e9e6e6; }
 
 .jcrop-holder{border: 1px solid #CCC;}
+
+#line-form{margin-left: 0; margin-top: 10px;}

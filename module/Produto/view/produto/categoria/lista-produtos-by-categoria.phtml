@@ -6,7 +6,7 @@
     <div class="span12">
         <ul class="breadcrumb">
           <li><a href="<?php echo $this->url('admin-produto-home'); ?>"><i class="icon-gift"></i> Produto</a> <span class="divider">/</span></li>
-          <li class="active"><?php echo strtoupper(str_replace("-", " ", $this->catActive)) ?></li>
+          <li class="active"><?php echo strtoupper(str_replace("-", " ", $this->slugCategoria)) ?></li>
         </ul>
     </div>    
 </div>
@@ -32,8 +32,19 @@
                 <span class="caret"></span>
             </a>                    
             <ul class="dropdown-menu">                
+                <?php /* // subcategorias
+                foreach($this->data as $categoria)
+                {                    
+                	foreach($categoria->getSubcategorias() as $subcategoria)
+                    {                        
+                    ?>
+                    <li><a href="<?php echo $this->url('admin-produto-home/admin-categorias-default/admin-categorias-e-subcategoria', array('action'=>'categorias', 'slug'=>$categoria->getSlug(), 'slugSub'=>$subcategoria->getSlugSubcategoria())); ?>"><?php echo $subcategoria->getNome(); ?></a></li>
+                    <?php
+                    }
+                }
+                */?>
                 <?php // subcategorias
-                foreach($this->dataCategorias as $categoria)
+                foreach($this->categoriaSlug as $categoria)
                 {                    
                 	foreach($categoria->getSubcategorias() as $subcategoria)
                     {                        
@@ -73,8 +84,8 @@
 		</tr>
 	</thead>
 	<tbody>
-	    <?php 
-        foreach($this->dataCategorias as $categoria)
+	    <?php /*
+        foreach($this->data as $categoria)
         {
         	foreach($categoria->getSubcategorias() as $subcategoria)
         	{
@@ -102,18 +113,33 @@
         		}
         	}
         }	    
-	    ?>	   
+	    */?>
+	    <?php 
+	    foreach ($this->data as $produto){
+	    	?>
+			<tr>
+    			<td><?php echo $produto->getIdproduto(); ?></td>
+    			<td><?php echo $produto->getCodigoProduto(); ?></td>
+    			<td><?php echo $produto->getProdutosubcategoria()->getCategorias()->getNome(); ?></td>
+    			<td><?php echo $produto->getProdutosubcategoria()->getNome(); ?></td>
+    			<td><?php echo $produto->getTitulo(); ?></td>
+    			<td><?php echo $produto->getValor(); ?></td>
+    			<td><img src="<?php echo $this->basePath()?>/images/produtos/thumb/<?php echo $produto->getFoto();?>" title="Imagem do Produto" alt="Imagem do Produto: <?php echo $produto->getIdproduto(); ?>" /></td>			
+    			<td width="150">				
+    				<a class="btn btn-small" href="<?php echo $this->url('admin-produto-home/admin-default', array('action'=>'editar', 'id'=>$produto->getIdproduto())); ?>" title="Editar Produto">
+    					<i class="icon-edit"></i> Editar
+    				</a>
+    				<a class="btn btn-small" href="<?php echo $this->url('admin-produto-home/admin-default', array('action'=>'excluir', 'id'=>$produto->getIdproduto())); ?>" onclick="return confirm('Confima a exclusão deste Produto?');" title="Excluir Produto">
+    					<i class="icon-remove"></i> Excluir
+    				</a>				
+    			</td>
+    		</tr>
+			<?php
+	    }
+	    ?>
 	</tbody>
 </table>
 
 <div class="pagination pagination-centered">
-	<ul>
-    	<li class="disabled"><a href="#">Prev</a></li>
-    	<li class="active"><a href="#">1</a></li>
-    	<li><a href="#">2</a></li>
-    	<li><a href="#">3</a></li>
-    	<li><a href="#">4</a></li>
-    	<li><a href="#">5</a></li>
-    	<li><a href="#">Next</a></li>
-	</ul>
+	<?php echo $this->paginationControl($this->data,'Sliding','paginator-produto',array('route' => '/categoria-page/')); ?>
 </div>

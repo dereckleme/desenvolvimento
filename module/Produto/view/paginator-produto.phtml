@@ -1,11 +1,17 @@
 <?php
 $urlPattern = $_SERVER['REQUEST_URI'];
-$formatUrl = function ($page) use ($urlPattern) {
-            if (!preg_match('/page/', $urlPattern))
-                return $urlPattern . "/page/" . $page;
+/*$formatUrl = function ($page) use ($urlPattern) {
+            if (!preg_match('/page/', $urlPattern))                
+                return $urlPattern . "/page/" . $page;                
             else
                 return preg_replace('/\d/', $page, $urlPattern);
-        };
+        };*/
+$formatUrl = function ($page) use ($urlPattern) {
+	if (!preg_match($this->route, $urlPattern))
+		return $urlPattern . $this->route . $page;
+	else
+		return preg_replace('/\d/', $page, $urlPattern);
+};
 ?>
 <?php if ($this->pageCount): ?>
     
@@ -45,5 +51,6 @@ $formatUrl = function ($page) use ($urlPattern) {
             <a href="#">Próximo</a>
         </li>
     <?php endif; ?>
-
+    </ul>
+    
 <?php endif; ?>

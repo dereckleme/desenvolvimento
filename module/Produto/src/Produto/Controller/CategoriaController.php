@@ -5,6 +5,8 @@ namespace Produto\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\DBAL\Schema\View;
+use Zend\Paginator\Paginator;
+use Zend\Paginator\Adapter\ArrayAdapter;
 
 class CategoriaController extends AbstractActionController
 {
@@ -57,13 +59,38 @@ class CategoriaController extends AbstractActionController
     
     public function listaProdutosByCategoriaAction()
     {
-        $busca = $this->params()->fromRoute('slug',0);
-        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-        $repository = $em->getRepository("Produto\Entity\ProdutoCategorias");
+        $categoriaRepositorio = $this->getServiceLocator()->get('Produto\Repository\Categorias');
+        $listaCategoria = $categoriaRepositorio->findAll();
+        $listaCategoriaSlug = $categoriaRepositorio->findByslug($this->params()->fromRoute('slug',0));
         
+        $produtoRepositorio = $this->getServiceLocator()->get('Produto\Repository\Produtos');
+        $produtoRepositorio->setSlugCategoria($this->params()->fromRoute('slug',0));
+        
+        $produtolist = $produtoRepositorio->findProdutoFor();
+        $page = $this->params()->fromRoute('page');
+        
+        $paginator = new Paginator(new ArrayAdapter($produtolist));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setDefaultItemCountPerPage(10);
+        
+        return new ViewModel(array(
+        		#"data"    =>    $produtolist,
+                "data"     =>    $paginator,
+        		"categorias"    =>    $listaCategoria,
+                "categoriaSlug"    =>    $listaCategoriaSlug,
+        		"slugCategoria"    =>    $this->params()->fromRoute('slug',0)
+        ));
+        
+        /*$busca = $this->params()->fromRoute('slug',0);
+        $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+        $repository = $em->getRepository("Produto\Entity\ProdutoCategorias");        
         $categoriaBySlug = $repository->findByslug($busca);
         
-        return new ViewModel(array("dataCategorias"=>$categoriaBySlug, "categorias"=>$repository->findAll(), "catActive"=>$busca));
+        return new ViewModel(array(
+            "data"=>$categoriaBySlug, 
+            "categorias"=>$repository->findAll(), 
+            "slugCategoria"=>$busca            
+        ));*/
     }
     
     public function listaProdutosBySubcategoriaAction()
@@ -75,10 +102,17 @@ class CategoriaController extends AbstractActionController
     	$produtoRepositorio = $this->getServiceLocator()->get('Produto\Repository\Produtos');
     	$produtoRepositorio->setSlugCategoria($this->params()->fromRoute('slug',0));
     	$produtoRepositorio->setSlugSubcategoria($this->params()->fromRoute('slugSub',0));
-    	$produtolist = $produtoRepositorio->findProdutoFor();
+    	
+    	$produtolist = $produtoRepositorio->findProdutoFor();    	
+    	$page = $this->params()->fromRoute('page');
+    	
+    	$paginator = new Paginator(new ArrayAdapter($produtolist));
+    	$paginator->setCurrentPageNumber($page);
+    	$paginator->setDefaultItemCountPerPage(10);
     	
     	return new ViewModel(array(
-    	    'data'              =>    $produtolist,
+    	    #'data'              =>    $produtolist,
+    	    'data'              =>    $paginator,
     	    'categorias'        =>    $listaCategoria,
     	    'listaCategoriaSlug'=>    $listaCategoriaSlug,
     	    'slugCategoria'     =>    $this->params()->fromRoute('slug',0),

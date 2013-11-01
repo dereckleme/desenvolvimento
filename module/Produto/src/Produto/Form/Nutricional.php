@@ -14,15 +14,17 @@ class Nutricional extends Form {
 		
 		$this->setAttribute('method','post')
 			 ->setAttribute('id','formNutricional')
-			 ->setAttribute('class', 'form-horizontal');
+			 #->setAttribute('class', 'form-horizontal');
+		     ->setAttribute('class', 'form-inline');
 		
 		$this->setInputFilter(new NutricionalFilter);
 		
-		$hidden = new Hidden('idprodutoNutricional');		
+		$hidden = new Hidden('id');		
 		$this->add($hidden);
 		
 		$select = new Select('idnutricionalNomes');
 		$select->setAttribute('id', 'idnutricionalNomes');
+		$select->setAttribute('style', 'margin-left:10px;');
 		$this->add($select);		
 		
 		$select2 = new Select('idproduto');
@@ -36,7 +38,9 @@ class Nutricional extends Form {
 				'type' => 'text',
 			),
 			'attributes' => array(
-				'id' => 'quantidade'
+				'id' => 'quantidade',
+			    'placeholder' => 'Quantidade',
+			    'style' => 'margin-left:10px;'
 			)
 		));
 		
@@ -46,7 +50,21 @@ class Nutricional extends Form {
 				'type' => 'text',
 			),
 			'attributes' => array(
-				'id' => 'vd'
+				'id' => 'vd',
+			    'placeholder' => 'Valor Diário',
+			    'style' => 'margin-left:10px;'
+			)
+		));
+		
+		$this->add(array(
+			'name' => 'produtos',
+			'options' => array(
+				'type' => 'text',
+			),
+			'attributes' => array(
+				'id' => 'produtos',
+			    'placeholder' => '',
+				'disabled' => 'disabled',
 			)
 		));
 		
