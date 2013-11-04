@@ -337,7 +337,7 @@ $(function(){
 				$(".bgPng",this).animate({top: "0",},100);
 			});
 			
-			$(".tab").css({display: 'none', marginTop: 0, borderTopWidth: 0});
+			/*$(".tab").css({display: 'none', marginTop: 0, borderTopWidth: 0});
             $('#tab_1').css('display', 'block');
             $("a", $("#nav")).on("click",function(){
             	var i = $('a', $('#nav')).index(this);
@@ -347,5 +347,30 @@ $(function(){
             	$(this).parents('#nav').find('a').removeClass('activetab');
             	$(this).addClass('activetab');
             	return false;
-            });
+            });*/
+			
+			$("#conteudo_tabs").hide();
+			var duvida;
+			var hash = window.location.hash;
+			if(hash != '') {
+				
+				duvida = $(hash).html();
+				$('#nav li a[href="' + hash + '"]').addClass('activetab');
+			} else {
+				duvida = $('#conteudo_tabs div:first-child').html();
+				$('#nav li:first-child a').addClass('activetab');
+			}
+			$('#duvida').append(duvida).find('#duvida').slideDown();
+			$("a", $("#nav")).on('click', function(){
+				$("#nav li a").removeClass('activetab');
+				$(this).addClass('activetab');
+				var ancora = $(this).attr('href');
+				var nome = ancora.substr(1, ancora.length);
+				duvida = $('#conteudo_tabs div[id="' + nome +'"]').html();
+				$('#duvida').empty();
+				$('#duvida').append(duvida).find('#duvida').slideDown();
+				return false();
+			});
+			
+			
 });		
