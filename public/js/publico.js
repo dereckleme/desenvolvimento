@@ -352,10 +352,9 @@ $(function(){
 			$("#conteudo_tabs").hide();
 			var duvida;
 			var hash = window.location.hash;
-			if(hash != '') {
-				
+			if(hash != '') {				
 				duvida = $(hash).html();
-				$('#nav li a[href="' + hash + '"]').addClass('activetab');
+				$('#nav li a[href="' + hash + '"]').addClass('activetab');				
 			} else {
 				duvida = $('#conteudo_tabs div:first-child').html();
 				$('#nav li:first-child a').addClass('activetab');
@@ -371,6 +370,18 @@ $(function(){
 				$('#duvida').append(duvida).find('#duvida').slideDown();
 				return false;
 			});
+			
+			$('.submenu li a').on('click', function(){
+				var hash2 = $(this).attr('dir');
+				var ancora = $(this).attr('href');				
+				var nome = ancora.substr(38, ancora.length);
+				$("#nav li a").removeClass('activetab');				
+				$('#nav li a[href="' + hash2 + '"]').addClass('activetab');
+				duvida = $('#Institucional #conteudo_tabs div[id="' + nome +'"]').html();				
+				$('#duvida').empty();
+				$('#duvida').append(duvida).find('#duvida').slideDown();				
+			});
+			
 			
 			
 });		
