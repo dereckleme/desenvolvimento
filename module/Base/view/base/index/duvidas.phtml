@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo $this->basePath();?>/js/jquery-ui-1.10.3/themes/base/jquery.ui-two.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $this->basePath();?>/js/jquery-ui-1.10.3/themes/base/jquery-ui.css">
 <script type="text/javascript" src="<?php echo $this->basePath();?>/js/jquery-ui-1.10.3/ui/jquery.ui.accordion.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -11,28 +11,31 @@ $(function(){
 					<div id="MenuInstitucional">
 						<ul id="nav" class="BoxMenuInstitucional">
 							<li class="BoxMenuInstitucional" id="tab1">
-								<a href="#tab_1" class="QuemSomos activetab" title="Quem Somos">Quem Somos</a>
+								<a href="#duvida1" class="QuemSomos" title="Quem Somos">Quem Somos</a>
 							</li>
 							<li class="BoxMenuInstitucional" id="tab2">
-								<a href="#tab_2" class="MapaSite" title="Mapa do Site">Mapa do Site</a>
+								<a href="#duvida2" class="MapaSite" title="Mapa do Site">Mapa do Site</a>
 							</li>
 							<li class="BoxMenuInstitucional" id="tab3">
-								<a href="#tab_3" class="PerguntasFrequentes" title="Perguntas Frequentes" >Perguntas Frequentes</a>
+								<a href="#duvida3" class="PerguntasFrequentes" title="Perguntas Frequentes" >Perguntas Frequentes</a>
 							</li>
 							<li class="BoxMenuInstitucional" id="tab4">
-								<a href="#tab_4" class="TrocasDevolucoes" title="Trocas e Devoluções" >Trocas e Devoluções</a>
+								<a href="#duvida4" class="TrocasDevolucoes" title="Trocas e Devoluções" >Trocas e Devoluções</a>
 							</li>
 							<li class="BoxMenuInstitucional" id="tab5">
-								<a href="#tab_5" class="PoliticaPrivacidade" title="Política de Privacidade" >Política de Privacidade</a>
+								<a href="#duvida5" class="PoliticaPrivacidade" title="Política de Privacidade" >Política de Privacidade</a>
 							</li>
 							<li class="BoxMenuInstitucional" id="tab6">
-								<a href="#tab_6" class="FaleConosco" title="Fale Conosco" >Fale Conosco</a>
+								<a href="#duvida6" class="FaleConosco" title="Fale Conosco" >Fale Conosco</a>
 							</li>		
 						</ul>
 					</div>
 
-					<div id="conteudo_tabs">					
-    					<div id="tab_1" class="QuemSomos tab">
+					<div id="duvida"></div>
+					
+					<div id="conteudo_tabs">
+										
+    					<div id="duvida1" class="QuemSomos tab">
     						<div id="BoxInstitucional">
     							<h3 class="tt_Institucional">Quem somos</h3>
     							<p class="txt_Institucional">O Café Seleto é uma das marcas de café mais famosas e queridas do Brasil. Também pudera. Além de ter um sabor todo especial, sempre contou com memoráveis campanhas publicitárias, e possui o jingle mais conhecido da história da propaganda brasileira. E esta grande marca está de volta ao mercado com força total. Comprada pelo Grupo Mex, o Café Seleto está de cara nova e trazendo muitas novidades também. As embalagens estão mais modernas, a campanha publicitária renovada e o café, ainda mais saboroso.</p>
@@ -47,13 +50,13 @@ $(function(){
     						</div>
     					</div>
     					
-    					<div id="tab_2" class="MapaSite tab">
+    					<div id="duvida2" class="MapaSite tab">
     						<div id="BoxInstitucional">
     							<h3 class="tt_Institucional">Mapa Site</h3>
     						</div>	
     					</div>
     
-    					<div id="tab_3" class="PerguntasFrequentes tab">
+    					<div id="duvida3" class="PerguntasFrequentes tab">
     						<div id="BoxInstitucional">
     							<h3 class="tt_Institucional">Perguntas Frequentes</h3>
     							<div id="accordion">
@@ -75,10 +78,6 @@ $(function(){
                                         <p class="TextoAccordion">- Acrescentar 2 dias úteis aos prazos citados</p>
     								    </p>
     								  </div>
-
-
-
-
 
     								  <h3 class="TituloAccordion">Como posso acompanhar a entrega do meu pedido?</h3>
     								  <div id="BoxAccordion">
@@ -138,8 +137,8 @@ $(function(){
     						</div>
     					</div>
     
-    					<div id="tab_4" class="TrocasDevolucoes tab">
-    						<div id="BoxInstitucional">
+    					<div id="duvida4" class="TrocasDevolucoes tab">
+    						div id="BoxInstitucional">
     							<h3 class="tt_Institucional">Política de trocas e devolução<br/>Seleto Alimentos</h3>
     							<p class="txt_Institucional">Visando garantir total satisfação de nossos clientes e consumidores nossa política de trocas e devoluções está de acordo com o código de defesa do consumidor, preservando todos os seus direitos.</p>
     							<p class="txt_Institucional">Portanto toda e qualquer ocorrência ou divergência, seja uma embalagem violada, produto avariado ou um pedido que chegou diferente do solicitado, recuse o recebimento e contate-nos imediatamente. Caso já tenha recebido o produto e necessite fazer uma troca ou devolução é indispensável à apresentação da nota fiscal (que foi entregue junto com o produto). Também solicitamos a embalagem original, na qual o produto foi entregue.</p>
@@ -149,7 +148,7 @@ $(function(){
     						</div>
     					</div>
     
-    					<div id="tab_5" class="PoliticaPrivacidade tab">
+    					<div id="duvida5" class="PoliticaPrivacidade tab">
     						<div id="BoxInstitucional">
     							<h3 class="tt_Institucional">Politica Privacidade</h3>
     							<h5 class="Sub_tt">Objetivo</h5>
@@ -170,32 +169,33 @@ $(function(){
     
     					</div>
     
-    					<div id="tab_6" class="FaleConosco tab">
-						<div id="BoxInstitucional" style="width:250px; float:left;">
-							<h3 class="tt_Institucional">Fale conosco</h3>
-							<p class="txt_Institucional">Dúvidas, sugestões ou reclamações.</p><br/>
-				              <form class="FormInstitucional" action="">
-				                   <label class="tt_FormInstitucional">Nome:</label><br/>
-				                   <input type="text" class="NomeFormInst" value=""><br/>
-				                   <label class="tt_FormInstitucional">E-mail:</label><br/>
-				                   <input type="text" class="EmailFormInst" value=""><br/>
-				                   <label class="tt_FormInstitucional">Telefone:</label><br/>
-				                   <input type="text" class="TelefoneFormInst" value=""><br/>
-				                   <label class="tt_FormInstitucional">Destinatário:</label><br/>
-				                   <select class="DestinatarioFormInst">
-                                   <option>Selecione</option>
-                                   </select><br/>
-				                   <label class="tt_FormInstitucional">Mensagem:</label><br/>
-				                   <textarea class="AreaFormInstitucional" name="mensagem"></textarea><br/>
-				                   <input type="reset" value="Limpar" class="LimparFormInst">	
-				                   <input type="submit" value="Enviar" class="EnviarFormInst">
-				              </form>
-						</div>
-                        <div id="BoxInstitucional" style="width:380px; float:left;">
-                            <h3 class="tt_Institucional">Sac</h3>
-                            <p class="txt_Institucional"style= "font-size:16px;" > Telefone (11) 3611-3867 de segunda à sexta-feira das 8:00h às 12:30h e das 13:30h às 17h </p><br/>
-                        </div>
-					</div>
+    					<div id="duvida6" class="FaleConosco tab">
+    						<div id="BoxInstitucional" style="width:250px; float:left;">
+    							<h3 class="tt_Institucional">Fale conosco</h3>
+    							<p class="txt_Institucional">Dúvidas, sugestões ou reclamações.</p><br/>
+    				              <form class="FormInstitucional" action="">
+    				                   <label class="tt_FormInstitucional">Nome:</label><br/>
+    				                   <input type="text" class="NomeFormInst" value=""><br/>
+    				                   <label class="tt_FormInstitucional">E-mail:</label><br/>
+    				                   <input type="text" class="EmailFormInst" value=""><br/>
+    				                   <label class="tt_FormInstitucional">Telefone:</label><br/>
+    				                   <input type="text" class="TelefoneFormInst" value=""><br/>
+    				                   <label class="tt_FormInstitucional">Destinatário:</label><br/>
+    				                   <select class="DestinatarioFormInst">
+                                       <option>Selecione</option>
+                                       </select><br/>
+    				                   <label class="tt_FormInstitucional">Mensagem:</label><br/>
+    				                   <textarea class="AreaFormInstitucional" name="mensagem"></textarea><br/>
+    				                   <input type="reset" value="Limpar" class="LimparFormInst">	
+    				                   <input type="submit" value="Enviar" class="EnviarFormInst">
+    				              </form>
+    						</div>
+                            <div id="BoxInstitucional" style="width:380px; float:left;">
+                                <h3 class="tt_Institucional">Sac</h3>
+                                <p class="txt_Institucional"style= "font-size:16px;" > Telefone (11) 3611-3867 de segunda à sexta-feira das 8:00h às 12:30h e das 13:30h às 17h </p><br/>
+                            </div>
+					    </div>
+				    
 				    </div>
 				</div>
 				<!--Fim Institucional-->
