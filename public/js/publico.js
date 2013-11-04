@@ -369,7 +369,7 @@ $(function(){
 				duvida = $('#conteudo_tabs div[id="' + nome +'"]').html();
 				$('#duvida').empty();
 				$('#duvida').append(duvida).find('#duvida').slideDown();
-				return false();
+				return false;
 			});
 			
 			
