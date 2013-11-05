@@ -12,15 +12,14 @@ namespace Produto\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Produto\Form\Produto as FrmProduto;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
-use Produto\Entity\ProdutoProdutos;
-
-
+#use Produto\Entity\ProdutoProdutos;
 use Zend\Validator\File\Size;
 use Zend\File\Transfer\Adapter\Http;
 use Zend\Filter\File\Rename;
+
+use Produto\Form\Produto as FrmProduto;
 
 class ProdutoController extends AbstractActionController
 {
@@ -99,18 +98,18 @@ class ProdutoController extends AbstractActionController
     }
 
     public function adicionarAction()
-    {        
+    {               
         $form = new FrmProduto();
         $form->get('inputCategoria')->setValueOptions($this->getCategoryValuesOptions());
         
         $request = $this->getRequest();
         if ($request->isPost()) 
-        {
+        {            
             $form->get('inputSubCategoria')->setValueOptions($this->getSubCategoryValuesOptions());
             
         	$noFile = $request->getPost()->toArray();
         	$File = $this->params()->fromFiles('foto');
-        	$data = array_merge($noFile, array('foto' => $File[0]));
+        	$data = array_merge($noFile, array('foto' => $File[0]));        	
         	$form->setData($data);
                 	
         	if ($form->isValid()) {
@@ -164,7 +163,6 @@ class ProdutoController extends AbstractActionController
         		
         		return $this->redirect()->toRoute('admin-produto-home/admin-default', array('action' => 'imagens','id' => $idproduto));
         	}
-
         }
         
         

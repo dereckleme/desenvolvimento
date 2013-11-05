@@ -23,13 +23,13 @@ class ProdutoFilter extends InputFilter {
         	),
         ));
         
-        $this->add(array(
+        /*$this->add(array(
     		'name'    => 'id',
     		'required'   => true,
     		'filters'    => array(
-    				array('name'=>'Int')
+    			array('name'=>'Int')
     		),
-        ));
+        ));*/
         
         $this->add(array(
     		'name'       => 'codigoProduto',
