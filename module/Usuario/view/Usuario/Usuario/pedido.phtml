@@ -15,12 +15,12 @@ $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
 								<p class="tt_PageRequests">endereço de envio</p>
 							</div>
 							<div id="cont_BoxEsquerdo">
-								<p class="cont_BoxEsquerdo"><span class="NomeBoxEsquerdo"><?=$this->cadastro->getNome()?></span><br/>
-								<?=$this->cadastro->getRua()?>,<?=$this->cadastro->getNumero()?><br/>
-								<?=$this->cadastro->getBairro()?><br/>
-								Cep:<?=$this->cadastro->getCep()?><br/>
-								<?=$this->cadastro->getMapeamentocidade()->getNome()?><br/>
-								<?=$this->cadastro->getMapeamentocidade()->getMapeamentoestado()->getNome()?></p>
+								<p class="cont_BoxEsquerdo"><span class="NomeBoxEsquerdo"><?=$this->cadastroPrincipal->getNome()?></span><br/>
+								<?=$this->data->getIdcad()->getRua()?>,<?=$this->data->getIdcad()->getNumero()?><br/>
+								<?=$this->data->getIdcad()->getBairro()?><br/>
+								Cep:<?=$this->data->getIdcad()->getCep()?><br/>
+								<?=$this->data->getIdcad()->getMapeamentocidade()->getNome()?><br/>
+								<?=$this->data->getIdcad()->getMapeamentocidade()->getMapeamentoestado()->getNome()?></p>
 							</div>
 							<!--FORMA DE PAGAMENTO-->
 							<div id="tt_BoxEsquerdo">

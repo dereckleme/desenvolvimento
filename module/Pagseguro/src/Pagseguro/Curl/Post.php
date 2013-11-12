@@ -30,7 +30,7 @@ class Post
             $serviceCarrinho = $this->service->get("CarrinhoCompras\Model\Carrinho");
             $em = $this->service->get("Doctrine\ORM\EntityManager");
             $serviceFrete = $this->service->get("DrkCorreios\Service\Frete");
-            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"ativo" => "1"));
             $listItens = $serviceCarrinho->lista();
             $z = 1;
             foreach($listItens AS $produto)
@@ -75,7 +75,6 @@ class Post
                 $arrayXml = $xml->fromString($correioOb);
                 $valorFrete = str_replace(",", ".", $arrayXml['cServico']['Valor']);
                 //*frete
-                
                 $this->dados[] ="itemId$z=00";
                 $this->dados[] ="itemDescription$z=Valor do Frete";
                 $this->dados[] ="itemAmount$z=".$valorFrete;

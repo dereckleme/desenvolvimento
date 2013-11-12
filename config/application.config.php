@@ -14,13 +14,15 @@ return array(
         'ZendDeveloperTools',
         'Produto',
         'Usuario',
+        'Webservice',
         'ProdutoPublic',
         'Base',
         'Pagamento',
         'Pagseguro',
         'CarrinhoCompras',
         'DrkCorreios',
-        'WebinoImageThumb'
+        'WebinoImageThumb',
+        
         ),
     'module_listener_options' => array(
         'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php'),

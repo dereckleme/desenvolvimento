@@ -87,7 +87,20 @@
                                <br/>
 					            <input type="text" class="BoxNumero" <?if($offValue) print 'disabled="disabled"'?> value="<?=$this->cadastro->getNumero()?>">
 					             <br/><br/>
-					              <label class="FormBairro">Bairro*:</label>
+					              
+					               <label class="FormEstado">Estado*:</label><br/>
+					              <select class="BoxEstado" <?if($offValue) print 'disabled="disabled"'?>>
+					                  <option value="">Selecione</option>
+					                      <?php 
+					                          foreach($this->estados AS $estados)
+					                          {
+					                      ?>
+					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
+					                      <?php 
+					                          }?>
+					                  </select><br/><br/>
+
+					                  <label class="FormBairro">Bairro*:</label>
 					               <label class="FormCidade">Cidade*:</label><br/>
 					                <input type="text" class="BoxBairro" <?if($offValue) print 'disabled="disabled"'?> value="<?=$this->cadastro->getBairro()?>">
 					                <?php
@@ -113,17 +126,8 @@
 					                   <?php 
                                             }
 					                   ?><br/><br/>
-					               <label class="FormEstado">Estado*:</label><br/>
-					              <select class="BoxEstado" <?if($offValue) print 'disabled="disabled"'?>>
-					                  <option value="">Selecione</option>
-					                      <?php 
-					                          foreach($this->estados AS $estados)
-					                          {
-					                      ?>
-					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
-					                      <?php 
-					                          }?>
-					                  </select><br/><br/>
+
+					                  <input type="hidden" class="cadastroIdAction" value="<?=$this->cadastro->getIdcadastro()?>"/>
 					             <?if($offValue)
 				{
 				    ?>
@@ -306,5 +310,3 @@
     		</div>
 			  	
 	</div>
-
-	

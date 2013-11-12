@@ -16,6 +16,10 @@ class Recibo extends AbstractService{
     			array("setTargetEntity" => "Pagamento\Entity\UsuarioUsuarios",
     					"setCampo" => "setUsuariousuarios",
     					"setActionReference" => $data['idUsuario']),
+    	    array("setTargetEntity" => "Pagamento\Entity\UsuarioCadastro",
+    	    		"setCampo" => "setIdcad",
+    	    		"setActionReference" => $data['Idcadastro']),
+    	    
     	));
     	$data = parent::insert($data);
     	return $data;

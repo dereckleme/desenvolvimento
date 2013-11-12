@@ -1,9 +1,9 @@
 <?php
-
 namespace Pagamento\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * PagamentoControlerecibo
  *
@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class PagamentoControlerecibo
 {
-    public function __construct() {
+	public function __construct() {
        $this->dtVenda = new \DateTime("now");
        $this->produtosRecibo = new ArrayCollection();
     }
@@ -29,21 +29,30 @@ class PagamentoControlerecibo
     /**
      * @var string
      *
-     * @ORM\Column(name="nPedido", type="string", length=255, nullable=false)
+     * @ORM\Column(name="nPedido", type="string", length=255, nullable=true)
      */
     private $npedido;
+
     /**
-     * @var float
+     * @var \DateTime
      *
-     * @ORM\Column(name="valor_frete", type="decimal", nullable=true)
+     * @ORM\Column(name="dt_venda", type="datetime", nullable=true)
      */
-    private $valorFrete;
+    private $dtVenda;
+
     /**
      * @var float
      *
      * @ORM\Column(name="valor", type="decimal", nullable=true)
      */
     private $valor;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="valor_frete", type="decimal", nullable=true)
+     */
+    private $valorFrete;
 
     /**
      * @var integer
@@ -53,19 +62,19 @@ class PagamentoControlerecibo
     private $status;
 
     /**
-     * @var \Pagamento\Entity\PagamentoStatusSpagamento
+     * @var \idcad
      *
-     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusSpagamento")
+     * @ORM\ManyToOne(targetEntity="UsuarioCadastro")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="sPagamento", referencedColumnName="idStatus")
+     *   @ORM\JoinColumn(name="idcadastroRef", referencedColumnName="idcadastro")
      * })
      */
-    private $spagamento;
+    private $idcad;
 
     /**
-     * @var \Pagamento\Entity\UsuarioUsuarios
+     * @var \UsuarioUsuarios
      *
-     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\UsuarioUsuarios")
+     * @ORM\ManyToOne(targetEntity="UsuarioUsuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Usuario_idUsuarios", referencedColumnName="idUsuario")
      * })
@@ -73,37 +82,30 @@ class PagamentoControlerecibo
     private $usuariousuarios;
 
     /**
-     * @var \Pagamento\Entity\PagamentoStatusFpagamento
+     * @var \PagamentoStatusFpagamento
      *
-     * @ORM\ManyToOne(targetEntity="Pagamento\Entity\PagamentoStatusFpagamento")
+     * @ORM\ManyToOne(targetEntity="PagamentoStatusFpagamento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="fPagamento", referencedColumnName="idStatus")
      * })
      */
     private $fpagamento;
-    
+
     /**
-     * @var \DateTime
+     * @var \PagamentoStatusSpagamento
      *
-     * @ORM\Column(name="dt_venda", type="datetime", nullable=false)
+     * @ORM\ManyToOne(targetEntity="PagamentoStatusSpagamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sPagamento", referencedColumnName="idStatus")
+     * })
      */
-    private $dtVenda;
-    
-    /**
+    private $spagamento;
+	/**
      * @ORM\OneToMany(targetEntity="Pagamento\Entity\PagamentoControlepedido", mappedBy="idcontrolerecibo")
      */
     private $produtosRecibo;
     
-   
     
-	public function getValorFrete() {
-		return $this->valorFrete;
-	}
-
-	public function setValorFrete($valorFrete) {
-		$this->valorFrete = $valorFrete;
-	}
-
 	public function getProdutosRecibo() {
 		return $this->produtosRecibo;
 	}
@@ -112,6 +114,17 @@ class PagamentoControlerecibo
 		$this->produtosRecibo = $produtosRecibo;
 	}
 
+	public function getIdcad() {
+		return $this->idcad;
+	}
+
+	public function setIdcad($idcad) {
+		$this->idcad = $idcad;
+	}
+
+	public function setDtVenda($dtVenda) {
+	    $this->dtVenda = new \DateTime("now");
+	}
 	public function getIdcontrolerecibo() {
 		return $this->idcontrolerecibo;
 	}
@@ -128,13 +141,14 @@ class PagamentoControlerecibo
 		return $this->valor;
 	}
 
+	public function getValorFrete() {
+		return $this->valorFrete;
+	}
+
 	public function getStatus() {
 		return $this->status;
 	}
 
-	public function getSpagamento() {
-		return $this->spagamento;
-	}
 
 	public function getUsuariousuarios() {
 		return $this->usuariousuarios;
@@ -142,6 +156,10 @@ class PagamentoControlerecibo
 
 	public function getFpagamento() {
 		return $this->fpagamento;
+	}
+
+	public function getSpagamento() {
+		return $this->spagamento;
 	}
 
 	public function setIdcontrolerecibo($idcontrolerecibo) {
@@ -152,20 +170,16 @@ class PagamentoControlerecibo
 		$this->npedido = $npedido;
 	}
 
-	public function setDtVenda($dtVenda) {
-	    $this->dtVenda = new \DateTime("now");
-	}
-
 	public function setValor($valor) {
 		$this->valor = $valor;
 	}
 
-	public function setStatus($status) {
-		$this->status = $status;
+	public function setValorFrete($valorFrete) {
+		$this->valorFrete = $valorFrete;
 	}
 
-	public function setSpagamento($spagamento) {
-		$this->spagamento = $spagamento;
+	public function setStatus($status) {
+		$this->status = $status;
 	}
 
 	public function setUsuariousuarios($usuariousuarios) {
@@ -176,6 +190,9 @@ class PagamentoControlerecibo
 		$this->fpagamento = $fpagamento;
 	}
 
+	public function setSpagamento($spagamento) {
+		$this->spagamento = $spagamento;
+	}
 
-
+	
 }

@@ -10,7 +10,6 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',
-        #'EdpModuleLayouts',
         'ZFTool',
         'ZendDeveloperTools',
         'Produto',
@@ -19,7 +18,9 @@ return array(
         'Base',
         'Pagamento',
         'Pagseguro',
-        'CarrinhoCompras'
+        'CarrinhoCompras',
+        'DrkCorreios',
+        'WebinoImageThumb'
         ),
     'module_listener_options' => array(
         'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php'),

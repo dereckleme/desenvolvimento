@@ -31,13 +31,16 @@ class UsuarioController extends AbstractActionController
         $auth->setStorage(new SessionStorage("Usuario"));
         if($auth->hasIdentity())
         {
+           
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
             $recibos = $repoRecibo->findByusuariousuarios($auth->getIdentity()->getIdusuario());
+            
             $repo = $em->getRepository("Usuario\Entity\UsuarioCadastro");
             $entityAlternativos = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(),"padrao" => "0"));
             $estados = $em->getRepository("Usuario\Entity\MapeamentoEstado")->findAll();
-            $entity = $repo->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            $entity = $repo->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(), "padrao" => 1));
+          
             if($entity->getMapeamentocidade())
             {
             	$cidadeEstadoUF = $entity->getMapeamentocidade()->getMapeamentoestado()->getNomeclatura();
@@ -57,14 +60,14 @@ class UsuarioController extends AbstractActionController
             $param = $this->params()->fromRoute("idPedido");
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
             $repoRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
+            $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()));
             $recibo = $repoRecibo->findOneByidcontrolerecibo($param/3500);
                if(count($recibo) != 0)
                {
                    if($recibo->getUsuariousuarios()->getIdusuario() == $idUser)
                    {
-                       $cadastro = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" =>$auth->getIdentity()->getIdusuario(), "ativo" => 1));
-
-                       return new viewModel(array("data" => $recibo,"cadastro" => $cadastro));
+                       //$cadastroPrincipal = $repoRecibo->findOneBy(array("usuariousuarios" => $auth->getIdentity()->getIdusuario(), ""));
+                       return new viewModel(array("data" => $recibo,"cadastroPrincipal" => $cadastro));
                    }
                    else
                    {

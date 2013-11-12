@@ -221,12 +221,6 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 
                                       <br/>
 					                  <input type="text"   class="BoxNumero" ><br/><br/>
-
-					                  <label class="FormBairro">Bairro*:</label>
-					                  <label class="FormCidade">Cidade*:</label><br/>
-
-					                  <input type="text"  class="BoxBairro" >
-					                   <select class="BoxCidade" disabled="disabled"><option value="">Selecione</option></select><br/><br/>
 					                  <label class="FormEstado">Estado*:</label><br/>
 					                  <select class="BoxEstado">
 					                  <option value="">Selecione</option>
@@ -239,8 +233,11 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                          }?>
 					                  </select><br/><br/>
 
+					                  <label class="FormBairro">Bairro*:</label>
+					                  <label class="FormCidade">Cidade*:</label><br/>
 
-
+					                  <input type="text"  class="BoxBairro" >
+					                   <select class="BoxCidade" disabled="disabled"><option value="">Selecione</option></select><br/><br/>
 
 					                 <input type="submit" title="Salvar Endereço" value="Salvar Endereço alternativo" class="EventcadastrarEnderecoAlternativo"><br/><br/><br/>
 
@@ -274,8 +271,19 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                  <label class="FormNumero" >Numero*:</label>   <br/>
 					                  <input type="text" class="BoxNumero" <?if($offValue) print 'disabled="disabled"'?> value="<?=$this->numero?>"><Br/><br/>
 
-					                 
-					                  <label class="FormBairro">Bairro*:</label>
+					                  <label class="FormEstado">Estado*:</label><br/>
+					                  <select class="BoxEstado" <?if($offValue) print 'disabled="disabled"'?>>
+					                  <option value="">Selecione</option>
+					                      <?php 
+					                          foreach($this->estados AS $estados)
+					                          {
+					                      ?>
+					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
+					                      <?php 
+					                          }?>
+					                  </select><br/><br/>
+
+					                   <label class="FormBairro">Bairro*:</label>
 					                  <label class="FormCidade">Cidade*:</label><br/>
 
 					                  <input type="text"  class="BoxBairro" value="<?=$this->bairro?>" <?if($offValue) print 'disabled="disabled"'?>>
@@ -303,18 +311,6 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
                                             }
 					                   ?>
 					                   <br/><br/>
-					                   
-					                  <label class="FormEstado">Estado*:</label><br/>
-					                  <select class="BoxEstado" <?if($offValue) print 'disabled="disabled"'?>>
-					                  <option value="">Selecione</option>
-					                      <?php 
-					                          foreach($this->estados AS $estados)
-					                          {
-					                      ?>
-					                      <option value="<?=$estados->getNomeclatura()?>" <?php if($this->cidadeEstadoUF == $estados->getNomeclatura()) print "selected"?>><?=$estados->getNome()?></option>
-					                      <?php 
-					                          }?>
-					                  </select><br/><br/>
 
                                          <label class="FormTelResidencial">Telefone Residencial*:</label>
                                          <label class="FormTelCelular">Telefone Celular:</label>
@@ -384,15 +380,14 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 					                  <label class="FormNumero">Numero*:</label>                                      
                                       <br/>
 					                  <input type="text"  disabled="disabled" class="BoxNumero" ><br/><br/>
-
+					                  <label class="FormEstado">Estado*:</label><br/>
+					                  <select class="BoxEstado" disabled="disabled"><option>Selecione</option></select><br/><br/>
 					                  <label class="FormBairro">Bairro*:</label>
 					                  <label class="FormCidade">Cidade*:</label><br/>
 
 					                  <input type="text" disabled="disabled" class="BoxBairro">
 
 					                  <select class="BoxCidade" disabled="disabled"><option>Selecione</option></select><br/><br/>
-					                  <label class="FormEstado">Estado*:</label><br/>
-					                  <select class="BoxEstado" disabled="disabled"><option>Selecione</option></select><br/><br/>
 
 					                  <label class="FormTelResidencial">Telefone Residencial*:</label>
                                       <label class="FormTelCelular">Telefone Celular:</label>
@@ -426,7 +421,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    }
 								?>">Pagamento</h5>
 							<div id="ContBoxPagamento">
-							<span class="obs_pagamento">Conclua seu cadastro com CEP para calcular o frente.</span>
+							<!--<span class="obs_pagamento">Conclua seu cadastro com CEP para calcular o frente.</span>-->
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
 								    <span class="txtBoxResumoValor"><?=$this->carrinhoLista['valorTotal']?></span>
@@ -460,14 +455,12 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
     								    }
 								    ?>
 								    </span>
-									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
-									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
-								<div class="restStatusService">
+								    <div class="restStatusService">
 								<?php 
 								    if(empty($this->nomeCompleto) || empty($this->cep) || empty($this->endereco) || empty($this->numero) || empty($this->bairro) || $this->frete == null)
 								    {
 								    ?>
-								    <a href="#" onclick="return false"><span class="BoxPagamentoButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>
+								    <a href="#" onclick="return false"><span class="BoxConcluirButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>
 								    <?php 
 								    }
 								    else 
@@ -478,6 +471,9 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 								    }
 								?>
 								</div>	
+									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro_tutorial.png">
+									<!--<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>-->
+								
 							</div>
 							<?php 
 					    }
@@ -489,7 +485,7 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
 						<div id="BoxPagamento">
 						   <h5 class="ImgPagamentoOff">Pagamento</h5>
 							<div id="ContBoxPagamento">
-							<span class="obs_pagamento">É necessário estar logado para calcular o frete e finalizar o pagamento.</span>
+							<!--<span class="obs_pagamento">É necessário estar logado para calcular o frete e finalizar o pagamento.</span>-->
 									<p class="txtResumo">Resumo da compra</p>
 									<p class="txtBoxResumo">Valor total dos produtos:</p> 
 								    <span class="txtBoxResumoValor"><?=$this->carrinhoLista['valorTotal']?></span>
@@ -508,9 +504,11 @@ Quadra/Estrada/Praça e na sequência o nome do endereço)</p><br/>
     								    	<?php
     								    }
 								    ?></span>
-									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro.png">
-									<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>
-								<a href="#"><span class="BoxPagamentoButtonOff" title="Finalizar pagamento" onclick="return false">Finalizar pagamento</span></a>
+								    <br><br>
+								    <a href="#"><span class="BoxPagamentoButtonOff" title="Para concluir a compra é necessário estar logado" onclick="return false">Finalizar pagamento</span></a>
+									<img class="BoxResumoPagSeguro" src="<?=$this->basePath()?>/images/pagseguro_tutorial.png">
+									<!--<p class="txtPagSeguro">PagSeguro é a solução completa para pagamentos online, que garante a segurança de quem compra na web. Quem compra com PagSeguro tem a garantia de produto ou serviço entregue ou seu dinheiro de volta.</p>-->
+								
 							</div>
 						</div>
 					<!--Fim da Conteudo Pagamento Vazio-->		

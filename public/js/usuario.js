@@ -277,7 +277,6 @@ $(document).ready(function(){
 					{
 						$(".erro").html("Alguns campos abaixo estão em branco:");
 						$(".tipo_erro").html("");
-						$(".tentarNovamente").css("display","block");
 						$(".tipo_erro").html(data);
 						$("#form_erro").fadeIn();
 					}
@@ -308,7 +307,6 @@ $(document).ready(function(){
 					{
 						$(".erro").html("Alguns campos abaixo estão em branco:");
 						$(".tipo_erro").html("");
-						$(".tentarNovamente").css("display","block");
 						$(".tipo_erro").html(data);
 						$("#form_erro").fadeIn();
 					}
@@ -325,12 +323,12 @@ $(document).ready(function(){
 		var actionNumero = $(".formAction .BoxNumero").val();
 		var actionBairro = $(".formAction .BoxBairro").val();
 		var actionCidade = $(".formAction .BoxCidade option:selected").val();
-		
+		var cadastroIdAction = $(".cadastroIdAction").val();
 		$.ajax({
 			url: basePatch+"/actionUser/Usuario/atualiza",
 			type: "post",
 			async:false,
-			data: {typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
+			data: {idCadastro:cadastroIdAction,typeUpdate:3,actionCidade:actionCidade,actionBairro:actionBairro,actionNumero:actionNumero,actionRua:actionRua,actionCep:actionCep},
 			success: function(data) {
 				if(data != "")
 					{
@@ -373,7 +371,7 @@ $(document).ready(function(){
 				$(".enderecoAlternativoAction").slideDown("fast");
 				$("#despesaFrete").html("Indisponível");
 				$("#valortotalMaisFrete").html("Indisponível");
-				$(".restStatusService").html('<a href="#" onclick="return false"><span class="BoxPagamentoButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>');
+				$(".restStatusService").html('<a href="#" onclick="return false"><span class="BoxConcluirButtonOff" title="Concluir Pedido">Concluir Pedido</span></a>');
 			}
 		else{
 				var cepSet = $(this).attr("rel");
@@ -473,15 +471,7 @@ $(document).ready(function(){
 	});
 	
 	
-	/*
-	 * clear form
-	 */
-	$(".formAction input[type=text],#form_login input[type=text], #form_cadastro input[type=text]").on("click",function(){
-		$(this).val("");
-	})
-	$(".formAction input[type=password],#form_login input[type=password], #form_cadastro input[type=password]").on("click",function(){
-		$(this).val("");
-	})
+	
 	
 	
 	/*
@@ -862,5 +852,17 @@ $(document).ready(function(){
 					});	
 		  		}
 		});
+
+	$(".testeRestEstoque").on("click",function(){
+		$.ajax({
+			  url: basePatch+"/webservice/Estoque/03SEV",
+			  data:{user:"dereck","senha":159753,"saldo":11},
+			  type: 'PUT',
+			  success: function(data) {
+				 alert(data.mensagem);
+			  },
+			});
+		return false;
+	});
 	
 })

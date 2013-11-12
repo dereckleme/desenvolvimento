@@ -49,6 +49,7 @@ class Produto extends AbstractService {
 	}
 	
 	public function update(array $data){
+	    
 	    $this->setTargetEntity("Produto\Entity\ProdutoSubcategoria");
 	    $this->setCampo("setProdutosubcategoria");
 	    $this->setActionReference($data['inputSubCategoria']);

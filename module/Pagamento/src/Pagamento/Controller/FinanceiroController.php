@@ -43,12 +43,19 @@ class FinanceiroController extends AbstractActionController
         if($auth->hasIdentity() && count($listaProdutosCarrinho) >= 1)
         {
             $em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneByusuariosusuarios($auth->getIdentity()->getIdusuario());
+            //cadastro usuário ativo
+            $entity = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(), "ativo" => 1));
+            //
+            //cadastro padrão;
+            $entityPadrao = $em->getRepository("Usuario\Entity\UsuarioCadastro")->findOneBy(array("usuariosusuarios" => $auth->getIdentity()->getIdusuario(), "padrao" => 1));
             $serviceFrete = $this->getServiceLocator()->get("DrkCorreios\Service\Frete");
-             if($entity->getCep()) 
+           
+             if($entity->getCep() && $entityPadrao) 
              {    
+                 
                 $serviceFrete->setSCepDestino($entity->getCep());
                 $freteCalculo = $xml->fromString($serviceFrete->calcularFrete());
+                
                 if($freteCalculo['cServico']['Erro'] == 0)
                 {
                     $valueUpdated = str_replace("R$", "", $service->calculoTotal());
@@ -58,11 +65,13 @@ class FinanceiroController extends AbstractActionController
                     $valorFrete = str_replace(",", ".", $freteCalculo['cServico']['Valor']);
                     $valorTotal = $valorFrete+$valueUpdated; //Total com frete
                     
-                       if($entity->getNome() && $entity->getCep() && $entity->getRua() && $entity->getNumero() && $entity->getBairro() && $entity->getMapeamentocidade())
+                       if($entityPadrao->getNome() && $entity->getCep() && $entity->getRua() && $entity->getNumero() && $entity->getBairro() && $entity->getMapeamentocidade())
                        {
+                           
                            $repositoryRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
                            $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Recibo");
-                           $reference = $servicePagseguro->insert(array("valorFrete" => $valorFrete,"idUsuario" => $auth->getIdentity()->getIdusuario(),"npedido" => null, "valor" => $valorTotal));
+                           $reference = $servicePagseguro->insert(array("valorFrete" => $valorFrete,"idUsuario" => $auth->getIdentity()->getIdusuario(),"npedido" => null, "valor" => $valorTotal,"Idcadastro" => $entity->getIdcadastro()));
+                              
                               if($reference)
                               {
                                   $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Pedido");
@@ -71,6 +80,7 @@ class FinanceiroController extends AbstractActionController
                                       $idProduto = $produto['produto']->getIdproduto();
                                       $servicePagseguro->insert(array("quantidade" => $produto['quantidade'],"idProduto" => $idProduto,"idRecibo" => $reference->getIdcontrolerecibo()));
                                   }
+                                  
                                   $serviceCarrinho = $this->getServiceLocator()->get("CarrinhoCompras\Service\Carrinho");
                                   $servicePagseguroGerarUrl = $this->getServiceLocator()->get("Pagseguro\Curl\post");
                                   $token = $servicePagseguroGerarUrl->requisicao($reference->getIdcontrolerecibo());
