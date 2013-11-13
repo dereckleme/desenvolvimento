@@ -71,7 +71,7 @@ class FinanceiroController extends AbstractActionController
                            $repositoryRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
                            $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Recibo");
                            $reference = $servicePagseguro->insert(array("valorFrete" => $valorFrete,"idUsuario" => $auth->getIdentity()->getIdusuario(),"npedido" => null, "valor" => $valorTotal,"Idcadastro" => $entity->getIdcadastro()));
-                              
+ 
                               if($reference)
                               {
                                   $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Pedido");
@@ -87,6 +87,7 @@ class FinanceiroController extends AbstractActionController
                                   $service = $this->getServiceLocator()->get("Pagseguro\Service\Pagseguro");
                                   $service->update(array("id" => $reference->getIdcontrolerecibo(), "npedido" =>$token),true);
                                   $serviceCarrinho->limpa();
+                                 
                                   return $this->redirect()->toUrl("https://pagseguro.uol.com.br/v2/checkout/payment.html?code=".$token);
                               }
                               else

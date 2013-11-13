@@ -1,6 +1,5 @@
 <?php
 namespace Pagamento;
-
 use Pagamento\Service\Estoque as serviceEstoque;
 use Pagamento\Service\Recibo as serviceRecibo;
 use Pagamento\Service\Pedido as servicePedido;
@@ -10,7 +9,6 @@ class Module
     {
         return include __DIR__ . '/config/module.config.php';
     }
-
     public function getAutoloaderConfig()
     {
         return array(
@@ -21,7 +19,6 @@ class Module
             ),
         );
     }
-    
     public function getServiceConfig(){
     	return array(
     	    'factories' => array(
