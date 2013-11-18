@@ -290,8 +290,8 @@ li.qtMudar_PC a {position: relative; text-indent: -9999px}
 button.carrinhoCompras_categoria { background: url(../images/btn_ir_cesta.png) no-repeat left 8px center #582700;  border: none; color:#FFF; font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px;  text-align: left; cursor: pointer; padding: 6px 6px 8px 36px; }
 button.carrinhoCompras_categoria:hover { background: url(../images/btn_ir_cesta.png) no-repeat left 8px center #351903;}
 button.carrinhoCompras_categoria_off { background: url(../images/btn_ir_cesta_off.png) no-repeat left 8px center #DDDDDD; border: none; color:#666666; font-weight:bold; border-radius: 5px; float: left; margin-top: 37px; font-size: 12px; margin-left: 10px;  text-align: left; padding: 16px 6px 16px 36px; }
-span.txt_categoria_off { margin-left: 40px; font-size: 10px; color: #666666; cursor: pointer;}
-span.txt_categoria_off:hover { text-decoration: underline; color: #464646;}
+span.txt_categoria_off { margin-left: 40px; font-size: 11px; color: #666666; cursor: pointer; margin-top: 5px}
+span.txt_categoria_off:hover { text-decoration: underline; color: #333;}
 
 /******************* COLUNA CENTRAL - HOME***************/
 #conteudo_central { width: 644px; float: left; margin-right: 15px;}
@@ -349,21 +349,21 @@ p.pagamentos {font-size: 14px; color:#582700; text-transform: uppercase; font-we
 img.icon_e-sedex {margin-top:15px}
 
 /**********************PÁGINA DETALHE DO PRODUTO ******************************/
-h3.Nome_detalhe { font-size: 24px; color:#ff7f25; margin-left: 25px; width: 450px ;}
+h3.Nome_detalhe { font-size: 24px; color:#ff7f25; margin-top: 0px; text-transform: uppercase;}
 h4.inf_produtos{ font-size: 24px; color:#351903;}
-#box_detalhe { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; border: solid 1px #ddd; }
+#box_detalhe { width: 642px; float: left; margin-bottom: 10px; padding-bottom: 20px; padding-top: 20px; border: solid 1px #ddd; }
 #galeria_detalhe{ float: left; border: solid 1px #ddd; padding:15px 10px; margin-left:20px; width: 212px; }
 #zoom_galeria {}
 #zoom_galeria img.fotos_galeria {  max-width: 212px; max-height: 159px;}
 img.thumb_produtos {max-height: 66px; max-width: 50px; }
 span.mouse_imagem { background:url(../images/lupa_zoom.png) no-repeat left top;font-size: 12px; color:#666; padding-left: 20px; padding-bottom: 5px; margin-left: 20px; }
-#comprar_detalhe{width: 323px; float: left; border: solid 1px #ddd;  padding: 10px; margin-left: 25px; font-size: 13px; text-align: center;}
+#comprar_detalhe{width:370px;  margin-left: 10px; font-size: 13px;  float: left}
 strike.precoAntigo_produto {font-weight: 700; color:#582700;}
-p.precoProduto_detalhe {font-size: 24px; color:#ff7f25; margin: 8px;}
+p.precoProduto_detalhe {font-size: 24px; color:#ff7f25;}
 em.un_monetaria {font-style: normal; }
 p.text_qtd {float: left; color:#666; margin-top:10px;}
 input.box_qtd{padding: 2px 5px; border:1px solid #DDD; color: #666;  margin: 0 2px 0 10px; width: 40px; text-align: center; float: left; margin-top:7px;}
-.qtd_produto{clear: both; margin: 0 auto; width: 150px }
+.qtd_produto{clear: both;  width: 150px; float: left; margin-top: 10px}
 ul.produto_quantidade{}
 ul li.qtd_mudar{ padding: 0!important;}
 ul li.qtd_mudar a {  right: 3px; display: list-item;}
@@ -371,12 +371,12 @@ li.qtMais a{position: relative; width: 13px; height: 10px; background: url(../im
 li.qtMenos a{position: relative; width: 13px; height: 10px; background: url(../images/qtd_setas.png) no-repeat; text-indent: -9999px; overflow: hidden; background-position: 0 -20px; top:9px;}
 
 
-.btn_detalhe {width: 300px; margin:0 auto;}
-button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #582700;font-weight: 700; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left; margin-top: 13px;}
+.btn_detalhe {float: left; margin-left: 15px}
+button.btn_carrinhoCompras_detalhe{ background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #582700;font-weight: 700; border-radius: 5px; border: none; color:#FFF; text-align: left; cursor: pointer; padding: 10px 15px 10px 40px; float: left;}
 button.btn_carrinhoCompras_detalhe:hover {background: url(../images/btn_ir_cesta.png) no-repeat left 12px center #351903 }
 a.btn_comprar_detalhe { background: #ff7f25; font-weight: 700;  color:#FFF; border-radius: 5px; float: right; padding: 19px; margin-top: 13px}
 a.btn_comprar_detalhe:hover{background:#e57220;}
-button.btn_carrinhoCompras_detalhe_off { background: url(../images/btn_ir_cesta_off.png) no-repeat left 12px center #DDDDDD; font-weight: 700; border-radius: 5px; border: none; color:#666666; text-align: left; padding: 18px 15px 18px 40px; margin-top: 13px;}
+button.btn_carrinhoCompras_detalhe_off { background: url(../images/btn_ir_cesta_off.png) no-repeat left 12px center #DDDDDD; font-weight: 700; border-radius: 5px; border: none; color:#666666; text-align: left; padding: 18px 15px 18px 40px;}
 
 
 /******************informaçoes produtos*********************/
@@ -887,8 +887,8 @@ input.LimparFormInst:hover { background: #351903;}
 
 /*quantidade estoque*/
 
-.smsEstoque{ font-size: 12px; color:red;}
-
+.smsEstoque{padding: 10px; text-align: center; color:#fff; background:red;font-size: 14px; letter-spacing: 1px;}
+.smsEstoqueVejaMais {padding: 3px; color:#fff; background: red; font-size: 12px;letter-spacing: normal;}
 
 /* Hack Chorme */
 @media screen and (-webkit-min-device-pixel-ratio:0) {

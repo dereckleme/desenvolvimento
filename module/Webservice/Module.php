@@ -7,17 +7,16 @@ class Module
     {
         return include __DIR__ . '/config/module.config.php';
     }
-/*
     public function onBootstrap(MvcEvent $event)
     {
     	$eventManager       = $event->getApplication()->getEventManager();
     	$sharedEventManager = $eventManager->getSharedManager();
-        
+        /*
     	$sharedEventManager->attach('Pagamento\Service\Recibo', 'insert', function($e) {
-    	    //$e->getTarget()->setDereck("plplpl");
+    	    $e->getTarget()->setDereckleme("Dereck vicentin leme");
     	}, 100);
+    	*/
     }
- */   
     public function getAutoloaderConfig()
     {
         return array(

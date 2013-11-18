@@ -16,12 +16,12 @@ class Recibo extends AbstractService implements EventManagerAwareInterface{
      */
     protected $events;
     
-    public function __construct(EntityManager $em){
+	public function __construct(EntityManager $em){
     	parent::__construct($em);
     	$this->entity = "Pagamento\Entity\PagamentoControlerecibo";
     }
     public function insert(array $data)
-    {
+    { 
         $this->getEventManager()->trigger(__FUNCTION__, $this, $data);
     	$this->setTargetEntity(array(
     			array("setTargetEntity" => "Pagamento\Entity\UsuarioUsuarios",

@@ -34,6 +34,7 @@ class FinanceiroController extends AbstractActionController
     }
     public function fecharPedidoAction()
     {
+        
         $filter = new \NumberFormatter('pt_BR', \NumberFormatter::CURRENCY);
         $auth = new AuthenticationService;
         $xml = new Xml();
@@ -70,8 +71,11 @@ class FinanceiroController extends AbstractActionController
                            
                            $repositoryRecibo = $em->getRepository("Pagamento\Entity\PagamentoControlerecibo");
                            $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Recibo");
+                           
+                           
+                           
                            $reference = $servicePagseguro->insert(array("valorFrete" => $valorFrete,"idUsuario" => $auth->getIdentity()->getIdusuario(),"npedido" => null, "valor" => $valorTotal,"Idcadastro" => $entity->getIdcadastro()));
- 
+                          
                               if($reference)
                               {
                                   $servicePagseguro = $this->getServiceLocator()->get("Pagamento\Service\Pedido");

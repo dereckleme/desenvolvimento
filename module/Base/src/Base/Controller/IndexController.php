@@ -24,6 +24,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        
         $repository = $this->getServiceLocator()->get('Produto\Repository\Produtos');
         $prodVisistados = $repository->findByGetVisitados();
         

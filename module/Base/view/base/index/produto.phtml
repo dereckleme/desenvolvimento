@@ -1,7 +1,7 @@
 <div id="conteudo_central">
     	<div id="box_detalhe">
     	
-    		<h3 class="Nome_detalhe"><?=$this->detalheProduto->getTitulo()?></h3>
+    		<!--<h3 class="Nome_detalhe"><?=$this->detalheProduto->getTitulo()?></h3>-->
 
     		<div id="galeria_detalhe">
             <!-- <div class="zoomWrapper" style="height:274px;width:411px;"> -->
@@ -26,6 +26,8 @@
 
 
 			<div id="comprar_detalhe">
+
+				<h3 class="Nome_detalhe"><?=$this->detalheProduto->getTitulo()?></h3>
 
 				<!--  <strike class="precoAntigo_produto">R$ 7,50</strike>-->
 				<p class="precoProduto_detalhe">
@@ -66,7 +68,7 @@
                                 
 				<div class="btn_detalhe">
 					<button class="btn_carrinhoCompras_detalhe actionAddCarrinho" rev="<?=$this->detalheProduto->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao <br /> carrinho de compras</button>
-					<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe" title="Comprar">Comprar</a>
+					<!--<a href="<?=$this->url("publico-carrinho-compra")?>" rev="<?=$this->detalheProduto->getIdproduto()?>" class="btn_comprar_detalhe" title="Comprar">Comprar</a>-->
 				</div>
                                <?php 
                       			    
@@ -206,7 +208,7 @@
 								</li>
 
 							</ul>
-							<br/><span class="smsEstoque" style="display:none"></span>
+							<br/><span class="smsEstoque smsEstoqueVejaMais" style="display:none"></span>
 						</div>
 			   </div>
 			   <button class="btn_carrinhoCompras_vejaTambem  actionAddCarrinho" rel="0" rev="<?=$relacionados->getIdproduto()?>" title="Adicionar ao carrinho de compras">Adicionar ao carrinho de compras</button>
