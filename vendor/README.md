@@ -1,1 +1,1 @@
-Desenvolvimento de loja zf2
+This vendor/ directory is where third-party modules should be installed.
